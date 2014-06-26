@@ -1,7 +1,7 @@
 // Data Model - Latest
 CREATE (parent:Company { name: 'BP Exploration Operating Company Limited'})
 CREATE (statecompany:Company { name: 'NNPC Nigeria'})
-CREATE (company:Company { name: 'BP Exploration (Epsilon) Limited', aliases: 'BP Exp, BP Exp LTD', oc_id: 'gb/01004984', headquarters:'', people:'', founded_in:'1992', website:'', document:''})
+CREATE (company:Company { name: 'BP Exploration (Epsilon) Limited', other_names: 'BP Exp, BP Exp LTD', previous_names:'', oc_id: 'gb/01004984', headquarters:'', people:'', founded_in:'1992', website:'', document:''})
 CREATE (contractor:Company { name: 'Hamilton Technologies Limited'})
 CREATE (operator:Company { name: 'SNEPCO'})
 CREATE (bah:Country { name: 'Bahamas'})
