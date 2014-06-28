@@ -1,4 +1,3 @@
-Timestamp,Parent company (or shareholder),Child company,Ownership share (%),Direct ownership?,Date acquired,Notes on ownership,Source Pub Date,Source URL,Confidence in the source,Source URL,Confidence in the source
 timestamp,parent,company,immediate,ownership_type,,,source_date,source_url,confidence,,
 ,ExxonMobil Corporation,Esso Exploration and Production Nigeria Limited,100,Directly Controlled,,,,http://www.exxonmobil.com.ng/nigeria-english/pa/about_who_eepnl.aspx,High,,
 ,ExxonMobil Corporation,Mobil Producing Nigeria Unlimited,100,Directly Controlled,,,,http://investing.businessweek.com/research/stocks/private/snapshot.asp?privcapId=4727307,Medium,http://www.exxonmobil.com.ng/Nigeria-English/PA/about_who_mpn.aspx,High
