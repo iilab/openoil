@@ -1,49 +1,49 @@
-timestamp,name,other_names,previous_names,oc_id,,legal_type,,,,foundation_date,,headquarters,,directors,shareholders,,,,,,,,,,,,website,,,,
-,Addax Petroleum,Addax Petroleum,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Addax Petroleum Development Nigeria Limited,Addax Petroleum Development Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Addax Petroleum Exploration Nigeria Limited,Addax Petroleum Exploration Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Addax Petroleum Nigeria,Addax Petroleum Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Agip Energy and Natural Resources (AENR),Agip Energy and Natural Resources (AENR),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Aker Solutions,Aker Solutions,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Amec Plc,Amec Plc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Amni International Petroleum Development Company Limited,Amni International Petroleum Development Company Limited,,,,,,,,1993,http://www.amnipetroleum.com/briefhistory.htm,"Plot 1377, Tiamiyu Savage Street, Victoria Island, Lagos, Nigeria.",http://www.amnipetroleum.com/corporateinfo.htm,"Chief Tunde Afolabi, Director
+timestamp,name,other_names,previous_names,oc_id,,jurisdiction,legal_type,legal_type_source,,,foundation_date,,headquarters,,directors,shareholders,,,,,,,,,,,,website,,,,
+,Addax Petroleum,Addax Petroleum,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Addax Petroleum Development Nigeria Limited,Addax Petroleum Development Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Addax Petroleum Exploration Nigeria Limited,Addax Petroleum Exploration Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Addax Petroleum Nigeria,Addax Petroleum Nigeria,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Agip Energy and Natural Resources (AENR),Agip Energy and Natural Resources (AENR),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Aker Solutions,Aker Solutions,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Amec Plc,Amec Plc,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Amni International Petroleum Development Company Limited,Amni International Petroleum Development Company Limited,,,,Nigeria,,,,,1993,http://www.amnipetroleum.com/briefhistory.htm,"Plot 1377, Tiamiyu Savage Street, Victoria Island, Lagos, Nigeria.",http://www.amnipetroleum.com/corporateinfo.htm,"Chief Tunde Afolabi, Director
 Mr. T. Iboroma Akpana, Director","Kapetrol Nigeria Ltd (94,904,300)
 Chief Tunde Afolabi (700,000)",https://drive.google.com/file/d/0B-KlXDOYUc-OQ3lXdkFWaERXVFU/edit?usp=sharing,,,,,,,,,,,http://www.amnipetroleum.com,,,,
-,Ankorpointe Nigeria Limited,Ankorpointe Nigeria Limited,,,,,,,,,,"Plot PC 10, Engineering Close, 4th Floor, NITP (Sterling) Building, Off Idowu Taylor St. Opposite UBA/ Opposite Old Agip House (Feyide House).",http://www.ankorpointe.com/contacts.php,"Timi Aladetimi
+,Ankorpointe Nigeria Limited,Ankorpointe Nigeria Limited,,,,Nigeria,,,,,,,"Plot PC 10, Engineering Close, 4th Floor, NITP (Sterling) Building, Off Idowu Taylor St. Opposite UBA/ Opposite Old Agip House (Feyide House).",http://www.ankorpointe.com/contacts.php,"Timi Aladetimi
 Festus Ore Aruwaji
 Dr. Olufemi O. Babalola",,,,,,,,,,,,,http://www.ankorpointe.com/,,,,
-,BGI Resources Limited,BGI Resources Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Chevron Nigeria Limited,"Chevron Nigeria Limited, Chevron Petroleum Nigeria Limited",,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Clean Nigeria Associates Limited,Clean Nigeria Associates Limited,,,,,,,,1981,http://www.cnang.org/,"CNA Fire Building, Rm 1 & 2, Shell Petroleum Development Co. Ltd., Kidney Island, Port Harcourt, Rivers State, Nigeria",http://www.cnang.org/index.php?option=com_contact&view=contact&id=1%3Aph-quaters&catid=12%3Acontacts&Itemid=82,,,,,,,,,,,,,,http://www.cnang.org/,,,,
-,Crestech Engineering Limited,Crestech Engineering Limited,,,,,,,,2007,http://www.technip.com/en/entities/crestech/profile,"4/6 Ajose Adeogun Street, Victoria Island, Lagos, Nigeria",http://www.technip.com/en/entities/crestech/contact-us,"Dr. F. Lalude, Chairman
+,BGI Resources Limited,BGI Resources Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Chevron Nigeria Limited,"Chevron Nigeria Limited, Chevron Petroleum Nigeria Limited",,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Clean Nigeria Associates Limited,Clean Nigeria Associates Limited,,,,Nigeria,,,,,1981,http://www.cnang.org/,"CNA Fire Building, Rm 1 & 2, Shell Petroleum Development Co. Ltd., Kidney Island, Port Harcourt, Rivers State, Nigeria",http://www.cnang.org/index.php?option=com_contact&view=contact&id=1%3Aph-quaters&catid=12%3Acontacts&Itemid=82,,,,,,,,,,,,,,http://www.cnang.org/,,,,
+,Crestech Engineering Limited,Crestech Engineering Limited,,,,Nigeria,,,,,2007,http://www.technip.com/en/entities/crestech/profile,"4/6 Ajose Adeogun Street, Victoria Island, Lagos, Nigeria",http://www.technip.com/en/entities/crestech/contact-us,"Dr. F. Lalude, Chairman
 F. Pliya, Managing Director/CEO
 Dr. P. Tabiowo, Executive Director
 Dr. F. Adubi, Board Director
 A. Meyer, Board Director
 JM. Letournel, Board Director
 F. Brun, Board Director",,http://www.technip.com/en/entities/crestech/profile,,,,,,,,,,,,,,,
-,Crestville Engineering and Technology,Crestville Engineering and Technology,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Daewoo Engineering and Construction Company Limited,Daewoo Engineering and Construction Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,DeltaAfrik Engineering Limited,DeltaAfrik Engineering Limited,,,,,,,,2003,http://www.deltaafrik.com/about/,"Bay Atlantic Tower, No. 4 Freedom Road, 3rd Roundabout Lekki-Epe Expressway, Ikate, Lekki Phase 1, Lagos. ",http://www.deltaafrik.com/contact/,Engr. Akin Odumakinde,,,,,,,,,,,,,http://www.deltaafrik.com/,,,,
-,Elf Petroleum Limited,Elf Petroleum Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Esso Exploration and Production Nigeria Limited,Esso Exploration and Production Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,ExxonMobil Nigeria,ExxonMobil Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Grinaker Limited,Grinaker Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Hamilton Technologies Limited,Hamilton Technologies Limited,,,,,,,,1992,http://hamiltontechnologies.com/index.php/about,"Plot 226, Block C, Phase II, Trans Amadi Industrial Layout, Port Harcourt, Rivers state",,,,,,,,,,,,,,,,,,,
-,Hyprops Nigeria Limited,Hyprops Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Integrated Data Services Limited,Integrated Data Services Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,International Energy Systems Limited,International Energy Systems Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Jagal Group,Jagal Group,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Kaztec Engineering Limited,Kaztec Engineering Limited,,,,,,,,2005,http://www.kaztec-eng.com/,"#2, Oguda Close, Off Lake Chad Crescent, Maitama, Abuja FCT, Nigeria.",http://www.kaztec-eng.com/index.php/contact,,,,,,,,,,,,,,http://www.kaztec-eng.com,,,,
-,Laser Engineering and Consultancy Nigeria Limited,Laser Engineering and Consultancy Nigeria Limited,,,,,,,,1990,http://www.laser-ng.com/,"KM5 East-West Road, Behind Omega House, Along Rumuodara, Port Harcourt, Rivers state, Nigeria",http://www.laser-ng.com/company-profile.html,Prof. Mike Onyekonwu,,http://www.laser-ng.com/company-profile.html,,,,,,,,,,,http://www.laser-ng.com,,,,
-,Mobil Producing Nigeria Unlimited,Mobil Producing Nigeria Unlimited,,,,,,,,1955,http://investing.businessweek.com/research/stocks/private/snapshot.asp?privcapId=4727307,"Mobil House, 1, Lekki Expressway, Victoria Island, Lagos state, Nigeria",,Mr. Chikwe Edoziem,,http://investing.businessweek.com/research/stocks/private/snapshot.asp?privcapId=4727307,,,,,,,,,,,http://www.exxonmobil.com.ng/,,,,
-,Nestoil Plc,Nestoil Plc,,,,Public,http://www.nestoilgroup.com/,,,1991,http://www.nestoilgroup.com/,"Africa Re-building 4th Floor, Plot 1679 Karimu Kotun Str., Victoria Island, Lagos state, Nigeria",http://www.nestoilgroup.com/contact-us.htm,Dr. Ernest Nnaemeka Azudialu-Obiejesi,,http://www.nigerialeadershipsummit.com/ernest-azudialu.php,,,,,,,,,,,http://www.nestoilgroup.com/,,,,
-,National Engineering and Technical Company Limited (NETCO),National Engineering and Technical Company Limited (NETCO),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nigeria Agip Exploration Limited,Nigeria Agip Exploration Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nigeria Gas Company,Nigeria Gas Company,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nigerian Agip Oil Company Limited,Nigerian Agip Oil Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nubian Nigeria Limited,Nubian Nigeria Limited,,,,Limited Liability Company,,,,1986,http://nubiangroup.org/about.html#team,"11, Awolowo Road, Ikoyi, Lagos.",http://nubiangroup.org/about.html#team,,,,,,,,,,,,,,http://nubiangroup.org/about.html#team,,,,
-,Point Engineering Limited,Point Engineering Limited,,,,Limited Liability Company,http://pointengineering.com/index.php/about-us,,,1995,http://pointengineering.com/index.php/about-us,"Point House, Plot 129 Bodo Road, Off Woji Road, GRA Phase 2, Port Harcourt, Rivers State, Nigeria ",http://pointengineering.com/index.php/about-us,"George Okoyo, Director
+,Crestville Engineering and Technology,Crestville Engineering and Technology,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Daewoo Engineering and Construction Company Limited,Daewoo Engineering and Construction Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,DeltaAfrik Engineering Limited,DeltaAfrik Engineering Limited,,,,Nigeria,,,,,2003,http://www.deltaafrik.com/about/,"Bay Atlantic Tower, No. 4 Freedom Road, 3rd Roundabout Lekki-Epe Expressway, Ikate, Lekki Phase 1, Lagos. ",http://www.deltaafrik.com/contact/,Engr. Akin Odumakinde,,,,,,,,,,,,,http://www.deltaafrik.com/,,,,
+,Elf Petroleum Limited,Elf Petroleum Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Esso Exploration and Production Nigeria Limited,Esso Exploration and Production Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,ExxonMobil Nigeria,ExxonMobil Nigeria,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Grinaker Limited,Grinaker Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Hamilton Technologies Limited,Hamilton Technologies Limited,,,,Nigeria,,,,,1992,http://hamiltontechnologies.com/index.php/about,"Plot 226, Block C, Phase II, Trans Amadi Industrial Layout, Port Harcourt, Rivers state",,,,,,,,,,,,,,,,,,,
+,Hyprops Nigeria Limited,Hyprops Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Integrated Data Services Limited,Integrated Data Services Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,International Energy Systems Limited,International Energy Systems Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Jagal Group,Jagal Group,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Kaztec Engineering Limited,Kaztec Engineering Limited,,,,Nigeria,,,,,2005,http://www.kaztec-eng.com/,"#2, Oguda Close, Off Lake Chad Crescent, Maitama, Abuja FCT, Nigeria.",http://www.kaztec-eng.com/index.php/contact,,,,,,,,,,,,,,http://www.kaztec-eng.com,,,,
+,Laser Engineering and Consultancy Nigeria Limited,Laser Engineering and Consultancy Nigeria Limited,,,,Nigeria,,,,,1990,http://www.laser-ng.com/,"KM5 East-West Road, Behind Omega House, Along Rumuodara, Port Harcourt, Rivers state, Nigeria",http://www.laser-ng.com/company-profile.html,Prof. Mike Onyekonwu,,http://www.laser-ng.com/company-profile.html,,,,,,,,,,,http://www.laser-ng.com,,,,
+,Mobil Producing Nigeria Unlimited,Mobil Producing Nigeria Unlimited,,,,Nigeria,,,,,1955,http://investing.businessweek.com/research/stocks/private/snapshot.asp?privcapId=4727307,"Mobil House, 1, Lekki Expressway, Victoria Island, Lagos state, Nigeria",,Mr. Chikwe Edoziem,,http://investing.businessweek.com/research/stocks/private/snapshot.asp?privcapId=4727307,,,,,,,,,,,http://www.exxonmobil.com.ng/,,,,
+,Nestoil Plc,Nestoil Plc,,,,Nigeria,Public,http://www.nestoilgroup.com/,,,1991,http://www.nestoilgroup.com/,"Africa Re-building 4th Floor, Plot 1679 Karimu Kotun Str., Victoria Island, Lagos state, Nigeria",http://www.nestoilgroup.com/contact-us.htm,Dr. Ernest Nnaemeka Azudialu-Obiejesi,,http://www.nigerialeadershipsummit.com/ernest-azudialu.php,,,,,,,,,,,http://www.nestoilgroup.com/,,,,
+,National Engineering and Technical Company Limited (NETCO),National Engineering and Technical Company Limited (NETCO),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nigeria Agip Exploration Limited,Nigeria Agip Exploration Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nigeria Gas Company,Nigeria Gas Company,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nigerian Agip Oil Company Limited,Nigerian Agip Oil Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nubian Nigeria Limited,Nubian Nigeria Limited,,,,Nigeria,Limited Liability Company,,,,1986,http://nubiangroup.org/about.html#team,"11, Awolowo Road, Ikoyi, Lagos.",http://nubiangroup.org/about.html#team,,,,,,,,,,,,,,http://nubiangroup.org/about.html#team,,,,
+,Point Engineering Limited,Point Engineering Limited,,,,Nigeria,Limited Liability Company,http://pointengineering.com/index.php/about-us,,,1995,http://pointengineering.com/index.php/about-us,"Point House, Plot 129 Bodo Road, Off Woji Road, GRA Phase 2, Port Harcourt, Rivers State, Nigeria ",http://pointengineering.com/index.php/about-us,"George Okoyo, Director
 Peter Eigbedon, Director
 Richard Aludu, Director
 Omare A. Jonathan, Director
@@ -72,33 +72,33 @@ Ebosetee Okoyo (10,000,000)
 Caroline Okoyo (5,000,000)
 Samuel Eguvere (500,000)
 Staff (trustee Share) (1,000,000)",https://drive.google.com/file/d/0B-KlXDOYUc-ObGFDRE41SVVScmM/edit?usp=sharing,,,,,,,,,,,http://pointengineering.com,,,,
-,Prime Sources Limited,Prime Sources Limited,,,,,,,,2001,http://primesources.net/aboutus.html,"Galcon House, Plot 2, Blk 113, Lekki Express Way (By Elf B/Stop), Lekki-Phase 1, Lagos State, Nigeria.",http://primesources.net/aboutus.html,,,,,,,,,,,,,,,,,,
-,Saipem Energy International,Saipem Energy International,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Saipem Nigeria,Saipem Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Samsung Heavy Industries Upstream Nigeria,Samsung Heavy Industries Upstream Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,SCC Nigeria Limited,SCC Nigeria Limited,,,,,,,,,,"SCCN House, Plot 184 Cadestral Zone A8, Ademola Adetakunbo Wuse 2,Abuja, Nigeria.",http://www.sccnigeria.com/#/Contacts/,"Prof. John Kester, Chairman/CEO
+,Prime Sources Limited,Prime Sources Limited,,,,Nigeria,,,,,2001,http://primesources.net/aboutus.html,"Galcon House, Plot 2, Blk 113, Lekki Express Way (By Elf B/Stop), Lekki-Phase 1, Lagos State, Nigeria.",http://primesources.net/aboutus.html,,,,,,,,,,,,,,,,,,
+,Saipem Energy International,Saipem Energy International,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Saipem Nigeria,Saipem Nigeria,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Samsung Heavy Industries Upstream Nigeria,Samsung Heavy Industries Upstream Nigeria,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,SCC Nigeria Limited,SCC Nigeria Limited,,,,Nigeria,,,,,,,"SCCN House, Plot 184 Cadestral Zone A8, Ademola Adetakunbo Wuse 2,Abuja, Nigeria.",http://www.sccnigeria.com/#/Contacts/,"Prof. John Kester, Chairman/CEO
 Engr. Safet  Karaulan, Managing Director
 Mr. Henry C. Eneh, General Manager
 Mrs. Patience I. Ikemefuna, Chief Financial Officer",,http://www.sccnigeria.com/#/About-us/,,,,,,,,,,,http://www.sccnigeria.com/,,,,
-,Schlumberger Supply Chain Services,Schlumberger Supply Chain Services,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Shell Nigeria Developement Company,Shell Nigeria Developement Company,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Shell Nigeria Exploration and Production Company (SNEPCO),Shell Nigeria Exploration and Production Company (SNEPCO),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Shell Petroleum Development Company of Nigeria Limited (SPDC),Shell Petroleum Development Company of Nigeria Limited (SPDC),,,,,,,,1936,http://www.shell.com.ng/aboutshell/who-we-are/history/country/first-steps.html,"Shell Petroleum Development Company of Nigeria Ltd., Freeman  House, 21/22 Marina, PMB 2418, Lagos, Nigeria",http://www.shell.com.ng/about-our-website/contact-us.html,"Mr. Mutiu Sunmonu (MD)
+,Schlumberger Supply Chain Services,Schlumberger Supply Chain Services,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Shell Nigeria Developement Company,Shell Nigeria Developement Company,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Shell Nigeria Exploration and Production Company (SNEPCO),Shell Nigeria Exploration and Production Company (SNEPCO),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Shell Petroleum Development Company of Nigeria Limited (SPDC),Shell Petroleum Development Company of Nigeria Limited (SPDC),,,,Nigeria,,,,,1936,http://www.shell.com.ng/aboutshell/who-we-are/history/country/first-steps.html,"Shell Petroleum Development Company of Nigeria Ltd., Freeman  House, 21/22 Marina, PMB 2418, Lagos, Nigeria",http://www.shell.com.ng/about-our-website/contact-us.html,"Mr. Mutiu Sunmonu (MD)
 Mr. Olujinmi Lawal",,http://www.shell.com.ng/aboutshell/pensionfund/trustees/trustee-directors.html,,,,,,,,,,,www.shell.com.ng,,,,
-,Star Deep Water Petroleum (CHEVRON),Star Deep Water Petroleum (CHEVRON),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Stardeep Water Petroleum Limited,Stardeep Water Petroleum Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Technip France,Technip France,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Technip Offshore Nigeria Limited,Technip Offshore Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Tecon Oil Services Limited,Tecon Oil Services Limited,,,,,,,,1991,http://www.teconoilserv.com/index.php?s=about-us,"7, Yeshayahu Lasode Crescent, (By Mobil House), VI, Lagos, Nigeria.",http://www.teconoilserv.com/index.php?s=personnel,"Godwin Sampson Adokpaye, Director
+,Star Deep Water Petroleum (CHEVRON),Star Deep Water Petroleum (CHEVRON),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Stardeep Water Petroleum Limited,Stardeep Water Petroleum Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Technip France,Technip France,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Technip Offshore Nigeria Limited,Technip Offshore Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Tecon Oil Services Limited,Tecon Oil Services Limited,,,,Nigeria,,,,,1991,http://www.teconoilserv.com/index.php?s=about-us,"7, Yeshayahu Lasode Crescent, (By Mobil House), VI, Lagos, Nigeria.",http://www.teconoilserv.com/index.php?s=personnel,"Godwin Sampson Adokpaye, Director
 Maduafokwa Blossom Adaeze, Director
 Njoku Donatus Chukwuemeka, Director","Messrs Equatorstar Oil Ltd (6,000,000)
 Messrs Young Turk Capital Funding Ltd (6,000,000)
 Mr. Tony Eze (1,000,000)
 Mr. Casmir Maduafokwa (5,000,000)",https://drive.google.com/file/d/0B-KlXDOYUc-OSTA1SnNUOXRaYVk/edit?usp=sharing,,,,,,,,,,,http://www.teconoilserv.com/,,,,
-,Total Exploration and Production Nigeria Limited,Total Exploration and Production Nigeria Limited,,,,,,,,1962,http://www.ng.total.com/02_about_tepng/0207_tepngs_role.htm,,,"Guy Maurice, Elisabeth Proust, Charles Ngoka, Nicolas Brunet, Olivier De-Langavant, Edith Ofili-Okonkwo, Olubunmi Obembe, Patrick Ngene, Kingsley Ojoh, Francois Le-Cocq, Isabelle Gaildraud, Marc Blaizot, Clement Berthian, Olatowun Candide-Johnson",,http://www.ng.total.com/02_about_tepng/0208_tepng_board.htm,,,,,,,,,,,http://www.ng.total.com/02_about_tepng/0201_about_tepng.htm,,,,
-,Totalfinaelf Nigeria Limited,Totalfinaelf Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,TOTAL Nigeria Plc,TOTAL Nigeria Plc,,,,Public Limited Company,http://www.securities.com/Public/company-profile/NG/Total_Nigeria_Plc_en_2033781.html,,,1956,http://www.securities.com/Public/company-profile/NG/Total_Nigeria_Plc_en_2033781.html,"Total House,4, Afribank Street, Victoria Island,P. M. B 2143; Lagos; Lagos",http://www.securities.com/Public/company-profile/NG/Total_Nigeria_Plc_en_2033781.html,"Momar Nguer (Chairman), Denis Toulouse (Director / Member of the Management Board), Felix Majekodumi (Director / Member of the Management Board), J. O. Ibru (Director / Member of the Management Board), J. W. Adeyinka (Director / Member of the Management Board)",,http://www.securities.com/Public/company-profile/NG/Total_Nigeria_Plc_en_2033781.html,,,,,,,,,495,http://www.securities.com/Public/company-profile/NG/Total_Nigeria_Plc_en_2033781.html,http://www.ng.total.com/,,,,
-,Total Upstream Nigeria Limited (TUPNIL),Total Upstream Nigeria Limited (TUPNIL),,,,,,,,,,,,"Guy Maurice, Chairman
+,Total Exploration and Production Nigeria Limited,Total Exploration and Production Nigeria Limited,,,,Nigeria,,,,,1962,http://www.ng.total.com/02_about_tepng/0207_tepngs_role.htm,,,"Guy Maurice, Elisabeth Proust, Charles Ngoka, Nicolas Brunet, Olivier De-Langavant, Edith Ofili-Okonkwo, Olubunmi Obembe, Patrick Ngene, Kingsley Ojoh, Francois Le-Cocq, Isabelle Gaildraud, Marc Blaizot, Clement Berthian, Olatowun Candide-Johnson",,http://www.ng.total.com/02_about_tepng/0208_tepng_board.htm,,,,,,,,,,,http://www.ng.total.com/02_about_tepng/0201_about_tepng.htm,,,,
+,Totalfinaelf Nigeria Limited,Totalfinaelf Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,TOTAL Nigeria Plc,TOTAL Nigeria Plc,,,,Nigeria,Public Limited Company,http://www.securities.com/Public/company-profile/NG/Total_Nigeria_Plc_en_2033781.html,,,1956,http://www.securities.com/Public/company-profile/NG/Total_Nigeria_Plc_en_2033781.html,"Total House,4, Afribank Street, Victoria Island,P. M. B 2143; Lagos; Lagos",http://www.securities.com/Public/company-profile/NG/Total_Nigeria_Plc_en_2033781.html,"Momar Nguer (Chairman), Denis Toulouse (Director / Member of the Management Board), Felix Majekodumi (Director / Member of the Management Board), J. O. Ibru (Director / Member of the Management Board), J. W. Adeyinka (Director / Member of the Management Board)",,http://www.securities.com/Public/company-profile/NG/Total_Nigeria_Plc_en_2033781.html,,,,,,,,,495,http://www.securities.com/Public/company-profile/NG/Total_Nigeria_Plc_en_2033781.html,http://www.ng.total.com/,,,,
+,Total Upstream Nigeria Limited (TUPNIL),Total Upstream Nigeria Limited (TUPNIL),,,,Nigeria,,,,,,,,,"Guy Maurice, Chairman
 Elisabeth Proust, Managing Director / Chief Executive
 Charles Ngoka
 Bruno Erwes
@@ -109,9 +109,9 @@ Edith Ofili-Okonkwo
 Fabrice Arnaud
 Clement Berthian
 Olatowun Candide-Johnson, Company Secretary",,http://www.ng.total.com/02_about_tepng/0209_tupni_board.htm,,,,,,,,,,,http://www.ng.total.com/,,,,
-,WorleyParsons Limited,WorleyParsons Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Zech Oil and Gas Nigeria Limited,Zech Oil and Gas Nigeria Limited,,,,,,,,2001,http://www.zechoil.com/,"Close 6B, Plot 4, Housing Estate, Elekahia, Port Harcourt, Rivers State",,,,,,,,,,,,,310,http://www.zechoil.com/,http://www.zechoil.com/,,,,
-,Bell Oil and Gas Nigeria Limited,Bell Oil and Gas Nigeria Limited,,,,,,,,,,,,"Kayode Thomas, Director
+,WorleyParsons Limited,WorleyParsons Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Zech Oil and Gas Nigeria Limited,Zech Oil and Gas Nigeria Limited,,,,Nigeria,,,,,2001,http://www.zechoil.com/,"Close 6B, Plot 4, Housing Estate, Elekahia, Port Harcourt, Rivers State",,,,,,,,,,,,,310,http://www.zechoil.com/,http://www.zechoil.com/,,,,
+,Bell Oil and Gas Nigeria Limited,Bell Oil and Gas Nigeria Limited,,,,Nigeria,,,,,,,,,"Kayode Thomas, Director
 Ayo Aderibigbe, Director
 Akindele Rockson, Director
 Oyibo Chamberlain, Director
@@ -124,9 +124,9 @@ Akinkumi Rockson (50,000)
 Nwani Andrew (100,000)
 Bamidele Kale (70,000)
 Otunba Festus Adesina (50,000)",https://drive.google.com/file/d/0B-KlXDOYUc-ON1E1WlkxVHJfUFE/edit?usp=sharing,,,,,,,,,,,,,,,
-,Pipelines and Product Marketing Company Limited,Pipelines and Product Marketing Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Idmon Engineering and Construction Company Limited,Idmon Engineering and Construction Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Seplat Petroleum Development Company Plc,Seplat Petroleum Development Company Plc,,,,,,,,,,,,"Henin Jean-Francois, Director
+,Pipelines and Product Marketing Company Limited,Pipelines and Product Marketing Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Idmon Engineering and Construction Company Limited,Idmon Engineering and Construction Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Seplat Petroleum Development Company Plc,Seplat Petroleum Development Company Plc,,,,Nigeria,,,,,,,,,"Henin Jean-Francois, Director
 Hochard Michel Noel Marie, Director
 Orjiakor Ambrose Bryant Chukwueloka, Director
 Avuru Augustine Ojuekwu, Director
@@ -140,14 +140,14 @@ Alexander Michael Richard, Director
 Brown Roger, Director","MIL (formerly Maurel & Prom Nigeria) SAS (180,000,000)
 Sheba Petroleum Development Co. Ltd (BVI) (124,000,000)
 Platform Petroleum (JV) Ltd (BVI) (96,000,000)",https://drive.google.com/file/d/0B-KlXDOYUc-ONUI4b3RRd2F2eDQ/edit?usp=sharing,,,,,,,,,,,,,,,
-,Indorama Eleme Petrochemicals Limited,Indorama Eleme Petrochemicals Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Subsea7 (Nigeria) Limited,Subsea7 (Nigeria) Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Hyundai Heavy Industries,Hyundai Heavy Industries,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nigerdock Nigeria Plc,Nigerdock Nigeria Plc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Afren Plc,Afren Plc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,DeltaAfrik Engineering Limited,DeltaAfrik Engineering Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nigeria Liquefied Natural Gas Limited (NLNG),Nigeria Liquefied Natural Gas Limited (NLNG),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nigeria Petroleum Development Company Limited (NPDC),Nigeria Petroleum Development Company Limited (NPDC),,,,,,,,,,,,"Odoliyi Lolomari, Director
+,Indorama Eleme Petrochemicals Limited,Indorama Eleme Petrochemicals Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Subsea7 (Nigeria) Limited,Subsea7 (Nigeria) Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Hyundai Heavy Industries,Hyundai Heavy Industries,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nigerdock Nigeria Plc,Nigerdock Nigeria Plc,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Afren Plc,Afren Plc,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,DeltaAfrik Engineering Limited,DeltaAfrik Engineering Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nigeria Liquefied Natural Gas Limited (NLNG),Nigeria Liquefied Natural Gas Limited (NLNG),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nigeria Petroleum Development Company Limited (NPDC),Nigeria Petroleum Development Company Limited (NPDC),,,,Nigeria,,,,,,,,,"Odoliyi Lolomari, Director
 George Uzoma Ibekwe, Director
 Dr. Funsho Adebiyi, Director
 Engr. Fisoye Delano, Director
@@ -162,13 +162,13 @@ Chike Chukwuka, Director","Barkindo Sanusi (62,500,000)
 Arokodare M. (62,500,000)
 Chukwu Philip (62,500,000)
 Omorogbe Philip (62,500,000)",https://drive.google.com/file/d/0B-KlXDOYUc-Oak9uWnZJUDV5emc/edit?usp=sharing,,,,,,,,,,,,,,,
-,Warri Refining and Petrochemical Company Limited (WRPC),Warri Refining and Petrochemical Company Limited (WRPC),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Sterling Energy & Exploration Production Limited,Sterling Energy & Exploration Production Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Exprotech Nigeria Limited,Exprotech Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Julius Berger Nigeria Limited,Julius Berger Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Dorman Long Engineering Limited,Dorman Long Engineering Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,AMEC Contractors West Africa Limited,AMEC Contractors West Africa Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Wellman & Wellington Company Limited (WWCL),Wellman & Wellington Company Limited (WWCL),,,,,,,,,,,,"Wellman Ndubuisi Onwunali, Director
+,Warri Refining and Petrochemical Company Limited (WRPC),Warri Refining and Petrochemical Company Limited (WRPC),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Sterling Energy & Exploration Production Limited,Sterling Energy & Exploration Production Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Exprotech Nigeria Limited,Exprotech Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Julius Berger Nigeria Limited,Julius Berger Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Dorman Long Engineering Limited,Dorman Long Engineering Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,AMEC Contractors West Africa Limited,AMEC Contractors West Africa Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Wellman & Wellington Company Limited (WWCL),Wellman & Wellington Company Limited (WWCL),,,,Nigeria,,,,,,,,,"Wellman Ndubuisi Onwunali, Director
 Chioma Onwunali, Director
 Uzodinma Onwunali, Director
 Wellington Onwunali, Director
@@ -177,118 +177,118 @@ Chioma Onwunali (10,000)
 Uzodinma Onwunali (10,000)
 Wellington Onwunali (10,000)
 Kelechi Onwunali (10,000)",https://drive.google.com/file/d/0B-KlXDOYUc-OQUpYT29ETEVBdFU/edit?usp=sharing,,,,,,,,,,,,,,,
-,Sahara Energy Resource Nigeria Limited (SERNL),Sahara Energy Resource Nigeria Limited (SERNL),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Global Gas and Refining Limited,Global Gas and Refining Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,First Aluminum Plc,First Aluminum Plc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,National Integrated Power Project.,National Integrated Power Project.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Daewoo Nigeria Limited,Daewoo Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,The Initiates Limited (TIL),The Initiates Limited (TIL),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Plantgeria Company Limited,Plantgeria Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Petro-Scan Limited,Petro-Scan Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Ana Industries Limited,Ana Industries Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,MannProject International Limited,MannProject International Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Kaduna Refining & Petrochemicals Company (KPRC),Kaduna Refining & Petrochemicals Company (KPRC),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Port Harcourt Refining Company Limited (PHRC),Port Harcourt Refining Company Limited (PHRC),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Chattel Associates Nigeria Limited,Chattel Associates Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,LYK Engineering,LYK Engineering,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Channel Engineering Nigeria Limited,Channel Engineering Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Saipem Contracting Nigeria Limited,Saipem Contracting Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Slot Engineering Nigeria limited,Slot Engineering Nigeria limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Catobi Nigeria Enterprise Limited,Catobi Nigeria Enterprise Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Sinopec International Petroleum Exploration and Production Company Nigeria Limited,Sinopec International Petroleum Exploration and Production Company Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Universal Energy Resources Limited,Universal Energy Resources Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Niger Delta Petroleum Resources Limited,Niger Delta Petroleum Resources Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Brawal shipping (Nigeria) limited,Brawal shipping (Nigeria) limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Sydney Gateway Limited,Sydney Gateway Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Omel Exploration & Production Nigeria Limited,Omel Exploration & Production Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Kod Technical Services Nigeria Limited,Kod Technical Services Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Cisan International Limited,Cisan International Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Boltog  Limited,Boltog  Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Amban Nigeria Limited,Amban Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Instrutech Limited,Instrutech Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Laila Mechanical Engineering Services & Contracting Company Limited (LAMESCO),Laila Mechanical Engineering Services & Contracting Company Limited (LAMESCO),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Jeph Kebbi International Limited Company,Jeph Kebbi International Limited Company,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,River Creek Specialist Limited,River Creek Specialist Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nelson Nigeria Limited,Nelson Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,New Oil Field and Allied Services Limited (NOAS),New Oil Field and Allied Services Limited (NOAS),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Aanderaah Nigeria Limited,Aanderaah Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Mobil Oil Nigeria Plc,Mobil Oil Nigeria Plc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Integrated Quality Technologies Limited,Integrated Quality Technologies Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Rockson Engineering,Rockson Engineering,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Data-Mat Nigeria Limited,Data-Mat Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Dec Oil & Gas Limited,Dec Oil & Gas Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Shell Nigeria Gas Limited,Shell Nigeria Gas Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Jam Services Company,Jam Services Company,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Ashland Oil Nigeria Limited,Ashland Oil Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Fomoyi Services Nigeria limited,Fomoyi Services Nigeria limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,National Oil and Chemical Marketing Company Plc (NOLCHEM),National Oil and Chemical Marketing Company Plc (NOLCHEM),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Belmont Limited,Belmont Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Lighthouse Petroleum Engineering Company Limited (LPEC),Lighthouse Petroleum Engineering Company Limited (LPEC),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Department of Petroleum Resources (DPR),Department of Petroleum Resources (DPR),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Dubri Oil Company Limited,Dubri Oil Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Consolidated Oil Limited,Consolidated Oil Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,BGI Resources Limited,BGI Resources Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Snamprogetti SpA,Snamprogetti SpA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Geometric Power Limited,Geometric Power Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Conoco Energy Nigeria Limited,Conoco Energy Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Galba Limited,Galba Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,ABB Global Engineering Limited,ABB Global Engineering Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Schlumberger Oilfield Services,Schlumberger Oilfield Services,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Oiltest Services Limited,Oiltest Services Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Global Offshore Drilling Limited,Global Offshore Drilling Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Dowell Schlumberger Nigeria Limited,Dowell Schlumberger Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Air Liquide Nigeria Plc,Air Liquide Nigeria Plc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Schlumberger (Sedco-Forex) Nigeria Limited,Schlumberger (Sedco-Forex) Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Schlumberger (Wire line and Testing) Nigeria Limited,Schlumberger (Wire line and Testing) Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,BJ Services Company Nigeria Limited,BJ Services Company Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Trident Steelworks Nigeria Limited,Trident Steelworks Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Danelec Limited,Danelec Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Neptune Maritime Nigeria Limited,Neptune Maritime Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,NSKJ Nigeria Limited,NSKJ Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nuova Cimi Montubi,Nuova Cimi Montubi,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,G. Cappa Plc,G. Cappa Plc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Inter Global Procurement Engineering Services Limited (IGPES),Inter Global Procurement Engineering Services Limited (IGPES),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Bint and Prathel Limited,Bint and Prathel Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,National Petroleum Investment Management Services (NAPIMS),National Petroleum Investment Management Services (NAPIMS),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Newcross Petroleum Limited,Newcross Petroleum Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Dewayles International Limited,Dewayles International Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Belbop Nigeria Limited,Belbop Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Movido Nigeria Limited,Movido Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,ExxonMobil Corporation,ExxonMobil Corporation,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Esso Exploration and Production Nigeria Limited,Esso Exploration and Production Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Mobil Producing Nigeria Unlimited,Mobil Producing Nigeria Unlimited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Eni SpA,Eni SpA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nigerian Agip Exploration (NAE),Nigerian Agip Exploration (NAE),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Eni International BV,Eni International BV,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Shell Petroleum NV,Shell Petroleum NV,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Royal Dutch Shell Plc,Royal Dutch Shell Plc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Shell Gas BV,Shell Gas BV,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Shell International Limited,Shell International Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,The Shell Petroleum Company Limited,The Shell Petroleum Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Total SA,Total SA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Total Exploration and Production Holdings SAS,Total Exploration and Production Holdings SAS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Elf Aquitaine SA,Elf Aquitaine SA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Sinopec International Petroleum Exploration & Production Corporation,Sinopec International Petroleum Exploration & Production Corporation,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Mirror Lake Oil and Gas Company Limited,Mirror Lake Oil and Gas Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Total Exploration and Production Nigeria SAS,Total Exploration and Production Nigeria SAS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Total Gaz & Electricite Holdings France,Total Gaz & Electricite Holdings France,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Total LNG Nigeria Limited,Total LNG Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,China Petrochemical Corporation,China Petrochemical Corporation,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nigeria LNG Limited,Nigeria LNG Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nigerian National Petroleum Corporation (NNPC),Nigerian National Petroleum Corporation (NNPC),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Addax Petroleum Corporation,Addax Petroleum Corporation,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Chevron Corporation,Chevron Corporation,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Schlumberger Limited,Schlumberger Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,AMEC Plc,AMEC Plc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Daewoo E&C,Daewoo E&C,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,China National Offshore Oil Corporation (CNOOC),China National Offshore Oil Corporation (CNOOC),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Petrobras,Petrobras,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Sapetro,Sapetro,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Statoil ASA,Statoil ASA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nexen Petroleum Nigeria Limited,Nexen Petroleum Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Oriental Energy Resources Limited,Oriental Energy Resources Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Addax Petroleum (Nigeria Offshore) Limited,Addax Petroleum (Nigeria Offshore) Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Express Petroleum and Gas Company Limited,Express Petroleum and Gas Company Limited,,154941,https://drive.google.com/file/d/0B-KlXDOYUc-Oc202aWtIVXRaV0U/edit?usp=sharing,,,,,,,,,"Alhaji Aminu Alhassan Dantata, Director 
+,Sahara Energy Resource Nigeria Limited (SERNL),Sahara Energy Resource Nigeria Limited (SERNL),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Global Gas and Refining Limited,Global Gas and Refining Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,First Aluminum Plc,First Aluminum Plc,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,National Integrated Power Project.,National Integrated Power Project.,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Daewoo Nigeria Limited,Daewoo Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,The Initiates Limited (TIL),The Initiates Limited (TIL),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Plantgeria Company Limited,Plantgeria Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Petro-Scan Limited,Petro-Scan Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Ana Industries Limited,Ana Industries Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,MannProject International Limited,MannProject International Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Kaduna Refining & Petrochemicals Company (KPRC),Kaduna Refining & Petrochemicals Company (KPRC),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Port Harcourt Refining Company Limited (PHRC),Port Harcourt Refining Company Limited (PHRC),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Chattel Associates Nigeria Limited,Chattel Associates Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,LYK Engineering,LYK Engineering,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Channel Engineering Nigeria Limited,Channel Engineering Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Saipem Contracting Nigeria Limited,Saipem Contracting Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Slot Engineering Nigeria limited,Slot Engineering Nigeria limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Catobi Nigeria Enterprise Limited,Catobi Nigeria Enterprise Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Sinopec International Petroleum Exploration and Production Company Nigeria Limited,Sinopec International Petroleum Exploration and Production Company Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Universal Energy Resources Limited,Universal Energy Resources Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Niger Delta Petroleum Resources Limited,Niger Delta Petroleum Resources Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Brawal shipping (Nigeria) limited,Brawal shipping (Nigeria) limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Sydney Gateway Limited,Sydney Gateway Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Omel Exploration & Production Nigeria Limited,Omel Exploration & Production Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Kod Technical Services Nigeria Limited,Kod Technical Services Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Cisan International Limited,Cisan International Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Boltog  Limited,Boltog  Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Amban Nigeria Limited,Amban Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Instrutech Limited,Instrutech Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Laila Mechanical Engineering Services & Contracting Company Limited (LAMESCO),Laila Mechanical Engineering Services & Contracting Company Limited (LAMESCO),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Jeph Kebbi International Limited Company,Jeph Kebbi International Limited Company,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,River Creek Specialist Limited,River Creek Specialist Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nelson Nigeria Limited,Nelson Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,New Oil Field and Allied Services Limited (NOAS),New Oil Field and Allied Services Limited (NOAS),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Aanderaah Nigeria Limited,Aanderaah Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Mobil Oil Nigeria Plc,Mobil Oil Nigeria Plc,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Integrated Quality Technologies Limited,Integrated Quality Technologies Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Rockson Engineering,Rockson Engineering,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Data-Mat Nigeria Limited,Data-Mat Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Dec Oil & Gas Limited,Dec Oil & Gas Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Shell Nigeria Gas Limited,Shell Nigeria Gas Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Jam Services Company,Jam Services Company,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Ashland Oil Nigeria Limited,Ashland Oil Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Fomoyi Services Nigeria limited,Fomoyi Services Nigeria limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,National Oil and Chemical Marketing Company Plc (NOLCHEM),National Oil and Chemical Marketing Company Plc (NOLCHEM),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Belmont Limited,Belmont Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Lighthouse Petroleum Engineering Company Limited (LPEC),Lighthouse Petroleum Engineering Company Limited (LPEC),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Department of Petroleum Resources (DPR),Department of Petroleum Resources (DPR),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Dubri Oil Company Limited,Dubri Oil Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Consolidated Oil Limited,Consolidated Oil Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,BGI Resources Limited,BGI Resources Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Snamprogetti SpA,Snamprogetti SpA,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Geometric Power Limited,Geometric Power Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Conoco Energy Nigeria Limited,Conoco Energy Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Galba Limited,Galba Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,ABB Global Engineering Limited,ABB Global Engineering Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Schlumberger Oilfield Services,Schlumberger Oilfield Services,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Oiltest Services Limited,Oiltest Services Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Global Offshore Drilling Limited,Global Offshore Drilling Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Dowell Schlumberger Nigeria Limited,Dowell Schlumberger Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Air Liquide Nigeria Plc,Air Liquide Nigeria Plc,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Schlumberger (Sedco-Forex) Nigeria Limited,Schlumberger (Sedco-Forex) Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Schlumberger (Wire line and Testing) Nigeria Limited,Schlumberger (Wire line and Testing) Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,BJ Services Company Nigeria Limited,BJ Services Company Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Trident Steelworks Nigeria Limited,Trident Steelworks Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Danelec Limited,Danelec Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Neptune Maritime Nigeria Limited,Neptune Maritime Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,NSKJ Nigeria Limited,NSKJ Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nuova Cimi Montubi,Nuova Cimi Montubi,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,G. Cappa Plc,G. Cappa Plc,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Inter Global Procurement Engineering Services Limited (IGPES),Inter Global Procurement Engineering Services Limited (IGPES),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Bint and Prathel Limited,Bint and Prathel Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,National Petroleum Investment Management Services (NAPIMS),National Petroleum Investment Management Services (NAPIMS),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Newcross Petroleum Limited,Newcross Petroleum Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Dewayles International Limited,Dewayles International Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Belbop Nigeria Limited,Belbop Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Movido Nigeria Limited,Movido Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,ExxonMobil Corporation,ExxonMobil Corporation,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Esso Exploration and Production Nigeria Limited,Esso Exploration and Production Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Mobil Producing Nigeria Unlimited,Mobil Producing Nigeria Unlimited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Eni SpA,Eni SpA,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nigerian Agip Exploration (NAE),Nigerian Agip Exploration (NAE),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Eni International BV,Eni International BV,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Shell Petroleum NV,Shell Petroleum NV,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Royal Dutch Shell Plc,Royal Dutch Shell Plc,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Shell Gas BV,Shell Gas BV,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Shell International Limited,Shell International Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,The Shell Petroleum Company Limited,The Shell Petroleum Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Total SA,Total SA,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Total Exploration and Production Holdings SAS,Total Exploration and Production Holdings SAS,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Elf Aquitaine SA,Elf Aquitaine SA,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Sinopec International Petroleum Exploration & Production Corporation,Sinopec International Petroleum Exploration & Production Corporation,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Mirror Lake Oil and Gas Company Limited,Mirror Lake Oil and Gas Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Total Exploration and Production Nigeria SAS,Total Exploration and Production Nigeria SAS,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Total Gaz & Electricite Holdings France,Total Gaz & Electricite Holdings France,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Total LNG Nigeria Limited,Total LNG Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,China Petrochemical Corporation,China Petrochemical Corporation,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nigeria LNG Limited,Nigeria LNG Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nigerian National Petroleum Corporation (NNPC),Nigerian National Petroleum Corporation (NNPC),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Addax Petroleum Corporation,Addax Petroleum Corporation,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Chevron Corporation,Chevron Corporation,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Schlumberger Limited,Schlumberger Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,AMEC Plc,AMEC Plc,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Daewoo E&C,Daewoo E&C,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,China National Offshore Oil Corporation (CNOOC),China National Offshore Oil Corporation (CNOOC),,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Petrobras,Petrobras,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Sapetro,Sapetro,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Statoil ASA,Statoil ASA,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nexen Petroleum Nigeria Limited,Nexen Petroleum Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Oriental Energy Resources Limited,Oriental Energy Resources Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Addax Petroleum (Nigeria Offshore) Limited,Addax Petroleum (Nigeria Offshore) Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Express Petroleum and Gas Company Limited,Express Petroleum and Gas Company Limited,,154941,https://drive.google.com/file/d/0B-KlXDOYUc-Oc202aWtIVXRaV0U/edit?usp=sharing,Nigeria,,,,,,,,,"Alhaji Aminu Alhassan Dantata, Director 
 Alhaji Tajudeen Aminu Dantata, Director
 Alhaji Sadiq Aminu Dantata, Director
 Alhaji Hassan Aminu Dantata, Director
@@ -299,8 +299,8 @@ Alhaji Tajudeen Aminu Dantata (5,000,000)
 Alhaji Sadiq Aminu Dantata (5,000,000)
 Alhaji Hassan Aminu Dantata (5,000,000)
 Ummalkahair Aminu Dantata (5,000,000)",https://drive.google.com/file/d/0B-KlXDOYUc-Oc202aWtIVXRaV0U/edit?usp=sharing,,,,,,,,,,,,,,,
-,Shebah Exploration & Production Company Limited,Shebah Exploration & Production Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Allied Energy Plc,Allied Energy Plc,,,,,,,,,,,,"Lawal Kase Lukmon, Director
+,Shebah Exploration & Production Company Limited,Shebah Exploration & Production Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Allied Energy Plc,Allied Energy Plc,,,,Nigeria,,,,,,,,,"Lawal Kase Lukmon, Director
 Lawal Kamoru, Director
 Lawal Mickey, Director
 Adegbemile Iyabo, Director
@@ -315,82 +315,82 @@ Serena-Dokubo Spiff David, Director
 Uwechue-Mbanefo Sally Yuette, Director
 Mortensen Martn, Director","Camac Energy Holding Limited (3,999,999,998)
 Limota Asande (2)",https://drive.google.com/file/d/0B-KlXDOYUc-OcVNjVXdZLUJuN0E/edit?usp=sharing,,,,,,,,,,,,,,,
-,Petroleum Prospects International Limited,Petroleum Prospects International Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Niger Delta Petroleum Resources Limited,Niger Delta Petroleum Resources Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Conoil Producing Unlimited,Conoil Producing Unlimited,,,,,,,,,,,,"Dr. Michael Adebuga (Jnr), Director
+,Petroleum Prospects International Limited,Petroleum Prospects International Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Niger Delta Petroleum Resources Limited,Niger Delta Petroleum Resources Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Conoil Producing Unlimited,Conoil Producing Unlimited,,,,Nigeria,,,,,,,,,"Dr. Michael Adebuga (Jnr), Director
 Mr. Michael Agbolade Adenuga, Director
 Alhaji Sefiu Subair, Director
 Chief (Mrs.) Oyindamola Adenuga, Director","Dr. Adenuga Michael Jnr. (50,000)
 Mr. Adenuga Michael (50,000)",https://drive.google.com/file/d/0B-KlXDOYUc-ORWxJdmMxSWhzcTg/edit?usp=sharing,,,,,,,,,,,,,,,
-,New Tigerhead PSTI,New Tigerhead PSTI,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Atlas Petroleum International Limited,Atlas Petroleum International Limited,,163530,,,,,,,,,,"Prince Arthur Eze, Director
+,New Tigerhead PSTI,New Tigerhead PSTI,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Atlas Petroleum International Limited,Atlas Petroleum International Limited,,163530,,Nigeria,,,,,,,,,"Prince Arthur Eze, Director
 Mr. Walter Chukwuzor Eze, Director
 Ikpechukwu Eze (Jnr), Director
 Mohammed Murtala, Director
 Ibrahim Mohammed, Director","Prince Arthur Eze (77,520,000)
 Mr. Ikechukwu Eze (43,520,000)
 Mr. Walter Chukwuzor Eze (8,160,000)",https://drive.google.com/file/d/0B-KlXDOYUc-OWmRMdjhpS2hkcnM/edit?usp=sharing,,,,,,,,,,,,,,,
-,Summit Oil & Gas Worldwide Limited,Summit Oil & Gas Worldwide Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Camac International Nigeria Limited,"Camac International Nigeria Limited, Camac International Limited",,,,,,,,,,,,"Lawal Lukeman K., Director
+,Summit Oil & Gas Worldwide Limited,Summit Oil & Gas Worldwide Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Camac International Nigeria Limited,"Camac International Nigeria Limited, Camac International Limited",,,,Nigeria,,,,,,,,,"Lawal Lukeman K., Director
 Aliyu Kola Belgore, Director
 Lawal Kamoru, Director
 Lawal Mickey, Director
 Adegbemile Iyabo, Director
 Busari Murhi, Director","Camac Energy Ep Ltd (499,000)
 Limota Lawal (1)",https://drive.google.com/file/d/0B-KlXDOYUc-OTkMxVWk4U1RrOVE/edit?usp=sharing,,,,,,,,,,,,,,,
-,EHRC Energy,EHRC Energy,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Continental Oil and Gas Limited,Continental Oil and Gas Limited,,,,,,,,,,,,"Subair Alhaji Sefiu, Director
+,EHRC Energy,EHRC Energy,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Continental Oil and Gas Limited,Continental Oil and Gas Limited,,,,Nigeria,,,,,,,,,"Subair Alhaji Sefiu, Director
 Agbolade Paddy, Director
 Adenuga Mike, Director","Subair Alhaji Sefiu (15,000)
 Agbolade Paddy (15,000)
 Adenuga Mike (20,000)",https://drive.google.com/file/d/0B-KlXDOYUc-OQ19DZFFBc3luSlE/edit?usp=sharing,,,,,,,,,,,,,,,
-,Midwestern Oil and Gas Company,Midwestern Oil and Gas Company,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Suntrust Oil Company Nigeria Limited,Suntrust Oil Company Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Platform Petroleum Company Limited,Platform Petroleum Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Newcross Petroleum Limited,Newcross Petroleum Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Rayflosh Petroleum,Rayflosh Petroleum,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,First Hydrocarbon Nigeria Limited,First Hydrocarbon Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Neconde Energy,Neconde Energy,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Oando Exploration and Production Limited,Oando Exploration and Production Limited,,,,,,,,,,,,"Tinubu Jubril Adewale, Director
+,Midwestern Oil and Gas Company,Midwestern Oil and Gas Company,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Suntrust Oil Company Nigeria Limited,Suntrust Oil Company Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Platform Petroleum Company Limited,Platform Petroleum Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Newcross Petroleum Limited,Newcross Petroleum Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Rayflosh Petroleum,Rayflosh Petroleum,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,First Hydrocarbon Nigeria Limited,First Hydrocarbon Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Neconde Energy,Neconde Energy,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Oando Exploration and Production Limited,Oando Exploration and Production Limited,,,,Nigeria,,,,,,,,,"Tinubu Jubril Adewale, Director
 Mobolaji Osunsanya, Director
 Olufemi Adeyemo, Director
 Boyo Omamofe, Director","Oando Plc (4,999,999)
 Mrs. Oredeji Delano (1)",https://drive.google.com/file/d/0B-KlXDOYUc-OQ0c0WDM0YlZIWm8/edit?usp=sharing,,,,,,,,,,,,,,,
-,First Axis Oil & Gas,First Axis Oil & Gas,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,RFO Ventures Limited,RFO Ventures Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Arc Resources Limited,Arc Resources Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Optimum Petroleum Development Limited,Optimum Petroleum Development Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Lekoil Limited,Lekoil Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Niger Delta Exploration and Production Plc,Niger Delta Exploration and Production Plc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Petrolin International,Petrolin International,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,First Exploration & Petroleum Development Company Limited,First Exploration & Petroleum Development Company Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Walter Smith Petroman Oil Limited,Walter Smith Petroman Oil Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Morris Petroleum Limited,Morris Petroleum Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Starcrest Nigeria Energy Limited,Starcrest Nigeria Energy Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Eland Oil and Gas Limited,Eland Oil and Gas Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Elcrest Exploration and Production Nigeria Limited,Elcrest Exploration and Production Nigeria Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Trafigura Beheer BV,Trafigura Beheer BV,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Napoil (Bermuda) Limited,Napoil (Bermuda) Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Delaney Petroleum,Delaney Petroleum,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Vitol Energy (Bermunda) Limited,Vitol Energy (Bermunda) Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Hyson (Nigeria) Limited,Hyson (Nigeria) Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Calson (Bermuda) Limited,Calson (Bermuda) Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Glencore Energy UK,Glencore Energy UK,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Gunvor International,Gunvor International,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Mercuria Energy Trading,Mercuria Energy Trading,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Mercuria Trading NV,Mercuria Trading NV,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Mercuria Energy Trading SA,Mercuria Energy Trading SA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Taurus Petroleum,Taurus Petroleum,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Arcadia Energy,Arcadia Energy,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Nimex Petroleum,Nimex Petroleum,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Socar Trading SA,Socar Trading SA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Ontario Trading SA,Ontario Trading SA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Taleveras Petroleum Trading BV,Taleveras Petroleum Trading BV,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Aiteo Suisse AG,Aiteo Suisse AG,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Sahara Energy Resource Limited,Sahara Energy Resource Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Mezcor SA,Mezcor SA,,,,,,,,2010,http://www.bernedeclaration.ch/fileadmin/files/documents/Rohstoffe/BD-Nigeria-EN-20131101.pdf,,,"Richard Levinson, Director
+,First Axis Oil & Gas,First Axis Oil & Gas,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,RFO Ventures Limited,RFO Ventures Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Arc Resources Limited,Arc Resources Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Optimum Petroleum Development Limited,Optimum Petroleum Development Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Lekoil Limited,Lekoil Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Niger Delta Exploration and Production Plc,Niger Delta Exploration and Production Plc,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Petrolin International,Petrolin International,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,First Exploration & Petroleum Development Company Limited,First Exploration & Petroleum Development Company Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Walter Smith Petroman Oil Limited,Walter Smith Petroman Oil Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Morris Petroleum Limited,Morris Petroleum Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Starcrest Nigeria Energy Limited,Starcrest Nigeria Energy Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Eland Oil and Gas Limited,Eland Oil and Gas Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Elcrest Exploration and Production Nigeria Limited,Elcrest Exploration and Production Nigeria Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Trafigura Beheer BV,Trafigura Beheer BV,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Napoil (Bermuda) Limited,Napoil (Bermuda) Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Delaney Petroleum,Delaney Petroleum,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Vitol Energy (Bermunda) Limited,Vitol Energy (Bermunda) Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Hyson (Nigeria) Limited,Hyson (Nigeria) Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Calson (Bermuda) Limited,Calson (Bermuda) Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Glencore Energy UK,Glencore Energy UK,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Gunvor International,Gunvor International,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Mercuria Energy Trading,Mercuria Energy Trading,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Mercuria Trading NV,Mercuria Trading NV,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Mercuria Energy Trading SA,Mercuria Energy Trading SA,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Taurus Petroleum,Taurus Petroleum,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Arcadia Energy,Arcadia Energy,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Nimex Petroleum,Nimex Petroleum,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Socar Trading SA,Socar Trading SA,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Ontario Trading SA,Ontario Trading SA,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Taleveras Petroleum Trading BV,Taleveras Petroleum Trading BV,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Aiteo Suisse AG,Aiteo Suisse AG,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Sahara Energy Resource Limited,Sahara Energy Resource Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Mezcor SA,Mezcor SA,,,,Nigeria,,,,,2010,http://www.bernedeclaration.ch/fileadmin/files/documents/Rohstoffe/BD-Nigeria-EN-20131101.pdf,,,"Richard Levinson, Director
 Daniel Roy Joanes, Director",,,,,,,,,,,,,,,,,
-,Tridax Energy Limited,Tridax Energy Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Mezcor Limited,Mezcor Limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,Tridax SA,Tridax SA,,,,,,,,2010,http://www.bernedeclaration.ch/fileadmin/files/documents/Rohstoffe/BD-Nigeria-EN-20131101.pdf,,,"Richard Levinson, Director
+,Tridax Energy Limited,Tridax Energy Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Mezcor Limited,Mezcor Limited,,,,Nigeria,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Tridax SA,Tridax SA,,,,Nigeria,,,,,2010,http://www.bernedeclaration.ch/fileadmin/files/documents/Rohstoffe/BD-Nigeria-EN-20131101.pdf,,,"Richard Levinson, Director
 Daniel Roy Joanes, Director",,,,,,,,,,,,,,,,,
