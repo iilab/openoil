@@ -1,5 +1,3 @@
-Child Company Name,Immediate  %,Parent Company Name,Ultimate %,Jurisdiction of Child Company,Timestamp,Corporate Identifier of Child Company,Source URL,Confidence in this source,Source publication date,No. of OpenCorporates Matches for Parent Company,No of OpenCorporates matches for child company,"Username
-",Comment,Directly Controlled?,When was the relationship created?,Date acquired,Date sold,Status
 company,immediate,parent,ultimate,jurisdiction,,oc_id,source_url,confidence,source_date,,,,,ownership_type,,start_date,end_date,ownership_status
 Air BP Albania SHA,100,BP Holdings International B V,100,Albania,5/5/2014 15:02:00,,https://docs.google.com/file/d/0B5ORBm2amqZSY2NvOFQwbTZvemM,High confidence,7/6/2013,,0,avner.ofrath@openoil.net,,Directly Controlled,Some time before the report,,,
 Gas Link S A,51,Dinarel S A,"12,24",Argentina,5/5/2014 15:02:00,,https://docs.google.com/file/d/0B5ORBm2amqZSY2NvOFQwbTZvemM,High confidence,7/6/2013,,0,avner.ofrath@openoil.net,,Directly Controlled,Some time before the report,,,
