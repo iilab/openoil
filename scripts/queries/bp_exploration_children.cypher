@@ -1,0 +1,2 @@
+// Show companies owned by BP Exploration Operating Company Limited and where they are
+MATCH (a {name: 'BP Exploration Operating Company Limited'})-[:`IS_OWNER`]->(b)-[:HAS_JURISDICTION]->(c) RETURN a,b,c

@@ -1,4 +1,4 @@
-// Load Nigeria - Company
+// Load Nigeria - Ownership
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/iilab/openoil/master/data/Nigeria_ownership_20140628.csv' AS line
 WITH line
 MERGE (company:Company { name: line.company })

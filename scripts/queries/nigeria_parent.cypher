@@ -1,0 +1,2 @@
+// Parent companies who own a company in Nigeria
+MATCH (parentcountry)<-[:HAS_JURISDICTION]-(parent)-[own:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE parentcountry.name <> 'Nigeria' AND country.name = 'Nigeria' RETURN parentcountry, parent,own, company, country

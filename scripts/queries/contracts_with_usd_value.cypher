@@ -1,0 +1,2 @@
+// Show all contracts with a value in USD
+MATCH (k)-[:HAS_JURISDICTION]-(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:ISSUES]-(b:Company)-[:HAS_JURISDICTION]-(j) WHERE c.value_usd <> '' RETURN c,a,hc,b,i
