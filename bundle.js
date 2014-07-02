@@ -1228,7 +1228,7 @@ module.exports.connect = function (initUrl, callback)
 				error.code = response.statusCode;
 			}
 			
-			response.setEncoding('utf8');
+			//response.setEncoding('utf8');
 			response.on('data', function (data) { result.push(data); });
 			
 			response.on('end', function ()
