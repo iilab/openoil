@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Neo4j Visualisation Contact Sheet</title>
+  <meta name="description" content="Neo4j Visualisation Contact Sheet">
+  <meta name="author" content="Neo Technology">
+
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<h1>Contact Sheet</h1>
+<div id="examples">
+  <table></table>
+  <ul id="graph-list" style="display: none">
+    <li>
+      <pre class="graph">({x: 100, y: 100, name: 'Tom Cruise', films: 'The Color of Money (1986), Cocktail (1988), Rain Man (1988), Born on the Fourth of July (1989), Far and Away (1992), A Few Good Men (1992), The Firm (1993), Interview with the Vampire: The Vampire Chronicles (1994), Jerry Maguire (1996), Eyes Wide Shut (1999), Magnolia (1999), Vanilla Sky (2001), Minority Report (2002), The Last Samurai (2003), Collateral (2004), War of the Worlds (2005), Lions for Lambs (2007), Valkyrie (2008), Knight and Day (2010), Rock of Ages (2012), Jack Reacher (2012) and Oblivion (2013)'})</pre>
+    </li>
+    <li>
+          <pre class="graph">(a {x: 50, y: 100, name: 'Tom Cruise', films: 'The Color of Money (1986), Cocktail (1988), Rain Man (1988), Born on the Fourth of July (1989), Far and Away (1992), A Few Good Men (1992), The Firm (1993), Interview with the Vampire: The Vampire Chronicles (1994), Jerry Maguire (1996), Eyes Wide Shut (1999), Magnolia (1999), Vanilla Sky (2001), Minority Report (2002), The Last Samurai (2003), Collateral (2004), War of the Worlds (2005), Lions for Lambs (2007), Valkyrie (2008), Knight and Day (2010), Rock of Ages (2012), Jack Reacher (2012) and Oblivion (2013)'})
+(b {x: 150, y: 100, name:'Jack Nicholson', films: 'Easy Rider, Five Easy Pieces, The Last Detail, Chinatown, The Passenger, The Shining, Reds, Wolf, A Few Good Men, The Pledge, About Schmidt, and The Departed.'})
+(a) -[:LOVES]-&gt; (b)</pre>
+    </li>
+    <li>
+          <pre class="graph">(a {x: 50, y: 100, name: 'Tom Cruise', films: 'The Color of Money (1986), Cocktail (1988), Rain Man (1988), Born on the Fourth of July (1989), Far and Away (1992), A Few Good Men (1992), The Firm (1993), Interview with the Vampire: The Vampire Chronicles (1994), Jerry Maguire (1996), Eyes Wide Shut (1999), Magnolia (1999), Vanilla Sky (2001), Minority Report (2002), The Last Samurai (2003), Collateral (2004), War of the Worlds (2005), Lions for Lambs (2007), Valkyrie (2008), Knight and Day (2010), Rock of Ages (2012), Jack Reacher (2012) and Oblivion (2013)'})
+(b {x: 125, y: 100, name:'Jack Nicholson', films: 'Easy Rider, Five Easy Pieces, The Last Detail, Chinatown, The Passenger, The Shining, Reds, Wolf, A Few Good Men, The Pledge, About Schmidt, and The Departed.'})
+(a) -[:LOVES]-&gt; (b)</pre>
+    </li>
+    <li>
+          <pre class="graph">(a {x: 50, y: 100, name: 'Tom Cruise', films: 'The Color of Money (1986), Cocktail (1988), Rain Man (1988), Born on the Fourth of July (1989), Far and Away (1992), A Few Good Men (1992), The Firm (1993), Interview with the Vampire: The Vampire Chronicles (1994), Jerry Maguire (1996), Eyes Wide Shut (1999), Magnolia (1999), Vanilla Sky (2001), Minority Report (2002), The Last Samurai (2003), Collateral (2004), War of the Worlds (2005), Lions for Lambs (2007), Valkyrie (2008), Knight and Day (2010), Rock of Ages (2012), Jack Reacher (2012) and Oblivion (2013)'})
+(b {x: 150, y: 100, name:'Jack Nicholson', films: 'Easy Rider, Five Easy Pieces, The Last Detail, Chinatown, The Passenger, The Shining, Reds, Wolf, A Few Good Men, The Pledge, About Schmidt, and The Departed.'})
+(a) -[:LOVES]-&gt; (b)
+(b) -[:LOVES]-&gt; (a)</pre>
+    </li>
+    <li>
+          <pre class="graph">(a {x: 100, y: 50, name: 'Tom Cruise', films: 'The Color of Money (1986), Cocktail (1988), Rain Man (1988), Born on the Fourth of July (1989), Far and Away (1992), A Few Good Men (1992), The Firm (1993), Interview with the Vampire: The Vampire Chronicles (1994), Jerry Maguire (1996), Eyes Wide Shut (1999), Magnolia (1999), Vanilla Sky (2001), Minority Report (2002), The Last Samurai (2003), Collateral (2004), War of the Worlds (2005), Lions for Lambs (2007), Valkyrie (2008), Knight and Day (2010), Rock of Ages (2012), Jack Reacher (2012) and Oblivion (2013)'})
+(b {x: 50, y: 139, name:'Jack Nicholson', films: 'Easy Rider, Five Easy Pieces, The Last Detail, Chinatown, The Passenger, The Shining, Reds, Wolf, A Few Good Men, The Pledge, About Schmidt, and The Departed.'})
+(c {x: 150, y: 139, name:'Demi Moore', films: 'A Few Good Men (1992), Indecent Proposal (1993), and Disclosure (1994)'})
+(a) -[:LOVES]-&gt; (b)
+(b) -[:LOVES]-&gt; (c)
+(c) -[:LOVES]-&gt; (a)</pre>
+    </li>
+  </ul>
+  <ul id="style-list" style="display: none">
+    <li>
+          <pre class="grass">node {
+ diameter: 40px;
+ color: #DFE1E3;
+ border-color: #D4D6D7;
+ border-width: 2px;
+ text-color-internal: #000000;
+ caption: '{id}';
+ font-size: 10px;
+}
+relationship {
+ color: #D4D6D7;
+ shaft-width: 1px;
+ font-size: 8px;
+ padding: 3px;
+ text-color-external: #000000;
+ text-color-internal: #FFFFFF;
+}</pre>
+    </li>
+    <li>
+          <pre class="grass">node {
+ diameter: 40px;
+ color: #DDDDFF;
+ border-color: #D4D6D7;
+ border-width: 2px;
+ text-color-internal: #000000;
+ caption: '{id}';
+ font-size: 10px;
+}
+relationship {
+ color: #0000FF;
+ shaft-width: 10px;
+ font-size: 8px;
+ padding: 3px;
+ text-color-external: #000000;
+ text-color-internal: #FFFFFF;
+}</pre>
+    </li>
+    <li>
+          <pre class="grass">node {
+ diameter: 40px;
+ color: #FFFFFF;
+ border-color: #000000;
+ border-width: 5px;
+ text-color-internal: #000000;
+ caption: '{id}';
+ font-size: 16px;
+}
+relationship {
+ color: #000000;
+ shaft-width: 2px;
+ font-size: 9px;
+ padding: 3px;
+ text-color-external: #FF0000;
+ text-color-internal: #FFFFFF;
+}</pre>
+    </li>
+    <li>
+          <pre class="grass">node {
+ diameter: 40px;
+ color: #DFE1E3;
+ border-color: #D4D6D7;
+ border-width: 2px;
+ text-color-internal: #000000;
+ caption: '{films}';
+ font-size: 10px;
+}
+relationship {
+ color: #D4D6D7;
+ shaft-width: 1px;
+ font-size: 8px;
+ padding: 3px;
+ text-color-external: #000000;
+ text-color-internal: #FFFFFF;
+}</pre>
+    </li>
+    <li>
+          <pre class="grass">node {
+ diameter: 80px;
+ color: #DFE1E3;
+ border-color: #D4D6D7;
+ border-width: 2px;
+ text-color-internal: #000000;
+ caption: '{films}';
+ font-size: 10px;
+}
+relationship {
+ color: #D4D6D7;
+ shaft-width: 1px;
+ font-size: 8px;
+ padding: 3px;
+ text-color-external: #000000;
+ text-color-internal: #FFFFFF;
+}</pre>
+    </li>
+    <li>
+          <pre class="grass">node {
+ diameter: 120px;
+ color: #DFE1E3;
+ border-color: #D4D6D7;
+ border-width: 2px;
+ text-color-internal: #000000;
+ caption: '{films}';
+ font-size: 10px;
+}
+relationship {
+ color: #D4D6D7;
+ shaft-width: 1px;
+ font-size: 8px;
+ padding: 3px;
+ text-color-external: #000000;
+ text-color-internal: #FFFFFF;
+}</pre>
+    </li>
+  </ul>
+</div>
+<script src="lib/d3/d3.js"></script>
+<script src="neod3.js"></script>
+<script src="js/contact-sheet.js"></script>
+</body>
+</html>

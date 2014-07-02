@@ -1,0 +1,33 @@
+{
+  "name": "neod3",
+  "version": "0.0.1",
+  "description": "",
+  "main": "neod3.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:popdevelop/neod3.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "dependencies": {},
+  "devDependencies": {
+    "coffee-script": "^1.7.1",
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.11",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-karma": "^0.8.2",
+    "karma": "^0.12.9",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "matchdep": "^0.3.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-connect": "^0.7.1",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-clean": "^0.5.0"
+  }
+}

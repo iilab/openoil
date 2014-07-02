@@ -1,0 +1,31 @@
+{
+  "name": "neod3",
+  "main": "neod3.js",
+  "homepage": "https://github.com/popdevelop/neod3",
+  "authors": [],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.4.6",
+    "jquery": "~2.1.0"
+  },
+  "_release": "fee9a9adeb",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fee9a9adebfb287bee0154ad119fa001b0f4b09a"
+  },
+  "_source": "/Users/jun/dev/OpenOil/neod3",
+  "_target": "*",
+  "_originalSource": "../neod3",
+  "_direct": true
+}

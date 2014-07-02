@@ -1,0 +1,22 @@
+{
+  "name": "neod3",
+  "main": "neod3.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/popdevelop/neod3",
+  "authors": [],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.4.6",
+    "jquery": "~2.1.0"
+  }
+}
