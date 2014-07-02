@@ -1,0 +1,89 @@
+node {
+  diameter: 40px;
+  color: #DFE1E3;
+  border-color: #D4D6D7;
+  border-width: 2px;
+  text-color-internal: #000000;
+  caption: '{id}';
+  font-size: 10px;
+}
+
+relationship {
+  color: #D4D6D7;
+  shaft-width: 1px;
+  font-size: 8px;
+  padding: 3px;
+  text-color-external: #000000;
+  text-color-internal: #FFFFFF;
+}
+
+node.Company {
+  color: #F25A29;
+  border-color: #DC4717;
+  text-color-internal: #FFFFFF;
+  diameter: 80px;
+  border-width: 2px;
+  caption: '{name}';
+  font-size: 10px;
+}
+
+node.Country {
+  color: #AD62CE;
+  border-color: #9453B1;
+  text-color-internal: #FFFFFF;
+  diameter: 80px;
+  border-width: 2px;
+  caption: '{name}';
+  font-size: 10px;
+}
+
+node.Confidence {
+  color: #FCC940;
+  border-color: #F3BA25;
+  text-color-internal: #000000;
+  diameter: 40px;
+  border-width: 2px;
+  caption: '{level}';
+  font-size: 10px;
+}
+
+node.CompanyType {
+  color: #30B6AF;
+  border-color: #46A39E;
+  text-color-internal: #FFFFFF;
+  diameter: 50px;
+  border-width: 2px;
+  caption: '{name}';
+  font-size: 10px;
+}
+
+node.Contract {
+  color: #FF6C7C;
+  border-color: #EB5D6C;
+  text-color-internal: #FFFFFF;
+  diameter: 80px;
+  border-width: 2px;
+  caption: '{name}';
+  font-size: 10px;
+}
+
+node.ContractType {
+  color: #4356C0;
+  border-color: #3445A2;
+  text-color-internal: #FFFFFF;
+  diameter: 40px;
+  border-width: 2px;
+  caption: '{name}';
+  font-size: 10px;
+}
+
+node.Document {
+  color: #DFE1E3;
+  border-color: #D4D6D7;
+  text-color-internal: #000000;
+  diameter: 40px;
+  border-width: 2px;
+  caption: '{name}';
+  font-size: 10px;
+}
+
