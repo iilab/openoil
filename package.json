@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start": "browserify -t brfs index.js > bundle.js"
+  },
+  "name": "openoil-neod3",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "JSON": "^1.0.0",
+    "brfs": "^1.1.1",
+    "neo4j-js": "0.0.8"
+  }
+}

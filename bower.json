@@ -1,0 +1,26 @@
+{
+  "name": "openoil",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/iilab/openoil",
+  "authors": [
+    "Jun Matsushita <jun@iilab.org>"
+  ],
+  "description": "Open Oil Data Framework",
+  "license": "GPL v3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3-tip": "~0.6.4",
+    "jquery-ui": "~1.11.0",
+    "jquery": "~2.1.1",
+    "neod3": "../neod3"
+  }
+}
