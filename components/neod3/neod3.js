@@ -96,12 +96,14 @@ neo.models.Graph = (function() {
     for (_i = 0, _len = items.length; _i < _len; _i++) {
       item = items[_i];
       source = this.nodeMap[item.source] || (function() {
+//        console.log(item)
         throw "Invalid source";
       })();
       target = this.nodeMap[item.target] || (function() {
+//        console.log(item)
         throw "Invalid target";
       })();
-      this.relationshipMap[item.id] = new neo.models.Relationship(item.id, source, target, item.type, item.properties);
+      this.relationshipMap[item.id] = new neo.models.Relationship(item.id, source, target, item.type, item.caption, item.properties);
     }
     return this;
   };
@@ -291,7 +293,7 @@ NeoD3Geometry = (function() {
     _results = [];
     for (_i = 0, _len = relationships.length; _i < _len; _i++) {
       relationship = relationships[_i];
-      relationship.captionLength = this.measureRelationshipCaption(relationship, relationship.type);
+      relationship.captionLength = this.measureRelationshipCaption(relationship, relationship.caption);
       _results.push(relationship.captionLayout = this.captionFitsInsideArrowShaftWidth(relationship) ? "internal" : "external");
     }
     return _results;
@@ -346,15 +348,15 @@ NeoD3Geometry = (function() {
         if (node === relationship.source) {
           relationship.sourceAngle = angle;
           relationship.startPoint = {
-            x: relationship.source.x + Math.cos(angle * Math.PI / 180) * relationship.source.radius,
-            y: relationship.source.y + Math.sin(angle * Math.PI / 180) * relationship.source.radius
+            x: relationship.source.x, // + Math.cos(angle * Math.PI / 180) * relationship.source.radius,
+            y: relationship.source.y //+ Math.sin(angle * Math.PI / 180) * relationship.source.radius
           };
         }
         if (node === relationship.target) {
           relationship.targetAngle = angle;
           relationship.endPoint = {
-            x: relationship.target.x + Math.cos(angle * Math.PI / 180) * relationship.target.radius,
-            y: relationship.target.y + Math.sin(angle * Math.PI / 180) * relationship.target.radius
+            x: relationship.target.x, // + Math.cos(angle * Math.PI / 180) * relationship.target.radius,
+            y: relationship.target.y //+ Math.sin(angle * Math.PI / 180) * relationship.target.radius
           };
         }
       }
@@ -382,7 +384,7 @@ NeoD3Geometry = (function() {
       if (relationship.angle < -90 || relationship.angle > 90) {
         relationship.textAngle += 180;
       }
-      _ref2 = shaftLength > relationship.captionLength ? [relationship.type, relationship.captionLength] : this.shortenCaption(relationship, relationship.type, shaftLength), relationship.shortCaption = _ref2[0], relationship.shortCaptionLength = _ref2[1];
+      _ref2 = shaftLength > relationship.captionLength ? [relationship.caption, relationship.captionLength] : this.shortenCaption(relationship, relationship.caption, shaftLength), relationship.shortCaption = _ref2[0], relationship.shortCaptionLength = _ref2[1];
       if (relationship.captionLayout === "external") {
         startBreak = (shaftLength - relationship.shortCaptionLength) / 2;
         endBreak = shaftLength - startBreak;
@@ -654,11 +656,12 @@ neo.models.Node = (function() {
 var __hasProp = {}.hasOwnProperty;
 
 neo.models.Relationship = (function() {
-  function Relationship(id, source, target, type, properties) {
+  function Relationship(id, source, target, type, caption, properties) {
     var key, value;
     this.id = id;
     this.source = source;
     this.target = target;
+    this.caption = caption;
     this.type = type;
     this.propertyMap = properties;
     this.propertyList = (function() {

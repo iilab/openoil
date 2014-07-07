@@ -1,0 +1,32 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+
+<polymer-element name="iilab-graph" noscript attributes="search">
+  <template>
+<!--    <button on-click="{{buttonClick}}"></button>-->
+    <svg id="viz"></svg>
+  </template>
+  <script src="../components/d3/d3.js"></script>
+  <script src="../components/neod3/neod3.js"></script>
+  <script src="../components/jquery/dist/jquery.js"></script>
+  <script src="../components/jquery-ui/jquery-ui.js"></script>
+  <script src="../components/neo4j-js.js"></script>
+  <script src="iilab-graph.js"></script>
+  <script>
+    Polymer('iilab-graph', {
+      published: {
+        strings: {
+          value: "hellow",
+          reflect: true
+        }
+      },
+      ready: function() {
+        var viz = this.$.viz;
+        startGraph(viz)
+      },
+      buttonClick: function(e) {
+        this.strings= "what?"
+      }
+    });
+  </script>
+</polymer-element>

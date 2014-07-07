@@ -1,0 +1,75 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/paper-input/paper-input.html">
+<script src="../components/jquery/dist/jquery.js"></script>
+<script src="../components/jquery-ui/jquery-ui.js"></script>
+
+<polymer-element name="iilab-search" noscript attributes="strings search">
+  <template>
+    <link rel="stylesheet" href="../components/jquery-ui/themes/ui-lightness/jquery-ui.css">
+
+    <!-- JQuery Autocomplete in the polymer element -->
+    <div class="ui-widget">
+      <paper-input floatinglabel placeholder="Search" id="searchfield">
+    </div>
+  </template>
+  <script>
+    Polymer('iilab-search', {
+      stringsChanged: function(oldValue, newValue) {
+        console.log("stringsChanged")
+      },
+      ready: function() {
+        var searchfield = $(this.$.input)
+        // Autocomplete
+        console.log(this.strings)
+        searchfield.autocomplete({
+            source: this.strings,
+            focus: function( event, ui){
+                d3.selectAll("g.node circle")
+                    .transition()
+                    .attr("fill", chart.style()['node.Company'].color)
+                d3.selectAll("#" +ui.item.value+ " circle")
+                    .transition()
+                    .attr("fill", "black")
+            },
+            response: function( event, ui){
+                console.log(ui)
+                for (var i in ui.content) {
+                console.log(ui.content[i])
+                  d3.selectAll("#" +ui.content[i].value+ " circle")
+                    .transition()
+                    .attr("fill", "grey")
+                }
+            },
+            search: function( event, ui){
+    //            console.log(chart.style())
+    //            console.log(chart.style()['node.Company'].color)
+                d3.selectAll("g.node circle")
+                    .transition()
+                    .attr("fill", chart.style()['node.Company'].color)
+            },
+            close: function( event, ui){
+    //            console.log(chart.style())
+    //            console.log(chart.style()['node.Company'].color)
+                d3.selectAll("g.node circle")
+                    .transition()
+                    .attr("fill", chart.style()['node.Company'].color)
+            }
+        })
+      }
+    })
+    $(function(){
+      // Store a reference to the original contains method.
+      var originalContains = jQuery.contains;
+      console.log("hi!")
+      jQuery.contains = function(parent, child){
+          console.log(child)
+          var re = /ui-widget|dp/i;
+          if(child.className.match(re)) {
+            return true;
+          }
+          // Execute the original method.
+          return originalContains.apply( this, arguments );
+      }
+    });
+	</script>
+</polymer-element>

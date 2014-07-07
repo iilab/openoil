@@ -1,0 +1,14 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+
+<polymer-element name="iilab-controls" noscript attributes="strings">
+  <template>
+    <form id="cypher" action="#">
+<!--      <input type="text" value="MATCH (a:Contract { name: 'Engineering, procurement and construction (EPC)'})-[r:ISSUES|HAS_CONTRACTOR|HAS_OPERATOR]-(b) WITH a, r, b LIMIT 200 WITH { id: LOWER(REPLACE(a.name, ' ', '_')), labels: labels(a), properties: {name: a.name, oc_id: a.oc_id, license_area: a.license_area, field: a.field} } as nodea, {id: LOWER(REPLACE(a.name + ' ' + b.name, ' ', '_')), source: LOWER(REPLACE(a.name, ' ', '_')), target: LOWER(REPLACE(b.name, ' ', '_')), type: type(r), properties: { immediate: r.immediate}} as link,b WITH {id: LOWER(REPLACE(b.name, ' ', '_')), labels: labels(b), properties: { name: b.name, oc_id: b.ID} } as nodeb, nodea, link RETURN {nodes: collect(DISTINCT nodea) + collect(DISTINCT nodeb), links: collect(DISTINCT link)} AS json">
+      <input type="submit" value="Go">-->
+    </form>
+  </template>
+  <script>
+
+	</script>
+</polymer-element>

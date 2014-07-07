@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Force-Directed Graph</title>
+<style>
+
+
+input#search {
+	position: absolute;
+	top:10px;
+	width:100px;
+	left: 10px;
+}
+
+#cypher input[type=text]{
+  position: absolute;
+  top:40px;
+  width:200px;
+  left: 10px;
+}
+
+#cypher input[type=submit]{
+  position: absolute;
+  top:40px;
+  width:50px;
+  left: 220px;
+}
+
+div#sidebar {
+	position: absolute;
+	top:10px;
+	width:300px;
+	right: 10px;
+	bottom: 10px;
+  background-color: white;
+  border-color: #E2E2E2;
+  color: #454545;
+  border-radius: 2px;
+  width: 400px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 18.5px;
+  line-height: 12px;
+  direction: ltr;
+  box-shadow: none;
+  padding: 10px;
+}
+
+.d3-tip {
+  background-color: white;
+  border-color: #E2E2E2;
+  color: #454545;
+  border-radius: 2px;
+  width: 400px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 18.5px;
+  line-height: 12px;
+  direction: ltr;
+  box-shadow: none;
+  padding: 0px;
+}
+
+.d3-tip ul li {
+  list-style: none;
+  margin:14px 0px 0px;
+  font-size: 0.8em;
+  padding-right:10px;
+}
+
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: white;
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+</style>
+<body>
+<svg id="openoil"></svg>
+<div id="sidebar"></div>
+<input id="search"></input>
+<form id="cypher" action="#">
+  <input type="text" value="MATCH (a:Contract { name: 'Engineering, procurement and construction (EPC)'})-[r:ISSUES|HAS_CONTRACTOR|HAS_OPERATOR]-(b) WITH a, r, b LIMIT 200 WITH { id: LOWER(REPLACE(a.name, ' ', '_')), labels: labels(a), properties: {name: a.name, oc_id: a.oc_id, license_area: a.license_area, field: a.field} } as nodea, {id: LOWER(REPLACE(a.name + ' ' + b.name, ' ', '_')), source: LOWER(REPLACE(a.name, ' ', '_')), target: LOWER(REPLACE(b.name, ' ', '_')), type: type(r), properties: { immediate: r.immediate}} as link,b WITH {id: LOWER(REPLACE(b.name, ' ', '_')), labels: labels(b), properties: { name: b.name, oc_id: b.ID} } as nodeb, nodea, link RETURN {nodes: collect(DISTINCT nodea) + collect(DISTINCT nodeb), links: collect(DISTINCT link)} AS json">
+  <input type="submit" value="Go">
+</form>
+<script src="components/d3/d3.js"></script>
+<script src="components/neod3/neod3.js"></script>
+<script src="components/d3-tip/index.js"></script>
+<script src="components/jquery/dist/jquery.js"></script>
+<script src="components/jquery-ui/jquery-ui.js"></script>
+<script src="bundle-v0.1.js"></script>
+<script>
+
+</script>
+</body>
