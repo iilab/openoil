@@ -131,16 +131,17 @@ function startGraph(topElement, url) {
                   // Zoom after cool down
                   zs = zoom.scale()
                   zt = zoom.translate();
-                  zs = window.innerHeight / (layers.node().getBBox().height + 250)
+                  zs = window.innerHeight / (layers.node().getBBox().height * 1.2 )
 
   //                dx = (w/2.0) - d.x*zs;
   //                dy = (h/2.0) - d.y*zs;
 
-                  dx = window.innerWidth/2.0 - ((layers.node().getBBox().width ) + layers.node().getBBox().x)*zs;
-                  dy = window.innerHeight/2.0 - ((layers.node().getBBox().height - 100) /2.0 + layers.node().getBBox().y)*zs;
+                  zoom.scale(zs);
+
+                  dx = - (layers.node().getBBox().x)*zs + 100 ;
+                  dy = - (layers.node().getBBox().y)*zs + 20 ;
 
                   zoom.translate([dx, dy]);
-                  zoom.scale(zs);
                   layers.transition()
                     .duration(1000)
                     .call(zoom.event, layers);
@@ -179,7 +180,7 @@ function startGraph(topElement, url) {
     }
 
     // Initialize tooltip
-  /*  tip = d3.tip()
+    tip = d3.tip()
       .attr('class', 'd3-tip')
       .offset([-10, 0])
       .html(function(d) {
@@ -208,7 +209,7 @@ function startGraph(topElement, url) {
 
         return ret;
 
-      })*/
+      })
 
     // Neod3 graphView which is an API on top of d3 
     //
@@ -277,7 +278,7 @@ function startGraph(topElement, url) {
 
     var view = d3.select(topElement)
               .call(zoom)
-  //            .call(tip)
+              .call(tip)
 
     var layers = d3.select(topElement).selectAll("g.layer")
 
@@ -297,18 +298,18 @@ function startGraph(topElement, url) {
 
     var nodes_inner = d3.select(topElement).selectAll("g.layer > g.node circle, g.layer > g.node text")
               .on('mouseover', function(d) {
-//                d.attr()
+                tip.show(d, this)
               })
               .on('mouseout', function(d) {
-//                tip.hide(d, this.parentNode)
+                tip.hide(d, this.parentNode)
               });
 
     var relationships_inner = d3.select(topElement).selectAll("g.layer > g.relationship rect")
               .on('mouseover', function(d) {
-//                tip.show(d, this)
+                tip.show(d, this)
               })
               .on('mouseout', function(d) {
-//                tip.hide(d, this)
+                tip.hide(d, this)
               });
 
     var circles = d3.select(topElement).selectAll("g.nodes > circle")

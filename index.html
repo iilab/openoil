@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
   <title>Open Oil Data Framework</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
@@ -11,10 +10,14 @@
   <link rel="import" href="components/core-field/core-field.html">
   <link rel="import" href="components/core-icon/core-icon.html">
   <link rel="import" href="components/core-item/core-item.html">
+  <link rel="import" href="components/core-menu/core-menu.html">
+  <link rel="import" href="components/core-menu/core-submenu.html">
+  <link rel="import" href="components/core-menu-button/core-menu-button.html">
   <link rel="import" href="components/core-icon-button/core-icon-button.html">
   <link rel="import" href="components/core-toolbar/core-toolbar.html">
   <link rel="import" href="components/core-drawer-panel/core-drawer-panel.html">
   <link rel="import" href="components/paper-tabs/paper-tabs.html"> 
+  <link rel="import" href="components/paper-slider/paper-slider.html"> 
   <link rel="import" href="elements/iilab-graph.html"> 
   <link rel="import" href="elements/iilab-controls.html"> 
   <link rel="import" href="elements/iilab-search.html"> 
@@ -116,32 +119,79 @@
     position: absolute;
     background-color: rgb(255, 255, 255);
   }
+
+  body.loading #loading {
+    display: block;
+    position: fixed;
+    top: calc(50% - 18px);
+    left: calc(50% - 200px);
+    font-size: 36px;
+    color: white;
+    -webkit-animation: pulsate 2s ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    width: 400px;
+    text-align: center;
+    z-index: 10;
+  }
+  @keyframes pulsate {
+    0% {
+      transform: scale(1.0, 1.0);
+      opacity: 0.1;
+    }
+    50% {
+      transform: scale(1.1, 1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.0, 1.0);
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes pulsate {
+    0% {
+      -webkit-transform: scale(1.0, 1.0);
+      opacity: 0.1;
+    }
+    50% {
+      -webkit-transform: scale(1.1, 1.1);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1.0, 1.0);
+      opacity: 0;
+    }
+  }
   </style>
 </head>
 
-<body unresolved touch-action="auto">
+<body loading unresolved touch-action="auto">
 
     <core-scaffold id="core_scaffold">
       <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
         <core-toolbar id="core_toolbar">
           <core-icon-button icon="menu" id="core_icon_button"></core-icon-button>
         </core-toolbar>
-        <core-menu valueattr="label" id="core_menu" theme="core-light-theme">
-            <core-item label="BP" icon="settings" id="bp_item" horizontal center layout>
-              <a href="#bp" target="_self"></a>
-            </core-item>
-            <core-item label="Nigeria" icon="settings" id="nigeria_item" horizontal center layout>
-              <a href="#nigera" target="_self"></a>
-            </core-item>
-            <core-field id="core_field" icon="search" theme="core-light-theme" center horizontal layout>
-              <core-icon icon="search" id="core_icon"></core-icon>
-                <iilab-search strings="{{strings_exchange}}" id="iilab_search" horizontal center layout></iilab-search>
-            </core-field>
+        <core-menu valueattr="label" id="core_menu" theme="core-light-theme" selected="0" vertical layout>
+          <core-submenu icon="bookmark" label="Data Sets">
+            <core-item label="BP" icon="check" id="bp_item"></core-item>
+            <core-item label="Nigeria" icon="check" id="nigeria_item"></core-item>
+          </core-submenu> 
+          <core-submenu icon="settings" label="Settings">
             <iilab-controls id="iilab_controls" horizontal center layout></iilab-controls>
+          </core-submenu> 
         </core-menu>
       </core-header-panel>
-      <div id="div" tool>Open Oil</div>
-      <div id="div" tool>
+      <div id="div" tool horizontal layout center wrap flex>
+        <div id="title" flex>Open&nbsp;Oil</div>
+        <core-field id="core_field" icon="search">
+          <core-icon icon="search" id="core_icon"></core-icon>
+            <iilab-search strings="{{strings_exchange}}" id="iilab_search"></iilab-search>
+        </core-field>
+        <core-menu-button icon="more-vert" halign="right">
+          <core-item icon="visibility" label="About OpenOil"></core-item>
+          <core-item icon="extension" label="Contribute"></core-item>
+          <core-item icon="info" label="Sources"></core-item>
+        </core-menu-button>      
       </div>
 <!--      <iilab-graph id="iilab_graph" search="{{searchtext}}" strings="{{strings_exchange}}" url="http://db.openoil.iilab.org/db/data/"></iilab-graph>-->
       <iilab-graph id="iilab_graph" search="{{searchtext}}" strings="{{strings_exchange}}" url="http://db.localhost:7474/db/data/"></iilab-graph>
@@ -149,8 +199,13 @@
     </core-scaffold>
 </body>
 <script>
+window.addEventListener('polymer-ready', function() {
+  document.body.classList.remove('loading');
+
   var iilab_graph = document.querySelector("#iilab_graph")
   iilab_search.strings = "We want strings!"
   console.log(iilab_search.strings)
+}
+
 </script>
 </html>
