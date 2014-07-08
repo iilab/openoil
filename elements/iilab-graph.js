@@ -1,4 +1,4 @@
-function startGraph(topElement) {
+function startGraph(topElement, url) {
   // Display area parameters
   var w=1280;
   var h=640;
@@ -15,7 +15,7 @@ function startGraph(topElement) {
   // var myfile = fs.readFileSync('../neod3_results.json', 'utf8');
   // var myjson = JSON.parse(myfile)
 
-  neo4j.connect('https://db.openoil.iilab.org:443/db/data/', function (err, graph) {
+  neo4j.connect(url, function (err, graph) {
       if (err)
           throw err;
 
@@ -51,9 +51,9 @@ function startGraph(topElement) {
   //                                  console.log(row)
                                     r = (row.r instanceof Array) ? row.r[i-1] : row.r
                                     return {
-                                        id: r.self.replace("https://db.openoil.iilab.org/db/data/relationship/",""),
-                                        source: r.start.replace("https://db.openoil.iilab.org/db/data/node/",""),
-                                        target: r.end.replace("https://db.openoil.iilab.org/db/data/node/",""),
+                                        id: r.self.replace(url + "relationship/",""),
+                                        source: r.start.replace(url + "node/",""),
+                                        target: r.end.replace(url + "node/",""),
                                         type: r.type,
                                         caption: r.data.immediate + "%",
                                         properties: r.data
@@ -131,13 +131,13 @@ function startGraph(topElement) {
                   // Zoom after cool down
                   zs = zoom.scale()
                   zt = zoom.translate();
-                  zs = h / (layers.node().getBBox().height + 200)
+                  zs = window.innerHeight / (layers.node().getBBox().height + 250)
 
   //                dx = (w/2.0) - d.x*zs;
   //                dy = (h/2.0) - d.y*zs;
 
-                  dx = w/2.0 - (layers.node().getBBox().width/2.0 + layers.node().getBBox().x)*zs;
-                  dy = h/2.0 - (layers.node().getBBox().height/2.0 + layers.node().getBBox().y)*zs;
+                  dx = window.innerWidth/2.0 - ((layers.node().getBBox().width ) + layers.node().getBBox().x)*zs;
+                  dy = window.innerHeight/2.0 - ((layers.node().getBBox().height - 100) /2.0 + layers.node().getBBox().y)*zs;
 
                   zoom.translate([dx, dy]);
                   zoom.scale(zs);
@@ -353,7 +353,7 @@ function startGraph(topElement) {
 
       // Cypher query box
       $( "#cypher" ).submit(function( event ) {      
-        neo4j.connect('https://db.openoil.iilab.org:443/db/data/', function (err, graph) {
+        neo4j.connect(url, function (err, graph) {
             if (err)
                 throw err;
 

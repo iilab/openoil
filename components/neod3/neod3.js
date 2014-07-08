@@ -96,7 +96,7 @@ neo.models.Graph = (function() {
     for (_i = 0, _len = items.length; _i < _len; _i++) {
       item = items[_i];
       source = this.nodeMap[item.source] || (function() {
-//        console.log(item)
+        console.log(item)
         throw "Invalid source";
       })();
       target = this.nodeMap[item.target] || (function() {
