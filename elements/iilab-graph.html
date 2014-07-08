@@ -2,11 +2,55 @@
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 
 <polymer-element name="iilab-graph" noscript attributes="search url">
+  <style>
+    .d3-tip {
+    background-color: white;
+    border-color: #E2E2E2;
+    color: #454545;
+    border-radius: 2px;
+    width: 400px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 18.5px;
+    line-height: 12px;
+    direction: ltr;
+    box-shadow: none;
+    padding: 0px;
+  }
+
+  .d3-tip ul li {
+    list-style: none;
+    margin:14px 0px 0px;
+    font-size: 0.8em;
+    padding-right:10px;
+  }
+
+  /* Creates a small triangle extender for the tooltip */
+  .d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: white;
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+  }
+
+  /* Style northward tooltips differently */
+  .d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+  }
+  </style>
   <template>
 <!--    <button on-click="{{buttonClick}}"></button>-->
     <svg id="viz"></svg>
   </template>
   <script src="../components/d3/d3.min.js"></script>
+  <script src="../components/d3-tip/index.js"></script>
   <script src="../components/neod3/neod3.js"></script>
   <script src="../components/jquery/dist/jquery.js"></script>
   <script src="../components/jquery-ui/jquery-ui.js"></script>
