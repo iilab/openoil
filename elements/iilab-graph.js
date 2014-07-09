@@ -1,21 +1,16 @@
-function startGraph(topElement, url) {
+function startGraph(viz, that) {
   // Display area parameters
   var w=1280;
   var h=640;
   //var startupQuery = "MATCH (a)-[r]->(b) WITH a, r, b LIMIT 200 WITH { id: LOWER(REPLACE(a.name, ' ', '_')), labels: labels(a), properties: {name: a.name, oc_id: a.oc_id, other_names: a.other_names, previous_names: a.previous_names, headquarters:a.headquarters, directors: a.directors, shareholders: a.shareholders, foundation_date: a.foundation_date, website: a.website} } as nodea, {id: LOWER(REPLACE(a.name + ' ' + b.name, ' ', '_')), source: LOWER(REPLACE(a.name, ' ', '_')), target: LOWER(REPLACE(b.name, ' ', '_')), type: type(r), properties: { immediate: r.immediate}} as link,b WITH {id: LOWER(REPLACE(b.name, ' ', '_')), labels: labels(b), properties: { name: b.name, oc_id: b.oc_id, other_names: b.other_names, previous_names: b.previous_names, headquarters:b.headquarters, directors: b.directors, shareholders: b.shareholders, foundation_date: b.foundation_date, website: b.website} } as nodeb, nodea, link RETURN {nodes: collect(DISTINCT nodea) + collect(DISTINCT nodeb), links: collect(DISTINCT link)} AS json"
-  var BPQuery = "MATCH (n:Company)<-[r]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r]-(n) RETURN n, labels(n) as label, r LiMIT 20"
-  var NigeriaQuery = "MATCH (n:Company)<-[r]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r]-(n) RETURN n, labels(n) as label, r LiMIT 20"
-  var BPDepth = "2"
-  var TestQuery = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + BPDepth + "]->(n) RETURN n, labels(n) as label, r"
-  var SmallQuery = "MATCH (n:Company)<-[r]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r]-(n) RETURN n, labels(n) as label, r LiMIT 20"
-  var startupQuery = TestQuery
+  var startupQuery = that.cypher
   var myjson = {nodes:[], links:[]};
 
   // Load JSON graph file (result of neod3.cypher query)
   // var myfile = fs.readFileSync('../neod3_results.json', 'utf8');
   // var myjson = JSON.parse(myfile)
 
-  neo4j.connect(url, function (err, graph) {
+  neo4j.connect(that.url, function (err, graph) {
       if (err)
           throw err;
 
@@ -41,19 +36,19 @@ function startGraph(topElement, url) {
 //              console.log(myjson.nodes)
 
               
-              for (i = 1; i <= BPDepth; i++) {
+              for (i = 1; i <= that.depth; i++) {
                       myjson.links = myjson.links.concat(results
                                .filter(function(row) {
                                   return (row.r instanceof Array) ? (row.r.length == i) : true
                                })
                                .map(function(row) {
-  //                                  console.log(i)
-  //                                  console.log(row)
+//                                    console.log(i)
+//                                    console.log(row)
                                     r = (row.r instanceof Array) ? row.r[i-1] : row.r
                                     return {
-                                        id: r.self.replace(url + "relationship/",""),
-                                        source: r.start.replace(url + "node/",""),
-                                        target: r.end.replace(url + "node/",""),
+                                        id: r.self.replace(that.url + "relationship/",""),
+                                        source: r.start.replace(that.url + "node/",""),
+                                        target: r.end.replace(that.url + "node/",""),
                                         type: r.type,
                                         caption: r.data.immediate + "%",
                                         properties: r.data
@@ -191,6 +186,7 @@ function startGraph(topElement, url) {
           d = d.relationship
         }
         if (d.constructor.name == "Node") {
+          // TODO: Change to template
           ret=  "<ul><strong>" + d.labels[0] + "</strong>"
                 + "<li>Name: <strong>" + d.propertyMap.name + "</strong></li>"
                 + ( ( d.propertyMap.oc_id ) ? "<li>Open Corporates ID: <strong>" + d.propertyMap.oc_id + "</strong></li>" : "" )
@@ -201,12 +197,10 @@ function startGraph(topElement, url) {
               + "</ul>";
         }
         else if (d.constructor.name == "Relationship") {
-          ret= "<ul><strong>" + d.shortCaption + "</strong>"
+          ret= "<ul><strong>" + d.propertyMap.ownership_type + "</strong>"
                               + ( ( d.propertyMap.immediate ) ? "<li>Immediate Ownership: <strong>" + d.propertyMap.immediate + "%</strong></li>" : "" )
-                              + ( ( d.propertyMap.ultimate ) ? "<li>Ultimate Ownership: <strong>" + d.propertyMap.ultimate + "%</strong></li>" : "" )
              + "</ul>";
         }
-
         return ret;
 
       })
@@ -220,15 +214,23 @@ function startGraph(topElement, url) {
         .height(h)
         .layout(layoutOO())
         .on('nodeClicked', function(d,i){
-          // Display sidebar.
-          $('#sidebar').text(d.propertyMap.name)
-
           // Select proper parent <g>
           if (d.constructor.name == "Object" && d.node) {
             d = d.node
-          } else if (d.constructor.name == "Object" && d.relationship) {
-            d = d.relationship
           }
+          // Display sidebar.
+
+          that.element._type = "node"
+          that.element.type = d.labels[0]
+          that.element.name = d.propertyMap.name 
+          that.element.oc_id = d.propertyMap.oc_id
+          that.element.directors = ( d.propertyMap.directors ) ? d.propertyMap.directors.replace(/\n/g, "<br />") : ""
+          that.element.shareholders = ( d.propertyMap.shareholders ) ? d.propertyMap.shareholders.replace(/\n/g, "<br />") : ""
+          that.element.license_area = d.propertyMap.license_area
+          that.element.field = d.propertyMap.field
+
+          that.$.iilab_drawer.openDrawer();
+
 
           // Autozoom on Click.
           // TODO: Zoom on clicked node and immediately related nodes. relationshipMap ?
@@ -245,19 +247,24 @@ function startGraph(topElement, url) {
               .duration(1000)
               .call(zoom.event, layers);
 
-          // Fade
-          node.style("stroke-opacity", function(o) {
-              thisOpacity = isConnected(d, o) ? 1 : opacity;
-              this.setAttribute('fill-opacity', thisOpacity);
-              return thisOpacity;
-          });
+        })
+      .on('relationshipClicked', function(d,i){
+          if (d.constructor.name == "Object" && d.relationship) {
+                    d = d.relationship
+          }
+          that.element._type = "relationship"
+          that.element.type = d.type
+          that.element.ownership_type = d.propertyMap.ownership_type
+          that.element.immediate = d.propertyMap.immediate
+          that.element.ultimate = d.propertyMap.ultimate
+          that.element.ownership_status = d.propertyMap.ownership_status
+          that.element.source_url = d.propertyMap.source_url
+          that.element.source_date = d.propertyMap.source_date
+          that.element.confidence = d.propertyMap.confidence
 
-          link.style("stroke-opacity", function(o) {
-              return o.source === d || o.target === d ? 1 : opacity;
-          });
+          that.$.iilab_drawer.openDrawer();
 
         })
-
     // Creating Strings for the Autocomplete feature
     this.strings = myjson.nodes.map(function(val) {
         return { label: val.properties.name, value: val.id };
@@ -271,32 +278,32 @@ function startGraph(topElement, url) {
         .scaleExtent([0.1, 10])
         .on("zoom", zoomed);
 
-    var svg = d3.select(topElement)
+    var svg = d3.select(viz)
               .attr("width", window.innerWidth).attr("height",window.innerHeight)
               .data([graphModel])
               .call(chart)
 
-    var view = d3.select(topElement)
+    var view = d3.select(viz)
               .call(zoom)
               .call(tip)
 
-    var layers = d3.select(topElement).selectAll("g.layer")
+    var layers = d3.select(viz).selectAll("g.layer")
 
-    var nodes = d3.select(topElement).selectAll("g.layer > g.node")
+    var nodes = d3.select(viz).selectAll("g.layer > g.node")
               .attr("id", function(d) {
                 return d.id;
               })
 
-    var relationships_path = d3.select(topElement).selectAll("g.layer > g.relationship path")
+    var relationships_path = d3.select(viz).selectAll("g.layer > g.relationship path")
               .attr('fill-opacity', 0)
               .attr('stroke', '#DDD')
               .attr('stroke-width', function(d) { return 2+d.propertyMap.contract_share/5; })
     
-    var relationships_text = d3.select(topElement).selectAll("g.layer > g.relationship text")
+    var relationships_text = d3.select(viz).selectAll("g.layer > g.relationship text")
               .attr('font-size', '18px')
 
 
-    var nodes_inner = d3.select(topElement).selectAll("g.layer > g.node circle, g.layer > g.node text")
+    var nodes_inner = d3.select(viz).selectAll("g.layer > g.node circle, g.layer > g.node text")
               .on('mouseover', function(d) {
                 tip.show(d, this)
               })
@@ -304,7 +311,7 @@ function startGraph(topElement, url) {
                 tip.hide(d, this.parentNode)
               });
 
-    var relationships_inner = d3.select(topElement).selectAll("g.layer > g.relationship rect")
+    var relationships_inner = d3.select(viz).selectAll("g.layer > g.relationship rect")
               .on('mouseover', function(d) {
                 tip.show(d, this)
               })
@@ -312,7 +319,7 @@ function startGraph(topElement, url) {
                 tip.hide(d, this)
               });
 
-    var circles = d3.select(topElement).selectAll("g.nodes > circle")
+    var circles = d3.select(viz).selectAll("g.nodes > circle")
     //            .call(drag);
 
 //    console.log(d3)
@@ -354,7 +361,7 @@ function startGraph(topElement, url) {
 
       // Cypher query box
       $( "#cypher" ).submit(function( event ) {      
-        neo4j.connect(url, function (err, graph) {
+        neo4j.connect(that.url, function (err, graph) {
             if (err)
                 throw err;
 
