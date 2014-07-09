@@ -1,0 +1,160 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/font-roboto/roboto.html">
+<link rel="import" href="../components/core-scaffold/core-scaffold.html">
+<link rel="import" href="../components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../components/core-field/core-field.html">
+<link rel="import" href="../components/core-icon/core-icon.html">
+<link rel="import" href="../components/core-icons/iconsets/image-icons.html">
+<link rel="import" href="../components/core-item/core-item.html">
+<link rel="import" href="../components/core-menu/core-menu.html">
+<link rel="import" href="../components/core-menu/core-submenu.html">
+<link rel="import" href="../components/core-menu-button/core-menu-button.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../components/core-drawer-panel/core-drawer-panel.html">
+<link rel="import" href="../components/paper-tabs/paper-tabs.html"> 
+<link rel="import" href="../components/paper-slider/paper-slider.html"> 
+<link rel="import" href="../components/paper-shadow/paper-shadow.html"> 
+<link rel="import" href="../components/paper-item/paper-item.html"> 
+<link rel="import" href="../components/paper-icon-button/paper-icon-button.html"> 
+<link rel="import" href="../components/paper-menu-button/paper-menu-button.html"> 
+<link rel="import" href="../components/iilab-drawer-panel/iilab-drawer-panel.html">
+<link rel="import" href="iilab-graph.html"> 
+<link rel="import" href="iilab-controls.html"> 
+<link rel="import" href="iilab-search.html"> 
+
+<polymer-element name="openoil-app" noscript>
+  <template>
+  <style shim-shadowdom>
+    core-scaffold core-toolbar {
+      background: #EEE;
+      color: black;
+    }
+    core-scaffold [main] core-header-panel {
+      background: #FFF;
+      color: black;
+    }
+  </style>
+  <style>
+
+    core-header-panel {
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch; 
+    }
+
+  /*  polyfill-unscoped-rule {
+      content: 'core-scaffold core-toolbar';
+      background: #EEE;
+      color: black;
+    }
+
+    polyfill-unscoped-rule {
+      content: 'core-scaffold core-header-panel';
+      background: #FFF;
+      color: black;
+    } */
+
+    core-scaffold::shadow core-toolbar {
+      background: #EEE;
+      color: black;
+    }
+    core-scaffold::shadow core-header-panel {
+      background: #FFF;
+      color: black;
+    }
+    paper-tabs {
+      width: 100%;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .container {
+      width: 80%;
+      margin: 50px auto;
+    }
+    @media (min-width: 481px) {
+      paper-tabs {
+        width: 200px;
+      }
+      .container {
+        width: 400px;
+      }
+    }
+    :host {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      color: rgb(0, 0, 0);
+    }
+    #core_toolbar {
+      right: 0px;
+      color: rgb(0, 0, 0);
+      fill: rgb(255, 255, 255);
+      background-color: rgb(235, 235, 235);
+    }
+    #core_drawer_panel {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+    }
+    #core_icon {
+      height: 24px;
+      width: 24px;
+    }
+    #core_card {
+      width: 300px;
+      height: 300px;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      border-bottom-left-radius: 2px;
+      box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      left: 20px;
+      top: 80px;
+      position: absolute;
+      background-color: rgb(255, 255, 255);
+    }
+  </style>
+    <core-scaffold id="core_scaffold">
+      <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
+        <core-toolbar id="core_toolbar">
+          <core-icon-button icon="menu" id="core_icon_button"></core-icon-button>
+        </core-toolbar>
+        <iilab-controls id="iilab_controls" cypher="{{cypherText}}"></iilab-controls>
+        <paper-shadow z="1"></paper-shadow>
+      </core-header-panel>
+      <div id="div" tool horizontal layout center wrap flex>
+        <div id="title" flex>Open&nbsp;Oil</div>
+        <core-field id="core_field" icon="search">
+          <core-icon icon="search" id="core_icon"></core-icon>
+          <iilab-search search="{{searchText}}" strings="{{stringsText}}" id="iilab_search"></iilab-search>
+        </core-field>
+        <paper-icon-button id="zoom_out" icon="image:crop-free" role="button" tabindex="0" class=""></paper-icon-button>
+        <paper-menu-button icon="more-vert" valign="bottom" halign="right">
+          <paper-item icon="visibility" label="About OpenOil"></paper-item>
+          <paper-item icon="extension" label="Contribute"></paper-item>
+          <paper-item icon="info" label="Sources"></paper-item>
+        </paper-menu-button>      
+      </div>
+<!--      <iilab-graph id="iilab_graph" search="{{searchtext}}" strings="{{strings_exchange}}" url="https://db.openoil.iilab.org/db/data/"></iilab-graph>-->
+      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" strings="{{stringsText}}" url="http://db.localhost:7474/db/data/"></iilab-graph>
+      <!--<core-card id="core_card" layout vertical></core-card>-->
+    </core-scaffold>
+  </template>
+  <script> 
+  	Polymer('openoil-app', {
+  		published: {
+  			title: ""
+  		},
+		buttonClick: function(e, detail, sender) {
+			console.log(document.querySelector('iilab-drawer-panel'))
+			document.querySelector('iilab-graph').shadowRoot.querySelector('#drawer').togglePanel();
+		}
+	})
+  </script>
+</polymer-element>
