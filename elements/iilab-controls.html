@@ -1,23 +1,76 @@
 <link rel="import" href="../components/polymer/polymer.html">
-<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="../components/core-tooltip/core-tooltip.html">
+<link rel="import" href="../components/paper-input/paper-input.html">
+<link rel="import" href="../components/paper-slider/paper-slider.html">
+<link rel="import" href="../components/paper-button/paper-button.html">
 
-<polymer-element name="iilab-controls" noscript attributes="strings">
+<polymer-element name="iilab-controls" noscript attributes="strings cypher depth">
   <template>
-    <span>Depth</span>
-    <paper-slider id="depth" pin="" snaps="" max="4" step="1" value="2" editable></paper-slider>
-   <form id="cypher" action="#">
-<!--      <input type="text" value="MATCH (a:Contract { name: 'Engineering, procurement and construction (EPC)'})-[r:ISSUES|HAS_CONTRACTOR|HAS_OPERATOR]-(b) WITH a, r, b LIMIT 200 WITH { id: LOWER(REPLACE(a.name, ' ', '_')), labels: labels(a), properties: {name: a.name, oc_id: a.oc_id, license_area: a.license_area, field: a.field} } as nodea, {id: LOWER(REPLACE(a.name + ' ' + b.name, ' ', '_')), source: LOWER(REPLACE(a.name, ' ', '_')), target: LOWER(REPLACE(b.name, ' ', '_')), type: type(r), properties: { immediate: r.immediate}} as link,b WITH {id: LOWER(REPLACE(b.name, ' ', '_')), labels: labels(b), properties: { name: b.name, oc_id: b.ID} } as nodeb, nodea, link RETURN {nodes: collect(DISTINCT nodea) + collect(DISTINCT nodeb), links: collect(DISTINCT link)} AS json">
-      <input type="submit" value="Go">-->
-    </form>
+	<style>
+	  core-submenu::shadow #submenu {
+	    margin-left: 10px;
+	  }
+	</style>
+    <core-menu valueattr="label" id="core_menu" theme="core-light-theme" selected="0" on-core-select="{{selectAction}}" vertical layout>
+      <core-submenu icon="bookmark" label="Saved Queries" selected="0">
+        <core-submenu icon="bookmark" label="BP" selected="0">
+          <paper-item label="BP PLC Subsidiaries" icon="check" id="bp_plc_subs"></paper-item>
+          <paper-item label="BP" icon="check" id="bp_item2"></paper-item>
+        </core-submenu> 
+        <core-submenu icon="bookmark" label="Nigeria">
+            <paper-item label="Nigeria" icon="check" id="nigeria_item"></paper-item>
+        </core-submenu> 
+      </core-submenu> 
+      <core-submenu icon="settings" label="Advanced Settings">
+        <div vertical layout>
+		    <div>These settings control more advanced aspects of the visualisation. Place your mouse over titles to have a more detailed description of the setttings.</div>
+		    <div>
+				<core-tooltip>
+				  <h5>Depth</h5>
+				  <div tip>Depth controls how many relationships are followed when displaying nodes of interest.</div>
+				</core-tooltip>
+			    <paper-slider id="depth" pin="" snaps="" min="1" max="4" step="1" value="{{depth}}" editable></paper-slider>
+		    </div>
+				<core-tooltip>
+				  <h5>Raw Query</h5>
+				  <div tip>The OpenOil database uses Neo4j and its query language <a href="http://docs.neo4j.org/chunked/stable/cypher-query-lang.html">Cypher</a>. You can directly enter Cypher queries in this box.</div>
+				</core-tooltip>
+			<paper-input id="cypher" multiline label="Cypher"></paper-input>
+			<paper-button affirmative default icon="done" label="Apply" on-click="{{buttonClick}}"></paper-button>
+		</div>
+      </core-submenu> 
+    </core-menu>
   </template>
-  <script>  
+  <script> 
   	Polymer('iilab-controls', {
-	    ready: function() {
-	    	var depth = document.querySelector('#depth');
-	    	depth.addEventListener('change', function() {
-	      		document.querySelector('#depthLabel').textContent = depth.value;
-			});
+		buttonClick: function(e, detail, sender) {
+			console.log(document.querySelector('iilab-drawer-panel'))
+			document.querySelector('iilab-graph').shadowRoot.querySelector('#drawer').togglePanel();
+		},
+		selectAction: function(e, detail) {
+	      if (detail.isSelected) {
+	        var selectedItem = detail.item;
+	        console.log(selectedItem.id)
+	        switch(selectedItem.id) {
+				case "bp_item2":
+				    this.cypher = "MATCH (n:Company)<-[r]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r]-(n) RETURN n, labels(n) as label, r LiMIT 20"
+				    console.log(this.cypher)
+				    break;
+				case "bp_plc_subs":
+					this.depth = "2"
+				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
+				    console.log(this.cypher)
+				    break;
+				default:
+				    break;
+			}
+	      }
+		},
+		ready: function () {
+			  var NigeriaQuery = "MATCH (n:Company)<-[r]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r]-(n) RETURN n, labels(n) as label, r LiMIT 20"
+			  var SmallQuery = "MATCH (n:Company)<-[r]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r]-(n) RETURN n, labels(n) as label, r LiMIT 20"
+			  var OtherQuery = "MATCH (a:Contract { name: 'Engineering, procurement and construction (EPC)'})-[r:ISSUES|HAS_CONTRACTOR|HAS_OPERATOR]-(b) WITH a, r, b LIMIT 200 WITH { id: LOWER(REPLACE(a.name, ' ', '_')), labels: labels(a), properties: {name: a.name, oc_id: a.oc_id, license_area: a.license_area, field: a.field} } as nodea, {id: LOWER(REPLACE(a.name + ' ' + b.name, ' ', '_')), source: LOWER(REPLACE(a.name, ' ', '_')), target: LOWER(REPLACE(b.name, ' ', '_')), type: type(r), properties: { immediate: r.immediate}} as link,b WITH {id: LOWER(REPLACE(b.name, ' ', '_')), labels: labels(b), properties: { name: b.name, oc_id: b.ID} } as nodeb, nodea, link RETURN {nodes: collect(DISTINCT nodea) + collect(DISTINCT nodeb), links: collect(DISTINCT link)} AS json"
 		}
-	}	
+	})
   </script>
 </polymer-element>
