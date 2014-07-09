@@ -142,12 +142,13 @@
         </paper-menu-button>      
       </div>
 <!--      <iilab-graph id="iilab_graph" search="{{searchtext}}" strings="{{strings_exchange}}" url="https://db.openoil.iilab.org/db/data/"></iilab-graph>-->
-      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" strings="{{stringsText}}" url="http://db.localhost:7474/db/data/"></iilab-graph>
+      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" strings="{{stringsText}}" url="{{url}}"></iilab-graph>
       <!--<core-card id="core_card" layout vertical></core-card>-->
     </core-scaffold>
   </template>
   <script> 
   	Polymer('openoil-app', {
+      url: (window.location.href == 'http://localhost/')?'http://db.localhost:7474/db/data/' : 'https://db.openoil.iilab.org/db/data/',
   		published: {
   			title: ""
   		},
