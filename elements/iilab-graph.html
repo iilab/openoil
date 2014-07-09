@@ -1,6 +1,9 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="../components/paper-shadow/paper-shadow.html">
 <link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="../components/core-item/core-item.html">
+<link rel="import" href="../components/core-menu/core-menu.html">
+<link rel="import" href="../components/core-menu/core-submenu.html">
 <link rel="import" href="iilab-description.html">
 
 <polymer-element name="iilab-graph" noscript attributes="search url description cypher depth strings">
@@ -59,23 +62,43 @@
         <div drawer vertical layout>
            <template bind="{{element}}">
             <div vertical layout>
-              <core-menu valueattr="label" id="core_menu" theme="core-light-theme" selected="0" vertical layout>
+              <core-menu valueattr="label" id="core_menu" theme="core-light-theme" multi selected="0" vertical layout>
                 <template if="{{ _type == 'node' }}">
                   <core-submenu icon="list" label="{{ type }} Details" selected="0">
                     <paper-item icon="flag" label="{{ name }}" id="name"></paper-item>
-                    <template if="{{ oc_id }}"><paper-item icon="info-outline" label="Open Corporates Id: {{ oc_id }}" id="oc_id"></paper-item></template>
-                    <template if="{{ directors }}"><paper-item icon="account-circle" label="Directors: {{ directors }}" icon="check" id="directors"></paper-item></template>
-                    <template if="{{ shareholders }}"><paper-item icon="account-box" label="Shareholders: {{ shareholders }}" icon="check" id="shareholders"></paper-item></template>
-                    <template if="{{ license_area }}"><paper-item icon="receipt" label="License Areas: {{ license_area }}" icon="check" id="license_area"></paper-item></template>
-                    <template if="{{ field }}"><paper-item icon="receipt" label="Fields: {{ field }}" icon="check" id="field"></paper-item></template>
-                  </core-submenu> 
+                    <template if="{{ oc_id }}">
+                      <paper-item icon="info-outline" label="Open Corporates Id: {{ oc_id }}" id="oc_id"></paper-item>
+                    </template>
+                    <template if="{{ directors }}">
+                      <core-submenu icon="account-circle" label="Directors ({{ directors.length}})" selected="0">
+                        <template repeat="{{ director in directors }}">
+                          <paper-item flex label="{{ director }}" id="directors"></paper-item>
+                        </template>
+                      </core-submenu> 
+                    </template>
+                    <template if="{{ shareholders }}">
+                      <core-submenu icon="account-circle" label="Directors ({{ shareholders.length}})" selected="0">
+                        <template repeat="{{ shareholder in shareholders }}">
+                          <paper-item icon="account-box" label="{{ shareholder }}" icon="check" id="shareholders"></paper-item>
+                        </template>
+                      </core-submenu> 
+                    </template>
+                    <template if="{{ license_area }}">
+                      <paper-item icon="receipt" label="License Areas: {{ license_area }}" icon="check" id="license_area"></paper-item>
+                    </template>
+                    <template if="{{ field }}">
+                      <paper-item icon="receipt" label="Fields: {{ field }}" icon="check" id="field"></paper-item>
+                    </template>
+                  </core-submenu>
                 </template>
                 <template if="{{ _type == 'relationship' }}">
-                  <core-submenu icon="list" label="{{ ownership_type }}" selected="0">
+                  <core-submenu icon="info-outline" label="{{ ownership_type }}">
+                    <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
+                    <paper-item label="owns"></paper-item>
+                    <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
+                    <template if="{{ ownership_status }}"><paper-item icon="info-outline" label="Ownership Status: {{ ownership_status }}%" id="ownership_status"></paper-item></template>
                     <template if="{{ immediate }}"><paper-item icon="info-outline" label="Immediate Ownership: {{ immediate }}%" id="immediate"></paper-item></template>
                     <template if="{{ ultimate }}"><paper-item icon="info-outline" label="Ultimate Ownership: {{ ultimate }}%" id="ultimate"></paper-item></template>
-                    <template if="{{ ownership_status }}"><paper-item icon="info-outline" label="Ownership Status: {{ ownership_status }}%" id="ownership_status"></paper-item></template>
-                    <template if="{{ ownership_status }}"><paper-item icon="info-outline" label="Ownership Status: {{ ownership_status }}%" id="ownership_status"></paper-item></template>
                   </core-submenu> 
                 </template>
                 <template if="{{ source_url }}">

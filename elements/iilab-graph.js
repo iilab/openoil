@@ -42,8 +42,8 @@ function startGraph(viz, that) {
                                   return (row.r instanceof Array) ? (row.r.length == i) : true
                                })
                                .map(function(row) {
-                                    console.log(i)
-                                    console.log(row)
+//                                    console.log(i)
+//                                    console.log(row)
                                     var ret = {};
                                     if (row.r instanceof Array) {
                                       r = row.r[i-1]
@@ -204,8 +204,8 @@ function startGraph(viz, that) {
           ret=  "<ul><strong>" + d.labels[0] + "</strong>"
                 + "<li><strong>" + d.propertyMap.name + "</strong></li>"
                 + ( ( d.propertyMap.oc_id ) ? "<li>Open Corporates ID: <strong>" + d.propertyMap.oc_id + "</strong></li>" : "" )
-                + ( ( d.propertyMap.directors ) ? "<li>Directors: <strong>" + d.propertyMap.directors.replace(/\n/g, "<br />") + "</strong></li>" : "" )
-                + ( ( d.propertyMap.shareholders ) ? "<li>Shareholders: <strong>" + d.propertyMap.shareholders.replace(/\n/g, "<br />") + "</strong></li>" : "" )
+                + ( ( d.propertyMap.directors ) ? "<li>Directors: <strong>" + d.propertyMap.directors.split(/\n/g).length + "</strong></li>" : "" )
+                + ( ( d.propertyMap.shareholders ) ? "<li>Shareholders: <strong>" + d.propertyMap.shareholders.split(/\n/g).length + "</strong></li>" : "" )
                 + ( ( d.propertyMap.license_area ) ? "<li>License Areas: <strong>" + d.propertyMap.license_area + "</strong></li>" : "" )
                 + ( ( d.propertyMap.field ) ? "<li>Field: <strong>" + d.propertyMap.field + "</strong></li>" : "" )
               + "</ul>";
@@ -233,13 +233,14 @@ function startGraph(viz, that) {
             d = d.node
           }
           // Display sidebar.
+          console.log(d)
 
           that.element._type = "node"
           that.element.type = d.labels[0]
           that.element.name = d.propertyMap.name 
           that.element.oc_id = d.propertyMap.oc_id
-          that.element.directors = ( d.propertyMap.directors ) ? d.propertyMap.directors.replace(/\n/g, "<br />") : ""
-          that.element.shareholders = ( d.propertyMap.shareholders ) ? d.propertyMap.shareholders.replace(/\n/g, "<br />") : ""
+          that.element.directors = ( d.propertyMap.directors ) ? d.propertyMap.directors.split(/\n/g) : null
+          that.element.shareholders = ( d.propertyMap.shareholders ) ? d.propertyMap.shareholders.split(/\n/g) : null
           that.element.license_area = d.propertyMap.license_area
           that.element.field = d.propertyMap.field
           that.element.ownership_type = ""
@@ -273,8 +274,11 @@ function startGraph(viz, that) {
           if (d.constructor.name == "Object" && d.relationship) {
                     d = d.relationship
           }
+          console.log(d)
           that.element._type = "relationship"
           that.element.type = d.type
+          that.element.source = d.source
+          that.element.target = d.target
           that.element.ownership_type = d.propertyMap.ownership_type
           that.element.immediate = d.propertyMap.immediate
           that.element.ultimate = d.propertyMap.ultimate
@@ -316,9 +320,12 @@ function startGraph(viz, that) {
               })
 
     var relationships_path = d3.select(viz).selectAll("g.layer > g.relationship path")
-              .attr('fill-opacity', 0)
+              .attr('fill-opacity', 1)
               .attr('stroke', '#DDD')
-              .attr('stroke-width', function(d) { return 2+d.propertyMap.contract_share/5; })
+              .attr('stroke-width', function(d) { 
+                //return 2+d.propertyMap.contract_share/5; 
+                return (d.propertyMap.immediate/5);
+              })
     
     var relationships_text = d3.select(viz).selectAll("g.layer > g.relationship text")
               .attr('font-size', '18px')

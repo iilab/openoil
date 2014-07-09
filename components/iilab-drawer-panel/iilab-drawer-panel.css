@@ -23,7 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   left: 0;
   /* FIXME(ffu): remove hard-coded drawer panel width */
   /*width: 256px;*/
-  width: 350px;
+  width: 450px;
   height: 100%;
   background: white;
   box-sizing: border-box;
@@ -64,7 +64,7 @@ polyfill-next-selector { content: ':host [drawer]'; }
   top: 0;
   right: 0;
   bottom: 0;
-  left: 350px;
+  left: 450px;
   overflow: auto;
 }
 
@@ -74,7 +74,7 @@ polyfill-next-selector { content: ':host [drawer]'; }
 
 :host(.right-drawer) #main {
   left: 0;
-  right: 350px;
+  right: 450px;
 }
 
 :host(.right-drawer) .transition #main {
