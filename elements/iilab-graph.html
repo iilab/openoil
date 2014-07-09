@@ -1,53 +1,107 @@
 <link rel="import" href="../components/polymer/polymer.html">
-<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="../components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="../components/juicy-html/juicy-html.html">
+<link rel="import" href="iilab-description.html">
 
-<polymer-element name="iilab-graph" noscript attributes="search url">
+<polymer-element name="iilab-graph" noscript attributes="search url description cypher depth">
   <style>
-    .d3-tip {
-    background-color: white;
-    border-color: #E2E2E2;
-    color: #454545;
-    border-radius: 2px;
-    width: 400px;
-    border-width: 1px;
-    border-style: solid;
-    font-size: 18.5px;
-    line-height: 12px;
-    direction: ltr;
-    box-shadow: none;
-    padding: 0px;
-  }
+      .d3-tip {
+      background-color: white;
+      border-color: #E2E2E2;
+      color: #454545;
+      border-radius: 2px;
+      width: 400px;
+      border-width: 1px;
+      border-style: solid;
+      font-size: 18.5px;
+      line-height: 12px;
+      direction: ltr;
+      box-shadow: none;
+      padding: 0px;
+    }
 
-  .d3-tip ul li {
-    list-style: none;
-    margin:14px 0px 0px;
-    font-size: 0.8em;
-    padding-right:10px;
-  }
+    .d3-tip ul li {
+      list-style: none;
+      margin:14px 0px 0px;
+      font-size: 0.8em;
+      padding-right:10px;
+    }
 
-  /* Creates a small triangle extender for the tooltip */
-  .d3-tip:after {
-    box-sizing: border-box;
-    display: inline;
-    font-size: 10px;
-    width: 100%;
-    line-height: 1;
-    color: white;
-    content: "\25BC";
-    position: absolute;
-    text-align: center;
-  }
+    /* Creates a small triangle extender for the tooltip */
+    .d3-tip:after {
+      box-sizing: border-box;
+      display: inline;
+      font-size: 10px;
+      width: 100%;
+      line-height: 1;
+      color: white;
+      content: "\25BC";
+      position: absolute;
+      text-align: center;
+    }
 
-  /* Style northward tooltips differently */
-  .d3-tip.n:after {
-    margin: -1px 0 0 0;
-    top: 100%;
-    left: 0;
-  }
+
+    /* Style northward tooltips differently */
+    .d3-tip.n:after {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 0;
+    }
+
   </style>
   <template>
-<!--    <button on-click="{{buttonClick}}"></button>-->
-    <svg id="viz"></svg>
+      <style>
+        core-submenu::shadow #submenu {
+          margin-left: 10px;
+        }
+      </style>
+      <iilab-drawer-panel id="iilab_drawer" class="right-drawer" selected="main">
+        <div drawer vertical layout>
+           <template bind="{{element}}">
+            <div vertical layout>
+              <core-menu valueattr="label" id="core_menu" theme="core-light-theme" selected="0" vertical layout>
+                <template if="{{ _type == 'node' }}">
+                  <core-submenu icon="list" label="{{ type }} Details" selected="0">
+                    <paper-item icon="flag" label="{{ name }}" id="name"></paper-item>
+                    <template if="{{ oc_id }}"><paper-item icon="info-outline" label="Open Corporates Id: {{ oc_id }}" id="oc_id"></paper-item></template>
+                    <template if="{{ directors }}"><paper-item icon="account-circle" label="Directors: {{ directors }}" icon="check" id="directors"></paper-item></template>
+                    <template if="{{ shareholders }}"><paper-item icon="account-box" label="Shareholders: {{ shareholders }}" icon="check" id="shareholders"></paper-item></template>
+                    <template if="{{ license_area }}"><paper-item icon="receipt" label="License Areas: {{ license_area }}" icon="check" id="license_area"></paper-item></template>
+                    <template if="{{ field }}"><paper-item icon="receipt" label="Fields: {{ field }}" icon="check" id="field"></paper-item></template>
+                  </core-submenu> 
+                </template>
+                <template if="{{ _type == 'relationship' }}">
+                  <core-submenu icon="list" label="{{ ownership_type }}">
+                    <template if="{{ immediate }}"><paper-item icon="info-outline" label="Immediate Ownership: {{ immediate }}%" id="immediate"></paper-item></template>
+                    <template if="{{ ultimate }}"><paper-item icon="info-outline" label="Ultimate Ownership: {{ ultimate }}%" id="ultimate"></paper-item></template>
+                    <template if="{{ ownership_status }}"><paper-item icon="info-outline" label="Ownership Status: {{ ownership_status }}%" id="ownership_status"></paper-item></template>
+                    <template if="{{ ownership_status }}"><paper-item icon="info-outline" label="Ownership Status: {{ ownership_status }}%" id="ownership_status"></paper-item></template>
+                  </core-submenu> 
+                </template>
+                <template if="{{ source_url }}">
+                  <core-submenu icon="receipt" label="Sources">
+                      <template if="{{ confidence }}"><paper-item label="Confidence: {{ confidence }}" id="confidence"></paper-item></template>
+                      <template if="{{ source_url }}"><paper-item label="Source URL: {{ source_url }}" id="source_url"></paper-item></template>
+                      <template if="{{ source_date }}"><paper-item label="Source Publication Date: {{ source_date }}" id="source_date"></paper-item></template>
+                      <template if="{{ source_type }}"><paper-item label="Source Type: {{ source_type }}" id="source_type"></paper-item></template>
+                      <template if="{{ log_message }}"><paper-item icon="info-outline" label="Notes: {{ log_message }}%" id="log_message"></paper-item></template>
+                  </core-submenu> 
+                </template>
+                <core-submenu icon="attachment" label="Documents">
+                    <paper-item label="Nigeria" icon="check" id="nigeria_item"></paper-item>
+                </core-submenu> 
+                <core-submenu icon="bookmark-outline" label="Request Data">
+                    <paper-item label="Nigeria" icon="check" id="nigeria_item"></paper-item>
+                </core-submenu> 
+              </core-menu>
+            </div>
+          </template>
+          <paper-button on-click="{{buttonClick}}"></paper-button>
+          <paper-shadow z="1"></paper-shadow>
+        </div>
+        <div main><svg id="viz"></svg></div>
+      </iilab-drawer-panel>
   </template>
   <script src="../components/d3/d3.min.js"></script>
   <script src="../components/d3-tip/index.js"></script>
@@ -58,19 +112,40 @@
   <script src="iilab-graph.js"></script>
   <script>
     Polymer('iilab-graph', {
-/*      published: {
+      published: {
         strings: {
           value: "hellow",
           reflect: true
-        }
-      },*/
+        },
+        element: { 
+        },
+      },
+      cypher: "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0..2]->(n) RETURN n, labels(n) as label, r",
+      depth: 2,
+      element: { 
+          _type: "",
+          type: "",
+          name: "",
+          oc_id: "",
+          directors: "",
+          shareholders: "",
+          license_area: "",
+          field:"",
+          confidence:"",
+          ownership_status: "",
+          source_url: "",
+          source_type: "",
+          source_date: "",
+          log_message: ""
+      },
       ready: function() {
-        var viz = this.$.viz;
-        console.log(this.url)
-        startGraph(viz, this.url)
+        startGraph(this.$.viz, this)
       },
       buttonClick: function(e) {
-        this.strings= "what?"
+        this.$.drawer.togglePanel()
+      },
+      cypherChanged: function(oldValue, newValue) {
+        console.log("cypherChange")
       }
     });
   </script>
