@@ -18,7 +18,7 @@
           <paper-item label="BP" icon="check" id="bp_item2"></paper-item>
         </core-submenu> 
         <core-submenu icon="bookmark" label="Nigeria">
-            <paper-item label="Nigeria" icon="check" id="nigeria_item"></paper-item>
+            <paper-item label="Foreign Companies in Nigeria" icon="check" id="nigeria_item"></paper-item>
         </core-submenu> 
       </core-submenu> 
       <core-submenu icon="settings" label="Advanced Settings">
@@ -53,13 +53,14 @@
 	        console.log(selectedItem.id)
 	        switch(selectedItem.id) {
 				case "bp_item2":
-				    this.cypher = "MATCH (n:Company)<-[r]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r]-(n) RETURN n, labels(n) as label, r LiMIT 20"
-				    console.log(this.cypher)
+				    this.cypher = "MATCH (n:Company)<-[r*.." + this.depth + "]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r*.." + this.depth + "]-(n) RETURN n, labels(n) as label, r LiMIT 20"
 				    break;
 				case "bp_plc_subs":
 					this.depth = "2"
 				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
-				    console.log(this.cypher)
+				    break;
+				case "nigeria_item":
+				this.cypher = "MATCH (parentcountry)<-[:HAS_JURISDICTION]-(n)-[r:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (parentcountry)<-[:HAS_JURISDICTION]-(parent)-[r:IS_OWNER]->(n)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[:HAS_JURISDICTION]-(parent)-[r:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[r:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[r:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r "
 				    break;
 				default:
 				    break;

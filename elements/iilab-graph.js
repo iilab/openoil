@@ -42,17 +42,31 @@ function startGraph(viz, that) {
                                   return (row.r instanceof Array) ? (row.r.length == i) : true
                                })
                                .map(function(row) {
-//                                    console.log(i)
-//                                    console.log(row)
-                                    r = (row.r instanceof Array) ? row.r[i-1] : row.r
-                                    return {
+                                    console.log(i)
+                                    console.log(row)
+                                    var ret = {};
+                                    if (row.r instanceof Array) {
+                                      r = row.r[i-1]
+                                      ret = {
                                         id: r.self.replace(that.url + "relationship/",""),
                                         source: r.start.replace(that.url + "node/",""),
                                         target: r.end.replace(that.url + "node/",""),
                                         type: r.type,
                                         caption: r.data.immediate + "%",
                                         properties: r.data
+                                      }
+                                    } else {
+                                      r = row.r
+                                      ret = {
+                                        id: r.id,
+                                        source: r.start,
+                                        target: r.end,
+                                        type: r.type,
+                                        caption: r.data.immediate + "%",
+                                        properties: r.data
+                                      }
                                     }
+                                    return ret;
                                 }));
 
               }
@@ -188,7 +202,7 @@ function startGraph(viz, that) {
         if (d.constructor.name == "Node") {
           // TODO: Change to template
           ret=  "<ul><strong>" + d.labels[0] + "</strong>"
-                + "<li>Name: <strong>" + d.propertyMap.name + "</strong></li>"
+                + "<li><strong>" + d.propertyMap.name + "</strong></li>"
                 + ( ( d.propertyMap.oc_id ) ? "<li>Open Corporates ID: <strong>" + d.propertyMap.oc_id + "</strong></li>" : "" )
                 + ( ( d.propertyMap.directors ) ? "<li>Directors: <strong>" + d.propertyMap.directors.replace(/\n/g, "<br />") + "</strong></li>" : "" )
                 + ( ( d.propertyMap.shareholders ) ? "<li>Shareholders: <strong>" + d.propertyMap.shareholders.replace(/\n/g, "<br />") + "</strong></li>" : "" )
@@ -228,6 +242,13 @@ function startGraph(viz, that) {
           that.element.shareholders = ( d.propertyMap.shareholders ) ? d.propertyMap.shareholders.replace(/\n/g, "<br />") : ""
           that.element.license_area = d.propertyMap.license_area
           that.element.field = d.propertyMap.field
+          that.element.ownership_type = ""
+          that.element.immediate = ""
+          that.element.ultimate = ""
+          that.element.ownership_status = ""
+          that.element.source_url = ""
+          that.element.source_date = ""
+          that.element.confidence = ""
 
           that.$.iilab_drawer.openDrawer();
 
@@ -237,9 +258,9 @@ function startGraph(viz, that) {
 
           zs = zoom.scale()
           zt = zoom.translate();
-          zs = h / layers.node().getBBox().height
-          dx = (w/2.0) - d.x*zs;
-          dy = (h/2.0) - d.y*zs;
+          zs = window.innerHeight / 1000
+          dx = (w/2.0) - d.x*zs - 100 ;
+          dy = (h/2.0) - d.y*zs - 20;
 
           zoom.translate([dx, dy]);
           zoom.scale(zs);
@@ -266,7 +287,7 @@ function startGraph(viz, that) {
 
         })
     // Creating Strings for the Autocomplete feature
-    this.strings = myjson.nodes.map(function(val) {
+    that.strings = myjson.nodes.map(function(val) {
         return { label: val.properties.name, value: val.id };
       });
 

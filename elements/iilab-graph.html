@@ -1,10 +1,9 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="../components/paper-shadow/paper-shadow.html">
 <link rel="import" href="../components/paper-button/paper-button.html">
-<link rel="import" href="../components/juicy-html/juicy-html.html">
 <link rel="import" href="iilab-description.html">
 
-<polymer-element name="iilab-graph" noscript attributes="search url description cypher depth">
+<polymer-element name="iilab-graph" noscript attributes="search url description cypher depth strings">
   <style>
       .d3-tip {
       background-color: white;
@@ -72,7 +71,7 @@
                   </core-submenu> 
                 </template>
                 <template if="{{ _type == 'relationship' }}">
-                  <core-submenu icon="list" label="{{ ownership_type }}">
+                  <core-submenu icon="list" label="{{ ownership_type }}" selected="0">
                     <template if="{{ immediate }}"><paper-item icon="info-outline" label="Immediate Ownership: {{ immediate }}%" id="immediate"></paper-item></template>
                     <template if="{{ ultimate }}"><paper-item icon="info-outline" label="Ultimate Ownership: {{ ultimate }}%" id="ultimate"></paper-item></template>
                     <template if="{{ ownership_status }}"><paper-item icon="info-outline" label="Ownership Status: {{ ownership_status }}%" id="ownership_status"></paper-item></template>
@@ -89,10 +88,17 @@
                   </core-submenu> 
                 </template>
                 <core-submenu icon="attachment" label="Documents">
-                    <paper-item label="Nigeria" icon="check" id="nigeria_item"></paper-item>
                 </core-submenu> 
-                <core-submenu icon="bookmark-outline" label="Request Data">
-                    <paper-item label="Nigeria" icon="check" id="nigeria_item"></paper-item>
+                <core-submenu icon="bookmark-outline" label="Request Data" vertical layout>
+                    <paper-input floatinglabel label="Email" icon="email" id="email"></paper-input>
+                    <paper-input floatinglabel label="First Name" icon="account" id="first_name"></paper-input>
+                    <paper-input floatinglabel label="Last Name" icon="account" id="last_name"></paper-input>
+                    <paper-input floatinglabel label="Company" icon="flag" id="company"></paper-input>
+                    <paper-input multiline label="Type of data to research" icon="query" id="query"></paper-input>
+                    <div center>
+                      <paper-button negative label="Cancel" icon="cancel"></paper-button>
+                      <paper-button affirmative default label="Submit" icon="check"></paper-button>
+                    </div>
                 </core-submenu> 
               </core-menu>
             </div>
@@ -112,14 +118,6 @@
   <script src="iilab-graph.js"></script>
   <script>
     Polymer('iilab-graph', {
-      published: {
-        strings: {
-          value: "hellow",
-          reflect: true
-        },
-        element: { 
-        },
-      },
       cypher: "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0..2]->(n) RETURN n, labels(n) as label, r",
       depth: 2,
       element: { 
@@ -145,7 +143,13 @@
         this.$.drawer.togglePanel()
       },
       cypherChanged: function(oldValue, newValue) {
-        console.log("cypherChange")
+//        console.log("cypherChange")
+//        console.log(newValue)
+        startGraph(this.$.viz, this)
+      },
+      stringsChanged: function(oldValue, newValue) {
+//        console.log("strings")
+//        console.log(newValue)
       }
     });
   </script>

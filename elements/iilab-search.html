@@ -9,51 +9,55 @@
 
     <!-- JQuery Autocomplete in the polymer element -->
     <div class="ui-widget">
-      <paper-input label="Search" id="searchfield" flex>
+<!--      <paper-input label="Search" id="searchfield_paper" inputValue="{{search}}" flex>-->
+      <input label="Search" id="searchfield" value="{{search}}" class="autocomplete" flex>
     </div>
   </template>
   <script>
     Polymer('iilab-search', {
       stringsChanged: function(oldValue, newValue) {
-        console.log("stringsChanged")
+//        console.log("stringsChanged - in iilab-search")
+//        console.log(newValue)        
+      },
+      searchChanged: function(oldValue, newValue) {
+//        console.log(newValue)
       },
       ready: function() {
-        var searchfield = $(this.$.input)
         // Autocomplete
-        console.log(this.strings)
-        searchfield.autocomplete({
-            source: this.strings,
-            focus: function( event, ui){
-                d3.selectAll("g.node circle")
-                    .transition()
-                    .attr("fill", chart.style()['node.Company'].color)
-                d3.selectAll("#" +ui.item.value+ " circle")
-                    .transition()
-                    .attr("fill", "black")
-            },
-            response: function( event, ui){
-                console.log(ui)
-                for (var i in ui.content) {
-                console.log(ui.content[i])
-                  d3.selectAll("#" +ui.content[i].value+ " circle")
-                    .transition()
-                    .attr("fill", "grey")
-                }
-            },
-            search: function( event, ui){
-    //            console.log(chart.style())
-    //            console.log(chart.style()['node.Company'].color)
-                d3.selectAll("g.node circle")
-                    .transition()
-                    .attr("fill", chart.style()['node.Company'].color)
-            },
-            close: function( event, ui){
-    //            console.log(chart.style())
-    //            console.log(chart.style()['node.Company'].color)
-                d3.selectAll("g.node circle")
-                    .transition()
-                    .attr("fill", chart.style()['node.Company'].color)
-            }
+        console.log($('#searchfield'))
+        $('#searchfield').autocomplete({
+          source: this.strings,
+          focus: function( event, ui){
+              d3.selectAll("g.node circle")
+                  .transition()
+                  .attr("fill", chart.style()['node.Company'].color)
+              d3.selectAll("#" +ui.item.value+ " circle")
+                  .transition()
+                  .attr("fill", "black")
+          },
+          response: function( event, ui){
+              console.log(ui)
+              for (var i in ui.content) {
+              console.log(ui.content[i])
+                d3.selectAll("#" +ui.content[i].value+ " circle")
+                  .transition()
+                  .attr("fill", "grey")
+              }
+          },
+          search: function( event, ui){
+  //            console.log(chart.style())
+  //            console.log(chart.style()['node.Company'].color)
+              d3.selectAll("g.node circle")
+                  .transition()
+                  .attr("fill", chart.style()['node.Company'].color)
+          },
+          close: function( event, ui){
+  //            console.log(chart.style())
+  //            console.log(chart.style()['node.Company'].color)
+              d3.selectAll("g.node circle")
+                  .transition()
+                  .attr("fill", chart.style()['node.Company'].color)
+          }
         })
       }
     })
@@ -63,7 +67,7 @@
       console.log("hi!")
       jQuery.contains = function(parent, child){
           console.log(child)
-          var re = /ui-widget|dp/i;
+          var re = /ui-widget|autocomplete/i;
           if(child.className.match(re)) {
             return true;
           }
