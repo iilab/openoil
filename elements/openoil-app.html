@@ -134,26 +134,31 @@
           <core-icon icon="search" id="core_icon"></core-icon>
           <iilab-search search="{{searchText}}" strings="{{stringsText}}" id="iilab_search"></iilab-search>
         </core-field>
-        <paper-icon-button id="zoom_out" icon="image:crop-free" role="button" tabindex="0" class=""></paper-icon-button>
+        <core-tooltip>
+          <h5>Zoom</h5>
+          <div tip>Drag the slider to change the zoom level.</div>
+        </core-tooltip>
+        <paper-slider id="zoom_slider" pin="" snaps="" min="-3.5" max="1" step="0.05" value="{{zoomSlider}}"></paper-slider>
+        <paper-icon-button id="zoom_out" icon="image:crop-free" role="button" tabindex="0" class="" on-click="{{zoomOut}}"></paper-icon-button>
         <paper-menu-button icon="more-vert" valign="bottom" halign="right">
           <paper-item icon="visibility" label="About OpenOil"></paper-item>
           <paper-item icon="extension" label="Contribute"></paper-item>
           <paper-item icon="info" label="Sources"></paper-item>
         </paper-menu-button>      
       </div>
-<!--      <iilab-graph id="iilab_graph" search="{{searchtext}}" strings="{{strings_exchange}}" url="https://db.openoil.iilab.org/db/data/"></iilab-graph>-->
-      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" strings="{{stringsText}}" url="{{url}}"></iilab-graph>
+      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" strings="{{stringsText}}" url="{{url}}" zoom="{{zoom}} autozoom={{autozoom}}"></iilab-graph>
       <!--<core-card id="core_card" layout vertical></core-card>-->
     </core-scaffold>
   </template>
   <script> 
   	Polymer('openoil-app', {
-      url: (window.location.href == 'http://localhost/')?'http://db.localhost:7474/db/data/' : 'https://db.openoil.iilab.org/db/data/',
+      url: (window.location.href == 'http://localhost/')?'http://db.localhost:7474/db/data/' : 'https://db_openoil.iilab.org/db/data/',
+      zoom: 1,
+      zoomSlider: 1,
   		published: {
   			title: ""
   		},
   		buttonClick: function(e, detail, sender) {
-  			console.log(document.querySelector('iilab-drawer-panel'))
   			document.querySelector('iilab-graph').shadowRoot.querySelector('#drawer').togglePanel();
   		},
       searchTextChanged: function(o, n) {
@@ -162,6 +167,20 @@
       stringsTextChanged: function(o, n) {
 //        console.log("stringsTextChanged")
 //        console.log(n)
+      },
+      zoomOut: function() {
+        this.$.iilab_graph.zoom = 1;
+      },
+      zoomChanged: function(o,n) {
+        console.log("openoil-app zoomChanged")
+        console.log(Math.log(n))
+        this.zoomSlider = Math.log(n)
+      },
+      zoomSliderChanged: function(o,n) {
+        console.log("openoil-app zoomSliderChanged")
+        console.log(Math.log(n))
+        this.$.iilab_graph.zoom = Math.exp(n);
+        this.$.iilab_graph.autozoom = false;
       }
   	})
   </script>
