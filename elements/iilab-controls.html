@@ -44,13 +44,13 @@
   <script> 
   	Polymer('iilab-controls', {
 		buttonClick: function(e, detail, sender) {
-			console.log(document.querySelector('iilab-drawer-panel'))
+//			console.log(document.querySelector('iilab-drawer-panel'))
 			document.querySelector('iilab-graph').shadowRoot.querySelector('#drawer').togglePanel();
 		},
 		selectAction: function(e, detail) {
 	      if (detail.isSelected) {
 	        var selectedItem = detail.item;
-	        console.log(selectedItem.id)
+//	        console.log(selectedItem.id)
 	        switch(selectedItem.id) {
 				case "bp_item2":
 				    this.cypher = "MATCH (n:Company)<-[r*.." + this.depth + "]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r*.." + this.depth + "]-(n) RETURN n, labels(n) as label, r LiMIT 20"
@@ -60,7 +60,7 @@
 				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
 				    break;
 				case "nigeria_item":
-				this.cypher = "MATCH (parentcountry)<-[:HAS_JURISDICTION]-(n)-[r:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (parentcountry)<-[:HAS_JURISDICTION]-(parent)-[r:IS_OWNER]->(n)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[:HAS_JURISDICTION]-(parent)-[r:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[r:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[r:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r "
+				this.cypher = "MATCH (parentcountry)<-[:HAS_JURISDICTION]-(n)-[r:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (parentcountry)<-[:HAS_JURISDICTION]-(parent)-[r:IS_OWNER]->(n)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[:HAS_JURISDICTION]-(parent)-[r:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[r:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (m)<-[:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[r:HAS_JURISDICTION]->(n) WHERE n.name = 'Nigeria' RETURN n, labels (n) as label, r "
 				    break;
 				default:
 				    break;

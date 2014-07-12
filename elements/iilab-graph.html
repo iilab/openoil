@@ -6,7 +6,7 @@
 <link rel="import" href="../components/core-menu/core-submenu.html">
 <link rel="import" href="iilab-description.html">
 
-<polymer-element name="iilab-graph" noscript attributes="search url description cypher depth strings">
+<polymer-element name="iilab-graph" noscript attributes="search url description cypher depth strings zoom autozoom">
   <style>
       .d3-tip {
       background-color: white;
@@ -56,6 +56,13 @@
       <style>
         core-submenu::shadow #submenu {
           margin-left: 10px;
+        }
+        g.node {
+          cursor: pointer;
+        }
+
+        g.relationship {
+          cursor: pointer;
         }
       </style>
       <iilab-drawer-panel id="iilab_drawer" class="right-drawer" selected="main">
@@ -135,6 +142,7 @@
   <script src="../components/d3/d3.min.js"></script>
   <script src="../components/d3-tip/index.js"></script>
   <script src="../components/neod3/neod3.js"></script>
+  <script src="neod3-iilab.js"></script>
   <script src="../components/jquery/dist/jquery.js"></script>
   <script src="../components/jquery-ui/jquery-ui.js"></script>
   <script src="../components/neo4j-js.js"></script>
@@ -159,20 +167,36 @@
           source_date: "",
           log_message: ""
       },
+      zoom: 1,
+      autozoom: true,
       ready: function() {
         startGraph(this.$.viz, this)
+        this.addEventListener('graph-zoomed', this.Zoomed);
+      },
+      zoomChanged: function(o, n) {
+        console.log("iilab-graph zoomChanged")
+        this.updateZoom(n);
       },
       buttonClick: function(e) {
         this.$.drawer.togglePanel()
       },
       cypherChanged: function(oldValue, newValue) {
-//        console.log("cypherChange")
-//        console.log(newValue)
         startGraph(this.$.viz, this)
       },
       stringsChanged: function(oldValue, newValue) {
-//        console.log("strings")
-//        console.log(newValue)
+      },
+      updateZoom: function(n) {
+        if (!this.autozoom) {
+           this.fire('zoom-slider', {zoom: n})
+        } 
+        //this.zoom = n;
+      },
+      Zoomed: function(e) {
+//        console.log("Zoomed")
+//        console.log(e.detail.zoom);
+        this.autozoom = true
+        this.zoom = e.detail.zoom;
+        e.stopPropagation();
       }
     });
   </script>

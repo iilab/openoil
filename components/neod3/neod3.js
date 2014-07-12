@@ -100,10 +100,11 @@ neo.models.Graph = (function() {
         throw "Invalid source";
       })();
       target = this.nodeMap[item.target] || (function() {
-//        console.log(item)
+        console.log(item)
         throw "Invalid target";
       })();
-      this.relationshipMap[item.id] = new neo.models.Relationship(item.id, source, target, item.type, item.caption, item.properties);
+      // HACK (adding caption and weight)
+      this.relationshipMap[item.id] = new neo.models.Relationship(item.id, source, target, item.type, item.caption, item.weight, item.properties);
     }
     return this;
   };
@@ -494,7 +495,7 @@ neo.graphModel = function() {
 var __slice = [].slice;
 
 neo.graphView = function() {
-  var callbacks, chart, layout, style, trigger, viz;
+  var callbacks, chart, layout, style, trigger, viz, geometry;
   layout = neo.layout.force();
   style = neo.style();
   viz = null;
@@ -513,7 +514,9 @@ neo.graphView = function() {
   chart = function(selection) {
     selection.each(function(graphModel) {
       if (!viz) {
-        viz = neo.viz(this, graphModel, layout, style);
+        // HACK to override Geometry
+        // viz = neo.viz(this, graphModel, layout, style);
+        viz = neo.viz(this, graphModel, layout, style, geometry);
         graphModel.on('updated', function() {
           return viz.update();
         });
@@ -550,6 +553,11 @@ neo.graphView = function() {
     if (!arguments.length) {
       return viz.height;
     }
+    return chart;
+  };
+  // HACK to override Geometry
+  chart.geometry = function(value) {
+    geometry = value;
     return chart;
   };
   chart.update = function() {
@@ -656,12 +664,14 @@ neo.models.Node = (function() {
 var __hasProp = {}.hasOwnProperty;
 
 neo.models.Relationship = (function() {
-  function Relationship(id, source, target, type, caption, properties) {
+  function Relationship(id, source, target, type, caption, weight, properties) {
     var key, value;
     this.id = id;
     this.source = source;
     this.target = target;
+    // HACK
     this.caption = caption;
+    this.weight = weight;
     this.type = type;
     this.propertyMap = properties;
     this.propertyList = (function() {
@@ -1156,13 +1166,14 @@ neo.style = (function() {
 
 var __slice = [].slice;
 
-neo.viz = function(el, graph, layout, style) {
+neo.viz = function(el, graph, layout, style, geo) {
   var clickHandler, force, geometry, onNodeClick, onNodeDblClick, onRelationshipClick, render, viz;
   viz = {
     style: style
   };
   el = d3.select(el);
-  geometry = new NeoD3Geometry(style);
+  // HACK to override Geometry
+  geometry = geo ? new geo(style) : new NeoD3Geometry(style);
   viz.trigger = function() {
     var args, event;
     event = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];

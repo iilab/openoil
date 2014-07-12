@@ -172,13 +172,13 @@
         this.$.iilab_graph.zoom = 1;
       },
       zoomChanged: function(o,n) {
-        console.log("openoil-app zoomChanged")
-        console.log(Math.log(n))
+//        console.log("openoil-app zoomChanged")
+//       console.log(Math.log(n))
         this.zoomSlider = Math.log(n)
       },
       zoomSliderChanged: function(o,n) {
-        console.log("openoil-app zoomSliderChanged")
-        console.log(Math.log(n))
+//        console.log("openoil-app zoomSliderChanged")
+//      console.log(Math.log(n))
         this.$.iilab_graph.zoom = Math.exp(n);
         this.$.iilab_graph.autozoom = false;
       }

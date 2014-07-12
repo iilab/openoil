@@ -52,7 +52,8 @@ function startGraph(viz, that) {
                                         source: r.start.replace(that.url + "node/",""),
                                         target: r.end.replace(that.url + "node/",""),
                                         type: r.type,
-                                        caption: r.data.immediate + "%",
+                                        caption: r.type == "IS_OWNER" ? r.data.immediate + "%" : r.type == "IS_CONTRACTOR" ? r.data.contract_share + '%': '',
+                                        weight: r.type == "IS_OWNER" ? r.data.immediate/10 : r.type == "IS_CONTRACTOR" ? r.data.contract_share/5 : 1,
                                         properties: r.data
                                       }
                                     } else {
@@ -62,7 +63,8 @@ function startGraph(viz, that) {
                                         source: r.start,
                                         target: r.end,
                                         type: r.type,
-                                        caption: r.data.immediate + "%",
+                                        caption: r.type == "IS_OWNER" ? r.data.immediate + "%" : r.type == "IS_CONTRACTOR" ? r.data.contract_share + '%': '',
+                                        weight: r.type == "IS_OWNER" ? r.data.immediate/10 : r.type == "IS_CONTRACTOR" ? r.data.contract_share/5 : 1,
                                         properties: r.data
                                       }
                                     }
@@ -98,8 +100,8 @@ function startGraph(viz, that) {
         _force.init = function(render) {
           var accelerateLayout, d3force, forceLayout, linkDistance;
           forceLayout = {};
-          linkDistance = 500;
-          d3charge = -10000;
+          linkDistance = 75;
+          d3charge = -8000;
 
           // Basic Force Layout Parameters
           d3force = d3.layout.force()
@@ -149,6 +151,7 @@ function startGraph(viz, that) {
 
                   dx = - (layers.node().getBBox().x)*zs + 100 ;
                   dy = - (layers.node().getBBox().y)*zs + 20 ;
+                  that.fire('graph-zoomed', {zoom: zs})
 
                   zoom.translate([dx, dy]);
                   layers.transition()
@@ -173,7 +176,7 @@ function startGraph(viz, that) {
               x: size[0] / 2,
               y: size[1] / 2
             };
-            neo.utils.circularLayout(nodes, center, radius);
+            //neo.utils.circularLayout(nodes, center, radius);
             return d3force.nodes(nodes).links(relationships).size(size).start();
           };
 
@@ -221,19 +224,21 @@ function startGraph(viz, that) {
 
     // Neod3 graphView which is an API on top of d3 
     //
+
     chart = neo.graphView()
 
     var style = chart.style(styleContents)
         .width(w)
         .height(h)
         .layout(layoutOO())
+        .geometry(NeoD3Geometry_iilab)
         .on('nodeClicked', function(d,i){
           // Select proper parent <g>
           if (d.constructor.name == "Object" && d.node) {
             d = d.node
           }
           // Display sidebar.
-          console.log(d)
+//          console.log(d)
 
           that.element._type = "node"
           that.element.type = d.labels[0]
@@ -265,6 +270,8 @@ function startGraph(viz, that) {
 
           zoom.translate([dx, dy]);
           zoom.scale(zs);
+          that.fire('graph-zoomed', {zoom: zs})
+
           layers.transition()
               .duration(1000)
               .call(zoom.event, layers);
@@ -274,7 +281,7 @@ function startGraph(viz, that) {
           if (d.constructor.name == "Object" && d.relationship) {
                     d = d.relationship
           }
-          console.log(d)
+//          console.log(d)
           that.element._type = "relationship"
           that.element.type = d.type
           that.element.source = d.source
@@ -299,6 +306,13 @@ function startGraph(viz, that) {
           .nodes(myjson.nodes)
           .relationships(myjson.links)
 
+    neo.renderers = {
+      node: [],
+      relationship: []
+    };
+
+    neod3_iilab()
+
     var zoom = d3.behavior.zoom()
         .scaleExtent([0.1, 10])
         .on("zoom", zoomed);
@@ -321,15 +335,19 @@ function startGraph(viz, that) {
 
     var relationships_path = d3.select(viz).selectAll("g.layer > g.relationship path")
               .attr('fill-opacity', 1)
-              .attr('stroke', '#DDD')
-              .attr('stroke-width', function(d) { 
-                //return 2+d.propertyMap.contract_share/5; 
-                return (d.propertyMap.immediate/5);
+              .attr('fill', function(d) { 
+//                console.log(d)
+                return 'rgb(' 
+                + ( (242 - parseInt(d.weight) * 20) < 242 ? (242 - parseInt(d.weight) * 20) : 242 )
+                + ',' + ( (262 - parseInt(d.weight)  * 20) < 242 ? (242 - parseInt(d.weight) * 20) : 242 )
+                + ',' + ( (346 - parseInt(d.weight)  * 20) < 242 ? (346 - parseInt(d.weight)  * 20) : 242 )
+                + ')';
               })
+//              .attr('stroke-width', function(d) { 
+//                return (d.weight);
+//              })
     
     var relationships_text = d3.select(viz).selectAll("g.layer > g.relationship text")
-              .attr('font-size', '18px')
-
 
     var nodes_inner = d3.select(viz).selectAll("g.layer > g.node circle, g.layer > g.node text")
               .on('mouseover', function(d) {
@@ -339,7 +357,7 @@ function startGraph(viz, that) {
                 tip.hide(d, this.parentNode)
               });
 
-    var relationships_inner = d3.select(viz).selectAll("g.layer > g.relationship rect")
+    var relationships_inner = d3.select(viz).selectAll("g.layer > g.relationship .overlay")
               .on('mouseover', function(d) {
                 tip.show(d, this)
               })
@@ -367,6 +385,7 @@ function startGraph(viz, that) {
 
     function zoomed() {
       layers.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+      that.fire('graph-zoomed', {zoom: d3.event.scale})
     }
 
     function dragstarted(d) {
@@ -384,6 +403,14 @@ function startGraph(viz, that) {
       d3.select(this).classed("dragging", false);
     }
 
+    that.addEventListener('zoom-slider', function(e) {
+      console.log("in zoomslider listener")
+      console.log(e.detail.zoom)
+      zoom.scale(e.detail.zoom);
+      layers.transition()
+        .duration(1000)
+        .call(zoom.event, layers);
+    });
 
     $(function() {
 
