@@ -1,28 +1,46 @@
 node {
   diameter: 40px;
-  color: #DFE1E3;
-  border-color: #D4D6D7;
-  border-width: 2px;
-  text-color-internal: #000000;
+  color: #FFFFFF;
+  border-color: #2a3e92;
+  border-width: 4px;
+  text-color-internal: #2a3e92;
   caption: '{id}';
   font-size: 10px;
 }
 
 relationship {
-  color: #D4D6D7;
+  color: #2a3e92;
   shaft-width: 1px;
-  font-size: 8px;
+  font-size: 18px;
   padding: 3px;
-  text-color-external: #000000;
-  text-color-internal: #FFFFFF;
+  text-color-external: #2a3e92;
+  text-color-internal: #2a3e92;
+}
+
+relationship.IS_OWNER {
+  color: #2a3e92;
+  shaft-width: 1px;
+  font-size: 18px;
+  padding: 3px;
+  text-color-external: #2a3e92;
+  text-color-internal: #2a3e92;
+}
+
+relationship.IS_CONTRACTOR {
+  color: #2a3e92;
+  shaft-width: 1px;
+  font-size: 18px;
+  padding: 3px;
+  text-color-external: #2a3e92;
+  text-color-internal: #2a3e92;
 }
 
 node.Company {
-  color: #F25A29;
-  border-color: #DC4717;
-  text-color-internal: #FFFFFF;
+  color: #FFFFFF;
+  border-color: #2a3e92;
+  text-color-internal: #2a3e92;
   diameter: 80px;
-  border-width: 2px;
+  border-width: 4px;
   caption: '{name}';
   font-size: 10px;
 }

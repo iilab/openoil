@@ -1,9 +1,9 @@
 // Load Nigeria - Companies
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/iilab/openoil/master/data/Nigeria_companies_20140628.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/iilab/openoil/master/data/Nigeria_companies_20140711.csv' AS line
 WITH line
 MERGE (company:Company {name: coalesce(line.name,split(coalesce(line.other_names,''), ',')[0]), other_names: coalesce(line.other_names,''), previous_names: coalesce(line.previous_names,''), oc_id: line.oc_id, headquarters:line.oc_id, directors:line.directors, shareholders:line.shareholders, foundation_date:line.foundation_date, website:line.website, document:''})
 MERGE (country:Country { name: line.jurisdiction})
-MERGE (company)-[s:HAS_JURISDICTION]->(country)
+MERGE (company)-[s:HAS_JURISDICTION { source_url: line.jurisdiction_source}]->(country)
 WITH line, company
 WHERE line.legal_type <> ''
 MERGE (legaltype:LegalType {name: line.legal_type})
