@@ -25,14 +25,16 @@
 
 <polymer-element name="openoil-app" noscript>
   <template>
+  <link rel="stylesheet" href="../components/jquery-ui/themes/ui-lightness/jquery-ui.css">
+
   <style shim-shadowdom>
     core-scaffold core-toolbar {
       background: #EEE;
-      color: black;
+      color: #2a3e92;
     }
-    core-scaffold [main] core-header-panel {
-      background: #FFF;
-      color: black;
+
+    core-drawer-panel #main > [main] {
+     background: #FFF; 
     }
   </style>
   <style>
@@ -57,11 +59,11 @@
 
     core-scaffold::shadow core-toolbar {
       background: #EEE;
-      color: black;
+      color: #2a3e92;
     }
     core-scaffold::shadow core-header-panel {
       background: #FFF;
-      color: black;
+      color: #2a3e92;
     }
     paper-tabs {
       width: 100%;
@@ -87,11 +89,11 @@
       width: 100%;
       height: 100%;
       box-sizing: border-box;
-      color: rgb(0, 0, 0);
+      color: #2a3e92;
     }
     #core_toolbar {
       right: 0px;
-      color: rgb(0, 0, 0);
+      color: #2a3e92;
       fill: rgb(255, 255, 255);
       background-color: rgb(235, 235, 235);
     }
@@ -106,6 +108,10 @@
       height: 24px;
       width: 24px;
     }
+
+    core-icon-button::shadow core-icon {
+      fill: #2a3e92 ;
+    }
     #core_card {
       width: 300px;
       height: 300px;
@@ -119,21 +125,33 @@
       position: absolute;
       background-color: rgb(255, 255, 255);
     }
+
+    .ui-widget {
+      font-family: RobotoDraft, sans-serif;
+    }
+
+    .ui-widget-content .ui-state-focus {
+      color: #2a3e92;
+      background: none;
+      border: none;
+    }
+
   </style>
     <core-scaffold id="core_scaffold">
       <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
         <core-toolbar id="core_toolbar">
           <core-icon-button icon="menu" id="core_icon_button"></core-icon-button>
         </core-toolbar>
-        <iilab-controls id="iilab_controls" cypher="{{cypherText}}"></iilab-controls>
+        <iilab-controls id="iilab_controls" cypher="{{cypherText}}" depth="{{depthValue}}"></iilab-controls>
         <paper-shadow z="1"></paper-shadow>
       </core-header-panel>
       <div id="div" tool horizontal layout center wrap flex>
-        <div id="title" flex>Open&nbsp;Oil</div>
+        <div id="title" flex>Open&nbsp;Oil Data</div>
         <core-field id="core_field" icon="search">
           <core-icon icon="search" id="core_icon"></core-icon>
-          <iilab-search search="{{searchText}}" strings="{{stringsText}}" id="iilab_search"></iilab-search>
+          <iilab-search search="{{searchText}}" id="iilab_search"></iilab-search>
         </core-field>
+        <div>&nbsp;</div>
         <core-tooltip>
           <h5>Zoom</h5>
           <div tip>Drag the slider to change the zoom level.</div>
@@ -146,7 +164,8 @@
           <paper-item icon="info" label="Sources"></paper-item>
         </paper-menu-button>      
       </div>
-      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" strings="{{stringsText}}" url="{{url}}" zoom="{{zoom}} autozoom={{autozoom}}"></iilab-graph>
+      <div id="selection"></div>
+      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" url="{{url}}" zoom="{{zoom}}" autozoom="{{autozoom}}" depth="{{depthValue}}"></iilab-graph>
       <!--<core-card id="core_card" layout vertical></core-card>-->
     </core-scaffold>
   </template>
@@ -158,6 +177,9 @@
   		published: {
   			title: ""
   		},
+      domReady: function() {
+        this.addEventListener('set-slider', this.sliderSet);
+      },
   		buttonClick: function(e, detail, sender) {
   			document.querySelector('iilab-graph').shadowRoot.querySelector('#drawer').togglePanel();
   		},
@@ -165,22 +187,22 @@
 //        console.log(n)
       },
       stringsTextChanged: function(o, n) {
-//        console.log("stringsTextChanged")
-//        console.log(n)
       },
       zoomOut: function() {
         this.$.iilab_graph.zoom = 1;
       },
-      zoomChanged: function(o,n) {
-//        console.log("openoil-app zoomChanged")
-//       console.log(Math.log(n))
-        this.zoomSlider = Math.log(n)
+      sliderSet: function(e) {
+        console.log("openoil-app zoomChanged")
+        console.log(e.detail.zoom)
+        this.zoomSlider = Math.round(Math.log(e.detail.zoom)*20)/20
       },
       zoomSliderChanged: function(o,n) {
-//        console.log("openoil-app zoomSliderChanged")
-//      console.log(Math.log(n))
-        this.$.iilab_graph.zoom = Math.exp(n);
-        this.$.iilab_graph.autozoom = false;
+        console.log("openoil-app zoomSliderChanged")
+        console.log(n)
+        console.log(Math.exp(Math.round(n*20)/20))
+        this.fire('zoom-slider', {zoom: Math.exp(Math.round(n*20)/20)})
+//        this.$.iilab_graph.zoom = Math.exp(Math.round(n*20)/20);
+//        this.$.iilab_graph.autozoom = false;
       }
   	})
   </script>
