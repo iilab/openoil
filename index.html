@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Open Oil Data Framework</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <script src="components/platform/platform.js"></script>
   <link rel="import" href="elements/openoil-app.html">
@@ -18,7 +19,7 @@
       top: calc(50% - 18px);
       left: calc(50% - 200px);
       font-size: 36px;
-      color: white;
+      color: #2a3e92;
       -webkit-animation: pulsate 2s ease-in-out;
       -webkit-animation-iteration-count: infinite;
       width: 400px;
@@ -56,12 +57,12 @@
   </style>
 </head>
 
-<body loading unresolved touch-action="auto">
+<body unresolved touch-action="auto" class="loading">
   <openoil-app></openoil-app>
+  <div id="loading">Please wait...</div>
 </body>
 <script>
 window.addEventListener('polymer-ready', function() {
-  document.body.classList.remove('loading');
   console.log(window.location)
 })
 </script>
