@@ -6,7 +6,7 @@
 <link rel="import" href="../components/core-menu/core-submenu.html">
 <link rel="import" href="iilab-description.html">
 
-<polymer-element name="iilab-graph" noscript attributes="search url description cypher depth strings zoom autozoom">
+<polymer-element name="iilab-graph" noscript attributes="search url description cypher depth strings zoom autozoom chart">
   <style>
       .d3-tip {
       background-color: white;
@@ -167,36 +167,33 @@
           source_date: "",
           log_message: ""
       },
-      zoom: 1,
       autozoom: true,
-      ready: function() {
+      domReady: function() {
+//        this.chart = startGraph(this.$.viz, this)
+//        console.log(this.chart)
+        console.log(this)
         startGraph(this.$.viz, this)
-        this.addEventListener('graph-zoomed', this.Zoomed);
-      },
-      zoomChanged: function(o, n) {
-        console.log("iilab-graph zoomChanged")
-        this.updateZoom(n);
       },
       buttonClick: function(e) {
         this.$.drawer.togglePanel()
       },
       cypherChanged: function(oldValue, newValue) {
-        startGraph(this.$.viz, this)
-      },
-      stringsChanged: function(oldValue, newValue) {
-      },
-      updateZoom: function(n) {
-        if (!this.autozoom) {
-           this.fire('zoom-slider', {zoom: n})
-        } 
-        //this.zoom = n;
-      },
-      Zoomed: function(e) {
-//        console.log("Zoomed")
-//        console.log(e.detail.zoom);
-        this.autozoom = true
-        this.zoom = e.detail.zoom;
-        e.stopPropagation();
+        var timer = null;
+        var interval = 300;
+        function retryIfRunning() {
+          if (document.body.classList.contains('loading')) {
+              console.log('waiting')
+              timer = setTimeout(retryIfRunning, interval);
+          }
+          else {
+            timer = null;
+            document.body.classList.add('loading');
+            console.log(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').url)
+            startGraph(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#viz'), document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph'))
+          }
+        }
+
+        retryIfRunning();
       }
     });
   </script>

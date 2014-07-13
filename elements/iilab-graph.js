@@ -2,8 +2,8 @@ function startGraph(viz, that) {
   // Display area parameters
   var w=1280;
   var h=640;
-  //var startupQuery = "MATCH (a)-[r]->(b) WITH a, r, b LIMIT 200 WITH { id: LOWER(REPLACE(a.name, ' ', '_')), labels: labels(a), properties: {name: a.name, oc_id: a.oc_id, other_names: a.other_names, previous_names: a.previous_names, headquarters:a.headquarters, directors: a.directors, shareholders: a.shareholders, foundation_date: a.foundation_date, website: a.website} } as nodea, {id: LOWER(REPLACE(a.name + ' ' + b.name, ' ', '_')), source: LOWER(REPLACE(a.name, ' ', '_')), target: LOWER(REPLACE(b.name, ' ', '_')), type: type(r), properties: { immediate: r.immediate}} as link,b WITH {id: LOWER(REPLACE(b.name, ' ', '_')), labels: labels(b), properties: { name: b.name, oc_id: b.oc_id, other_names: b.other_names, previous_names: b.previous_names, headquarters:b.headquarters, directors: b.directors, shareholders: b.shareholders, foundation_date: b.foundation_date, website: b.website} } as nodeb, nodea, link RETURN {nodes: collect(DISTINCT nodea) + collect(DISTINCT nodeb), links: collect(DISTINCT link)} AS json"
-  var startupQuery = that.cypher
+
+  var query = that.cypher
   var myjson = {nodes:[], links:[]};
 
   // Load JSON graph file (result of neod3.cypher query)
@@ -14,7 +14,7 @@ function startGraph(viz, that) {
       if (err)
           throw err;
 
-      graph.query(startupQuery, function (err, results) {
+      graph.query(query, function (err, results) {
           if (err) {
               console.log(err);
               console.log(err.stack);
@@ -22,7 +22,7 @@ function startGraph(viz, that) {
           else {
               myjson = {nodes:[], links:[]};
               
-//              console.log(results)
+              //  console.log(results)
 
               myjson.nodes = results
                                .map(function(row) {
@@ -33,7 +33,7 @@ function startGraph(viz, that) {
                                     };
                                 });
 
-//              console.log(myjson.nodes)
+              // console.log(myjson.nodes)
 
               
               for (i = 1; i <= that.depth; i++) {
@@ -42,8 +42,8 @@ function startGraph(viz, that) {
                                   return (row.r instanceof Array) ? (row.r.length == i) : true
                                })
                                .map(function(row) {
-//                                    console.log(i)
-//                                    console.log(row)
+                                    // console.log(i)
+                                    // console.log(row)
                                     var ret = {};
                                     if (row.r instanceof Array) {
                                       r = row.r[i-1]
@@ -73,7 +73,7 @@ function startGraph(viz, that) {
 
               }
 
-  //            console.log(myjson.links)
+              // console.log(myjson.links)
 
               // Load Grass stylesheet
 
@@ -84,9 +84,6 @@ function startGraph(viz, that) {
           }
       })
   });
-
-  var chart;
-  var graphModel;
 
   // Callback with main features executed when stylesheet is loaded.
 
@@ -135,17 +132,15 @@ function startGraph(viz, that) {
 
                 // If the layout is cooled down to a certain threshold
                 if (d3force.alpha() < 0.01) { 
-  //                console.log("Graph has cooled down")
-                  // Make the force layout stop
-                  //d3force.alpha(-1);
+                  // layout is done
 
                   // Zoom after cool down
+
+//                  console.log(layers.node())
+
                   zs = zoom.scale()
                   zt = zoom.translate();
                   zs = window.innerHeight / (layers.node().getBBox().height * 1.2 )
-
-  //                dx = (w/2.0) - d.x*zs;
-  //                dy = (h/2.0) - d.y*zs;
 
                   zoom.scale(zs);
 
@@ -156,8 +151,12 @@ function startGraph(viz, that) {
                   zoom.translate([dx, dy]);
                   layers.transition()
                     .duration(1000)
-                    .call(zoom.event, layers);
-
+                    .call(zoom.event, layers)
+                    .call(endall, function() { 
+                      that.parentNode.fire('set-slider', {zoom: zs})
+                      console.log("all done") 
+                      document.body.classList.remove('loading');
+                    });
                 }
 
                 render();
@@ -177,7 +176,11 @@ function startGraph(viz, that) {
               y: size[1] / 2
             };
             //neo.utils.circularLayout(nodes, center, radius);
-            return d3force.nodes(nodes).links(relationships).size(size).start();
+            return d3force.nodes(nodes).links(relationships).size(size)
+                    .on('end', function() {
+                      document.body.classList.remove('loading');
+                    })
+                    .start();
           };
 
           // Drag event handlers for nodes.
@@ -225,7 +228,7 @@ function startGraph(viz, that) {
     // Neod3 graphView which is an API on top of d3 
     //
 
-    chart = neo.graphView()
+    var chart = neo.graphView()
 
     var style = chart.style(styleContents)
         .width(w)
@@ -238,7 +241,7 @@ function startGraph(viz, that) {
             d = d.node
           }
           // Display sidebar.
-//          console.log(d)
+          // console.log(d)
 
           that.element._type = "node"
           that.element.type = d.labels[0]
@@ -270,18 +273,34 @@ function startGraph(viz, that) {
 
           zoom.translate([dx, dy]);
           zoom.scale(zs);
-          that.fire('graph-zoomed', {zoom: zs})
 
           layers.transition()
               .duration(1000)
-              .call(zoom.event, layers);
-
+              .call(zoom.event, layers)
+              .call(endall, function() { 
+                that.parentNode.fire('set-slider', {zoom: zs})
+                console.log("all done") 
+              });
+        })
+      .on('nodeDblClicked', function(d,i){
+          // Select proper parent <g>
+          if (d.constructor.name == "Object" && d.node) {
+            d = d.node
+          }
+          tip.hide(d, that.parentNode)
+          console.log(that.depth)
+          if (d.labels[0] == "Company") {
+            that.cypher = "MATCH (a:Company {name: '" + d.propertyMap.name + "'})-[r:IS_OWNER*0.." + that.depth + "]-(n) RETURN n, labels(n) as label, r"
+          }
+          else if (d.labels[0] == "Country") {
+            that.cypher = "MATCH (a:Country {name: '" + d.propertyMap.name + "'})<-[r:HAS_JURISDICTION*0.." + that.depth + "]-(n) RETURN n, labels(n) as label, r"            
+          }
         })
       .on('relationshipClicked', function(d,i){
           if (d.constructor.name == "Object" && d.relationship) {
                     d = d.relationship
           }
-//          console.log(d)
+          // console.log(d)
           that.element._type = "relationship"
           that.element.type = d.type
           that.element.source = d.source
@@ -298,11 +317,14 @@ function startGraph(viz, that) {
 
         })
     // Creating Strings for the Autocomplete feature
-    that.strings = myjson.nodes.map(function(val) {
-        return { label: val.properties.name, value: val.id };
+
+    autocompleteStrings = myjson.nodes.map(function(val) {
+        return { label: val.properties.name, value: "id_" + val.id };
       });
 
-    graphModel = neo.graphModel()
+    that.asyncFire('graph-ready', {strings: autocompleteStrings, chart: chart, style: style})
+
+    var graphModel = neo.graphModel()
           .nodes(myjson.nodes)
           .relationships(myjson.links)
 
@@ -330,22 +352,22 @@ function startGraph(viz, that) {
 
     var nodes = d3.select(viz).selectAll("g.layer > g.node")
               .attr("id", function(d) {
-                return d.id;
+                return "id_" + d.id;
               })
 
     var relationships_path = d3.select(viz).selectAll("g.layer > g.relationship path")
               .attr('fill-opacity', 1)
               .attr('fill', function(d) { 
-//                console.log(d)
+              // console.log(d)
                 return 'rgb(' 
                 + ( (242 - parseInt(d.weight) * 20) < 242 ? (242 - parseInt(d.weight) * 20) : 242 )
                 + ',' + ( (262 - parseInt(d.weight)  * 20) < 242 ? (242 - parseInt(d.weight) * 20) : 242 )
                 + ',' + ( (346 - parseInt(d.weight)  * 20) < 242 ? (346 - parseInt(d.weight)  * 20) : 242 )
                 + ')';
               })
-//              .attr('stroke-width', function(d) { 
-//                return (d.weight);
-//              })
+              //  .attr('stroke-width', function(d) { 
+              //  return (d.weight);
+              //  })
     
     var relationships_text = d3.select(viz).selectAll("g.layer > g.relationship text")
 
@@ -368,16 +390,16 @@ function startGraph(viz, that) {
     var circles = d3.select(viz).selectAll("g.nodes > circle")
     //            .call(drag);
 
-//    console.log(d3)
+    // console.log(d3)
       
     function isConnected(a, b) {
         return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
     }
 
-  //  var linkedByIndex = {};
-  //  json.links.forEach(function(d) {
-  //      linkedByIndex[d.source.index + "," + d.target.index] = 1;
-  //  });
+    //  var linkedByIndex = {};
+    //  json.links.forEach(function(d) {
+    //      linkedByIndex[d.source.index + "," + d.target.index] = 1;
+    //  });
 
     function sidebarInfo() {
 
@@ -385,7 +407,6 @@ function startGraph(viz, that) {
 
     function zoomed() {
       layers.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-      that.fire('graph-zoomed', {zoom: d3.event.scale})
     }
 
     function dragstarted(d) {
@@ -403,14 +424,35 @@ function startGraph(viz, that) {
       d3.select(this).classed("dragging", false);
     }
 
-    that.addEventListener('zoom-slider', function(e) {
+    document.addEventListener('zoom-slider', function(e) {
       console.log("in zoomslider listener")
       console.log(e.detail.zoom)
       zoom.scale(e.detail.zoom);
       layers.transition()
         .duration(1000)
-        .call(zoom.event, layers);
+        .call(zoom.event, layers)
+        .call(endall, function() { 
+          that.parentNode.fire('set-slider', {zoom: e.detail.zoom})
+          console.log("all done") 
+        });
+
+//      e.stopPropagation();
     });
+
+    document.addEventListener('search-select', function(e) {
+      console.log("in search-select listener")
+      console.log(e.detail.node)
+      var e = document.createEvent('UIEvents');
+      e.initUIEvent('click', true, true);
+      d3.select(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#viz')).selectAll(e.detail.node).node().dispatchEvent(e);
+    });
+
+    function endall(transition, callback) { 
+      var n = 0; 
+      transition 
+          .each(function() { ++n; }) 
+          .each("end", function() { if (!--n) callback.apply(this, arguments); }); 
+    } 
 
     $(function() {
 
