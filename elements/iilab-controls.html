@@ -10,15 +10,24 @@
 	  core-submenu::shadow #submenu {
 	    margin-left: 10px;
 	  }
+
+	  core-submenu::shadow core-item::shadow core-icon {
+	    fill:#2a3e92;
+	  }
 	</style>
     <core-menu valueattr="label" id="core_menu" theme="core-light-theme" selected="0" on-core-select="{{selectAction}}" vertical layout>
+	  <core-icon src="/openoil_logo.png" size="128" style="margin-left:45px"></core-icon> 
       <core-submenu icon="bookmark" label="Saved Queries" selected="0">
         <core-submenu icon="bookmark" label="BP" selected="0">
-          <paper-item label="BP PLC Subsidiaries" icon="check" id="bp_plc_subs"></paper-item>
-          <paper-item label="BP" icon="check" id="bp_item2"></paper-item>
+          <paper-item label="BP PLC Subsidiaries (Depth 2)" id="bp_plc_subs_2"></paper-item>
+          <paper-item label="BP PLC Subsidiaries (Depth 2)" id="bp_plc_subs_3"></paper-item>
+          <paper-item label="BP PLC Subsidiaries (Depth 2)" id="bp_plc_subs_4"></paper-item>
+          <paper-item label="BP PLC Subsidiaries and Countries (Depth 2)" id="bp_plc_countries_2"></paper-item>
+          <paper-item label="BP PLC Subsidiaries and Countries (Depth 2)" id="bp_plc_countries_3"></paper-item>
+          <paper-item label="BP PLC Subsidiaries and Countries (Depth 2)" id="bp_plc_countries_4"></paper-item>
         </core-submenu> 
         <core-submenu icon="bookmark" label="Nigeria">
-            <paper-item label="Foreign Companies in Nigeria" icon="check" id="nigeria_item"></paper-item>
+            <paper-item label="Foreign Companies in Nigeria" id="nigeria_item"></paper-item>
         </core-submenu> 
       </core-submenu> 
       <core-submenu icon="settings" label="Advanced Settings">
@@ -52,11 +61,28 @@
 	        var selectedItem = detail.item;
 //	        console.log(selectedItem.id)
 	        switch(selectedItem.id) {
-				case "bp_item2":
-				    this.cypher = "MATCH (n:Company)<-[r*.." + this.depth + "]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r*.." + this.depth + "]-(n) RETURN n, labels(n) as label, r LiMIT 20"
-				    break;
-				case "bp_plc_subs":
+				case "bp_plc_countries_2":
 					this.depth = "2"
+				    this.cypher = "MATCH (n:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(m:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[s:IS_OWNER*0.." + this.depth + "]-(o)-[r:HAS_JURISDICTION]->(n:Country) RETURN n, labels(n) as label, r"
+				    break;
+				case "bp_plc_countries_3":
+					this.depth = "2"
+				    this.cypher = "MATCH (n:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(m:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[s:IS_OWNER*0.." + this.depth + "]-(o)-[r:HAS_JURISDICTION]->(n:Country) RETURN n, labels(n) as label, r"
+				    break;
+				case "bp_plc_countries_4":
+					this.depth = "4"
+				    this.cypher = "MATCH (n:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(m:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[s:IS_OWNER*0.." + this.depth + "]-(o)-[r:HAS_JURISDICTION]->(n:Country) RETURN n, labels(n) as label, r"
+				    break;
+				case "bp_plc_subs_2":
+					this.depth = "2"
+				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
+				    break;
+				case "bp_plc_subs_3":
+					this.depth = "3"
+				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
+				    break;
+				case "bp_plc_subs_4":
+					this.depth = "4"
 				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
 				    break;
 				case "nigeria_item":
