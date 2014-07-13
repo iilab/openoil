@@ -3,14 +3,18 @@
 
 <polymer-element name="iilab-search" noscript attributes="strings search">
   <template>
-    <link rel="stylesheet" href="../components/jquery-ui/themes/ui-lightness/jquery-ui.css">
     <script src="../components/jquery/dist/jquery.js"></script>
     <script src="../components/jquery-ui/jquery-ui.js"></script>
-
+    <style type="text/css">
+      #selection .ui-autocomplete {
+        position: relative;
+        top: 30px;
+      }
+    </style>
     <!-- JQuery Autocomplete in the polymer element -->
     <div class="ui-widget">
-<!--      <paper-input label="Search" id="searchfield_paper" inputValue="{{search}}" flex>-->
-      <input label="Search" id="searchfield" value="{{search}}" class="autocomplete" flex>
+      <paper-input label="Search" id="searchfield" inputValue="{{search}}" autofocus flex></paper-input>
+<!--      <input label="Search" id="searchfield" value="{{search}}" class="autocomplete" flex>-->
     </div>
   </template>
   <script>
@@ -22,47 +26,95 @@
       searchChanged: function(oldValue, newValue) {
 //        console.log(newValue)
       },
-      ready: function() {
+      domReady: function() {
         // Autocomplete
+        document.querySelector('openoil-app').shadowRoot.querySelector('iilab-search').shadowRoot.querySelector('paper-input').shadowRoot.olderShadowRoot.querySelector('#input').focus()
+        document.addEventListener('graph-ready', this.installAutocomplete);
+      },
+      installAutocomplete: function (e) {
         console.log("autocomplete!")
-        console.log($('#searchfield'))
-        $('#searchfield').autocomplete({
-          source: this.strings,
+        var searchfield = document.querySelector('openoil-app').shadowRoot.querySelector('iilab-search').shadowRoot.querySelector('paper-input').shadowRoot.olderShadowRoot.querySelector('#input');
+        $(searchfield).autocomplete({
+//          my : "right top", 
+//          at: "right bottom",
+          position: { my: "left bottom", at: "left top", collision: "flip" },
+          source: e.detail.strings,
+          appendTo: document.querySelector('openoil-app').shadowRoot.querySelector('#selection'),
           focus: function( event, ui){
-              d3.selectAll("g.node circle")
+              var viz = d3.select(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#viz'))
+              viz.selectAll('g.node circle')
                   .transition()
-                  .attr("fill", chart.style()['node.Company'].color)
-              d3.selectAll("#" +ui.item.value+ " circle")
+                  .attr("fill", e.detail.chart.style()['node.Company'].color)
+                  .attr("stroke-width", "4px")
+                  .attr("opacity", "1")
+              viz.selectAll('g.node text')
                   .transition()
-                  .attr("fill", "black")
+                  .attr("fill", "#2a3e92")
+              viz.selectAll('#' + ui.item.value + ' circle')
+                  .transition()
+                  .attr("stroke-opacity", "0.5")
+                  .attr("stroke-width", "32px")
+                  .attr("fill", "#2a3e92")
+              viz.selectAll('#' + ui.item.value + ' text')
+                  .transition()
+                  .attr("fill", "#FFF")
+
+              $(searchfield).val(ui.item.label)
+            event.preventDefault();
           },
           response: function( event, ui){
-              console.log(ui)
+//              console.log(ui)
+              var viz = d3.select(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#viz'))
+              
               for (var i in ui.content) {
-              console.log(ui.content[i])
-                d3.selectAll("#" +ui.content[i].value+ " circle")
+                viz.selectAll("#" + ui.content[i].value+ " circle")
                   .transition()
-                  .attr("fill", "grey")
+                  .attr("fill", "#2a3e92")
+                  .attr("opacity", "0.5")
               }
+              selectionStyle = document.querySelector('openoil-app').shadowRoot.querySelector('#selection ul').style
+              selectionStyle.top = "-10px"
+              selectionStyle.left = "500px"
+              selectionStyle.width = "400px"
+              selectionStyle.position = "absolute"
           },
           search: function( event, ui){
   //            console.log(chart.style())
   //            console.log(chart.style()['node.Company'].color)
-              d3.selectAll("g.node circle")
+              var viz = d3.select(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#viz'))
+              
+              viz.selectAll("g.node circle")
                   .transition()
-                  .attr("fill", chart.style()['node.Company'].color)
+                  .attr("fill", e.detail.chart.style()['node.Company'].color)
           },
           close: function( event, ui){
   //            console.log(chart.style())
   //            console.log(chart.style()['node.Company'].color)
-              d3.selectAll("g.node circle")
+//              d3.select(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#viz'))
+ //                 .selectAll("g.node circle")
+  //                .transition()
+  //                .attr("fill", e.detail.chart.style()['node.Company'].color)
+          },
+          select: function( event, ui ) {
+              event.preventDefault();
+              $(searchfield).val(ui.item.label);
+              var viz = d3.select(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#viz'))
+              viz.selectAll('#' + ui.item.value + ' circle')
                   .transition()
-                  .attr("fill", chart.style()['node.Company'].color)
+                  .attr("stroke-opacity", "0.5")
+                  .attr("stroke-width", "32px")
+                  .attr("fill", "#2a3e92")
+              viz.selectAll('#' + ui.item.value + ' text')
+                  .transition()
+                  .attr("fill", "#FFF")
+                  console.log(event)
+              document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').fire('search-select', {node: '#' + ui.item.value})
+//              PK.render(ui.item.value);
           }
         })
       }
     })
-    $(function(){
+/*    $(function(){
       // Store a reference to the original contains method.
       var originalContains = jQuery.contains;
       console.log("hi!")
@@ -75,6 +127,6 @@
           // Execute the original method.
           return originalContains.apply( this, arguments );
       }
-    });
+    });*/
 	</script>
 </polymer-element>
