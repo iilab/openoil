@@ -26,6 +26,15 @@
       h5 {
         padding: 0px 20px 0px 0;
       }
+
+      paper-toggle-button.blue::shadow paper-radio-button::shadow #onRadio {
+        background-color: #4285f4;
+      }
+
+      paper-toggle-button.blue::shadow paper-radio-button::shadow #ink {
+        color: #4285f4;
+      }
+
     </style>
     <!-- JQuery Autocomplete in the polymer element -->
 
@@ -37,7 +46,7 @@
       </div>
       <div layout horizontal center>
         <h5>All</h5>
-        <paper-toggle-button checked="{{within}}"></paper-toggle-button>
+        <paper-toggle-button class="blue" checked="{{within}}"></paper-toggle-button>
         <h5>Within results</h5>
       </div>
     </div>
@@ -52,10 +61,15 @@
         this.$.searchfield.addEventListener('change', this.searchfieldSubmit);
       },
       searchcommitChanged: function(o, v) { 
+        console.log('searchcommit')
+        console.log(this.within)
+        console.log(v)
         if(!this.within) {
           if (v != "") {
-            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').parameters = {search: 'name:' + v + ' OR source_url:' + v + ' OR oc_id:' + v };
-            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').cypher = "START n=node:node_auto_index({search}) MATCH (n)-[r]->(m) RETURN n, labels(n) as label, r UNION START m=node:node_auto_index({search}) MATCH (m)-[r]->(n) RETURN n, labels(n) as label, r"
+            console.log('hello!')
+            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').query.param = {search: 'name:' + v + ' OR source_url:' + v + ' OR oc_id:' + v };
+            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').query.cypher = "START n=node:node_auto_index({search}) MATCH (n)-[r]->(m) RETURN n, labels(n) as label, r UNION START m=node:node_auto_index({search}) MATCH (m)-[r]->(n) RETURN n, labels(n) as label, r"
+            this.fire('graph', {});
             this.fire('stats', {i: v, t:"s"});
           }
 
