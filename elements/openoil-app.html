@@ -16,12 +16,54 @@
 <link rel="import" href="../components/paper-slider/paper-slider.html"> 
 <link rel="import" href="../components/paper-shadow/paper-shadow.html"> 
 <link rel="import" href="../components/paper-item/paper-item.html"> 
+<link rel="import" href="../components/paper-button/paper-button.html"> 
 <link rel="import" href="../components/paper-icon-button/paper-icon-button.html"> 
 <link rel="import" href="../components/paper-menu-button/paper-menu-button.html"> 
 <link rel="import" href="../components/iilab-drawer-panel/iilab-drawer-panel.html">
+<link rel="import" href="../components/core-transition/core-transition-css.html">
+<link rel="import" href="../components/core-overlay/core-overlay.html">
+<link rel="import" href="../components/core-ajax/core-xhr.html">
 <link rel="import" href="iilab-graph.html"> 
 <link rel="import" href="iilab-controls.html"> 
 <link rel="import" href="iilab-search.html"> 
+
+<polymer-element name="x-dialog" attributes="opened autoCloseDisabled">
+<template>
+  <style>
+
+    :host {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      overflow: hidden;
+      background: white;
+      padding:30px 42px;
+      outline: 1px solid rgba(0,0,0,0.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+  </style>
+  <core-overlay id="overlay" layered backdrop opened="{{opened}}" autoCloseDisabled="{{autoCloseDisabled}}"  transition="core-transition-center"></core-overlay>
+  <content></content>
+</template>
+<script>
+
+Polymer('x-dialog', {
+
+  ready: function() {
+    this.$.overlay.target = this;
+  },
+
+  toggle: function() {
+    this.$.overlay.toggle();
+  }
+
+});
+
+</script>
+</polymer-element>
 
 <polymer-element name="openoil-app" noscript>
   <template>
@@ -137,20 +179,96 @@
     }
 
   </style>
+  <core-xhr id="xhr"></core-xhr>
+  <x-dialog id="dialog" class="dialog">
+      <!-- place all overlay styles inside the overlay target -->
+      <style no-shim>
+        .dialog {
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 13px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          overflow: hidden;
+          background: white;
+          padding:30px 42px;
+          outline: 1px solid rgba(0,0,0,0.2);
+          box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        #dialog {
+          width: 500px;
+        }
+
+        #dialog paper-icon-button {
+          width: 200px;
+        }
+      </style>
+      <div layout horizontal center>
+        <core-icon icon="home" size="60px" style="margin-right:15px;"></core-icon>
+        <h2>OpenOil Data Navigator</h2>
+      </div>
+      <div>Welcome to the OpenOil Data Navigator.</div><br><br>
+      <div layout horizontal>
+        <div layout vertical center flex one>
+          <paper-icon-button raisedButton core-overlay-toggle label="BP" on-click="{{loadBP}}"></paper-icon-button>
+          <h4>BP Corporate Structure</h4>
+          <p>Curabitur imperdiet risus id enim bibendum vestibulum.</p>
+        </div>
+        <div layout vertical center flex one>
+          <paper-icon-button raisedButton core-overlay-toggle label="Nigeria" on-click="{{loadNigeria}}"></paper-icon-button>
+          <h4>Nigeria Contracts</h4>
+          <p>Praesent lacinia congue erat nec mattis. Fusce commodo lacus est.</p>
+        </div>
+      </div>
+      <br><br>
+      <div layout vertical center>
+        Explore the OpenOil data set through a map.
+        <br><br>
+        <paper-icon-button raisedButton core-overlay-toggle on-click="{{loadMap}}" label="Map"></paper-icon-button>
+        <core-overlay layered id="confirmation" class="dialog" backdrop transition="core-transition-top">
+          <!-- place all overlay styles inside the overlay target -->
+          <style no-shim>
+            .dialog {
+              box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 13px;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              overflow: hidden;
+              background: white;
+              padding:30px 42px;
+              outline: 1px solid rgba(0,0,0,0.2);
+              box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            }
+
+            #confirmation {
+              box-sizing: border-box;
+              text-align: center;
+              width: 150px;
+            }
+          </style>
+        </core-overlay>
+      </div><br><br>
+    </x-dialog>
+
     <core-scaffold id="core_scaffold">
       <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
         <core-toolbar id="core_toolbar">
+          <core-icon-button icon="home" id="home" on-click="{{homeClick}}"></core-icon-button>
           <core-icon-button icon="menu" id="core_icon_button"></core-icon-button>
         </core-toolbar>
+        <core-icon src="/openoil_logo.png" size="128" style="margin-left:55px"></core-icon> 
+        <core-field id="core_field" icon="search">
+          <iilab-search search="{{searchText}}" id="iilab_search"></iilab-search>
+        </core-field>
         <iilab-controls id="iilab_controls" cypher="{{cypherText}}" depth="{{depthValue}}"></iilab-controls>
         <paper-shadow z="1"></paper-shadow>
       </core-header-panel>
       <div id="div" tool horizontal layout center wrap flex>
         <div id="title" flex>Open&nbsp;Oil Data</div>
-        <core-field id="core_field" icon="search">
-          <core-icon icon="search" id="core_icon"></core-icon>
-          <iilab-search search="{{searchText}}" id="iilab_search"></iilab-search>
-        </core-field>
         <div>&nbsp;</div>
         <core-tooltip>
           <h5>Zoom</h5>
@@ -178,7 +296,28 @@
   			title: ""
   		},
       domReady: function() {
+        this.$.dialog.toggle();
         this.addEventListener('set-slider', this.sliderSet);
+        this.addEventListener('stats', this.statsReq);
+      },
+      statsReq: function(e) {
+        this.$.xhr.request({url:"?i=" + e.detail.i + "&t=" + e.detail.t })
+      },
+      loadBP: function() {
+//        this.$.iilab_controls.shadowRoot.querySelector("#SavedQueries").selected = 1;
+//        this.$.iilab_controls.shadowRoot.querySelector("#SavedQueriesBP").selected = 1;
+        this.fire('load-query', {id: "bp_plc_2"});
+      },
+      loadNigeria: function() {
+//        this.$.iilab_controls.shadowRoot.querySelector("#SavedQueries").selected = 1;
+//        this.$.iilab_controls.shadowRoot.querySelector("#SavedQueriesBP").selected = 1;
+        this.fire('load-query', {id: "nigeria_1"});
+      },
+      loadMap: function() {
+
+      },
+      homeClick: function() {
+        this.$.dialog.toggle();
       },
   		buttonClick: function(e, detail, sender) {
   			document.querySelector('iilab-graph').shadowRoot.querySelector('#drawer').togglePanel();
