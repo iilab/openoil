@@ -4,7 +4,17 @@ function startGraph(viz, that) {
   var h=640;
 
   var query = that.cypher
+  var param = that.parameters
   var myjson = {nodes:[], links:[]};
+
+  if (!query) { 
+    console.log(query)
+    document.body.classList.remove('loading');
+    return 
+  } 
+
+  console.log(query)
+  console.log(param)
 
   // Load JSON graph file (result of neod3.cypher query)
   // var myfile = fs.readFileSync('../neod3_results.json', 'utf8');
@@ -14,7 +24,7 @@ function startGraph(viz, that) {
       if (err)
           throw err;
 
-      graph.query(query, function (err, results) {
+      graph.query(query, param, function (err, results) {
           if (err) {
               console.log(err);
               console.log(err.stack);
@@ -23,6 +33,8 @@ function startGraph(viz, that) {
               myjson = {nodes:[], links:[]};
               
               //  console.log(results)
+
+              that.count = results.length
 
               myjson.nodes = results
                                .map(function(row) {
@@ -97,8 +109,9 @@ function startGraph(viz, that) {
         _force.init = function(render) {
           var accelerateLayout, d3force, forceLayout, linkDistance;
           forceLayout = {};
-          linkDistance = 75;
-          d3charge = -8000;
+          linkDistance = that.count > 100 ? 50 * 200 / that.count : 75;
+          console.log(that.count)
+          d3charge = that.count > 100 ? -8000 : -4000;
 
           // Basic Force Layout Parameters
           d3force = d3.layout.force()
@@ -135,26 +148,54 @@ function startGraph(viz, that) {
                   // layout is done
 
                   // Zoom after cool down
-
-//                  console.log(layers.node())
+                  d3force.alpha(-0.01);
+//                  console.log(nodes.node())
+                  
+                  console.log(viz)
+                  console.log(viz.width.baseVal.value)
+                  console.log(viz.height.baseVal.value)
+                  console.log(layer_nodes)
+                  console.log(layer_nodes.node().getBBox().x)
+                  console.log(layer_nodes.node().getBBox().y)
+                  console.log(layer_nodes.node().getBBox().width)
+                  console.log(layer_nodes.node().getBBox().height)
 
                   zs = zoom.scale()
+                  console.log(zs)
                   zt = zoom.translate();
-                  zs = window.innerHeight / (layers.node().getBBox().height * 1.2 )
+                  zs = ( ( viz.height.baseVal.value - 64 ) / layer_nodes.node().getBBox().height ) < ( viz.width.baseVal.value - 256 / layer_nodes.node().getBBox().width ) ? ( ( viz.height.baseVal.value - 64 ) / layer_nodes.node().getBBox().height ) * 1 : ( viz.width.baseVal.value - 256 / layer_nodes.node().getBBox().width ) * 1
+                  console.log( viz.width.baseVal.value / 2 )
+                  console.log(layer_nodes.node().getBBox().x + layer_nodes.node().getBBox().width / 2)
+                  console.log(zt)
+                  console.log( viz.height.baseVal.value / 2)
+                  console.log(layer_nodes.node().getBBox().y + layer_nodes.node().getBBox().height / 2 )
 
+
+                  dx = ( viz.width.baseVal.value / 2 ) - ( layer_nodes.node().getBBox().x + layer_nodes.node().getBBox().width / 2 )  ;
+                  dy = ( viz.height.baseVal.value / 2 ) - ( layer_nodes.node().getBBox().y + layer_nodes.node().getBBox().height / 2 )  ;
+                  console.log([dx, dy])
+
+                  zoom.x = 256
+                  zoom.y = 64
+                  zoom.size([viz.width.baseVal.value, viz.height.baseVal.value]);
+                  zoom.translate([dx, dy]);
+                  zoom.center([viz.width.baseVal.value / 2, viz.height.baseVal.value / 2]);
+                  layers.transition()
+                    .duration(1000)
+                    .call(zoom.event, layers);
+
+                  return
+
+                  
                   zoom.scale(zs);
 
-                  dx = - (layers.node().getBBox().x)*zs + 100 ;
-                  dy = - (layers.node().getBBox().y)*zs + 20 ;
                   that.fire('graph-zoomed', {zoom: zs})
 
-                  zoom.translate([dx, dy]);
                   layers.transition()
                     .duration(1000)
                     .call(zoom.event, layers)
                     .call(endall, function() { 
                       that.parentNode.fire('set-slider', {zoom: zs})
-                      console.log("all done") 
                       document.body.classList.remove('loading');
                     });
                 }
@@ -241,7 +282,7 @@ function startGraph(viz, that) {
             d = d.node
           }
           // Display sidebar.
-          // console.log(d)
+          console.log(d)
 
           that.element._type = "node"
           that.element.type = d.labels[0]
@@ -279,7 +320,6 @@ function startGraph(viz, that) {
               .call(zoom.event, layers)
               .call(endall, function() { 
                 that.parentNode.fire('set-slider', {zoom: zs})
-                console.log("all done") 
               });
         })
       .on('nodeDblClicked', function(d,i){
@@ -340,7 +380,7 @@ function startGraph(viz, that) {
         .on("zoom", zoomed);
 
     var svg = d3.select(viz)
-              .attr("width", window.innerWidth).attr("height",window.innerHeight)
+              .attr("width", window.innerWidth - 256 ).attr("height",window.innerHeight - 64)
               .data([graphModel])
               .call(chart)
 
@@ -349,6 +389,8 @@ function startGraph(viz, that) {
               .call(tip)
 
     var layers = d3.select(viz).selectAll("g.layer")
+
+    var layer_nodes = d3.select(viz).selectAll("g.layer.nodes")
 
     var nodes = d3.select(viz).selectAll("g.layer > g.node")
               .attr("id", function(d) {
@@ -425,15 +467,18 @@ function startGraph(viz, that) {
     }
 
     document.addEventListener('zoom-slider', function(e) {
-      console.log("in zoomslider listener")
-      console.log(e.detail.zoom)
+//      console.log("in zoomslider listener")
+//      console.log(e.detail.zoom)
+      console.log(zoom.x)
+      console.log(zoom.y)
+      console.log(zoom.size())
+      console.log(zoom.center())
       zoom.scale(e.detail.zoom);
       layers.transition()
         .duration(1000)
         .call(zoom.event, layers)
         .call(endall, function() { 
           that.parentNode.fire('set-slider', {zoom: e.detail.zoom})
-          console.log("all done") 
         });
 
 //      e.stopPropagation();

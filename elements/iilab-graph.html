@@ -149,8 +149,10 @@
   <script src="iilab-graph.js"></script>
   <script>
     Polymer('iilab-graph', {
-      cypher: "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0..2]->(n) RETURN n, labels(n) as label, r",
+//      cypher: "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0..2]->(n) RETURN n, labels(n) as label, r",
+      cypher: "",
       depth: 2,
+      count: 0,
       element: { 
           _type: "",
           type: "",
@@ -168,6 +170,9 @@
           log_message: ""
       },
       autozoom: true,
+      created: function() {
+        this.parameters= {}
+      },
       domReady: function() {
 //        this.chart = startGraph(this.$.viz, this)
 //        console.log(this.chart)
@@ -178,6 +183,8 @@
         this.$.drawer.togglePanel()
       },
       cypherChanged: function(oldValue, newValue) {
+        console.log(oldValue)
+        console.log(newValue)
         var timer = null;
         var interval = 300;
         function retryIfRunning() {
