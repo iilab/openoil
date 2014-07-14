@@ -1,9 +1,9 @@
 // Load Nigeria - Companies
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/iilab/openoil/master/data/Nigeria_companies_20140711.csv' AS line
+LOAD CSV WITH HEADERS FROM 'file:///Users/jun/dev/OpenOil/openoil/data/Nigeria_companies_20140714.csv' AS line
 WITH line
-MERGE (company:Company {name: coalesce(line.name,split(coalesce(line.other_names,''), ',')[0]), other_names: coalesce(line.other_names,''), previous_names: coalesce(line.previous_names,''), oc_id: line.oc_id, headquarters:line.oc_id, directors:line.directors, shareholders:line.shareholders, foundation_date:line.foundation_date, website:line.website, document:''})
+MERGE (company:Company {name: line.name}) ON MATCH SET company.other_names = coalesce(line.other_names,''), company.previous_names = coalesce(line.previous_names,''), company.oc_id = coalesce(line.oc_id, ''), company.headquarters = coalesce(line.oc_id,''), company.directors = coalesce(line.directors,''), company.shareholders = coalesce(line.shareholders,''), company.foundation_date = coalesce(line.foundation_date, ''), company.website = coalesce(line.website, ''), company.document = ''
 MERGE (country:Country { name: line.jurisdiction})
-MERGE (company)-[s:HAS_JURISDICTION { source_url: line.jurisdiction_source}]->(country)
+MERGE (company)-[s:HAS_JURISDICTION { source_url: coalesce(line.jurisdiction_source,'')}]->(country)
 WITH line, company
 WHERE line.legal_type <> ''
 MERGE (legaltype:LegalType {name: line.legal_type})
