@@ -15,22 +15,20 @@
 	    fill:#2a3e92;
 	  }
 	</style>
-    <core-menu valueattr="label" id="core_menu" theme="core-light-theme" selected="0" on-core-select="{{selectAction}}" vertical layout>
-	  <core-icon src="/openoil_logo.png" size="128" style="margin-left:45px"></core-icon> 
-      <core-submenu icon="bookmark" label="Saved Queries" selected="0">
-        <core-submenu icon="bookmark" label="BP" selected="0">
-          <paper-item label="BP PLC Subsidiaries (Depth 2)" id="bp_plc_subs_2"></paper-item>
-          <paper-item label="BP PLC Subsidiaries (Depth 2)" id="bp_plc_subs_3"></paper-item>
-          <paper-item label="BP PLC Subsidiaries (Depth 2)" id="bp_plc_subs_4"></paper-item>
-          <paper-item label="BP PLC Subsidiaries and Countries (Depth 2)" id="bp_plc_countries_2"></paper-item>
-          <paper-item label="BP PLC Subsidiaries and Countries (Depth 2)" id="bp_plc_countries_3"></paper-item>
-          <paper-item label="BP PLC Subsidiaries and Countries (Depth 2)" id="bp_plc_countries_4"></paper-item>
+    <core-menu valueattr="label" id="core_menu" theme="core-light-theme" on-core-select="{{selectAction}}" vertical layout>
+      <core-submenu id="saved_queries" icon="bookmark" label="Saved Queries">
+        <core-submenu id="saved_queries_bp" icon="bookmark" label="BP">
+          <paper-item label="BP PLC Subsidiaries (Depth 2)" id="bp_plc_2"></paper-item>
+          <paper-item label="BP PLC Subsidiaries (Depth 3 - Slow!)" id="bp_plc_3"></paper-item>
+<!--          <paper-item label="BP PLC Subsidiaries and Countries (Depth 2)" id="bp_plc_countries_2"></paper-item>
+          <paper-item label="BP PLC Subsidiaries and Countries (Depth 3)" id="bp_plc_countries_3"></paper-item>
+          <paper-item label="BP PLC Subsidiaries and Countries (Depth 4)" id="bp_plc_countries_4"></paper-item>-->
         </core-submenu> 
-        <core-submenu icon="bookmark" label="Nigeria">
-            <paper-item label="Foreign Companies in Nigeria" id="nigeria_item"></paper-item>
+        <core-submenu id="saved_queries_nigeria" icon="bookmark" label="Nigeria">
+            <paper-item label="Foreign Companies in Nigeria" id="nigeria_1"></paper-item>
         </core-submenu> 
       </core-submenu> 
-      <core-submenu icon="settings" label="Advanced Settings">
+      <core-submenu id="advanced_settings" icon="settings" label="Advanced Settings">
         <div vertical layout>
 		    <div>These settings control more advanced aspects of the visualisation. Place your mouse over titles to have a more detailed description of the setttings.</div>
 		    <div>
@@ -59,44 +57,50 @@
 		selectAction: function(e, detail) {
 	      if (detail.isSelected) {
 	        var selectedItem = detail.item;
+	        this.menuSelect(selectedItem.id);
 //	        console.log(selectedItem.id)
-	        switch(selectedItem.id) {
-				case "bp_plc_countries_2":
+	      }
+		},
+		loadQuery: function(e) {
+			console.log(e.detail.id)
+			document.querySelector('openoil-app').shadowRoot.querySelector('iilab-controls').menuSelect(e.detail.id)
+		},
+		menuSelect: function(id) {
+			this.fire('stats', {i: id, t:"q"});
+	        switch(id) {
+/*				case "bp_plc_countries_2":
 					this.depth = "2"
 				    this.cypher = "MATCH (n:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(m:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[s:IS_OWNER*0.." + this.depth + "]-(o)-[r:HAS_JURISDICTION]->(n:Country) RETURN n, labels(n) as label, r"
 				    break;
 				case "bp_plc_countries_3":
-					this.depth = "2"
+					this.depth = "3"
 				    this.cypher = "MATCH (n:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(m:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[s:IS_OWNER*0.." + this.depth + "]-(o)-[r:HAS_JURISDICTION]->(n:Country) RETURN n, labels(n) as label, r"
 				    break;
 				case "bp_plc_countries_4":
 					this.depth = "4"
 				    this.cypher = "MATCH (n:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(m:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n:Company)-[j:HAS_JURISDICTION]->(c) RETURN n, labels(n) as label, r UNION MATCH (m:Company {name: 'BP P L C'})-[s:IS_OWNER*0.." + this.depth + "]-(o)-[r:HAS_JURISDICTION]->(n:Country) RETURN n, labels(n) as label, r"
-				    break;
-				case "bp_plc_subs_2":
+				    break;*/
+				case "bp_plc_2":
 					this.depth = "2"
 				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
 				    break;
-				case "bp_plc_subs_3":
+				case "bp_plc_3":
 					this.depth = "3"
 				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
 				    break;
-				case "bp_plc_subs_4":
-					this.depth = "4"
-				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
-				    break;
-				case "nigeria_item":
-				this.cypher = "MATCH (parentcountry)<-[:HAS_JURISDICTION]-(n)-[r:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (parentcountry)<-[:HAS_JURISDICTION]-(parent)-[r:IS_OWNER]->(n)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[:HAS_JURISDICTION]-(parent)-[r:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[r:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (m)<-[:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[r:HAS_JURISDICTION]->(n) WHERE n.name = 'Nigeria' RETURN n, labels (n) as label, r "
+				case "nigeria_1":
+					this.cypher = "MATCH (parentcountry)<-[:HAS_JURISDICTION]-(n)-[r:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (parentcountry)<-[:HAS_JURISDICTION]-(parent)-[r:IS_OWNER]->(n)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[r:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (m)<-[:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[r:HAS_JURISDICTION]->(n) WHERE n.name = 'Nigeria' RETURN n, labels (n) as label, r "
 				    break;
 				default:
 				    break;
 			}
-	      }
 		},
 		ready: function () {
 			  var NigeriaQuery = "MATCH (n:Company)<-[r]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r]-(n) RETURN n, labels(n) as label, r LiMIT 20"
 			  var SmallQuery = "MATCH (n:Company)<-[r]-(m) RETURN n, labels(n) as label, r LiMIT 20 UNION MATCH (m:Company)<-[r]-(n) RETURN n, labels(n) as label, r LiMIT 20"
 			  var OtherQuery = "MATCH (a:Contract { name: 'Engineering, procurement and construction (EPC)'})-[r:ISSUES|HAS_CONTRACTOR|HAS_OPERATOR]-(b) WITH a, r, b LIMIT 200 WITH { id: LOWER(REPLACE(a.name, ' ', '_')), labels: labels(a), properties: {name: a.name, oc_id: a.oc_id, license_area: a.license_area, field: a.field} } as nodea, {id: LOWER(REPLACE(a.name + ' ' + b.name, ' ', '_')), source: LOWER(REPLACE(a.name, ' ', '_')), target: LOWER(REPLACE(b.name, ' ', '_')), type: type(r), properties: { immediate: r.immediate}} as link,b WITH {id: LOWER(REPLACE(b.name, ' ', '_')), labels: labels(b), properties: { name: b.name, oc_id: b.ID} } as nodeb, nodea, link RETURN {nodes: collect(DISTINCT nodea) + collect(DISTINCT nodeb), links: collect(DISTINCT link)} AS json"
+			this.depth = 2
+	        document.addEventListener('load-query', this.loadQuery);
 		}
 	})
   </script>
