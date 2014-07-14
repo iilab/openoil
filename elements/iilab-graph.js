@@ -3,28 +3,22 @@ function startGraph(viz, that) {
   var w=1280;
   var h=640;
 
-  var query = that.cypher
-  var param = that.parameters
+  var cypher = that.query.cypher
+  var param = that.query.param
   var myjson = {nodes:[], links:[]};
 
-  if (!query) { 
-    console.log(query)
+  if (!cypher) { 
     document.body.classList.remove('loading');
     return 
-  } 
-
-  console.log(query)
-  console.log(param)
-
-  // Load JSON graph file (result of neod3.cypher query)
-  // var myfile = fs.readFileSync('../neod3_results.json', 'utf8');
-  // var myjson = JSON.parse(myfile)
+  } else if (!param) {
+    param = null;
+  }
 
   neo4j.connect(that.url, function (err, graph) {
       if (err)
           throw err;
 
-      graph.query(query, param, function (err, results) {
+      graph.query(cypher, param, function (err, results) {
           if (err) {
               console.log(err);
               console.log(err.stack);
@@ -358,6 +352,8 @@ function startGraph(viz, that) {
         })
     // Creating Strings for the Autocomplete feature
 
+    // console.log('autocomplete strings')
+    // console.log(myjson.nodes)
     autocompleteStrings = myjson.nodes.map(function(val) {
         return { label: val.properties.name, value: "id_" + val.id };
       });
