@@ -24,6 +24,7 @@
 <link rel="import" href="../components/core-overlay/core-overlay.html">
 <link rel="import" href="../components/core-ajax/core-xhr.html">
 <link rel="import" href="iilab-graph.html"> 
+<link rel="import" href="iilab-map.html"> 
 <link rel="import" href="iilab-controls.html"> 
 <link rel="import" href="iilab-search.html"> 
 
@@ -178,6 +179,11 @@ Polymer('x-dialog', {
       border: none;
     }
 
+    #iilab_map {
+      width:100%;
+      height:100%;
+    }
+
   </style>
   <core-xhr id="xhr"></core-xhr>
   <x-dialog id="dialog" class="dialog">
@@ -268,7 +274,8 @@ Polymer('x-dialog', {
         <paper-shadow z="1"></paper-shadow>
       </core-header-panel>
       <div id="div" tool horizontal layout center wrap flex>
-        <div id="title" flex>Open&nbsp;Oil Data</div>
+        <div id="title" >Open&nbsp;Oil Data</div>
+        <div id="count" flex><template if="{{countValue}}">&nbsp;- {{countValue}} nodes</template></div>
         <div>&nbsp;</div>
         <core-tooltip>
           <h5>Zoom</h5>
@@ -283,7 +290,8 @@ Polymer('x-dialog', {
         </paper-menu-button>      
       </div>
       <div id="selection"></div>
-      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" url="{{url}}" zoom="{{zoom}}" autozoom="{{autozoom}}" depth="{{depthValue}}"></iilab-graph>
+      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" url="{{url}}" zoom="{{zoom}}" autozoom="{{autozoom}}" depth="{{depthValue}}" count="{{countValue}}"></iilab-graph>
+      <iilab-map id="iilab_map" style="display:none;" count="{{countValue}}"></iilab-map>
       <!--<core-card id="core_card" layout vertical></core-card>-->
     </core-scaffold>
   </template>
@@ -314,7 +322,8 @@ Polymer('x-dialog', {
         this.fire('load-query', {id: "nigeria_1"});
       },
       loadMap: function() {
-
+        $(this.$.iilab_graph).hide();
+        $(this.$.iilab_map).show();
       },
       homeClick: function() {
         this.$.dialog.toggle();
