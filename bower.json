@@ -24,6 +24,10 @@
     "neod3": "../neod3",
     "polymer": "Polymer/polymer#~0.3.3",
     "core-elements": "Polymer/core-elements#~0.3.3",
-    "paper-elements": "Polymer/paper-elements#~0.3.3"
+    "paper-elements": "Polymer/paper-elements#~0.3.3",
+    "datamaps": "~0.3.3"
+  },
+  "resolutions": {
+    "d3": "~3.4.6"
   }
 }
