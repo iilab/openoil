@@ -1,0 +1,155 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-tooltip/core-tooltip.html">
+<link rel="import" href="../components/paper-input/paper-input.html">
+<link rel="import" href="../components/paper-slider/paper-slider.html">
+<link rel="import" href="../components/paper-button/paper-button.html">
+
+<polymer-element name="iilab-map" noscript attributes="strings cypher depth count">
+
+  <template>
+	  <style>
+	    #hover {
+	      background-color: white;
+	      border-color: #E2E2E2;
+	      color: #454545;
+	      border-radius: 2px;
+	      width: 400px;
+	      border-width: 1px;
+	      border-style: solid;
+	      font-size: 18.5px;
+	      line-height: 12px;
+	      direction: ltr;
+	      box-shadow: none;
+	      padding: 0px;
+	      padding-left: 10px;
+	    }
+
+	    #hover ul li {
+	      list-style: none;
+	      margin:14px 0px 0px;
+	      font-size: 0.8em;
+	      padding-right:10px;
+	    }
+
+	    /* Creates a small triangle extender for the tooltip */
+	    #hover:after {
+	      box-sizing: border-box;
+	      display: inline;
+	      font-size: 10px;
+	      width: 100%;
+	      line-height: 1;
+	      color: white;
+	      content: "\25BC";
+	      position: absolute;
+	      text-align: center;
+	    }
+
+	    /* Style northward tooltips differently */
+	     #hover.n:after {
+	      margin: -1px 0 0 0;
+	      top: 100%;
+	      left: 0;
+	    }
+
+	  </style>
+ 		<div id="container" style="position: relative; width:900px; height:600px;"></div>
+  </template>
+	<script src="/components/topojson/topojson.js"></script>
+	<script src="/components/datamaps/dist/datamaps.world.min.js"></script>
+  <script>
+	  Polymer('iilab-map', {
+			ready: function () {
+				var bubble_map = new Datamap({
+			  element: this.$.container,
+			  width: 1000,
+			  height: 600,
+			  geographyConfig: {
+			    popupOnHover: false,
+			    highlightOnHover: false,
+					borderWidth: 1,
+          borderColor: '#2a3e92'
+ 			  },
+			  fills: {
+			    defaultFill: '#FFFFFF',
+			    COUNTRY: '#2a3e92'
+			  }
+			});
+  
+  		var myjson = {nodes:[], links:[]};
+
+			console.log(bubble_map);
+
+			cypher = "MATCH (c:Company)-[r:HAS_JURISDICTION]->(j:Country) RETURN j.name as name, j.id as id, j.latitude as latitude, j.longitude as longitude, count(c) as c";
+		  neo4j.connect(document.querySelector('openoil-app').url, function (err, graph) {
+		      if (err)
+		          throw err;
+
+		      graph.query(cypher, function (err, results) {
+		          if (err) {
+		              console.log(err);
+		              console.log(err.stack);
+		          }
+		          else {
+		              myjson = {nodes:[], links:[]};
+		              
+		              // that.count = results.length
+
+		              myjson.nodes = results
+		                               .map(function(row) {
+		                                    return {
+		                                        name: row.name,
+		                                        country: row.id,
+		                                        radius: row.c/10 > 5 ? row.c/10 : 5,
+		                                        count: row.c,
+		                                        latitude: row.latitude,
+		                                        longitude: row.longitude,
+		                                        fillKey: "COUNTRY"
+		                                    };
+		                                });
+
+		              // console.log(myjson.nodes)
+
+							  bubble_map.bubbles(myjson.nodes,
+									{
+									  popupTemplate: function(geo, data) {
+									    return '<div id="hover" class="hoverinfo"><h1>' + data.name + '</h1><h3>' + data.count + ' companies</h3></div>'
+									  }
+									});
+							}
+						})
+					});
+
+
+/*
+			bubble_map.bubbles([
+			  {
+			    name: 'Castle Bravo',
+			    radius: 25,
+			    yeild: 15000,
+			    country: 'USA',
+			    significance: 'First dry fusion fuel "staged" thermonuclear weapon; a serious nuclear fallout accident occurred',
+			    fillKey: 'USA',
+			    date: '1954-03-01',
+			    latitude: 11.415,
+			    longitude: 165.1619
+			  },{
+			    name: 'Tsar Bomba',
+			    radius: 70,
+			    yeild: 50000,
+			    country: 'USSR',
+			    fillKey: 'RUS',
+			    significance: 'Largest thermonuclear weapon ever tested—scaled down from its initial 100 Mt design by 50%',
+			    date: '1961-10-31',
+			    latitude: 73.482,
+			    longitude: 54.5854
+			  }
+			],{
+									  popupTemplate: function(geo, data) {
+									    return '<div class="hoverinfo">Yield:' + data.yeild + 'Exploded on ' + data.date + ' by the'  + data.country + '</div>'
+									  }
+									})
+*/
+		}
+	})
+  </script>
+</polymer-element>
