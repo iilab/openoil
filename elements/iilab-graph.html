@@ -1,6 +1,7 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="../components/paper-shadow/paper-shadow.html">
 <link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="../components/paper-toast/paper-toast.html">
 <link rel="import" href="../components/core-item/core-item.html">
 <link rel="import" href="../components/core-menu/core-menu.html">
 <link rel="import" href="../components/core-menu/core-submenu.html">
@@ -64,12 +65,19 @@
         g.relationship {
           cursor: pointer;
         }
+
+        paper-toast {
+          bottom: 40px;
+          left:none;
+          right: 10px;
+        }
+
       </style>
       <iilab-drawer-panel id="iilab_drawer" class="right-drawer" selected="main">
         <div drawer vertical layout style="overflow: auto;">
            <template bind="{{element}}">
             <div vertical layout>
-              <core-menu valueattr="label" id="core_menu" theme="core-light-theme" vertical layout>
+              <core-menu valueattr="label" id="core_menu" theme="core-light-theme" vertical layout selected=0>
                 <template if="{{ _type == 'node' }}">
                   <core-submenu id="node_details" icon="list" label="{{ type }} Details" multi>
                     <paper-item id="name" icon="flag" label="{{ name }}"></paper-item>
@@ -123,6 +131,8 @@
                   </core-submenu> 
                 </template>
                 <core-submenu icon="bookmark-outline" label="Request Data" vertical layout>
+                    <paper-input hidden id="context" value="{{element.id}}"></paper-input>
+                    <paper-input hidden id="context_type" value="{{_type}}"></paper-input>
                     <paper-input label="Email" icon="email" id="email"></paper-input>
                     <paper-input label="First Name" icon="account" id="first_name"></paper-input>
                     <paper-input label="Last Name" icon="account" id="last_name"></paper-input>
@@ -184,8 +194,8 @@
         this.depth = 2;
         startGraph(this.$.viz, this)
         document.addEventListener('graph', this.graph);
-        this.$.container.parentNode.addEventListener('click', function(e) { 
-            console.log(e.target)
+        document.addEventListener('click', function(e) { 
+            //this.$.drawer.togglePanel();
           });
       },
       buttonClick: function(e) {
@@ -218,33 +228,36 @@
         retryIfRunning();
       },
       submitForm: function(e) {
-        console.log(e)
+        console.log(this.$.context)
+        console.log(this.$.context_type)
         param = {
-           email: this.$.email,
-           first_name: this.$.first_name,
-           last_name: this.$.last_name,
-           company: this.$.company,
-           query: this.$.query
+           context: this.$.context_type.value,
+           type: this.$.type.value,
+           email: this.$.email.value,
+           first_name: this.$.first_name.value,
+           last_name: this.$.last_name.value,
+           company: this.$.company.value,
+           request: this.$.query.value
         }
-
-        cypher = "CREATE (n:Request {email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, query:{query}})";
+        console.log(this.$.context.value)
+        cypher = "CREATE (n:Request {context: {context}, type: {type}, email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, request:{request}})";
         console.log('form')
         console.log(document.querySelector('openoil-app').url)
         neo4j.connect(document.querySelector('openoil-app').url, function (err, graph) {
             if (err)
                 throw err;
 
-            graph.query(cypher, function (err, results) {
+            graph.query(cypher, param, function (err, results) {
                 if (err) {
                     console.log(err);
                     console.log(err.stack);
                 }
                 else {
                     console.log('form submitted!')
-                    this.$.confirmation.show();
+                    document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#confirmation').show();
                     // that.count = results.length
                 }
-            }
+            })
         })
       }
     });

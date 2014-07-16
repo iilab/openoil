@@ -1,5 +1,5 @@
 <link rel="import" href="../components/polymer/polymer.html">
-<link rel="import" href="../components/core-tooltip/core-tooltip.html">
+<!--<link rel="import" href="../components/core-tooltip/core-tooltip.html">-->
 <link rel="import" href="../components/paper-input/paper-input.html">
 <link rel="import" href="../components/paper-slider/paper-slider.html">
 <link rel="import" href="../components/paper-button/paper-button.html">
@@ -32,7 +32,7 @@
       </core-submenu> 
       <core-submenu id="advanced_settings" icon="settings" label="Advanced Settings">
         <div vertical layout>
-		    <div>These settings control more advanced aspects of the visualisation. Place your mouse over titles to have a more detailed description of the setttings.</div>
+		    <div>These settings control more advanced aspects of the visualisation.</div>
 		    <div>
 				<core-tooltip>
 				  <h5>Depth</h5>
@@ -44,7 +44,7 @@
 				  <h5>Raw Query</h5>
 				  <div tip>The OpenOil database uses Neo4j and its query language <a href="http://docs.neo4j.org/chunked/stable/cypher-query-lang.html">Cypher</a>. You can directly enter Cypher queries in this box.</div>
 				</core-tooltip>
-			<paper-input id="cypher" multiline label="Cypher"></paper-input>
+			<paper-input id="cypher" flex multiline rows="5" label="Cypher Query"></paper-input>
 			<paper-button affirmative default icon="done" label="Apply" on-click="{{buttonClick}}"></paper-button>
 		</div>
       </core-submenu> 
@@ -54,7 +54,8 @@
   	Polymer('iilab-controls', {
 		buttonClick: function(e, detail, sender) {
 //			console.log(document.querySelector('iilab-drawer-panel'))
-			document.querySelector('iilab-graph').shadowRoot.querySelector('#drawer').togglePanel();
+			this.depth;
+			this.cypher = this.$.cypher.value;
 		},
 		selectAction: function(e, detail) {
 	      if (detail.isSelected) {
@@ -84,7 +85,7 @@
 				    break;*/
 				case "bp_plc_2":
 					this.depth = "2"
-				    this.cypher = "MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], id: id(x), links: collect(DISTINCT links)} as result"
+				    this.cypher = "MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
 				    break;
 				case "bp_plc_3":
 					this.depth = "3"

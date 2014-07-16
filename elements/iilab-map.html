@@ -65,7 +65,7 @@
 						console.log(e.target)
 					if (d3.select(e.target).data()[0].name) {
 							document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').query.param = {name: d3.select(e.target).data()[0].name };
-	            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').query.cypher = "MATCH p=(n:Country {name: {name}})<-[r:HAS_JURISDICTION]-(m) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
+	            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').query.cypher = "MATCH p=(j:Country {name: {name}})<-[:HAS_JURISDICTION]-(c:Company)<-[r:IS_OWNER*..2]-(d:Company)<-[s:IS_OWNER]-(e:Company)-[:HAS_JURISDICTION]-(f:Country) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
 	            
 	            $(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-map')).hide();
 							$(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph')).show();

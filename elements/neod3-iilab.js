@@ -112,7 +112,6 @@ var neod3_iilab = function() {
         "text-anchor": "middle"
       });
       texts.attr('font-size', function(rel) {
-        console.log(rel)
         return rel.size ? rel.size : viz.style.forRelationship(rel).get('font-size');
         }).attr('fill', function(rel) {
           return viz.style.forRelationship(rel).get('text-color-' + rel.captionLayout);
@@ -278,13 +277,15 @@ NeoD3Geometry_iilab = (function() {
   NeoD3Geometry.prototype.measureRelationshipCaption = function(relationship, caption) {
     var fontFamily, fontSize, padding;
     fontFamily = 'sans-serif';
-    fontSize = parseFloat(this.style.forRelationship(relationship).get('font-size'));
+    size = relationship.size ? relationship.size : this.style.forRelationship(relationship).get('font-size');
+    fontSize = parseFloat(size);
     padding = parseFloat(this.style.forRelationship(relationship).get('padding'));
     return neo.utils.measureText(caption, fontFamily, fontSize) + padding * 2;
   };
 
   NeoD3Geometry.prototype.captionFitsInsideArrowShaftWidth = function(relationship) {
-    return parseFloat(this.style.forRelationship(relationship).get('shaft-width')) > parseFloat(this.style.forRelationship(relationship).get('font-size'));
+    size = relationship.size ? relationship.size : this.style.forRelationship(relationship).get('font-size');
+    return parseFloat(this.style.forRelationship(relationship).get('shaft-width')) > parseFloat(size);
   };
 
   NeoD3Geometry.prototype.measureRelationshipCaptions = function(relationships) {
