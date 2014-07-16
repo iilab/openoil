@@ -130,9 +130,10 @@
                     <paper-input multiline label="Type of data to research" icon="query" id="query"></paper-input>
                     <div center>
                       <paper-button negative label="Cancel" icon="cancel"></paper-button>
-                      <paper-button affirmative default label="Submit" icon="check"></paper-button>
+                      <paper-button affirmative default label="Submit" icon="check" on-click="{{submitForm}}"></paper-button>
                     </div>
-                </core-submenu> 
+                    <paper-toast id="confirmation" text="Your request has been submitted."></paper-toast>
+                </core-submenu>
               </core-menu>
             </div>
           </template>
@@ -215,6 +216,36 @@
         }
 
         retryIfRunning();
+      },
+      submitForm: function(e) {
+        console.log(e)
+        param = {
+           email: this.$.email,
+           first_name: this.$.first_name,
+           last_name: this.$.last_name,
+           company: this.$.company,
+           query: this.$.query
+        }
+
+        cypher = "CREATE (n:Request {email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, query:{query}})";
+        console.log('form')
+        console.log(document.querySelector('openoil-app').url)
+        neo4j.connect(document.querySelector('openoil-app').url, function (err, graph) {
+            if (err)
+                throw err;
+
+            graph.query(cypher, function (err, results) {
+                if (err) {
+                    console.log(err);
+                    console.log(err.stack);
+                }
+                else {
+                    console.log('form submitted!')
+                    this.$.confirmation.show();
+                    // that.count = results.length
+                }
+            }
+        })
       }
     });
   </script>
