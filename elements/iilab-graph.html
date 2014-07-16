@@ -6,7 +6,7 @@
 <link rel="import" href="../components/core-menu/core-submenu.html">
 <link rel="import" href="iilab-description.html">
 
-<polymer-element name="iilab-graph" noscript attributes="search url description query depth strings zoom autozoom chart cypher count">
+<polymer-element name="iilab-graph" noscript attributes="search url description query depth strings zoom autozoom chart cypher countnodes countlinks">
   <style>
       .d3-tip {
       background-color: white;
@@ -66,40 +66,40 @@
         }
       </style>
       <iilab-drawer-panel id="iilab_drawer" class="right-drawer" selected="main">
-        <div drawer vertical layout>
+        <div drawer vertical layout style="overflow: auto;">
            <template bind="{{element}}">
             <div vertical layout>
-              <core-menu valueattr="label" id="core_menu" theme="core-light-theme" multi selected="0" vertical layout>
+              <core-menu valueattr="label" id="core_menu" theme="core-light-theme" vertical layout>
                 <template if="{{ _type == 'node' }}">
-                  <core-submenu icon="list" label="{{ type }} Details" selected="0">
-                    <paper-item icon="flag" label="{{ name }}" id="name"></paper-item>
+                  <core-submenu id="node_details" icon="list" label="{{ type }} Details" multi>
+                    <paper-item id="name" icon="flag" label="{{ name }}"></paper-item>
                     <template if="{{ oc_id }}">
-                      <paper-item icon="info-outline" label="Open Corporates Id: {{ oc_id }}" id="oc_id"></paper-item>
+                      <paper-item id="oc_id" icon="info-outline" label="Open Corporates Id: {{ oc_id }}"></paper-item>
                     </template>
                     <template if="{{ directors }}">
-                      <core-submenu icon="account-circle" label="Directors ({{ directors.length}})" selected="0">
+                      <core-submenu id="directors" icon="account-circle" label="Directors ({{ directors.length }})">
                         <template repeat="{{ director in directors }}">
-                          <paper-item flex label="{{ director }}" id="directors"></paper-item>
+                          <core-item flex label="{{ director }}"></core-item>
                         </template>
                       </core-submenu> 
                     </template>
                     <template if="{{ shareholders }}">
-                      <core-submenu icon="account-circle" label="Directors ({{ shareholders.length}})" selected="0">
+                      <core-submenu icon="account-circle" label="Shareholders ({{ shareholders.length}})" multi>
                         <template repeat="{{ shareholder in shareholders }}">
-                          <paper-item icon="account-box" label="{{ shareholder }}" icon="check" id="shareholders"></paper-item>
+                          <paper-item flex label="{{ shareholder }}"></paper-item>
                         </template>
                       </core-submenu> 
                     </template>
                     <template if="{{ license_area }}">
-                      <paper-item icon="receipt" label="License Areas: {{ license_area }}" icon="check" id="license_area"></paper-item>
+                      <paper-item id="license_area" icon="receipt" label="License Areas: {{ license_area }}" icon="check"></paper-item>
                     </template>
                     <template if="{{ field }}">
-                      <paper-item icon="receipt" label="Fields: {{ field }}" icon="check" id="field"></paper-item>
+                      <paper-item id="field" icon="receipt" label="Fields: {{ field }}" icon="check"></paper-item>
                     </template>
                   </core-submenu>
                 </template>
                 <template if="{{ _type == 'relationship' }}">
-                  <core-submenu icon="info-outline" label="{{ ownership_type }}">
+                  <core-submenu id="relationship_details" icon="info-outline" label="{{ ownership_type }}">
                     <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
                     <paper-item label="owns"></paper-item>
                     <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
@@ -117,13 +117,16 @@
                       <template if="{{ log_message }}"><paper-item icon="info-outline" label="Notes: {{ log_message }}%" id="log_message"></paper-item></template>
                   </core-submenu> 
                 </template>
-                <core-submenu icon="attachment" label="Documents">
-                </core-submenu> 
+                <template if="{{ document }}">
+                  <core-submenu icon="attachment" label="Documents">
+
+                  </core-submenu> 
+                </template>
                 <core-submenu icon="bookmark-outline" label="Request Data" vertical layout>
-                    <paper-input floatinglabel label="Email" icon="email" id="email"></paper-input>
-                    <paper-input floatinglabel label="First Name" icon="account" id="first_name"></paper-input>
-                    <paper-input floatinglabel label="Last Name" icon="account" id="last_name"></paper-input>
-                    <paper-input floatinglabel label="Company" icon="flag" id="company"></paper-input>
+                    <paper-input label="Email" icon="email" id="email"></paper-input>
+                    <paper-input label="First Name" icon="account" id="first_name"></paper-input>
+                    <paper-input label="Last Name" icon="account" id="last_name"></paper-input>
+                    <paper-input label="Company" icon="flag" id="company"></paper-input>
                     <paper-input multiline label="Type of data to research" icon="query" id="query"></paper-input>
                     <div center>
                       <paper-button negative label="Cancel" icon="cancel"></paper-button>
@@ -133,8 +136,6 @@
               </core-menu>
             </div>
           </template>
-          <paper-button on-click="{{buttonClick}}"></paper-button>
-          <paper-shadow z="1"></paper-shadow>
         </div>
         <div main><svg id="viz"></svg></div>
       </iilab-drawer-panel>
@@ -153,7 +154,8 @@
       published: {
         depth: 2,
       },
-      count: 0,
+      countnodes: 0,
+      countlinks: 0,
       element: { 
           _type: "",
           type: "",
@@ -181,6 +183,9 @@
         this.depth = 2;
         startGraph(this.$.viz, this)
         document.addEventListener('graph', this.graph);
+        this.$.container.parentNode.addEventListener('click', function(e) { 
+            console.log(e.target)
+          });
       },
       buttonClick: function(e) {
         this.$.drawer.togglePanel()

@@ -186,7 +186,7 @@ Polymer('x-dialog', {
 
   </style>
   <core-xhr id="xhr"></core-xhr>
-  <x-dialog id="dialog" class="dialog">
+  <x-dialog id="dialog" class="dialog" style="overflow-y: scroll">
       <!-- place all overlay styles inside the overlay target -->
       <style no-shim>
         .dialog {
@@ -205,7 +205,20 @@ Polymer('x-dialog', {
 
         #dialog {
           top:10%;
-          width: 700px;
+          width: 80%;
+          height: 80%;
+        }
+
+        #dialog div#bp, #dialog div#nigeria {
+          margin:15px;
+        }
+
+        #dialog img{
+          width:100%;
+        }
+
+        #dialog p {
+          font-size:1em;
         }
 
         #dialog paper-icon-button {
@@ -219,51 +232,62 @@ Polymer('x-dialog', {
       </style>
       <div layout horizontal center>
         <core-icon icon="home" size="45px" style="margin-right:15px;"></core-icon>
-        <h2>OpenOil Data Navigator</h2>
+        <h2>OpenOil: Corporate Network Navigator</h2>
       </div>
       <div layout horizontal>
-        <div layout vertical center flex one>
+        <div id="bp" layout vertical center flex one>
           <h4>BP Corporate Structure</h4>
-          <img src="/img/bp.png" core-overlay-toggle on-click="{{loadBP}}"/>
-          <paper-icon-button raisedButton core-overlay-toggle label="BP" on-click="{{loadBP}}"></paper-icon-button>
-          <p>Curabitur imperdiet risus id enim bibendum vestibulum.</p>
+          <img src="/img/map.png" core-overlay-toggle id="bp_map" on-click="{{clickQuery}}"/>
+          <paper-icon-button raisedButton core-overlay-toggle label="BP" id="bp_map" on-click="{{clickQuery}}"></paper-icon-button>
+          <p>With over 1,000 affiliate companies in more than 80 countries, BP controls a complex network of corporate entities This map of BP's corporate structure shows ownership relations for them all, using only public disclosures that BP itself has made. It also includes key financials for companies registered in the UK. Here's how the tool works:
+<ol><li>Click on a country to see all BP entities registered there, visualised in a network graph.</li>
+<li>Follow the ownership chains up: there may be up to 12 layers of ownership before you get to the ultimate owner, UK-registered BP plc.</li>
+<li>Double-click on each jurisdiction to see other companies registered there.</li>
+<li>Use the search bar to find specific companies of interest.</li></ol>
+<p>
+Every data point in this network includes a citable URL to verify the assertion - feel free to use this information to facilitate your investigations into BP's activities in your country. Go ahead and play! 
+</p><p>
+<a href="http://openoil.net/corporate-networks/bp-corporate-network/"/>Learn more </a>
+</p>
         </div>
-        <div layout vertical center flex one>
-          <h4>Nigeria Contracts</h4>
-          <img src="/img/nigeria.png" core-overlay-toggle on-click="{{loadNigeria}}"/>
-          <paper-icon-button raisedButton core-overlay-toggle label="Nigeria" on-click="{{loadNigeria}}"></paper-icon-button>
-          <p>Praesent lacinia congue erat nec mattis. Fusce commodo lacus est.</p>
+        <div id="nigeria" layout vertical center flex one>
+          <h4>Oil contracts and companies in Nigeria</h4>
+          <img src="/img/nigeria.png" core-overlay-toggle id="nigeria_production" on-click="{{clickQuery}}"/>
+          <paper-icon-button raisedButton core-overlay-toggle label="Nigeria" id="nigeria_production" on-click="{{clickQuery}}"></paper-icon-button>
+          <p>There are hundreds of oil companies operating in Nigeria, but beyond the big names like Shell and Exxon, the nature of most of these companies is poorly understood outside industry circles. This network graph aims to shed more light on the sector, by showing how companies in Nigeria's oil and gas sector are connected through...
+<ol><li>Production contracts: <a id="nigeria_production" core-overlay-toggle on-click="{{clickQuery}}">which companies produce Nigeria's oil</a>, and what is their overall share of the oil produced?</li>
+<li>Service contracts: <a id="nigeria_service" core-overlay-toggle on-click="{{clickQuery}}">which companies own the rights to lucrative service subcontracts?</a></li></ol>  
+<p>The graph also shows the range of connections of individual companies - their contracts as well as their ownership structures. One example is the <a id="nigeria_snepco" core-overlay-toggle on-click="{{clickQuery}}">Shell affiliate 'Shell Nigeria Exploration and Production Company (SNEPCO)'</a>. But that's only one point of entry: click on any entity, or any connection between entities, to reveal more information. 
+</p><p>
+<a href="http://openoil.net/corporate-networks/nigeria-corporate-network"/>Learn more </a>
+</p>
         </div>
       </div>
-      <div layout vertical center>
-        <img src="/img/map.png" core-overlay-toggle on-click="{{loadMap}}"/>
-        <paper-icon-button raisedButton core-overlay-toggle on-click="{{loadMap}}" label="Map"></paper-icon-button>
-        <p>Explore the OpenOil data set through a map.</p>
-        <core-overlay layered id="confirmation" class="dialog" backdrop transition="core-transition-top">
-          <!-- place all overlay styles inside the overlay target -->
-          <style no-shim>
-            .dialog {
-              box-sizing: border-box;
-              -moz-box-sizing: border-box;
-              font-family: Arial, Helvetica, sans-serif;
-              font-size: 13px;
-              -webkit-user-select: none;
-              -moz-user-select: none;
-              overflow: hidden;
-              background: white;
-              padding:30px 42px;
-              outline: 1px solid rgba(0,0,0,0.2);
-              box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-            }
+      <core-overlay layered id="confirmation" class="dialog" backdrop transition="core-transition-top">
+        <!-- place all overlay styles inside the overlay target -->
+        <style no-shim>
+          .dialog {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            overflow: hidden;
+            background: white;
+            padding:30px 42px;
+            outline: 1px solid rgba(0,0,0,0.2);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+          }
 
-            #confirmation {
-              box-sizing: border-box;
-              text-align: center;
-              width: 150px;
-            }
-          </style>
-        </core-overlay>
-      </div><br><br>
+          #confirmation {
+            box-sizing: border-box;
+            text-align: center;
+            width: 150px;
+          }
+        </style>
+      </core-overlay>
+      <br><br>
     </x-dialog>
 
     <core-scaffold id="core_scaffold">
@@ -281,7 +305,7 @@ Polymer('x-dialog', {
       </core-header-panel>
       <div id="div" tool horizontal layout center wrap flex>
         <div id="title" >Open&nbsp;Oil Data</div>
-        <div id="count" flex><template if="{{countValue}}">&nbsp;- {{countValue}} nodes</template></div>
+        <div id="count" flex><template if="{{countNodesValue}}">&nbsp;- {{countNodesValue.node}} nodes &amp; {{countLinksValue.links}} links</template></div>
         <div>&nbsp;</div>
         <core-tooltip>
           <h5>Zoom</h5>
@@ -297,7 +321,7 @@ Polymer('x-dialog', {
       </div>
       <div id="selection"></div>
       <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" url="{{url}}" zoom="{{zoom}}" autozoom="{{autozoom}}" depth="{{depthValue}}" count="{{countValue}}"></iilab-graph>
-      <iilab-map id="iilab_map" style="display:none;" count="{{countValue}}"></iilab-map>
+      <iilab-map id="iilab_map" style="display:none;" countnodes="{{countNodesValue}}" countlinks="{{countLinksValue}}"></iilab-map>
       <!--<core-card id="core_card" layout vertical></core-card>-->
     </core-scaffold>
   </template>
@@ -310,9 +334,38 @@ Polymer('x-dialog', {
   			title: ""
   		},
       domReady: function() {
-        this.$.dialog.toggle();
+        this.url = (window.location.href.split('#')[0] == 'http://localhost/')?'http://db.localhost:7474/db/data/' : 'https://db_openoil.iilab.org/db/data/'
+        this.loadQuery(window.location.hash.replace(/^#/, ''))
+        console.log(this.url)
         this.addEventListener('set-slider', this.sliderSet);
         this.addEventListener('stats', this.statsReq);
+      },
+      clickQuery: function(e) {
+        console.log(e.toElement.id)
+        window.location.hash = "#" + e.toElement.id;
+        this.loadQuery(e.toElement.id)
+      },
+      loadQuery: function(id) {
+        console.log(id)
+        switch(id) {
+          case "bp_plc_2":
+          case "bp_plc_3":
+          case "nigeria_production":
+          case "nigeria_service":
+          case "nigeria_snepco":
+            $(this.$.iilab_graph).show();
+            $(this.$.iilab_map).hide();
+//            this.$.dialog.toggle();
+            this.fire('load-query', {id: id});
+            break;
+          case "bp_map":
+            $(this.$.iilab_graph).hide();
+            $(this.$.iilab_map).show();
+            this.$.dialog.toggle();
+          default:
+            this.$.dialog.toggle();
+            break;
+        }
       },
       statsReq: function(e) {
         this.$.xhr.request({url:"?i=" + e.detail.i + "&t=" + e.detail.t })
@@ -325,13 +378,14 @@ Polymer('x-dialog', {
       loadNigeria: function() {
 //        this.$.iilab_controls.shadowRoot.querySelector("#SavedQueries").selected = 1;
 //        this.$.iilab_controls.shadowRoot.querySelector("#SavedQueriesBP").selected = 1;
-        this.fire('load-query', {id: "nigeria_1"});
+        this.fire('load-query', {id: "nigeria_production"});
       },
       loadMap: function() {
         $(this.$.iilab_graph).hide();
         $(this.$.iilab_map).show();
       },
       homeClick: function() {
+        window.location.hash = "#";
         this.$.dialog.toggle();
       },
   		buttonClick: function(e, detail, sender) {

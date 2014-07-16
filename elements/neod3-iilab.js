@@ -59,23 +59,23 @@ var neod3_iilab = function() {
   nodeOverlay = new neo.Renderer({
     onGraphChange: function(selection) {
       var circles;
-      circles = selection.selectAll('circle.overlay').data(function(node) {
-        if (node.selected) {
+      circles = selection.selectAll('circle').data(function(node) {
+//        if (node.selected) {
           return [node];
-        } else {
-          return [];
-        }
+//        } else {
+//          return [];
+//        }
       });
-      circles.enter().insert('circle', '.outline').classed('ring', true).classed('overlay', true).attr({
+      circles.enter().append('circle').classed('overlay', true).attr({
         cx: 0,
         cy: 0,
-        fill: '#f5F6F6',
-        stroke: 'rgba(151, 151, 151, 0.2)',
-        'stroke-width': '3px'
+        fill: 'none',
+        stroke: 'none',
+        'stroke-width': '0px'
       });
       circles.attr({
         r: function(node) {
-          return node.radius + 6;
+          return node.radius + 3;
         }
       });
       return circles.exit().remove();
@@ -112,7 +112,8 @@ var neod3_iilab = function() {
         "text-anchor": "middle"
       });
       texts.attr('font-size', function(rel) {
-        return viz.style.forRelationship(rel).get('font-size');
+        console.log(rel)
+        return rel.size ? rel.size : viz.style.forRelationship(rel).get('font-size');
         }).attr('fill', function(rel) {
           return viz.style.forRelationship(rel).get('text-color-' + rel.captionLayout);
         });

@@ -26,24 +26,56 @@ function startGraph(viz, that) {
           else {
               myjson = {nodes:[], links:[]};
               
-              //  console.log(results)
+              console.log(results)
 
-              that.count = results.length
+              that.countnodes = results[0].result.nodes.length
+              that.countlinks = results[0].result.links.length
 
-              myjson.nodes = results
+              console.log(that.countnodes)
+              console.log(that.countlinks)
+
+              myjson.nodes = results[0].result.nodes
                                .map(function(row) {
                                     return {
-                                        id: row.n.id,
+                                        id: row.id,
                                         labels: row.label,
-                                        properties: row.n.data
+                                        properties: row.node.data
                                     };
                                 });
 
               // console.log(myjson.nodes)
 
-              
-              for (i = 1; i <= that.depth; i++) {
-                      myjson.links = myjson.links.concat(results
+              myjson.links = results[0].result.links
+                               .map(function(r) {
+                                    var caption, weight, size
+                                    if (r.type == "IS_OWNER") {
+                                      caption = r.data.immediate + "%"
+                                      weight = r.data.immediate/10        
+                                      size= "18px";
+                                    } else if (r.type == "HAS_CONTRACTOR") {
+                                      caption = r.data.contract_share + '%'
+                                      weight = r.data.contract_share/5
+                                      size= "18px";
+                                    } else {
+                                      caption = r.type;
+                                      size= "10px";
+                                      weight = 1
+                                    }
+                                    return {
+                                        id: r.self.replace(that.url + "relationship/",""),
+                                        source: r.start.replace(that.url + "node/",""),
+                                        target: r.end.replace(that.url + "node/",""),
+                                        type: r.type,
+                                        caption: caption,
+                                        size: size,
+                                        weight: weight,
+                                        properties: r.data
+                                    };
+                                });
+
+
+/*              for (i = 1; i <= that.depth; i++) {
+                      myjson.links = myjson.links.concat(results[0].result.links
                                .filter(function(row) {
                                   return (row.r instanceof Array) ? (row.r.length == i) : true
                                })
@@ -63,7 +95,7 @@ function startGraph(viz, that) {
                                         properties: r.data
                                       }
                                     } else {
-                                      r = row.r
+                                      r = row
                                       ret = {
                                         id: r.id,
                                         source: r.start,
@@ -77,7 +109,7 @@ function startGraph(viz, that) {
                                     return ret;
                                 }));
 
-              }
+              }*/
 
               // console.log(myjson.links)
 
@@ -103,9 +135,13 @@ function startGraph(viz, that) {
         _force.init = function(render) {
           var accelerateLayout, d3force, forceLayout, linkDistance;
           forceLayout = {};
-          linkDistance = that.count > 100 ? 50 * 200 / that.count : 75;
-          console.log(that.count)
-          d3charge = that.count > 100 ? -8000 : -4000;
+          // 800 works for BP 
+          //linkDistance = that.countnodes > 100 ? 50 * 200 / that.countnodes : 75;
+          linkDistance = 200
+          console.log(that.countnodes)
+          // -8000 works for BP.
+          //d3charge = that.countnodes > 100 ? -8000 * that.countlinks / that.countnodes :  -4000 * that.countlinks / that.countnodes ;
+          d3charge = -8000
 
           // Basic Force Layout Parameters
           d3force = d3.layout.force()
@@ -145,25 +181,25 @@ function startGraph(viz, that) {
                   d3force.alpha(-0.01);
 //                  console.log(nodes.node())
                   
-                  console.log(viz)
+/*                  console.log(viz)
                   console.log(viz.width.baseVal.value)
                   console.log(viz.height.baseVal.value)
                   console.log(layer_nodes)
                   console.log(layer_nodes.node().getBBox().x)
                   console.log(layer_nodes.node().getBBox().y)
                   console.log(layer_nodes.node().getBBox().width)
-                  console.log(layer_nodes.node().getBBox().height)
+                  console.log(layer_nodes.node().getBBox().height)*/
 
                   zs = zoom.scale()
                   console.log(zs)
                   zt = zoom.translate();
                   zs = ( ( viz.height.baseVal.value - 64 ) / layer_nodes.node().getBBox().height ) < ( viz.width.baseVal.value - 256 / layer_nodes.node().getBBox().width ) ? ( ( viz.height.baseVal.value - 64 ) / layer_nodes.node().getBBox().height ) * 1 : ( viz.width.baseVal.value - 256 / layer_nodes.node().getBBox().width ) * 1
-                  console.log( viz.width.baseVal.value / 2 )
+/*                  console.log( viz.width.baseVal.value / 2 )
                   console.log(layer_nodes.node().getBBox().x + layer_nodes.node().getBBox().width / 2)
                   console.log(zt)
                   console.log( viz.height.baseVal.value / 2)
                   console.log(layer_nodes.node().getBBox().y + layer_nodes.node().getBBox().height / 2 )
-
+*/
 
                   dx = ( viz.width.baseVal.value / 2 ) - ( layer_nodes.node().getBBox().x + layer_nodes.node().getBBox().width / 2 )  ;
                   dy = ( viz.height.baseVal.value / 2 ) - ( layer_nodes.node().getBBox().y + layer_nodes.node().getBBox().height / 2 )  ;
@@ -252,9 +288,19 @@ function startGraph(viz, that) {
               + "</ul>";
         }
         else if (d.constructor.name == "Relationship") {
-          ret= "<ul><strong>" + d.propertyMap.ownership_type + "</strong>"
-                              + ( ( d.propertyMap.immediate ) ? "<li>Immediate Ownership: <strong>" + d.propertyMap.immediate + "%</strong></li>" : "" )
-             + "</ul>";
+          var rel_title = ""
+          var rel_info = "";
+          if (d.type == "IS_OWNER") { 
+            rel_title = d.propertyMap.ownership_type 
+            rel_info = "Immediate Ownership: <strong>" + d.propertyMap.immediate + "%</strong>"
+          } 
+          else if (d.type == "HAS_CONTRACTOR")  { 
+            rel_title = d.type 
+            rel_info = "Contract Share: <strong>" + d.propertyMap.contract_share + "%</strong>"
+          } else {
+            rel_title = d.type             
+          }
+          ret= "<ul><li><strong>" + rel_title + "</strong></li><li>" + rel_info + "</li></ul>";
         }
         return ret;
 
@@ -276,7 +322,6 @@ function startGraph(viz, that) {
             d = d.node
           }
           // Display sidebar.
-          console.log(d)
 
           that.element._type = "node"
           that.element.type = d.labels[0]
@@ -295,16 +340,33 @@ function startGraph(viz, that) {
           that.element.confidence = ""
 
           that.$.iilab_drawer.openDrawer();
-
-
+          tip.hide(d, that.parentNode)
+/*          
+          d3.select(viz).selectAll('g.node circle')
+              .transition()
+              .attr("fill", chart.style()['node.Company'].color)
+              .attr("stroke-width", "4px")
+              .attr("opacity", "1")
+          d3.select(viz).selectAll('g.node text')
+              .transition()
+              .attr("fill", "#2a3e92")
+          d3.select(viz).selectAll('#id_' + d.id + ' circle')
+              .transition()
+              .attr("stroke-opacity", "0.5")
+              .attr("stroke-width", "32px")
+              .attr("fill", "#2a3e92")
+          d3.select(viz).selectAll('#id_' + d.id + ' text')
+              .transition()
+              .attr("fill", "#FFF")
+*/
           // Autozoom on Click.
           // TODO: Zoom on clicked node and immediately related nodes. relationshipMap ?
 
           zs = zoom.scale()
           zt = zoom.translate();
           zs = window.innerHeight / 1000
-          dx = (w/2.0) - d.x*zs - 100 ;
-          dy = (h/2.0) - d.y*zs - 20;
+          dx = (w/2.0) - d.x*zs - 256 ;
+          dy = (h/2.0) - d.y*zs - 64;
 
           zoom.translate([dx, dy]);
           zoom.scale(zs);
@@ -317,17 +379,113 @@ function startGraph(viz, that) {
               });
         })
       .on('nodeDblClicked', function(d,i){
-          // Select proper parent <g>
-          if (d.constructor.name == "Object" && d.node) {
-            d = d.node
+          e = window.event;
+/*          if (e.shiftKey) { console.log('shift is down')}
+          if (e.altKey) { console.log('alt is down') }
+          if (e.ctrlKey) { console.log('ctrl is down') } */
+          if (e.metaKey) { 
+            // console.log('cmd is down')
+
+            if (d.constructor.name == "Object" && d.node) {
+              d = d.node
+            }
+
+            var myjson = {nodes:[], links:[]};
+
+//        console.log(bubble_map);
+
+            cypher = "MATCH (n {name: '" + d.propertyMap.name + "'})-[r]-(m) RETURN m as n, labels(m) as label, r";
+
+            neo4j.connect(document.querySelector('openoil-app').url, function (err, graph) {
+                if (err)
+                    throw err;
+
+                graph.query(cypher, function (err, results) {
+                    if (err) {
+                        console.log(err);
+                        console.log(err.stack);
+                    }
+                    else {
+                        
+                        // that.count = results.length
+                        console.log(results)
+
+                        myjson.nodes = myjson.nodes.concat(results
+                                         .map(function(row) {
+                                              return {
+                                                id: row.n.id,
+                                                labels: row.label,
+                                                properties: row.n.data
+                                              };
+                                          }));
+
+
+
+                        // console.log(myjson.nodes)
+                        for (i = 1; i <= 1; i++) {
+                                myjson.links = myjson.links.concat(results
+                                         .filter(function(row) {
+                                            return (row.r instanceof Array) ? (row.r.length == i) : true
+                                         })
+                                         .map(function(row) {
+                                              // console.log(i)
+                                              // console.log(row)
+                                              var ret = {};
+                                              if (row.r instanceof Array) {
+                                                r = row.r[i-1]
+                                                ret = {
+                                                  id: r.self.replace(that.url + "relationship/",""),
+                                                  source: r.start.replace(that.url + "node/",""),
+                                                  target: r.end.replace(that.url + "node/",""),
+                                                  type: r.type,
+                                                  caption: r.type == "IS_OWNER" ? r.data.immediate + "%" : r.type == "IS_CONTRACTOR" ? r.data.contract_share + '%': '',
+                                                  weight: r.type == "IS_OWNER" ? r.data.immediate/10 : r.type == "IS_CONTRACTOR" ? r.data.contract_share/5 : 1,
+                                                  properties: r.data
+                                                }
+                                              } else {
+                                                r = row.r
+                                                ret = {
+                                                  id: r.id,
+                                                  source: r.start,
+                                                  target: r.end,
+                                                  type: r.type,
+                                                  caption: r.type == "IS_OWNER" ? r.data.immediate + "%" : r.type == "IS_CONTRACTOR" ? r.data.contract_share + '%': '',
+                                                  weight: r.type == "IS_OWNER" ? r.data.immediate/10 : r.type == "IS_CONTRACTOR" ? r.data.contract_share/5 : 1,
+                                                  properties: r.data
+                                                }
+                                              }
+                                              return ret;
+                                          }));
+
+                        }
+
+                        console.log(myjson.links)
+
+                     graphModel = neo.graphModel()
+                      .nodes(myjson.nodes)
+                      .relationships(myjson.links)
+
+                    d3.select(viz)
+                      .data([graphModel])
+                      .call(chart)
+                }
+              })
+            });
+          
           }
-          tip.hide(d, that.parentNode)
-          console.log(that.depth)
-          if (d.labels[0] == "Company") {
-            that.cypher = "MATCH (a:Company {name: '" + d.propertyMap.name + "'})-[r:IS_OWNER*0.." + that.depth + "]-(n) RETURN n, labels(n) as label, r"
-          }
-          else if (d.labels[0] == "Country") {
-            that.cypher = "MATCH (a:Country {name: '" + d.propertyMap.name + "'})<-[r:HAS_JURISDICTION*0.." + that.depth + "]-(n) RETURN n, labels(n) as label, r"            
+          else {
+            // Select proper parent <g>
+            if (d.constructor.name == "Object" && d.node) {
+              d = d.node
+            }
+            tip.hide(d, that.parentNode)
+            console.log(that.depth)
+            if (d.labels[0] == "Company") {
+              that.cypher = "MATCH (a:Company {name: '" + d.propertyMap.name + "'})-[r:IS_OWNER*0.." + that.depth + "]-(n) RETURN n, labels(n) as label, r"
+            }
+            else if (d.labels[0] == "Country") {
+              that.cypher = "MATCH (a:Country {name: '" + d.propertyMap.name + "'})<-[r:HAS_JURISDICTION*0.." + that.depth + "]-(n) RETURN n, labels(n) as label, r"            
+            }
           }
         })
       .on('relationshipClicked', function(d,i){
@@ -409,20 +567,24 @@ function startGraph(viz, that) {
     
     var relationships_text = d3.select(viz).selectAll("g.layer > g.relationship text")
 
-    var nodes_inner = d3.select(viz).selectAll("g.layer > g.node circle, g.layer > g.node text")
+    var nodes_inner = d3.select(viz).selectAll("g.layer > g.node")
               .on('mouseover', function(d) {
                 tip.show(d, this)
+                d3.select(this).classed('highlight', true)
               })
               .on('mouseout', function(d) {
-                tip.hide(d, this.parentNode)
+                tip.hide(d, this)
+                d3.select(this).classed('highlight', false)
               });
 
     var relationships_inner = d3.select(viz).selectAll("g.layer > g.relationship .overlay")
               .on('mouseover', function(d) {
                 tip.show(d, this)
+                d3.select(this.parentNode).classed('highlight', true)
               })
               .on('mouseout', function(d) {
                 tip.hide(d, this)
+                d3.select(this.parentNode).classed('highlight', false)
               });
 
     var circles = d3.select(viz).selectAll("g.nodes > circle")

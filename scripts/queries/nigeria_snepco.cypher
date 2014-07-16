@@ -1,0 +1,1 @@
+MATCH p=(company:Company)-[r:IS_OWNER*..3]-(a {name: 'Shell Nigeria Exploration and Production Company (SNEPCO)'})-[:AWARDS|HAS_OPERATOR]-(c)-[:HAS_CONTRACTOR|HAS_OPERATOR]-(d) WHERE id(d)<>635603 UNWIND nodes(p) as n UNWIND relationships(p) as l RETURN {nodes: collect(DISTINCT n), links: collect(DISTINCT l)}

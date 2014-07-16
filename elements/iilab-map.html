@@ -60,18 +60,19 @@
 	  	bubbleClick: function(e) {
 	  		console.log(e)
 	  	},
-			ready: function () {
+			domReady: function () {
 					this.$.container.parentNode.addEventListener('click', function(e) { 
 						console.log(e.target)
-						console.log(d3.select(e.target).data()[0].name)
-						document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').query.param = {name: d3.select(e.target).data()[0].name };
-            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').query.cypher = "MATCH (n:Country {name: {name}})<-[r:HAS_JURISDICTION]-(m) RETURN n, labels(n) as label, r UNION MATCH (m:Country {name: {name}})<-[r:HAS_JURISDICTION]-(n) RETURN n, labels(n) as label, r"
-            
-            $(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-map')).hide();
-						$(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph')).show();
+					if (d3.select(e.target).data()[0].name) {
+							document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').query.param = {name: d3.select(e.target).data()[0].name };
+	            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').query.cypher = "MATCH p=(n:Country {name: {name}})<-[r:HAS_JURISDICTION]-(m) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
+	            
+	            $(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-map')).hide();
+							$(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph')).show();
 
-            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').fire('graph', {});
-            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').fire('stats', {i: e.target.n, t:"c"}); 
+	            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').fire('graph', {});
+	            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').fire('stats', {i: e.target.n, t:"c"}); 
+	          }
 					});
 					var bubble_map = new Datamap({
 				  element: this.$.container,
@@ -94,6 +95,8 @@
 //				console.log(bubble_map);
 
 				cypher = "MATCH (c:Company)-[r:HAS_JURISDICTION]->(j:Country) RETURN j.name as name, j.id as id, j.latitude as latitude, j.longitude as longitude, count(c) as c";
+				console.log('map')
+				console.log(document.querySelector('openoil-app').url)
 			  neo4j.connect(document.querySelector('openoil-app').url, function (err, graph) {
 			      if (err)
 			          throw err;
@@ -110,10 +113,18 @@
 
 			              myjson.nodes = results
 			                               .map(function(row) {
+			                               			var radius=0;
+			                               			if (row.c > 50) {
+			                               				radius = row.c / 10
+			                               			} else if (row.c < 5) {
+			                               				radius = 5
+			                               			} else {
+			                               				radius = row.c / 3
+			                               			}
 			                                    return {
 			                                        name: row.name,
 			                                        country: row.id,
-			                                        radius: row.c/10 > 5 ? row.c/10 : 5,
+			                                        radius: radius,
 			                                        count: row.c,
 			                                        latitude: row.latitude,
 			                                        longitude: row.longitude,

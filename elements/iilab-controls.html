@@ -25,7 +25,9 @@
           <paper-item label="BP PLC Subsidiaries and Countries (Depth 4)" id="bp_plc_countries_4"></paper-item>-->
         </core-submenu> 
         <core-submenu id="saved_queries_nigeria" icon="bookmark" label="Nigeria">
-            <paper-item label="Foreign Companies in Nigeria" id="nigeria_1"></paper-item>
+            <paper-item label="Production contracts" id="nigeria_production"></paper-item>
+            <paper-item label="Service contracts" id="nigeria_service"></paper-item>
+            <paper-item label="SNEPCO all connections" id="nigeria_snepco"></paper-item>
         </core-submenu> 
       </core-submenu> 
       <core-submenu id="advanced_settings" icon="settings" label="Advanced Settings">
@@ -82,14 +84,20 @@
 				    break;*/
 				case "bp_plc_2":
 					this.depth = "2"
-				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
+				    this.cypher = "MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], id: id(x), links: collect(DISTINCT links)} as result"
 				    break;
 				case "bp_plc_3":
 					this.depth = "3"
-				    this.cypher = "MATCH (a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) RETURN n, labels(n) as label, r"
+				    this.cypher = "MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.." + this.depth + "]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
 				    break;
-				case "nigeria_1":
-					this.cypher = "MATCH (parentcountry)<-[:HAS_JURISDICTION]-(n)-[r:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (parentcountry)<-[:HAS_JURISDICTION]-(parent)-[r:IS_OWNER]->(n)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (n)<-[r:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[:HAS_JURISDICTION]->(country) WHERE country.name = 'Nigeria' RETURN n, labels (n) as label, r UNION MATCH (m)<-[:HAS_JURISDICTION]-(parent)-[:IS_OWNER]->(company)-[r:HAS_JURISDICTION]->(n) WHERE n.name = 'Nigeria' RETURN n, labels (n) as label, r "
+				case "nigeria_production":
+					this.cypher = "MATCH p=(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b {name: 'Nigerian National Petroleum Corporation (NNPC)'}) WITH p, a,c, hc,b,i MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Production Contract'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result"
+				    break;
+				case "nigeria_service":
+					this.cypher = "MATCH p=(k)-[:HAS_JURISDICTION]-(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b)-[:HAS_JURISDICTION]-(j) WITH p, a,c, hc,b,i, k MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Service Contracts'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result"
+				    break;
+				case "nigeria_snepco":
+				 	this.cypher = "MATCH p=(company:Company)-[r:IS_OWNER*..3]-(a {name: 'Shell Nigeria Exploration and Production Company (SNEPCO)'})-[:AWARDS|HAS_OPERATOR]-(c)-[:HAS_CONTRACTOR|HAS_OPERATOR]-(d) WHERE id(d)<>635603 UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result"
 				    break;
 				default:
 				    break;
