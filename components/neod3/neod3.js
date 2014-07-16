@@ -104,7 +104,7 @@ neo.models.Graph = (function() {
         throw "Invalid target";
       })();
       // HACK (adding caption and weight)
-      this.relationshipMap[item.id] = new neo.models.Relationship(item.id, source, target, item.type, item.caption, item.weight, item.properties);
+      this.relationshipMap[item.id] = new neo.models.Relationship(item.id, source, target, item.type, item.caption, item.weight, item.size, item.properties);
     }
     return this;
   };
@@ -664,7 +664,7 @@ neo.models.Node = (function() {
 var __hasProp = {}.hasOwnProperty;
 
 neo.models.Relationship = (function() {
-  function Relationship(id, source, target, type, caption, weight, properties) {
+  function Relationship(id, source, target, type, caption, weight, size, properties) {
     var key, value;
     this.id = id;
     this.source = source;
@@ -672,6 +672,7 @@ neo.models.Relationship = (function() {
     // HACK
     this.caption = caption;
     this.weight = weight;
+    this.size = size;
     this.type = type;
     this.propertyMap = properties;
     this.propertyList = (function() {

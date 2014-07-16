@@ -23,7 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   left: 0;
   /* FIXME(ffu): remove hard-coded drawer panel width */
   /*width: 256px;*/
-  width: 450px;
+  width: 350px;
   height: 100%;
   background: white;
   box-sizing: border-box;
