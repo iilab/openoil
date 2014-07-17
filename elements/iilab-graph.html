@@ -2,12 +2,13 @@
 <link rel="import" href="../components/paper-shadow/paper-shadow.html">
 <link rel="import" href="../components/paper-button/paper-button.html">
 <link rel="import" href="../components/paper-toast/paper-toast.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../components/core-item/core-item.html">
 <link rel="import" href="../components/core-menu/core-menu.html">
 <link rel="import" href="../components/core-menu/core-submenu.html">
 <link rel="import" href="iilab-description.html">
 
-<polymer-element name="iilab-graph" noscript attributes="search url description query depth strings zoom autozoom chart cypher countnodes countlinks">
+<polymer-element name="iilab-graph" noscript attributes="search url description param depth strings zoom autozoom chart cypher countnodes countlinks">
   <style>
       .d3-tip {
       background-color: white;
@@ -74,6 +75,7 @@
 
       </style>
       <iilab-drawer-panel id="iilab_drawer" class="right-drawer" selected="main">
+        <core-icon-button id="button" icon="close" label="Close"></core-icon-button>
         <div drawer vertical layout style="overflow: auto;">
            <template bind="{{element}}">
             <div vertical layout>
@@ -183,16 +185,14 @@
           source_date: "",
           log_message: ""
       },
+      param: "",
       autozoom: true,
-      created: function() {
-        this.query= {cypher: "", param:""}
-      },
       domReady: function() {
 //        this.chart = startGraph(this.$.viz, this)
 //        console.log(this.chart)
 //        console.log(this)
         this.depth = 2;
-        startGraph(this.$.viz, this)
+//        startGraph(this.$.viz, this)
         document.addEventListener('graph', this.graph);
         document.addEventListener('click', function(e) { 
             //this.$.drawer.togglePanel();
@@ -204,12 +204,9 @@
       cypherChanged: function(oldValue, newValue) {
         console.log('cypherChanged')
         console.log(newValue)
-        this.query.cypher = newValue
-        this.graph()
-        },
-      queryChanged: function(oldValue, newValue) {
-        this.graph()
-        },
+        this.cypher = newValue
+        setTimeout(this.graph(), 500)
+      },
       graph: function() {
         var timer = null;
         var interval = 300;

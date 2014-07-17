@@ -239,13 +239,12 @@ Polymer('x-dialog', {
           <h4>BP Corporate Structure</h4>
           <img src="/img/map.png" core-overlay-toggle id="bp_map" on-click="{{clickQuery}}"/>
           <paper-icon-button raisedButton core-overlay-toggle label="BP" id="bp_map" on-click="{{clickQuery}}"></paper-icon-button>
-          <p>With over 1,000 affiliate companies in more than 80 countries, BP controls a complex network of corporate entities This map of BP's corporate structure shows ownership relations for them all, using only public disclosures that BP itself has made. It also includes key financials for companies registered in the UK. Here's how the tool works:
-<ol><li>Click on a country to see all BP entities registered there, visualised in a network graph.</li>
+          <p>With over 1,000 affiliate companies in more than 80 jurisdictions, BP controls a complex network of corporate entities. This map of BP's corporate structure shows their ownership relations, using only public disclosures that BP itself has made. It also includes key financials for 150 of the companies registered in the UK. Here's how the tool works:
+<ol><li>Click on a country to see all BP entities registered there, along with their ownership chains three levels up.</li>
 <li>Follow the ownership chains up: there may be up to 12 layers of ownership before you get to the ultimate owner, UK-registered BP plc.</li>
-<li>Double-click on each jurisdiction to see other companies registered there.</li>
+<li>Double-click on a jurisdiction to see other companies registered there; double-click on a company to show its other connections.</li>
 <li>Use the search bar to find specific companies of interest.</li></ol>
-<p>
-Every data point in this network includes a citable URL to verify the assertion - feel free to use this information to facilitate your investigations into BP's activities in your country. Go ahead and play! 
+<p>Click to check: every data point in this network includes a citable URL to verify the assertion - feel free to use this information to facilitate your investigations into BP's activities in your country. There may be up to 12 layers of ownership before you get to the ultimate owner, UK-registered BP plc. Go ahead and play!
 </p><p>
 <a href="http://openoil.net/corporate-networks/bp-corporate-network/"/>Learn more </a>
 </p>
@@ -255,13 +254,16 @@ Every data point in this network includes a citable URL to verify the assertion 
           <img src="/img/nigeria.png" core-overlay-toggle id="nigeria_production" on-click="{{clickQuery}}"/>
           <paper-icon-button raisedButton core-overlay-toggle label="Nigeria" id="nigeria_production" on-click="{{clickQuery}}"></paper-icon-button>
           <p>There are hundreds of oil companies operating in Nigeria, but beyond the big names like Shell and Exxon, the nature of most of these companies is poorly understood outside industry circles. This network graph aims to shed more light on the sector, by showing how companies in Nigeria's oil and gas sector are connected through...
-<ol><li>Production contracts: <a href="/#nigeria_production" id="nigeria_production" core-overlay-toggle on-click="{{clickQuery}}">which companies produce Nigeria's oil</a>, and what is their overall share of the oil produced?</li>
-<li>Service contracts: <a href="/#nigeria_service" id="nigeria_service" core-overlay-toggle on-click="{{clickQuery}}">which companies own the rights to lucrative service subcontracts?</a></li></ol>  
-<p>The graph also shows the range of connections of individual companies - their contracts as well as their ownership structures. One example is the <a href="/#nigeria_snepco" id="nigeria_snepco" core-overlay-toggle on-click="{{clickQuery}}">Shell affiliate 'Shell Nigeria Exploration and Production Company (SNEPCO)'</a>. But that's only one point of entry: click on any entity, or any connection between entities, to reveal more information. 
+<ol><li>"Primary” production contracts: <a href="/#nigeria_production" id="nigeria_production" core-overlay-toggle on-click="{{clickQuery}}">which companies produce Nigeria's oil</a>.</li>
+<li>“Secondary” service contracts: <a href="/#nigeria_service" id="nigeria_service" core-overlay-toggle on-click="{{clickQuery}}">which companies own the rights to lucrative service subcontracts?</a></li></ol>  
+<p>The graph also shows the range of connections of individual companies - their contracts as well as their ownership structures. One example is the Shell affiliate  <a href="/#nigeria_snepco" id="nigeria_snepco" core-overlay-toggle on-click="{{clickQuery}}">Shell affiliate 'Shell Nigeria Exploration and Production Company (SNEPCO)'</a>. But that's only one point of entry: click on any entity, or any connection between entities, to reveal more information. 
 </p><p>
 <a href="http://openoil.net/corporate-networks/nigeria-corporate-network"/>Learn more </a>
 </p>
         </div>
+      </div>
+      <div id="footer" layout horizontal flex>
+      This is a large data set requiring a good internet connection, which works best with an updated version of the Google Chrome browser. For any questions please contact <a href="mailto:anton.ruehling@openoil.net">anton.ruehling@openoil.net</a>.
       </div>
       <core-overlay layered id="confirmation" class="dialog" backdrop transition="core-transition-top">
         <!-- place all overlay styles inside the overlay target -->
@@ -333,21 +335,22 @@ Every data point in this network includes a citable URL to verify the assertion 
   		published: {
   			title: ""
   		},
+      ready: function() {
+        this.addEventListener('set-slider', this.sliderSet);
+        document.addEventListener('stats', this.statsReq);
+      },
       domReady: function() {
         this.url = (window.location.href.split('#')[0] == 'http://localhost/')?'http://db.localhost:7474/db/data/' : 'https://db_openoil.iilab.org/db/data/'
-        this.loadQuery(window.location.hash.replace(/^#/, ''))
-        console.log(this.url)
-        this.addEventListener('set-slider', this.sliderSet);
-        this.addEventListener('stats', this.statsReq);
+        this.loadURL(window.location.hash.replace(/^#/, ''))
       },
       clickQuery: function(e) {
-        console.log(e.toElement.id)
-        window.location.hash = "#" + e.toElement.id;
-        this.loadQuery(e.toElement.id)
+        window.location.hash = "#" + e.target.id;
+        this.loadURL(e.target.id)
+        this.fire('stats', {i: e.target.id, t:"c"});
       },
-      loadQuery: function(id) {
-        console.log(id)
+      loadURL: function(id) {
         switch(id) {
+          case "bp_plc_1":
           case "bp_plc_2":
           case "bp_plc_3":
           case "nigeria_production":
@@ -355,37 +358,36 @@ Every data point in this network includes a citable URL to verify the assertion 
           case "nigeria_snepco":
             $(this.$.iilab_graph).show();
             $(this.$.iilab_map).hide();
-//            this.$.dialog.toggle();
-            this.fire('load-query', {id: id});
+            this.fire('stats', {i: window.location.href, t:"l"});
+            this.fire('load-graph-query', {id: id});
             break;
           case "bp_map":
             $(this.$.iilab_graph).hide();
             $(this.$.iilab_map).show();
-            this.$.dialog.toggle();
+            this.fire('stats', {i: window.location.href, t:"l"});
+            break;
           default:
+            this.fire('stats', {i: window.location.href, t:"h"});
             this.$.dialog.toggle();
             break;
         }
       },
       statsReq: function(e) {
-        this.$.xhr.request({url:"?i=" + e.detail.i + "&t=" + e.detail.t })
-      },
-      loadBP: function() {
-//        this.$.iilab_controls.shadowRoot.querySelector("#SavedQueries").selected = 1;
-//        this.$.iilab_controls.shadowRoot.querySelector("#SavedQueriesBP").selected = 1;
-        this.fire('load-query', {id: "bp_plc_2"});
-      },
-      loadNigeria: function() {
-//        this.$.iilab_controls.shadowRoot.querySelector("#SavedQueries").selected = 1;
-//        this.$.iilab_controls.shadowRoot.querySelector("#SavedQueriesBP").selected = 1;
-        this.fire('load-query', {id: "nigeria_production"});
-      },
-      loadMap: function() {
-        $(this.$.iilab_graph).hide();
-        $(this.$.iilab_map).show();
+        // simple web server based logging
+        //   the format is ?i=indicator&t=type
+        //
+        // types:
+        // ------
+        //
+        // h : home page (welcome page) / i: access url
+        // c : click on one of the home page links / i: link id
+        // l : load 
+
+        document.querySelector('openoil-app').shadowRoot.querySelector('#xhr').request({url:"/", params: { i: e.detail.i, t: e.detail.t, _ : new Date().getTime()}})
       },
       homeClick: function() {
         window.location.hash = "#";
+        this.fire('stats', {i: window.location.href, t:"h"});
         this.$.dialog.toggle();
       },
   		buttonClick: function(e, detail, sender) {

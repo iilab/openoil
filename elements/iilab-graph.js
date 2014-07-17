@@ -1,10 +1,11 @@
 function startGraph(viz, that) {
   // Display area parameters
+  console.trace()
   var w=1280;
   var h=640;
 
-  var cypher = that.query.cypher
-  var param = that.query.param
+  var cypher = that.cypher
+  var param = that.param
   var myjson = {nodes:[], links:[]};
 
   if (!cypher) { 
@@ -323,6 +324,8 @@ function startGraph(viz, that) {
           }
           // Display sidebar.
 
+          that.fire('stats', {i: d.propertyMap.name , t:"n"});
+
           that.element._type = "node"
           that.element.type = d.labels[0]
           that.element.name = d.propertyMap.name 
@@ -335,9 +338,9 @@ function startGraph(viz, that) {
           that.element.immediate = ""
           that.element.ultimate = ""
           that.element.ownership_status = ""
-          that.element.source_url = ""
-          that.element.source_date = ""
-          that.element.confidence = ""
+          that.element.source_url = d.propertyMap.source_url
+          that.element.source_date = d.propertyMap.source_date
+          that.element.confidence = d.propertyMap.confidence
 
           that.$.iilab_drawer.openDrawer();
           tip.hide(d, that.parentNode)
@@ -480,19 +483,26 @@ function startGraph(viz, that) {
             }
             tip.hide(d, that.parentNode)
             console.log(that.depth)
+            that.fire('stats', {i: d.propertyMap.name, t:"dc"});
             if (d.labels[0] == "Company") {
-              that.cypher = "MATCH (a:Company {name: '" + d.propertyMap.name + "'})-[r:IS_OWNER*0.." + that.depth + "]-(n) RETURN n, labels(n) as label, r"
+              that.cypher = "MATCH p=(a:Company {name: '" + d.propertyMap.name + "'})-[r:IS_OWNER|AWARDS|HAS_CONTRACTOR|HAS_OPERATOR*0.." + that.depth + "]-(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
             }
             else if (d.labels[0] == "Country") {
-              that.cypher = "MATCH (a:Country {name: '" + d.propertyMap.name + "'})<-[r:HAS_JURISDICTION*0.." + that.depth + "]-(n) RETURN n, labels(n) as label, r"            
+              that.cypher = "MATCH p=(j:Country {name: '" + d.propertyMap.name + "'})<-[:HAS_JURISDICTION]-(c:Company)<-[r:IS_OWNER*..2]-(d:Company)<-[s:IS_OWNER]-(e:Company)-[:HAS_JURISDICTION]-(f:Country) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"   
             }
+             else if (d.labels[0] == "Contract") {
+              that.cypher = "MATCH p=(a:Contract {name: '" + d.propertyMap.name + "'})-[hc:AWARDS|HAS_OPERATOR|HAS_CONTRACTOR]-(c: Company)-[r:IS_OWNER*0.." + that.depth + "]-(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"            
+            }
+
           }
         })
       .on('relationshipClicked', function(d,i){
           if (d.constructor.name == "Object" && d.relationship) {
                     d = d.relationship
           }
-          // console.log(d)
+          console.log(d)
+          that.fire('stats', {i: d.type , t:"r"});
+
           that.element._type = "relationship"
           that.element.type = d.type
           that.element.source = d.source
