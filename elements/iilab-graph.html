@@ -69,8 +69,9 @@
 
         paper-toast {
           bottom: 40px;
-          left:none;
+          left:initial;
           right: 10px;
+          width:250px;
         }
 
       </style>
@@ -142,18 +143,19 @@
                   </core-submenu> 
                 </template>
                 <core-submenu icon="bookmark-outline" label="Request Data" vertical layout>
-                    <paper-input hidden id="context" value="{{element.id}}"></paper-input>
+                    <paper-input hidden id="context" value="{{id}}"></paper-input>
                     <paper-input hidden id="context_type" value="{{_type}}"></paper-input>
-                    <paper-input label="Email" icon="email" id="email"></paper-input>
-                    <paper-input label="First Name" icon="account" id="first_name"></paper-input>
-                    <paper-input label="Last Name" icon="account" id="last_name"></paper-input>
-                    <paper-input label="Company" icon="flag" id="company"></paper-input>
-                    <paper-input multiline label="Type of data to research" icon="query" id="query"></paper-input>
+                    <paper-input label="Email*" icon="email" id="email"></paper-input>
+                    <paper-input label="First Name*" icon="account" id="first_name"></paper-input>
+                    <paper-input label="Last Name*" icon="account" id="last_name"></paper-input>
+                    <paper-input label="Company*" icon="flag" id="company"></paper-input>
+                    <paper-input multiline label="Type of data to research*" icon="query" id="query"></paper-input>
                     <div center>
                       <paper-button negative label="Cancel" icon="cancel"></paper-button>
                       <paper-button affirmative default label="Submit" icon="check" on-click="{{submitForm}}"></paper-button>
                     </div>
                     <paper-toast id="confirmation" text="Your request has been submitted."></paper-toast>
+                    <paper-toast id="invalid" text="Please complete the form."></paper-toast>
                 </core-submenu>
               </core-menu>
             </div>
@@ -179,6 +181,7 @@
       countnodes: 0,
       countlinks: 0,
       element: { 
+          id: "",
           _type: "",
           type: "",
           name: "",
@@ -211,8 +214,6 @@
         this.$.drawer.togglePanel()
       },
       cypherChanged: function(oldValue, newValue) {
-        console.log('cypherChanged')
-        console.log(newValue)
         this.cypher = newValue
         setTimeout(this.graph(), 500)
       },
@@ -234,37 +235,37 @@
         retryIfRunning();
       },
       submitForm: function(e) {
-        console.log(this.$.context)
-        console.log(this.$.context_type)
         param = {
-           context: this.$.context_type.value,
-           type: this.$.type.value,
+           context: this.$.context.value,
+           type: this.$.context_type.value,
            email: this.$.email.value,
            first_name: this.$.first_name.value,
            last_name: this.$.last_name.value,
            company: this.$.company.value,
            request: this.$.query.value
         }
-        console.log(this.$.context.value)
-        cypher = "CREATE (n:Request {context: {context}, type: {type}, email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, request:{request}})";
-        console.log('form')
-        console.log(document.querySelector('openoil-app').url)
-        neo4j.connect(document.querySelector('openoil-app').url, function (err, graph) {
-            if (err)
-                throw err;
+        cypher = "MATCH c WHERE id(c)=" + param.context + " CREATE (n:Request {context: {context}, type: {type}, email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, request:{request}}) CREATE (n)<-[:HAS_REQUEST]-(c)";
 
-            graph.query(cypher, param, function (err, results) {
-                if (err) {
-                    console.log(err);
-                    console.log(err.stack);
-                }
-                else {
-                    console.log('form submitted!')
-                    document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#confirmation').show();
-                    // that.count = results.length
-                }
-            })
-        })
+        if (param.email && param.first_name && param.last_name && param.company && param.request) {
+          neo4j.connect(document.querySelector('openoil-app').url, function (err, graph) {
+              if (err)
+                  throw err;
+
+              graph.query(cypher, param, function (err, results) {
+                  if (err) {
+                      console.log(err);
+                      console.log(err.stack);
+                  }
+                  else {
+                      console.log('form submitted!')
+                      document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#confirmation').show();
+                      // that.count = results.length
+                  }
+              })
+          })
+        } else {
+            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#invalid').show();    
+        }
       }
     });
   </script>
