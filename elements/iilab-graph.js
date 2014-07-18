@@ -1,6 +1,5 @@
 function startGraph(viz, that) {
   // Display area parameters
-  console.trace()
   var w=1280;
   var h=640;
 
@@ -326,6 +325,7 @@ function startGraph(viz, that) {
 
           that.fire('stats', {i: d.propertyMap.name , t:"n"});
 
+          that.element.id = d.id
           that.element._type = "node"
           that.element.type = d.labels[0]
           that.element.name = d.propertyMap.name 
@@ -503,6 +503,7 @@ function startGraph(viz, that) {
           console.log(d)
           that.fire('stats', {i: d.type , t:"r"});
 
+          that.element.id = d.id
           that.element._type = "relationship"
           that.element.type = d.type
           that.element.source = d.source
