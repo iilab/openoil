@@ -109,14 +109,23 @@
                   </core-submenu>
                 </template>
                 <template if="{{ _type == 'relationship' }}">
-                  <core-submenu id="relationship_details" icon="info-outline" label="{{ ownership_type }}">
-                    <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
-                    <paper-item label="owns"></paper-item>
-                    <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
-                    <template if="{{ ownership_status }}"><paper-item icon="info-outline" label="Ownership Status: {{ ownership_status }}%" id="ownership_status"></paper-item></template>
-                    <template if="{{ immediate }}"><paper-item icon="info-outline" label="Immediate Ownership: {{ immediate }}%" id="immediate"></paper-item></template>
-                    <template if="{{ ultimate }}"><paper-item icon="info-outline" label="Ultimate Ownership: {{ ultimate }}%" id="ultimate"></paper-item></template>
-                  </core-submenu> 
+                  <template if="{{ type == 'IS_OWNER' }}">
+                    <core-submenu id="relationship_details" icon="info-outline" label="{{ ownership_type }}">
+                      <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
+                      <paper-item label="owns"></paper-item>
+                      <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
+                      <template if="{{ ownership_status }}"><paper-item icon="info-outline" label="Ownership Status: {{ ownership_status }}%" id="ownership_status"></paper-item></template>
+                      <template if="{{ immediate }}"><paper-item icon="info-outline" label="Immediate Ownership: {{ immediate }}%" id="immediate"></paper-item></template>
+                      <template if="{{ ultimate }}"><paper-item icon="info-outline" label="Ultimate Ownership: {{ ultimate }}%" id="ultimate"></paper-item></template>
+                    </core-submenu> 
+                  </template>
+                  <template if="{{ type == 'HAS_CONTRACTOR' || type == 'HAS_OPERATOR' || type == 'AWARDS' }}">
+                    <core-submenu id="relationship_details" icon="info-outline" label="Contracting Relationship">
+                      <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
+                      <paper-item label="{{ type }}"></paper-item>
+                      <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
+                    </core-submenu> 
+                  </template>
                 </template>
                 <template if="{{ source_url }}">
                   <core-submenu icon="receipt" label="Sources">
