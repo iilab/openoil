@@ -670,34 +670,36 @@ function startGraph(viz, that) {
     $(function() {
 
       // Cypher query box
-      $( "#cypher" ).submit(function( event ) {      
-        neo4j.connect(that.url, function (err, graph) {
-            if (err)
-                throw err;
+      $( "#cypher" ).submit(function( event ) { 
+        if (!(event.target[0].value.indexOf("CREATE") > -1 || event.target[0].value.indexOf("MERGE") > -1 || event.target[0].value.indexOf("SET") > -1 || event.target[0].value.indexOf("DELETE") > -1 || event.target[0].value.indexOf("REMOVE") > -1 || event.target[0].value.indexOf("LOAD") > -1)) {  
+          neo4j.connect(that.url, function (err, graph) {
+              if (err)
+                  throw err;
 
-            graph.query(event.target[0].value, function (err, results) {
-                if (err) {
-                    console.log(err);
-                    console.log(err.stack);
-                }
-                else {
-                    var mycypher = {nodes:[], links:[]};
+              graph.query(event.target[0].value, function (err, results) {
+                  if (err) {
+                      console.log(err);
+                      console.log(err.stack);
+                  }
+                  else {
+                      var mycypher = {nodes:[], links:[]};
 
-                    // console.log(JSON.stringify(results, null, 5 )); // printing may help to visualize the returned structure
+                      // console.log(JSON.stringify(results, null, 5 )); // printing may help to visualize the returned structure
 
-                    mycypher.nodes = results[0].json.nodes;
-                    mycypher.links = results[0].json.links;
+                      mycypher.nodes = results[0].json.nodes;
+                      mycypher.links = results[0].json.links;
 
-                    graphModel.nodes.remove()
-                    graphModel.relationships.remove()
+                      graphModel.nodes.remove()
+                      graphModel.relationships.remove()
 
-                    graphModel.nodes.add(mycypher.nodes)
-                    graphModel.relationships.add(mycypher.links)
+                      graphModel.nodes.add(mycypher.nodes)
+                      graphModel.relationships.add(mycypher.links)
 
-                }
-            })
-        });
-        event.preventDefault();
+                  }
+              })
+          });
+          event.preventDefault();
+        }
       });
     }); 
   }
