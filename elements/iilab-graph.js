@@ -26,13 +26,13 @@ function startGraph(viz, that) {
           else {
               myjson = {nodes:[], links:[]};
               
-              console.log(results)
+//              console.log(results)
 
               that.countnodes = results[0].result.nodes.length
               that.countlinks = results[0].result.links.length
 
-              console.log(that.countnodes)
-              console.log(that.countlinks)
+//              console.log(that.countnodes)
+//              console.log(that.countlinks)
 
               myjson.nodes = results[0].result.nodes
                                .map(function(row) {
