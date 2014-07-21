@@ -12,7 +12,6 @@
 <link rel="import" href="../components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../components/core-toolbar/core-toolbar.html">
 <link rel="import" href="../components/core-drawer-panel/core-drawer-panel.html">
-<link rel="import" href="../components/paper-tabs/paper-tabs.html"> 
 <link rel="import" href="../components/paper-slider/paper-slider.html"> 
 <link rel="import" href="../components/paper-shadow/paper-shadow.html"> 
 <link rel="import" href="../components/paper-item/paper-item.html"> 
@@ -108,25 +107,12 @@ Polymer('x-dialog', {
       background: #FFF;
       color: #2a3e92;
     }
-    paper-tabs {
-      width: 100%;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+
     .container {
       width: 80%;
       margin: 50px auto;
     }
-    @media (min-width: 481px) {
-      paper-tabs {
-        width: 200px;
-      }
-      .container {
-        width: 400px;
-      }
-    }
+
     :host {
       position: absolute;
       width: 100%;

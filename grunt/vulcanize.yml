@@ -1,0 +1,7 @@
+default:
+  options:
+    csp: false
+    strip: true
+
+  files:
+    'index-concat.html': 'index-src.html'

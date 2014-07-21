@@ -1,0 +1,10 @@
+dist:
+  options:
+    removeComments: true
+    collapseWhitespace: true
+  files:
+    'index.html': 'index-concat.html'
+
+dev:
+  files:
+    'index-concat.html': 'index.html'

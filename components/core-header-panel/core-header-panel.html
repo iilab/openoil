@@ -49,7 +49,8 @@ Use `mode` to control the header and scrolling behavior.
 
     <div id="mainPanel" flex vertical layout>
     
-      <div id="mainContainer" flex?="{{mode !== 'cover'}}" on-scroll="{{scroll}}">
+<!--      <div id="mainContainer" flex?="{{mode !== 'cover'}}" on-scroll="{{scroll}}">-->
+      <div id="mainContainer" flex on-scroll="{{scroll}}">
         <content id="mainContent" select="*"></content>
       </div>
       

@@ -1,0 +1,6 @@
+build:
+  - jshint
+  - vulcanize
+  - htmlmin:dist
+
+default: build

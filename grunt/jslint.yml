@@ -1,0 +1,38 @@
+config:
+  src:
+    - Gruntfile.js
+    - grunt/**/*.js
+  directives:
+    node: true
+  options:
+    errorsOnly: true
+    checkstyle: logs/jslint-config.xml
+dist:
+  src: 'js/**/*.js'
+  directives:
+    browser: true
+    predef:
+      - $
+      - jQuery
+      - Modernizr
+      - travi
+  options:
+    errorsOnly: true
+    checkstyle: logs/jslint-ui.xml
+test:
+  src:
+    - 'test/**/*.jstd'
+    - 'test/**/*.js'
+  directives:
+    browser: true
+    regexp: true
+    predef:
+      - $
+      - jQuery
+      - sinon
+      - assert
+      - refute
+      - addStepDefinitions
+  options:
+    errorsOnly: true
+    checkstyle: logs/jslint-ui-test.xml

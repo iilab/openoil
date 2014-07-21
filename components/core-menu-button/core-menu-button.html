@@ -36,7 +36,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <polymer-element name="core-menu-button" attributes="icon label src selected opened halign valign valueattr multi inlineMenu">
   <template>
     <link rel="stylesheet" href="core-menu-button.css">
-    <core-overlay target="{{$.overlay}}" opened="{{opened}}" layered?="{{!inlineMenu}}"></core-overlay>
+<!--    <core-overlay target="{{$.overlay}}" opened="{{opened}}" layered?="{{!inlineMenu}}"></core-overlay>-->
+    <core-overlay target="{{$.overlay}}" opened="{{opened}}" ></core-overlay>
     <core-icon-button id="button" on-tap="{{toggle}}" src="{{src}}" icon="{{icon}}" active="{{opened}}"><span>{{label}}</span></core-icon-button>
     <div id="overlay" halign="{{halign}}" valign="{{valign}}">
       <style>
