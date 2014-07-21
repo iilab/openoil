@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<checkstyle>
+<file name="test/dialog/buttons.jstd">
+</file>
+<file name="test/dialog/conventions.jstd">
+</file>
+<file name="test/dialog/core.jstd">
+</file>
+<file name="test/dialog/date.jstd">
+</file>
+<file name="test/dialog/events.jstd">
+</file>
+<file name="test/dialog/form.jstd">
+</file>
+<file name="test/dialog/richText.jstd">
+</file>
+<file name="test/entityList/pagination.jstd">
+</file>
+<file name="test/entityList/updates.jstd">
+</file>
+<file name="test/form/buttons.jstd">
+</file>
+<file name="test/form/date.jstd">
+</file>
+<file name="test/form/richText.jstd">
+</file>
+<file name="test/form/validationMapper.jstd">
+</file>
+<file name="test/pagination.jstd">
+</file>
+<file name="test/integration/features/step_definitions/dialog/ajaxForm.js">
+</file>
+<file name="test/integration/features/step_definitions/dialog/entityList.js">
+</file>
+<file name="test/resources/load-templates-integration.js">
+</file>
+<file name="test/resources/load-ui-templates.js">
+</file>
+</checkstyle>

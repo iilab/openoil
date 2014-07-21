@@ -1,12 +1,12 @@
 {
   "name": "openoil",
-  "main": "index.js",
+  "main": "index.html",
   "version": "0.0.0",
   "homepage": "https://github.com/iilab/openoil",
   "authors": [
     "Jun Matsushita <jun@iilab.org>"
   ],
-  "description": "Open Oil Data Framework",
+  "description": "Open Oil Data Navigator",
   "license": "GPL v3",
   "private": true,
   "ignore": [

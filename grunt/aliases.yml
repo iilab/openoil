@@ -1,0 +1,16 @@
+build:
+  - jslint
+  - jshint
+  - vulcanize
+  - htmlclean
+  - karma
+
+dev:
+  - jshint
+  - karma
+
+watch:
+  - dev
+  - watch
+
+default: watch

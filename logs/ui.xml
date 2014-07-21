@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="PhantomJS 1.9.7 (Mac OS X)" package="" timestamp="2014-07-20T17:13:15" id="0" hostname="jMac.local" tests="54" errors="0" failures="0" time="0.303">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.7 Safari/534.34"/>
+    </properties>
+    <testcase name="test that button is enhanced once dialog loads" time="0.013" classname="PhantomJS 1.9.7 (Mac OS X).button enhancement in dialog"/>
+    <testcase name="test that clicking on a link with the dialog-target class loads dialog from href" time="0.021" classname="PhantomJS 1.9.7 (Mac OS X).dialog conventions"/>
+    <testcase name="test that clicking on a span within a dialog-target link loads dialog from the links href" time="0.003" classname="PhantomJS 1.9.7 (Mac OS X).dialog conventions"/>
+    <testcase name="test that link without dialog-target link does not load dialog" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).dialog conventions"/>
+    <testcase name="test that dialog launched from link added after initialization" time="0.003" classname="PhantomJS 1.9.7 (Mac OS X).dialog conventions"/>
+    <testcase name="test that dialog is re-centered when content is re-sized" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).dialog conventions"/>
+    <testcase name="test that html requested from url" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).dialog api tests"/>
+    <testcase name="test that dialog launched, containing content from response" time="0.045" classname="PhantomJS 1.9.7 (Mac OS X).dialog api tests"/>
+    <testcase name="test that closing the dialog removes it from the DOM" time="0.021" classname="PhantomJS 1.9.7 (Mac OS X).dialog api tests"/>
+    <testcase name="test that clicking cancel link from inserted content closes dialog" time="0.024" classname="PhantomJS 1.9.7 (Mac OS X).dialog api tests"/>
+    <testcase name="test that event published upon successful load" time="0.02" classname="PhantomJS 1.9.7 (Mac OS X).dialog api tests"/>
+    <testcase name="test that calling close programmatically closes the dialog" time="0.017" classname="PhantomJS 1.9.7 (Mac OS X).dialog api tests"/>
+    <testcase name="test that closing programmatically when no dialog is open does not throw error" time="0.023" classname="PhantomJS 1.9.7 (Mac OS X).dialog api tests"/>
+    <testcase name="test that calling recenter programmatically re-centers the dialog" time="0.014" classname="PhantomJS 1.9.7 (Mac OS X).dialog api tests"/>
+    <testcase name="test that date-picker is initialized once the dialog loads" time="0.003" classname="PhantomJS 1.9.7 (Mac OS X).datepicker in a dialog"/>
+    <testcase name="test that the date-picker is not initialized before the dialog opens" time="0" classname="PhantomJS 1.9.7 (Mac OS X).datepicker in a dialog"/>
+    <testcase name="test events are defined properly" time="0" classname="PhantomJS 1.9.7 (Mac OS X).dialog events"/>
+    <testcase name="test registering to load event" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).dialog events"/>
+    <testcase name="test registering to the form success event" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).dialog events"/>
+    <testcase name="test registering to the created event" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).dialog events"/>
+    <testcase name="test that missing callbacks for any of the form events dont cause issues" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).dialog events"/>
+    <testcase name="test submitting form from dialog content triggers ajax request" time="0.003" classname="PhantomJS 1.9.7 (Mac OS X).dialog forms"/>
+    <testcase name="test that form submission defaults to GET if not specified" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).dialog forms"/>
+    <testcase name="test that dialog is closed after successful form submission and event is published" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).dialog forms"/>
+    <testcase name="test that dialog is not closed after validation error and errors are shown on the form" time="0.003" classname="PhantomJS 1.9.7 (Mac OS X).dialog forms"/>
+    <testcase name="test that event published after successful addition" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).dialog forms"/>
+    <testcase name="test that the rich text area is initialized once the dialog loads" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).rich text area in a dialog"/>
+    <testcase name="test that the rich text area is not initialized before the dialog opens" time="0" classname="PhantomJS 1.9.7 (Mac OS X).rich text area in a dialog"/>
+    <testcase name="test events defined properly" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).EntityListTests"/>
+    <testcase name="test request for next page loads more announcements" time="0.016" classname="PhantomJS 1.9.7 (Mac OS X).EntityListTests"/>
+    <testcase name="test request for prev page loads more announcements" time="0.011" classname="PhantomJS 1.9.7 (Mac OS X).EntityListTests"/>
+    <testcase name="test that exception is thrown if resource not defined in add event" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).entity list updating"/>
+    <testcase name="test that exception is thrown if resource not defined in update event" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).entity list updating"/>
+    <testcase name="test that exception is thrown if resource not defined in remove event" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).entity list updating"/>
+    <testcase name="test that the new entity is requested after a successful addition" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).entity list updating"/>
+    <testcase name="test that the added entity is inserted into the list from the response" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).entity list updating"/>
+    <testcase name="test that the updated data is requested after successful update submission" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).entity list updating"/>
+    <testcase name="test that request for updated details not requested when not an update action" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).entity list updating"/>
+    <testcase name="test that the entity in the list is updated with data from response" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).entity list updating"/>
+    <testcase name="test that the entity is removed from the list after a successful DELETE" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).entity list updating"/>
+    <testcase name="test that the empty state message not show if list not empty after successful removal" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).entity list updating"/>
+    <testcase name="test that button enhancement applied on page load" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).form button enhancement"/>
+    <testcase name="test that date picker added on page load" time="0.005" classname="PhantomJS 1.9.7 (Mac OS X).date field enhancements"/>
+    <testcase name="test wym is initialized" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).rich text field"/>
+    <testcase name="test fullscreen button made available" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).rich text field"/>
+    <testcase name="test that errors get shown within form" time="0.004" classname="PhantomJS 1.9.7 (Mac OS X).validation mapper"/>
+    <testcase name="test events defined properly" time="0.003" classname="PhantomJS 1.9.7 (Mac OS X).PaginationTest"/>
+    <testcase name="test out-of-range class defined properly" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).PaginationTest"/>
+    <testcase name="test clicking next-page link triggers proper event" time="0.003" classname="PhantomJS 1.9.7 (Mac OS X).PaginationTest"/>
+    <testcase name="test clicking prev-page link triggers proper event" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).PaginationTest"/>
+    <testcase name="test links updated properly after page loaded" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).PaginationTest"/>
+    <testcase name="test links updated properly after page loaded if multiple on page" time="0.003" classname="PhantomJS 1.9.7 (Mac OS X).PaginationTest"/>
+    <testcase name="test prev link hidden when at beginning" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).PaginationTest"/>
+    <testcase name="test next link hidden when at end" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).PaginationTest"/>
+    <system-out><![CDATA[PhantomJS 1.9.7 (Mac OS X) LOG: 'JQMIGRATE: Logging is active'
+
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <title>Open Oil Data Framework</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="components/platform/platform.js"></script>
+  <link rel="import" href="elements/openoil-app.html">
+  <style>
+    html,body {
+      height: 100%;
+      margin: 0;
+      font-family: 'RobotoDraft', sans-serif;
+    }
+
+    body.loading #loading {
+      display: block;
+      position: fixed;
+      top: calc(50% - 18px);
+      left: calc(50% - 200px);
+      font-size: 36px;
+      color: #2a3e92;
+      -webkit-animation: pulsate 2s ease-in-out;
+      -webkit-animation-iteration-count: infinite;
+      width: 400px;
+      text-align: center;
+      z-index: 10;
+    }
+    @keyframes pulsate {
+      0% {
+        transform: scale(1.0, 1.0);
+        opacity: 0.1;
+      }
+      50% {
+        transform: scale(1.1, 1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.0, 1.0);
+        opacity: 0;
+      }
+    }
+    @-webkit-keyframes pulsate {
+      0% {
+        -webkit-transform: scale(1.0, 1.0);
+        opacity: 0.1;
+      }
+      50% {
+        -webkit-transform: scale(1.1, 1.1);
+        opacity: 1;
+      }
+      100% {
+        -webkit-transform: scale(1.0, 1.0);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body unresolved touch-action="auto">
+  <openoil-app></openoil-app>
+  <div id="loading">Please wait...</div>
+</body>
+<script>
+window.addEventListener('polymer-ready', function() {
+//  console.log(window.location)
+})
+  startCucumberRun();
+  </script>
+</html>

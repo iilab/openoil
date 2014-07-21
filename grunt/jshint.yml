@@ -1,0 +1,4 @@
+all: ['elements/**/*.js']
+
+options:
+ jshintrc: ".jshintrc"

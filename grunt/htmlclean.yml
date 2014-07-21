@@ -1,0 +1,4 @@
+deploy:
+  expand: true,
+  src: '/index-concat.html'
+  dest: '/dist'

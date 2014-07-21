@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<checkstyle>
+<file name="js/dialog/buttons.js">
+</file>
+<file name="js/dialog/conventions.js">
+</file>
+<file name="js/dialog/core.js">
+</file>
+<file name="js/dialog/date.js">
+</file>
+<file name="js/dialog/events.js">
+</file>
+<file name="js/dialog/form.js">
+</file>
+<file name="js/dialog/richText.js">
+</file>
+<file name="js/entityList/pagination.js">
+</file>
+<file name="js/entityList/updates.js">
+</file>
+<file name="js/form/buttons.js">
+</file>
+<file name="js/form/date.js">
+</file>
+<file name="js/form/richText.js">
+</file>
+<file name="js/form/validationMapper.js">
+</file>
+<file name="js/pagination.js">
+</file>
+</checkstyle>

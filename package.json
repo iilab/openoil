@@ -1,16 +1,34 @@
 {
-  "scripts": {
-    "start": "browserify -t brfs index.js > bundle.js"
-  },
-  "name": "openoil-neod3",
+  "name": "openoil",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
-  "author": "",
-  "license": "ISC",
+  "main": "index.html",
+  "author": "iilab - Jun Matsushita",
+  "license": "",
   "dependencies": {
     "JSON": "^1.0.0",
-    "brfs": "^1.1.1",
     "neo4j-js": "0.0.8"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-htmlclean": "^0.1.7",
+    "grunt-karma": "^0.8.3",
+    "grunt-vulcanize": "^0.3.0",
+    "karma": "^0.12.17",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-cucumberjs": "0.0.2",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-html2js-preprocessor": "^0.1.0",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-requirejs": "^0.2.2",
+    "karma-safari-launcher": "^0.1.1",
+    "load-grunt-config": "^0.12.0"
+  },
+  "scripts": {
+    "test": "grunt"
   }
 }

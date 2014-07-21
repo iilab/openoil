@@ -1,0 +1,24 @@
+unit:
+  configFile: ui.conf.js
+  singleRun: true,
+
+  preprocessors:
+    "js/**/*.js": coverage
+
+  reporters:
+    - progress
+    - junit
+    - coverage
+
+  junitReporter:
+    outputFile: 'logs/ui.xml'
+
+  coverageReporter:
+    type: lcov
+    dir: 'logs/coverage/'
+
+
+functional:
+  configFile: cucumber.conf.js
+  singleRun: true
+
