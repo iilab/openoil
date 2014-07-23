@@ -49,12 +49,30 @@ function startGraph(viz, that) {
                                .map(function(r) {
                                     var caption, weight, size
                                     if (r.type == "IS_OWNER") {
-                                      caption = r.data.immediate + "%"
+                                      caption = 'Owns ' + r.data.immediate + "%"
                                       weight = r.data.immediate/10        
                                       size= "18px";
                                     } else if (r.type == "HAS_CONTRACTOR") {
-                                      caption = r.data.contract_share + '%'
+                                      if (r.data.contract_share) {
+                                        caption = 'Contractor ' + r.data.contract_share + '%'
+                                        weight = r.data.contract_share/5
+                                        size= "18px";
+                                      } else {
+                                        caption = 'Contractor'
+                                        weight = 1
+                                        size= "18px";
+                                      }
+                                    } else if (r.type == "HAS_OPERATOR") {
+                                      caption = 'Operator ' + r.data.contract_share + '%'
                                       weight = r.data.contract_share/5
+                                      size= "18px";
+                                    } else if (r.type == "AWARDS") {
+                                      caption = 'Awards'
+                                      weight = 1
+                                      size= "18px";
+                                    } else if (r.type == "HAS_JURISDICTION") {
+                                      caption = r.data.contract_share + '%'
+                                      weight = 1
                                       size= "18px";
                                     } else {
                                       caption = r.type;
@@ -295,8 +313,19 @@ function startGraph(viz, that) {
             rel_info = "Immediate Ownership: <strong>" + d.propertyMap.immediate + "%</strong>"
           } 
           else if (d.type == "HAS_CONTRACTOR")  { 
-            rel_title = d.type 
-            rel_info = "Contract Share: <strong>" + d.propertyMap.contract_share + "%</strong>"
+            rel_title = 'Contractor'
+            if (d.propertyMap.contract_share) {
+              rel_info = "Contract Share: <strong>" + d.propertyMap.contract_share + "%</strong>"
+            }
+          } else if (d.type == "HAS_OPERATOR")  { 
+            rel_title = 'Operator'
+            if (d.propertyMap.contract_share) {
+              rel_info = "Contract Share: <strong>" + d.propertyMap.contract_share + "%</strong>"
+            }
+          } else if (d.type == "AWARDS")  { 
+            rel_title = 'Contract Award'
+          } else if (d.type == "HAS_JURISDICTION")  { 
+            rel_title = 'Jurisdiction'
           } else {
             rel_title = d.type             
           }
@@ -340,6 +369,7 @@ function startGraph(viz, that) {
           that.element.ownership_type = ""
           that.element.immediate = ""
           that.element.ultimate = ""
+          that.element.contract_share = ""
           that.element.ownership_status = ""
           that.element.source_url = d.propertyMap.source_url
           that.element.source_date = d.propertyMap.source_date
@@ -375,7 +405,7 @@ function startGraph(viz, that) {
           dy = (h/2.0) - d.y*zs - 64;
 
           zoom.translate([dx, dy]);
-          zoom.scale(zs);
+//          zoom.scale(zs);
 
           layers.transition()
               .duration(1000)
@@ -515,6 +545,7 @@ function startGraph(viz, that) {
           that.element.ownership_type = d.propertyMap.ownership_type
           that.element.immediate = d.propertyMap.immediate
           that.element.ultimate = d.propertyMap.ultimate
+          that.element.contract_share = d.propertyMap.contract_share
           that.element.ownership_status = d.propertyMap.ownership_status
           that.element.source_url = d.propertyMap.source_url
           that.element.source_date = d.propertyMap.source_date

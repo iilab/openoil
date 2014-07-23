@@ -2605,7 +2605,7 @@ content.
                 </template>
                 <template if="{{ _type == &apos;relationship&apos; }}">
                   <template if="{{ type == &apos;IS_OWNER&apos; }}">
-                    <core-submenu id="relationship_details" icon="info-outline" label="{{ ownership_type }}">
+                    <core-submenu id="relationship_details" icon="info-outline" label="Ownership relationship">
                       <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
                       <paper-item label="owns"></paper-item>
                       <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
@@ -2615,13 +2615,28 @@ content.
                     </core-submenu> 
                   </template>
                   <template if="{{ type == &apos;HAS_CONTRACTOR&apos; || type == &apos;HAS_OPERATOR&apos; || type == &apos;AWARDS&apos; }}">
-                    <core-submenu id="relationship_details" icon="info-outline" label="Contracting Relationship">
+                    <core-submenu id="relationship_details" icon="info-outline" label="Contracting relationship">
                       <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
-                      <paper-item label="{{ type }}"></paper-item>
+                      <template if="{{ type == &apos;HAS_CONTRACTOR&apos; }}">
+                        <paper-item label="Has Contractor"></paper-item>
+                      </template>
+                      <template if="{{ type == &apos;HAS_OPERATOR&apos; }}">
+                        <paper-item label="Has Operator"></paper-item>
+                      </template>
+                      <template if="{{ type == &apos;AWARDS&apos; }}">
+                        <paper-item label="Awards Contract"></paper-item>
+                      </template>
                       <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
+                      <template if="{{ contract_share }}"><paper-item icon="info-outline" label="Share: {{ contract_share }}%" id="share"></paper-item></template>
                     </core-submenu> 
                   </template>
-                </template>
+                  <template if="{{ type == &apos;HAS_JURISDICTION&apos; }}">
+                    <core-submenu id="relationship_details" icon="info-outline" label="Jurisdiction Relationship">
+                      <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
+                      <paper-item label="">Has Jurisdiction</paper-item>
+                      <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
+                    </core-submenu> 
+                  </template>                </template>
                 <template if="{{ source_url }}">
                   <core-submenu icon="receipt" label="Sources">
                       <template if="{{ confidence }}"><paper-item label="Confidence: {{ confidence }}" id="confidence"></paper-item></template>
@@ -2666,7 +2681,7 @@ content.
   <script src="components/jquery-ui/jquery-ui.js"></script>
   <script src="components/neo4j-js.js"></script>
   <script src="elements/iilab-graph.js"></script>
-  <script>Polymer("iilab-graph",{published:{depth:2},countnodes:0,countlinks:0,element:{id:"",_type:"",type:"",name:"",oc_id:"",directors:"",shareholders:"",license_area:"",field:"",confidence:"",ownership_status:"",source_url:"",source_type:"",source_date:"",log_message:""},param:"",autozoom:true,domReady:function(){this.depth=2;document.addEventListener("graph",this.graph)},buttonClick:function(e){this.$.drawer.togglePanel()},cypherChanged:function(oldValue,newValue){this.cypher=newValue;setTimeout(this.graph(),500)},graph:function(){var timer=null;var interval=300;function retryIfRunning(){if(document.body.classList.contains("loading")){console.log("waiting");timer=setTimeout(retryIfRunning,interval)}else{timer=null;document.body.classList.add("loading");startGraph(document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#viz"),document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph"))}}retryIfRunning()},submitForm:function(e){param={context:this.$.context.value,type:this.$.context_type.value,email:this.$.email.value,first_name:this.$.first_name.value,last_name:this.$.last_name.value,company:this.$.company.value,request:this.$.query.value};cypher="MATCH c WHERE id(c)="+param.context+" CREATE (n:Request {context: {context}, type: {type}, email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, request:{request}}) CREATE (n)<-[:HAS_REQUEST]-(c)";if(param.email&&param.first_name&&param.last_name&&param.company&&param.request){neo4j.connect(document.querySelector("openoil-app").url,function(err,graph){if(err)throw err;graph.query(cypher,param,function(err,results){if(err){console.log(err);console.log(err.stack)}else{console.log("form submitted!");document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#confirmation").show()}})})}else{document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#invalid").show()}}});</script>
+  <script>Polymer("iilab-graph",{published:{depth:2},countnodes:0,countlinks:0,element:{id:"",_type:"",type:"",name:"",oc_id:"",directors:"",immediate:"",ultimate:"",contract_share:"",shareholders:"",license_area:"",field:"",confidence:"",ownership_status:"",source_url:"",source_type:"",source_date:"",log_message:""},param:"",autozoom:true,domReady:function(){this.depth=2;document.addEventListener("graph",this.graph)},buttonClick:function(e){this.$.drawer.togglePanel()},cypherChanged:function(oldValue,newValue){this.cypher=newValue;setTimeout(this.graph(),500)},graph:function(){var timer=null;var interval=300;function retryIfRunning(){if(document.body.classList.contains("loading")){console.log("waiting");timer=setTimeout(retryIfRunning,interval)}else{timer=null;document.body.classList.add("loading");startGraph(document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#viz"),document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph"))}}retryIfRunning()},submitForm:function(e){param={context:this.$.context.value,type:this.$.context_type.value,email:this.$.email.value,first_name:this.$.first_name.value,last_name:this.$.last_name.value,company:this.$.company.value,request:this.$.query.value};cypher="MATCH c WHERE id(c)="+param.context+" CREATE (n:Request {context: {context}, type: {type}, email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, request:{request}}) CREATE (n)<-[:HAS_REQUEST]-(c)";if(param.email&&param.first_name&&param.last_name&&param.company&&param.request){neo4j.connect(document.querySelector("openoil-app").url,function(err,graph){if(err)throw err;graph.query(cypher,param,function(err,results){if(err){console.log(err);console.log(err.stack)}else{console.log("form submitted!");document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#confirmation").show()}})})}else{document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#invalid").show()}}});</script>
 </polymer-element> 
 
 

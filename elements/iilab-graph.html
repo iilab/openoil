@@ -111,7 +111,7 @@
                 </template>
                 <template if="{{ _type == 'relationship' }}">
                   <template if="{{ type == 'IS_OWNER' }}">
-                    <core-submenu id="relationship_details" icon="info-outline" label="{{ ownership_type }}">
+                    <core-submenu id="relationship_details" icon="info-outline" label="Ownership relationship">
                       <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
                       <paper-item label="owns"></paper-item>
                       <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
@@ -121,13 +121,28 @@
                     </core-submenu> 
                   </template>
                   <template if="{{ type == 'HAS_CONTRACTOR' || type == 'HAS_OPERATOR' || type == 'AWARDS' }}">
-                    <core-submenu id="relationship_details" icon="info-outline" label="Contracting Relationship">
+                    <core-submenu id="relationship_details" icon="info-outline" label="Contracting relationship">
                       <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
-                      <paper-item label="{{ type }}"></paper-item>
+                      <template if="{{ type == 'HAS_CONTRACTOR' }}">
+                        <paper-item label="Has Contractor"></paper-item>
+                      </template>
+                      <template if="{{ type == 'HAS_OPERATOR' }}">
+                        <paper-item label="Has Operator"></paper-item>
+                      </template>
+                      <template if="{{ type == 'AWARDS' }}">
+                        <paper-item label="Awards Contract"></paper-item>
+                      </template>
                       <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
+                      <template if="{{ contract_share }}"><paper-item icon="info-outline" label="Share: {{ contract_share }}%" id="share"></paper-item></template>
                     </core-submenu> 
                   </template>
-                </template>
+                  <template if="{{ type == 'HAS_JURISDICTION' }}">
+                    <core-submenu id="relationship_details" icon="info-outline" label="Jurisdiction Relationship">
+                      <paper-item icon="info" label="{{ source.propertyMap.name }}"></paper-item>
+                      <paper-item label="">Has Jurisdiction</paper-item>
+                      <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
+                    </core-submenu> 
+                  </template>                </template>
                 <template if="{{ source_url }}">
                   <core-submenu icon="receipt" label="Sources">
                       <template if="{{ confidence }}"><paper-item label="Confidence: {{ confidence }}" id="confidence"></paper-item></template>
@@ -187,6 +202,9 @@
           name: "",
           oc_id: "",
           directors: "",
+          immediate: "",
+          ultimate: "",
+          contract_share: "",
           shareholders: "",
           license_area: "",
           field:"",
@@ -206,9 +224,9 @@
         this.depth = 2;
 //        startGraph(this.$.viz, this)
         document.addEventListener('graph', this.graph);
-        document.addEventListener('click', function(e) { 
+        /*document.addEventListener('click', function(e) { 
             //this.$.drawer.togglePanel();
-          });
+          });*/
       },
       buttonClick: function(e) {
         this.$.drawer.togglePanel()
