@@ -232,7 +232,7 @@ Polymer('x-dialog', {
 <li>Use the search bar to find specific companies of interest.</li></ol>
 <p>Click to check: every data point in this network includes a citable URL to verify the assertion - feel free to use this information to facilitate your investigations into BP's activities in your country. There may be up to 12 layers of ownership before you get to the ultimate owner, UK-registered BP plc. Go ahead and play!
 </p><p>
-<a href="http://openoil.net/corporate-networks/bp-corporate-network/"/>Learn more </a>
+<a href="http://openoil.net/corporate-networks/bp-corporate-network/" target="_blank"/>Learn more </a>
 </p>
         </div>
         <div id="nigeria" layout vertical center flex one>
@@ -244,7 +244,7 @@ Polymer('x-dialog', {
 <li>"Secondary" service contracts: <a href="/#nigeria_service" id="nigeria_service" core-overlay-toggle on-click="{{clickQuery}}">which companies own the rights to lucrative service subcontracts?</a></li></ol>  
 <p>The graph also shows the range of connections of individual companies - their contracts as well as their ownership structures. One example is the Shell affiliate  <a href="/#nigeria_snepco" id="nigeria_snepco" core-overlay-toggle on-click="{{clickQuery}}">Shell affiliate 'Shell Nigeria Exploration and Production Company (SNEPCO)'</a>. But that's only one point of entry: click on any entity, or any connection between entities, to reveal more information. 
 </p><p>
-<a href="http://openoil.net/corporate-networks/nigeria-corporate-network"/>Learn more </a>
+<a href="http://openoil.net/corporate-networks/nigeria-corporate-network" target="_blank"/>Learn more </a>
 </p>
         </div>
       </div>
@@ -300,7 +300,7 @@ Polymer('x-dialog', {
           <div tip>Drag the slider to change the zoom level.</div>
         </core-tooltip>
         <paper-slider id="zoom_slider" pin="" snaps="" min="-3.5" max="1" step="0.05" value="{{zoomSlider}}"></paper-slider>
-        <paper-icon-button id="zoom_out" icon="image:crop-free" role="button" tabindex="0" class="" on-click="{{zoomOut}}"></paper-icon-button>
+<!--        <paper-icon-button id="zoom_out" icon="image:crop-free" role="button" tabindex="0" class="" on-click="{{zoomOut}}"></paper-icon-button>-->
         <paper-menu-button icon="more-vert" valign="bottom" halign="right">
           <paper-item icon="visibility" label="About OpenOil"></paper-item>
           <paper-item icon="extension" label="Contribute"></paper-item>
@@ -326,7 +326,8 @@ Polymer('x-dialog', {
         document.addEventListener('stats', this.statsReq);
       },
       domReady: function() {
-        this.url = (window.location.href.split('#')[0] == 'http://localhost/')?'http://db.localhost:7474/db/data/' : 'https://db_openoil.iilab.org/db/data/'
+        console.log(window.location.hash.replace(/^#/, ''))
+        this.url = (window.location.href.split('/')[2] == 'localhost')?'http://db.localhost:7474/db/data/' : 'https://db_openoil.iilab.org/db/data/'
         this.loadURL(window.location.hash.replace(/^#/, ''))
       },
       clickQuery: function(e) {
@@ -350,6 +351,7 @@ Polymer('x-dialog', {
           case "bp_map":
             $(this.$.iilab_graph).hide();
             $(this.$.iilab_map).show();
+            this.$.iilab_map.loadMap();
             this.fire('stats', {i: window.location.href, t:"l"});
             break;
           default:
