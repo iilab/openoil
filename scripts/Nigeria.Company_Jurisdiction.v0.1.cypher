@@ -1,4 +1,5 @@
 // Load Nigeria - Companies / Jurisdictions
+// Probably not needed anymore
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/iilab/openoil/master/data/Nigeria_companies_20140714.csv' AS line
 WITH line
 MERGE (company:Company {name: line.name})
