@@ -309,7 +309,7 @@ function startGraph(viz, that) {
     // Neod3 graphView which is an API on top of d3 
     //
 
-    var chart = neo.graphView()
+    var chart = neo.graphView(viz)
 
     var style = chart.style(styleContents)
         .width(w)
@@ -317,8 +317,11 @@ function startGraph(viz, that) {
         .layout(layoutOO())
         .geometry(NeoD3Geometry_iilab)
         .on('nodeClicked', function(d,i){
+          console.trace()
           // Select proper parent <g>
-          if (d.constructor.name == "Object" && d.node) {
+          console.log(i)
+          console.log(d)
+          if (d.node) {
             d = d.node
           }
           // Display sidebar.
@@ -497,6 +500,7 @@ function startGraph(viz, that) {
           }
         })
       .on('relationshipClicked', function(d,i){
+          console.trace()
           if (d.constructor.name == "Object" && d.relationship) {
                     d = d.relationship
           }
