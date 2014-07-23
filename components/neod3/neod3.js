@@ -494,7 +494,7 @@ neo.graphModel = function() {
 
 var __slice = [].slice;
 
-neo.graphView = function() {
+neo.graphView = function(el) {
   var callbacks, chart, layout, style, trigger, viz, geometry;
   layout = neo.layout.force();
   style = neo.style();
@@ -516,7 +516,7 @@ neo.graphView = function() {
       if (!viz) {
         // HACK to override Geometry
         // viz = neo.viz(this, graphModel, layout, style);
-        viz = neo.viz(this, graphModel, layout, style, geometry);
+        viz = neo.viz(el, graphModel, layout, style, geometry);
         graphModel.on('updated', function() {
           return viz.update();
         });
@@ -1250,7 +1250,8 @@ neo.viz = function(el, graph, layout, style, geo) {
     nodeGroups = el.select("g.layer.nodes").selectAll("g.node").data(nodes, function(d) {
       return d.id;
     });
-    nodeGroups.enter().append("g").attr("class", "node").call(force.drag).call(clickHandler);
+    nodeGroups.enter().append("g").attr("class", "node").call(force.drag).on("click", onNodeClick);
+//    nodeGroups.enter().append("g").attr("class", "node").call(force.drag).call(clickHandler);
     _ref1 = neo.renderers.node;
     for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
       renderer = _ref1[_j];
@@ -1371,6 +1372,7 @@ neo.utils.distributeCircular = function(arrowAngles, minSeparation) {
 neo.utils.clickHandler = function() {
   var cc, event;
   cc = function(selection) {
+    console.log(selection)
     var dist, down, last, tolerance, wait;
     dist = function(a, b) {
       return Math.sqrt(Math.pow(a[0] - b[0], 2), Math.pow(a[1] - b[1], 2));
@@ -1395,6 +1397,7 @@ neo.utils.clickHandler = function() {
         } else {
           return wait = window.setTimeout((function(e) {
             return function() {
+              console.log(e)
               event.click(e.target.__data__);
               return wait = null;
             };
