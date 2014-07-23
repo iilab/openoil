@@ -1,6 +1,12 @@
+dev:
+  - vulcanize
+  - replace:build
+  - watch
+
 build:
   - jshint
   - vulcanize
+  - text-replace
   - htmlmin:dist
 
-default: build
+default: dev

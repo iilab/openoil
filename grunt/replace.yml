@@ -1,0 +1,7 @@
+build:
+  src: './index-concat.html'
+  dest: './index.html'
+  replacements:
+    - 
+      from: 'elements/mailto:'
+      to: 'mailto:'
