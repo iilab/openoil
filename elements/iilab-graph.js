@@ -340,79 +340,100 @@ function startGraph(viz, that) {
 
     var chart = neo.graphView(viz)
 
+    var wait = null;
+
     var style = chart.style(styleContents)
         .width(w)
         .height(h)
         .layout(layoutOO())
         .geometry(NeoD3Geometry_iilab)
         .on('nodeClicked', function(d,i){
-          console.trace()
-          // Select proper parent <g>
-          console.log(i)
-          console.log(d)
-          if (d.node) {
-            d = d.node
+          e = window.event;
+          if (!e.metaKey) { 
+          
+            // Select proper parent <g>
+            if (d.node) {
+              d = d.node
+            }
+
+            // Display sidebar.
+
+            that.fire('stats', {i: d.propertyMap.name , t:"n"});
+
+            that.element.id = d.id
+            that.element._type = "node"
+            that.element.type = d.labels[0]
+            that.element.name = d.propertyMap.name 
+            that.element.oc_id = d.propertyMap.oc_id
+            that.element.directors = ( d.propertyMap.directors ) ? d.propertyMap.directors.split(/\n/g) : null
+            that.element.shareholders = ( d.propertyMap.shareholders ) ? d.propertyMap.shareholders.split(/\n/g) : null
+            that.element.license_area = d.propertyMap.license_area
+            that.element.field = d.propertyMap.field
+            that.element.ownership_type = ""
+            that.element.immediate = ""
+            that.element.ultimate = ""
+            that.element.contract_share = ""
+            that.element.ownership_status = ""
+            that.element.source_url = d.propertyMap.source_url
+            that.element.source_date = d.propertyMap.source_date
+            that.element.confidence = d.propertyMap.confidence
+
+            that.$.iilab_drawer.openDrawer();
+            tip.hide(d, that.parentNode)
+  /*          
+            d3.select(viz).selectAll('g.node circle')
+                .transition()
+                .attr("fill", chart.style()['node.Company'].color)
+                .attr("stroke-width", "4px")
+                .attr("opacity", "1")
+            d3.select(viz).selectAll('g.node text')
+                .transition()
+                .attr("fill", "#2a3e92")
+            d3.select(viz).selectAll('#id_' + d.id + ' circle')
+                .transition()
+                .attr("stroke-opacity", "0.5")
+                .attr("stroke-width", "32px")
+                .attr("fill", "#2a3e92")
+            d3.select(viz).selectAll('#id_' + d.id + ' text')
+                .transition()
+                .attr("fill", "#FFF")
+  */
+            // Autozoom on Click.
+            // TODO: Zoom on clicked node and immediately related nodes. relationshipMap ?
+
+            zs = zoom.scale()
+            zt = zoom.translate();
+            zs = window.innerHeight / 1000
+            dx = (w/2.0) - d.x*zs - 256 ;
+            dy = (h/2.0) - d.y*zs - 64;
+
+            zoom.translate([dx, dy]);
+            zoom.scale(1);
+
+            layers.transition()
+                .duration(1000)
+                .call(zoom.event, layers)
+  //              .call(endall, function() { 
+  //                that.parentNode.fire('set-slider', {zoom: zs})
+  //              });
+          } else {
+            // Select proper parent <g>
+            if (d.constructor.name == "Object" && d.node) {
+              d = d.node
+            }
+            tip.hide(d, that.parentNode)
+            console.log(that.depth)
+            that.fire('stats', {i: d.propertyMap.name, t:"dc"});
+            if (d.labels[0] == "Company") {
+              that.cypher = "MATCH p=(a:Company {name: '" + d.propertyMap.name + "'})-[r:IS_OWNER|AWARDS|HAS_CONTRACTOR|HAS_OPERATOR*0.." + that.depth + "]-(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
+            }
+            else if (d.labels[0] == "Country") {
+              that.cypher = "MATCH p=(j:Country {name: '" + d.propertyMap.name + "'})<-[:HAS_JURISDICTION]-(c:Company)<-[r:IS_OWNER*..2]-(d:Company)<-[s:IS_OWNER]-(e:Company)-[:HAS_JURISDICTION]-(f:Country) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"   
+            }
+             else if (d.labels[0] == "Contract") {
+              that.cypher = "MATCH p=(a:Contract {name: '" + d.propertyMap.name + "'})-[hc:AWARDS|HAS_OPERATOR|HAS_CONTRACTOR]-(c: Company)-[r:IS_OWNER*0.." + that.depth + "]-(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"            
+            }
           }
-          // Display sidebar.
-
-          that.fire('stats', {i: d.propertyMap.name , t:"n"});
-
-          that.element.id = d.id
-          that.element._type = "node"
-          that.element.type = d.labels[0]
-          that.element.name = d.propertyMap.name 
-          that.element.oc_id = d.propertyMap.oc_id
-          that.element.directors = ( d.propertyMap.directors ) ? d.propertyMap.directors.split(/\n/g) : null
-          that.element.shareholders = ( d.propertyMap.shareholders ) ? d.propertyMap.shareholders.split(/\n/g) : null
-          that.element.license_area = d.propertyMap.license_area
-          that.element.field = d.propertyMap.field
-          that.element.ownership_type = ""
-          that.element.immediate = ""
-          that.element.ultimate = ""
-          that.element.contract_share = ""
-          that.element.ownership_status = ""
-          that.element.source_url = d.propertyMap.source_url
-          that.element.source_date = d.propertyMap.source_date
-          that.element.confidence = d.propertyMap.confidence
-
-          that.$.iilab_drawer.openDrawer();
-          tip.hide(d, that.parentNode)
-/*          
-          d3.select(viz).selectAll('g.node circle')
-              .transition()
-              .attr("fill", chart.style()['node.Company'].color)
-              .attr("stroke-width", "4px")
-              .attr("opacity", "1")
-          d3.select(viz).selectAll('g.node text')
-              .transition()
-              .attr("fill", "#2a3e92")
-          d3.select(viz).selectAll('#id_' + d.id + ' circle')
-              .transition()
-              .attr("stroke-opacity", "0.5")
-              .attr("stroke-width", "32px")
-              .attr("fill", "#2a3e92")
-          d3.select(viz).selectAll('#id_' + d.id + ' text')
-              .transition()
-              .attr("fill", "#FFF")
-*/
-          // Autozoom on Click.
-          // TODO: Zoom on clicked node and immediately related nodes. relationshipMap ?
-
-          zs = zoom.scale()
-          zt = zoom.translate();
-          zs = window.innerHeight / 1000
-          dx = (w/2.0) - d.x*zs - 256 ;
-          dy = (h/2.0) - d.y*zs - 64;
-
-          zoom.translate([dx, dy]);
-//          zoom.scale(zs);
-
-          layers.transition()
-              .duration(1000)
-              .call(zoom.event, layers)
-//              .call(endall, function() { 
-//                that.parentNode.fire('set-slider', {zoom: zs})
-//              });
         })
       .on('nodeDblClicked', function(d,i){
           e = window.event;
