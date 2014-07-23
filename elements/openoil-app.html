@@ -316,8 +316,8 @@ Polymer('x-dialog', {
   <script> 
   	Polymer('openoil-app', {
       url: (window.location.href == 'http://localhost/')?'http://db.localhost:7474/db/data/' : 'https://db_openoil.iilab.org/db/data/',
-      zoom: 1,
-      zoomSlider: 1,
+      zoom: 0,
+      zoomSlider: 0,
   		published: {
   			title: ""
   		},
@@ -387,7 +387,7 @@ Polymer('x-dialog', {
       stringsTextChanged: function(o, n) {
       },
       zoomOut: function() {
-        this.$.iilab_graph.zoom = 1;
+        this.$.iilab_graph.zoom = 0;
       },
       sliderSet: function(e) {
         console.log("openoil-app zoomChanged")

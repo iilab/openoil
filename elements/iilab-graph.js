@@ -410,9 +410,9 @@ function startGraph(viz, that) {
           layers.transition()
               .duration(1000)
               .call(zoom.event, layers)
-              .call(endall, function() { 
-                that.parentNode.fire('set-slider', {zoom: zs})
-              });
+//              .call(endall, function() { 
+//                that.parentNode.fire('set-slider', {zoom: zs})
+//              });
         })
       .on('nodeDblClicked', function(d,i){
           e = window.event;
