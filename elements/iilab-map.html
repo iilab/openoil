@@ -98,7 +98,7 @@
 
 //				console.log(bubble_map);
 
-			cypher = "MATCH (c:Company)-[r:HAS_JURISDICTION]->(j:Country) RETURN j.name as name, j.id as id, j.latitude as latitude, j.longitude as longitude, count(c) as c";
+			cypher = "MATCH (c:Company)-[r:HAS_JURISDICTION]->(j:Country) WHERE j.id IS NOT NULL RETURN j.name as name, j.id as id, j.latitude as latitude, j.longitude as longitude, count(c) as c";
 			console.log('Loading map')
 			console.log(document.querySelector('openoil-app').url)
 			neo4j.connect(document.querySelector('openoil-app').url, function (err, graph) {
