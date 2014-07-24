@@ -71,7 +71,7 @@ function startGraph(viz, that) {
                                       weight = 1
                                       size= "18px";
                                     } else if (r.type == "HAS_JURISDICTION") {
-                                      caption = r.data.contract_share + '%'
+                                      caption = 'Jurisdiction'
                                       weight = 1
                                       size= "18px";
                                     } else {
