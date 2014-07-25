@@ -79,11 +79,11 @@
         }
       </style>
       <iilab-drawer-panel id="iilab_drawer" class="right-drawer" selected="main">
-        <core-icon-button id="button" icon="close" label="Close"></core-icon-button>
         <div drawer vertical layout style="overflow: auto;">
            <template bind="{{element}}">
             <div vertical layout>
-              <core-menu valueattr="label" id="core_menu" theme="core-light-theme" vertical layout selected=0>
+                <core-icon-button id="buttonClose" icon="close" label="Close" on-click="{{ buttonClick }}"></core-icon-button>
+                <core-menu valueattr="label" id="core_menu" theme="core-light-theme" vertical layout selected=0>
                 <template if="{{ _type == 'node' }}">
                   <core-submenu id="node_details" icon="list" label="{{ type }} Details" multi>
                     <paper-item id="name" icon="flag" label="{{ name }}"></paper-item>
@@ -233,7 +233,7 @@
           });*/
       },
       buttonClick: function(e) {
-        this.$.drawer.togglePanel()
+        document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#iilab_drawer').togglePanel();
       },
       cypherChanged: function(oldValue, newValue) {
         this.cypher = newValue
