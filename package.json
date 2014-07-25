@@ -16,6 +16,7 @@
     "grunt-contrib-requirejs": "^0.4.4",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-htmlclean": "^0.1.7",
+    "grunt-text-replace": "^0.3.12",
     "grunt-vulcanize": "^0.3.0",
     "karma": "^0.12.17",
     "karma-chrome-launcher": "^0.1.4",
