@@ -74,6 +74,9 @@
           width:250px;
         }
 
+        core-item {
+          margin-left: -25px;
+        }
       </style>
       <iilab-drawer-panel id="iilab_drawer" class="right-drawer" selected="main">
         <core-icon-button id="button" icon="close" label="Close"></core-icon-button>
@@ -142,11 +145,12 @@
                       <paper-item label="">Has Jurisdiction</paper-item>
                       <paper-item icon="info" label="{{ target.propertyMap.name }}"></paper-item>
                     </core-submenu> 
-                  </template>                </template>
+                  </template>                
+                </template>
                 <template if="{{ source_url }}">
                   <core-submenu icon="receipt" label="Sources">
                       <template if="{{ confidence }}"><paper-item label="Confidence: {{ confidence }}" id="confidence"></paper-item></template>
-                      <template if="{{ source_url }}"><paper-item label="Source URL: {{ source_url }}" id="source_url"></paper-item></template>
+                      <template if="{{ source_url }}"><core-item label="Source URL: {{ source_url }}" id="source_url"><a href="{{ source_url }}" target="_blank"></a></core-item></template>
                       <template if="{{ source_date }}"><paper-item label="Source Publication Date: {{ source_date }}" id="source_date"></paper-item></template>
                       <template if="{{ source_type }}"><paper-item label="Source Type: {{ source_type }}" id="source_type"></paper-item></template>
                       <template if="{{ log_message }}"><paper-item icon="info-outline" label="Notes: {{ log_message }}%" id="log_message"></paper-item></template>

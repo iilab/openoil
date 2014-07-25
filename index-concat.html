@@ -2568,7 +2568,7 @@ content.
 <polymer-element name="iilab-graph" noscript="" attributes="search url description param depth strings zoom autozoom chart cypher countnodes countlinks" assetpath="elements/">
   <style>.d3-tip{background-color:#fff;border-color:#E2E2E2;color:#454545;border-radius:2px;width:400px;border-width:1px;border-style:solid;font-size:18.5px;line-height:12px;direction:ltr;box-shadow:none;padding:0}.d3-tip ul li{list-style:none;margin:14px 0 0;font-size:.8em;padding-right:10px}.d3-tip:after{box-sizing:border-box;display:inline;font-size:10px;width:100%;line-height:1;color:#fff;content:"\25BC";position:absolute;text-align:center}.d3-tip.n:after{margin:-1px 0 0 0;top:100%;left:0}</style>
   <template>
-      <style>core-submenu::shadow #submenu{margin-left:10px}g.node{cursor:pointer}g.relationship{cursor:pointer}paper-toast{bottom:40px;left:initial;right:10px;width:250px}</style>
+      <style>core-submenu::shadow #submenu{margin-left:10px}g.node{cursor:pointer}g.relationship{cursor:pointer}paper-toast{bottom:40px;left:initial;right:10px;width:250px}core-item{margin-left:-25px}</style>
       <iilab-drawer-panel id="iilab_drawer" class="right-drawer" selected="main">
         <core-icon-button id="button" icon="close" label="Close"></core-icon-button>
         <div drawer="" vertical="" layout="" style="overflow: auto;">
@@ -2641,7 +2641,7 @@ content.
                 <template if="{{ source_url }}">
                   <core-submenu icon="receipt" label="Sources">
                       <template if="{{ confidence }}"><paper-item label="Confidence: {{ confidence }}" id="confidence"></paper-item></template>
-                      <template if="{{ source_url }}"><paper-item label="Source URL: {{ source_url }}" id="source_url"></paper-item></template>
+                      <template if="{{ source_url }}"><core-item label="Source URL: {{ source_url }}" id="source_url"><a href="{{ source_url }}" target="_blank"></a></core-item></template>
                       <template if="{{ source_date }}"><paper-item label="Source Publication Date: {{ source_date }}" id="source_date"></paper-item></template>
                       <template if="{{ source_type }}"><paper-item label="Source Type: {{ source_type }}" id="source_type"></paper-item></template>
                       <template if="{{ log_message }}"><paper-item icon="info-outline" label="Notes: {{ log_message }}%" id="log_message"></paper-item></template>
