@@ -349,7 +349,7 @@ function startGraph(viz, that) {
         .geometry(NeoD3Geometry_iilab)
         .on('nodeClicked', function(d,i){
           e = window.event;
-          if (!e.metaKey) { 
+          if (!(e.metaKey || e.ctrlKey)) { 
           
             // Select proper parent <g>
             if (d.node) {
