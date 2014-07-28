@@ -711,10 +711,51 @@ function startGraph(viz, that) {
 
     document.addEventListener('search-select', function(e) {
       console.log("in search-select listener")
-      console.log(e.detail.node)
-      var e = document.createEvent('UIEvents');
-      e.initUIEvent('click', true, true);
-      d3.select(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#viz')).selectAll(e.detail.node).node().dispatchEvent(e);
+      var id_selector = e.detail.node
+//      var e = document.createEvent('UIEvents');
+//      e.initUIEvent('click', true, true);
+
+      d = d3.select(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('iilab-drawer-panel').querySelector('#viz')).selectAll(id_selector).data()[0];
+
+      console.log(d)
+
+      // Display sidebar.
+
+      that.fire('stats', {i: d.propertyMap.name , t:"n"});
+
+      that.element.id = d.id
+      that.element._type = "node"
+      that.element.type = d.labels[0]
+      that.element.name = d.propertyMap.name 
+      that.element.oc_id = d.propertyMap.oc_id
+      that.element.directors = ( d.propertyMap.directors ) ? d.propertyMap.directors.split(/\n/g) : null
+      that.element.shareholders = ( d.propertyMap.shareholders ) ? d.propertyMap.shareholders.split(/\n/g) : null
+      that.element.license_area = d.propertyMap.license_area
+      that.element.field = d.propertyMap.field
+      that.element.ownership_type = ""
+      that.element.immediate = ""
+      that.element.ultimate = ""
+      that.element.contract_share = ""
+      that.element.ownership_status = ""
+      that.element.source_url = d.propertyMap.source_url
+      that.element.source_date = d.propertyMap.source_date
+      that.element.confidence = d.propertyMap.confidence
+
+      that.$.iilab_drawer.openDrawer();
+      tip.hide(d, that.parentNode)
+
+      zs = zoom.scale()
+      zt = zoom.translate();
+      zs = window.innerHeight / 1000
+      dx = (w/2.0) - d.x*zs - 256 ;
+      dy = (h/2.0) - d.y*zs - 64;
+
+      zoom.translate([dx, dy]);
+      zoom.scale(1);
+
+      layers.transition()
+          .duration(1000)
+          .call(zoom.event, layers)
     });
 
     function endall(transition, callback) { 
