@@ -343,14 +343,14 @@ Polymer('x-dialog', {
           case "nigeria_production":
           case "nigeria_service":
           case "nigeria_snepco":
-            $(this.$.iilab_graph).show();
-            $(this.$.iilab_map).hide();
+            this.$.iilab_graph.style.display = "block";
+            this.$.iilab_map.style.display = "none";
             this.fire('stats', {i: window.location.href, t:"l"});
             this.fire('load-graph-query', {id: id});
             break;
           case "bp_map":
-            $(this.$.iilab_graph).hide();
-            $(this.$.iilab_map).show();
+            this.$.iilab_graph.style.display = "none";
+            this.$.iilab_map.style.display = "block";
             this.$.iilab_map.loadMap();
             this.fire('stats', {i: window.location.href, t:"l"});
             break;
