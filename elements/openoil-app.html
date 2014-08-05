@@ -315,7 +315,7 @@ Polymer('x-dialog', {
   </template>
   <script> 
   	Polymer('openoil-app', {
-      url: (window.location.href == 'http://localhost/')?'http://db.localhost:7474/db/data/' : 'https://db_openoil.iilab.org/db/data/',
+      url: (window.location.href == 'http://localhost/')?'http://db.localhost:7474/db/data/' : 'https://neo4j.openoil.net/db/data/',
       zoom: 0,
       zoomSlider: 0,
   		published: {
@@ -327,7 +327,7 @@ Polymer('x-dialog', {
       },
       domReady: function() {
         console.log(window.location.hash.replace(/^#/, ''))
-        this.url = (window.location.href.split('/')[2] == 'localhost')?'http://db.localhost:7474/db/data/' : 'https://db_openoil.iilab.org/db/data/'
+        this.url = (window.location.href.split('/')[2] == 'localhost')?'http://db.localhost:7474/db/data/' : 'https://neo4j.openoil.net/db/data/'
         this.loadURL(window.location.hash.replace(/^#/, ''))
       },
       clickQuery: function(e) {
