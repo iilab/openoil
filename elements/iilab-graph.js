@@ -209,7 +209,7 @@ function startGraph(viz, that) {
                   console.log(layer_nodes.node().getBBox().height)*/
 
                   zs = zoom.scale()
-                  console.log(zs)
+                  //console.log(zs)
                   zt = zoom.translate();
                   zs = ( ( viz.height.baseVal.value - 64 ) / layer_nodes.node().getBBox().height ) < ( viz.width.baseVal.value - 256 / layer_nodes.node().getBBox().width ) ? ( ( viz.height.baseVal.value - 64 ) / layer_nodes.node().getBBox().height ) * 1 : ( viz.width.baseVal.value - 256 / layer_nodes.node().getBBox().width ) * 1
 /*                  console.log( viz.width.baseVal.value / 2 )
@@ -221,7 +221,7 @@ function startGraph(viz, that) {
 
                   dx = ( viz.width.baseVal.value / 2 ) - ( layer_nodes.node().getBBox().x + layer_nodes.node().getBBox().width / 2 )  ;
                   dy = ( viz.height.baseVal.value / 2 ) - ( layer_nodes.node().getBBox().y + layer_nodes.node().getBBox().height / 2 )  ;
-                  console.log([dx, dy])
+                  //console.log([dx, dy])
 
                   zoom.x = 256
                   zoom.y = 64
@@ -435,11 +435,11 @@ function startGraph(viz, that) {
             }
           }
         })
-      .on('nodeDblClicked', function(d,i){
+/*      .on('nodeDblClicked', function(d,i){
           e = window.event;
-/*          if (e.shiftKey) { console.log('shift is down')}
-          if (e.altKey) { console.log('alt is down') }
-          if (e.ctrlKey) { console.log('ctrl is down') } */
+//          if (e.shiftKey) { console.log('shift is down')}
+//          if (e.altKey) { console.log('alt is down') }
+//          if (e.ctrlKey) { console.log('ctrl is down') }
           if (e.metaKey) { 
             // console.log('cmd is down')
 
@@ -549,13 +549,13 @@ function startGraph(viz, that) {
             }
 
           }
-        })
+        }) */
       .on('relationshipClicked', function(d,i){
           console.trace()
           if (d.constructor.name == "Object" && d.relationship) {
                     d = d.relationship
           }
-          console.log(d)
+          //console.log(d)
           that.fire('stats', {i: d.type , t:"r"});
 
           that.element.id = d.id
@@ -694,10 +694,10 @@ function startGraph(viz, that) {
     document.addEventListener('zoom-slider', function(e) {
 //      console.log("in zoomslider listener")
 //      console.log(e.detail.zoom)
-      console.log(zoom.x)
-      console.log(zoom.y)
-      console.log(zoom.size())
-      console.log(zoom.center())
+      //console.log(zoom.x)
+      //console.log(zoom.y)
+      //console.log(zoom.size())
+      //console.log(zoom.center())
       zoom.scale(e.detail.zoom);
       layers.transition()
         .duration(1000)
@@ -710,14 +710,14 @@ function startGraph(viz, that) {
     });
 
     document.addEventListener('search-select', function(e) {
-      console.log("in search-select listener")
+//      console.log("in search-select listener")
       var id_selector = e.detail.node
 //      var e = document.createEvent('UIEvents');
 //      e.initUIEvent('click', true, true);
 
       d = d3.select(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('iilab-drawer-panel').querySelector('#viz')).selectAll(id_selector).data()[0];
 
-      console.log(d)
+      //console.log(d)
 
       // Display sidebar.
 
