@@ -247,7 +247,11 @@ function startGraph(viz, that) {
                       document.body.classList.remove('loading');
                     });
                 }
-
+                // remove tooltips
+                tips = document.getElementsByClassName('d3-tip n')
+                while(tips[0]) {
+                    tips[0].parentNode.removeChild(tips[0]);
+                  }
                 render();
                 return false;
               };
