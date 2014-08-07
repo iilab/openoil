@@ -599,7 +599,7 @@ function startGraph(viz, that) {
     var zoom = d3.behavior.zoom()
         .scaleExtent([0.1, 10])
         .on("zoom", zoomed);
-
+    
     var svg = d3.select(viz)
               .attr("width", window.innerWidth - 256 ).attr("height",window.innerHeight - 64)
               .data([graphModel])
@@ -607,7 +607,8 @@ function startGraph(viz, that) {
 
     var view = d3.select(viz)
               .call(zoom)
-              .call(tip)
+              .on("dblclick.zoom", null)
+              .call(tip);
 
     var layers = d3.select(viz).selectAll("g.layer")
 
