@@ -1,0 +1,355 @@
+/* CSS Document */
+
+/*-----------------------------------------Body Elements-------------------------------*/
+
+body { font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #00144D; margin: 0px; background-color: #ffffff;}
+
+h1 { font-size: small;}
+
+h2 { font-size: medium; display: inline;}
+
+h3 { font-size: small; margin-bottom:0px;}
+
+h4 { font-size: small; margin:0px;}
+
+abbr {cursor: help; border-bottom: 1px dotted;}
+acronym {cursor: help; border-bottom: 1px dotted;}
+
+/*-----------------------------------------Navigation Elements-------------------------------*/
+
+#topNavD_bl {
+    font-size: small;
+    color: #ffffff;
+    /*padding: 70px 0px 25px 165px;*/
+    padding:0px;
+    background-position: right;
+    /*background-color: #ffffff;*/
+    background-color: #00144d;
+    background-image: url("/images/com/bus_link_logo.gif");
+    background-repeat: no-repeat;
+}
+
+/****** Start of Business Link 3 stage banner */
+
+/***** temporary fix ******/
+.bl_ch_cobranding
+{
+border-collapse:collapse;
+background-color:#66669A;
+width:100%;
+min-width:810px;
+}
+/***** end of temporary fix ******/
+
+#logo_bl {
+    background-image: url("/images/com/bus_link_logo.gif");
+    display: block;
+    height: 111px;
+    width: 70px;
+    margin: 0px;
+    margin-right: 25px;
+    padding: 0px;
+    float: right;
+}
+#swishl_bl {
+    background-image: url("/images/com/ch_buslink_swoosh_left.gif");
+    display: block;
+    height: 111px;
+    width: 250px;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+}
+#swishr_bl {
+    background-image: url("/images/com/ch_buslink_swoosh_right.gif");
+    display: block;
+    height: 111px;
+    width: 250px;
+    margin: 0px;
+    padding: 0px;
+    float: right;
+}
+
+/* for all browsers that understand min-width */
+#container_bl {
+    position:relative;
+    width:100%;
+    min-width:810px;
+    clear:both;
+}
+#holder_bl {
+    display:block;
+    color:#000;
+}
+
+/* method 1 a bodge for IE5.5 and IE6 browsers */
+* html #container_bl {
+    border-right:810px solid #fff;
+}
+* html #holder_bl {
+    display:inline-block;
+    position:relative;
+    margin-right:-810px;
+}
+
+.content_bl {
+    background-color: #66669A;
+    border-left: 1px solid #00144D;
+    border-right: 1px solid #66669A;
+}
+#ch_bl {width: 50%;height:111px;float:left;background-color:#00144D; min-width: 404px;}
+#bl_bl {position:absolute;top:0px;right:0px;top:0px;width: 50%;height:111px;float:right;background-color:#66669A; min-width: 404px;}
+
+/* single row error messages */
+#errorMessage {
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #FF0000;
+    width: 100%;
+    font-size: small;
+    padding: 5px;
+    text-align: center;
+}
+
+#errorMessage p {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* End of Business Link 3 stage banner */
+
+#topNavDBlue {background: #00144D url("/images/com/en/main_logo.gif") no-repeat left top;
+font-size: small; color: #ffffff; padding: 70px 0px 25px 165px;}
+#topNavDBlueNone {background: #00144D url("/images/com/en/main_logo.gif") no-repeat left top;
+font-size: small; color: #ffffff; padding: 70px 0px 14px 165px;}
+#topNavDBlue a:link  {color: #ffffff; text-decoration: none;}
+#topNavDBlue a:visited {color: #ffffff; text-decoration: none;}
+#topNavDBlue a:hover {color: #ffffff; text-decoration: underline;}
+	
+#topNavDBlue {
+   text-align: left;
+}
+
+#topNavMBlue {
+   clear: both;
+   width: 100%; 
+   background: #737E9D; 
+   text-align: left;
+   
+}
+
+#topNavMBlue a:link  {color: #ffffff; text-decoration: none;}
+#topNavMBlue a:visited {color: #ffffff; text-decoration: none;}
+#topNavMBlue a:hover {color: #ffffff; text-decoration: underline;}
+
+#topNavLBlue {width:100%; background: #BFC4D2;}
+
+#topNavDBlueText {
+    padding:7px 0px 7px 12px; 
+    font-size: small; 
+    color: #ffffff;
+    text-align: left;
+}
+
+#topNavMBlueText {
+    padding:7px 0px 7px 12px; 
+    font-size: small; 
+    color: #ffffff;
+    text-align: left;
+}
+
+#helpFAQ {float: right; font-size: small; color: #ffffff; margin-right:8px; padding:7px 0px 7px 0px;}
+
+.nextPageNav {padding: 14px 14px 14px 14px;}
+
+.floatLeft {float:left;}  /* MUST use in order to align next and previous buttons properly. Bug in IE5 MAC */
+
+#search {float: right; font-size: small; color: #ffffff; margin-right:8px; padding:2px 0px 7px 0px;}
+
+/* Changed Section */
+
+#language_bar {position: absolute;top: 10px;right: 10px;padding:5px;font-size: x-small;}
+
+#language_bar a.lang_word:link, #language_bar a.lang_word:visited {color: #FFFFFF;text-decoration: none;}
+
+#language_bar a.lang_word:hover {text-decoration: underline;}
+
+#language_bar a.lang_pic  {background-color: #c9dbfe;color: #000033;font-weight: bolder;padding:3px;margin-left:5px;margin-right:5px;text-decoration:none;}
+
+#language_bar  a.lang_pic:hover {color: #cc0033;text-decoration: none;}
+
+#language_bar_bl {position: absolute;top: 115px;right: 10px;padding:5px;font-size: x-small;}
+
+#language_bar_bl a.lang_word:link, #language_bar_bl a.lang_word:visited {color: #FFFFFF;text-decoration: none;}
+
+#language_bar_bl a.lang_word:hover {text-decoration: underline;}
+
+#language_bar_bl a.lang_pic  {background-color: #c9dbfe;color: #000033;font-weight: bolder;padding:3px;margin-left:5px;margin-right:5px;text-decoration:none;}
+
+#language_bar_bl  a.lang_pic:hover {color: #cc0033;text-decoration: none;}
+
+/* End of chaged section */
+
+/*-----------------------------------------Page Heading-------------------------------*/
+
+#pageHeading {padding: 18px 17px 15px 25px; }
+
+#pageHeadDivider {background-image: url(/images/com/en/dotDivider.gif);}
+/*-----------------------------------------2 column page layout for body-------------------------------*/
+
+#lh-col {font-size: small; color:#00144D; width: 70%; float: left; background: #ffffff;
+ margin: 0; padding: 25px 19px 25px 25px; position:relative;} /* added in position relative to fix peek-a-boo bug in IE6 */
+#lh-col a:link  {color: #00144D; text-decoration: underline;}
+#lh-col a:visited {color: #00144D; text-decoration: underline;}
+#lh-col a:hover {color: #C60052; text-decoration: underline;}
+
+ 
+#rh-col {margin: 0; padding: 30px 19px 25px 25px;}
+
+/*-----------------------------------------Help Text-------------------------------*/
+
+.alignHelpImage {float: right; padding-bottom:10px; margin-top:-10px;}
+
+/*-----------------------------------------Errors-------------------------------*/
+
+.error {color:#CC0066; font-weight:bold; } /* only used when tmpl falls in 2 column layout*/
+.testSystem {color:#CC0066; font-weight:bold; font-size:14px;} /* used to display TEST SYSTEM message*/
+
+/*-----------------------------------------<TMPL>-------------------------------*/
+
+#bannerText { float:left; font-size: small; color:#CC0000; font-weight:none; background-color:#FFF3C2; width:621px; margin-left:20px;}
+.bannerHeading { background-color:#FFCC00;}
+#bannerText p{padding:0px 5px 3px 5px; margin-top:8px;}
+#errorTop {font-size: small; color:#C60052; font-weight:bold; padding:10px 25px 10px 25px; }/* used when tmpl is not within the 2 column layout*/
+
+/*-----------------------------------------Form Elements-------------------------------*/
+
+form {margin:0px;}
+.emailField {width:260px; color:#00144D; font-size:small;}
+
+/*-----------------------------------------Common padding-------------------------------*/
+.paddingNone {padding: 0px 0px 0px 0px;}
+
+/*-----------------------------------------Text Styles-------------------------------*/
+.text {font-size: small; color:#00144D;}
+/*-----------------------------------------Float Styles-------------------------------*/
+.floatRight {float:right;}
+/*-----------------------------------------Link Styles--------------------------------*/
+.linktext {color:#00144D;}
+.linktext:hover {color:#C51D56;}
+
+/*-----------------------------------------Default light blue MyCH table-------------------------------*/
+.myCHTable {font-size: small; font-weight:normal; width:587px; background-color: #D7E4F2; 
+border-style: solid; border-width: 1px; border-color: #737E9D;margin-right:10px;}
+.myCHTable a:link  {color: #00144D; text-decoration: underline;}
+.myCHTable a:visited {color: #00144D; text-decoration: underline;}
+.myCHTable a:hover {color: #C60052; text-decoration: underline;}
+
+#myCHTableHead {background-color: #D7E4F2; padding: 16px 0px 14px 14px;}
+#registerTitle {background-color: #D7E4F2; padding: 0px;}
+
+/*------------------------------------------Divider styles used in mych----------------------------------*/
+.myCHdotDivider {background-image: url(/images/com/en/myCHdotDivider.gif); min-height:2px;}
+.myCHdotDividerW {background-image: url(/images/com/en/dotDivider.gif); min-height:2px;}
+
+/*-------------------------------------Text Styles------------------------------------*/
+
+#warningTitle {font-size: medium; font-weight:bold; padding:14px;}
+.noImgTitle {font-size: small; font-weight:bold; padding:14px;}
+.noImgTitleForms {font-size: small; font-weight:bold; padding:14px; color:#CC0033;}
+.welcomePortal {float:right; padding-right:10px; }
+
+.tableContent {padding: 14px 14px 14px 14px;}
+
+/*------------------------------------ Bottom Navigation ------------------------------*/
+#botNavWrap {clear:both; padding:10px 0 2px 0;}
+
+#botNavDotDiv {
+background-image:url(/images/en/stdmch/bottomDotdivider.gif);
+background-repeat:repeat-x;
+height:11px;
+margin-bottom:13px;
+margin-top:10px
+}
+
+#botNav {
+background-color:#737E9D;
+font-family: Arial, Helvetica, sans-serif;
+font-size: small;
+color: #FFFFFF;
+text-decoration:none;
+padding:5px 0 5px 25px
+}
+
+#botNav a {
+text-decoration:none}
+
+.smallPurpleText {font-size: x-small; color: #C3C7D7; display:inline; padding-right:35px}
+
+/* Used for my account details table */
+.accountDetails td{padding:3px 3px 3px 3px;}
+
+/*-----------------------------------------Sign In and Register tables---------------------------------*/
+.regProcess {font-size: small; font-weight:normal;}
+.regProcess td{padding:3px 3px 3px 3px;}
+.regProcess a:link  {color: #00144D; text-decoration: underline;}
+.regProcess a:visited {color: #00144D; text-decoration: none;}
+.regProcess a:hover {color: #C60052; text-decoration: underline;}
+
+/*-----------------------------------------White Seach button---------------------------------*/
+.whitegobutton2 {
+	height: 20px;
+	width: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	color: #00144D;
+	background-color: #FFFFFF;
+	border: 0px solid #FFFFFF;
+    vertical-align: bottom;}
+.regProcess a:hover {color: #C60052; text-decoration: underline;}
+
+/*-----------------------------------------Image Styles-------------------------------*/
+.imageDataRight {float: right; margin:-4px; padding:0px 0px 0px 0px; vertical-align:middle;}
+/*-------------------------------------Help Text------------------------------------*/
+
+#helpDiv {
+border:1px solid #BFC4D2;
+width:85%;
+margin:10px 10px 10px 24px;
+font-size:small;
+padding:5px 10px 0 10px;
+}
+
+#helpDiv a {color: #00144D;}
+#helpDiv a:hover {color: #C51D56;}
+
+/*-----------------------------------------Notes table---------------------------------------------------*/
+
+#notesTable {font-size: small; font-weight:normal; width:191px; float:right;}
+#notesTableLogin {font-size: small; font-weight:normal; width:608px; float:left; margin:16px 9px 0 0;}
+#notesHeading {font-weight:bold; background-color: #77A7D5; padding:10px 7px 10px 11px; background-image: url(/images/com/en/noteIcon.gif); background-repeat: no-repeat; background-position: right top; }
+
+#notesBody {background-color: #D7E4F2; padding:15px 7px 15px 11px;}
+#notesBody a:link  {color: #00144D; text-decoration: underline;}
+#notesBody a:visited {color: #00144D; text-decoration: underline;}
+#notesBody a:hover {color: #C60052; text-decoration: underline;}
+
+.aka {cursor: help; border-bottom: 1px dotted; width:100%; text-decoration:none;}
+.aka a:hover {color:#00144D; text-decoration:none;}
+
+#notesDivider {background-image: url(../images/en/stdmch/notesDivider.gif);}
+
+.buttonRight {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    color: #00144D;
+    padding: 3px;
+    border: 1px solid #737E9D;
+    background-color: #FFFFFF;
+    width: auto;
+    overflow: visible;
+    text-decoration: none;
+    float: right;
+    margin-left: 10px;
+}

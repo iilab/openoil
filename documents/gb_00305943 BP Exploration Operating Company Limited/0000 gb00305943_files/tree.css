@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Table Header - For Tree Column Only */ 
+
+th.treeHeader {
+	text-align: left;
+	padding: 0px;
+	vertical-align: bottom;
+}
+
+.treeBlock {
+	display:block;
+	width: 90px;
+	padding:0px;
+	margin:0px;
+}
+
+.treeBlock img {
+	margin:0px;
+	padding:0px;
+}
+
+/* Define the background images for each table cell in the tree column according to which level in the tree it is at: 
+	Level 1 = 1 line
+	Level 2 = 2 lines
+	Level 3 = 3 lines 
+	Level 2 Only = 1 line in level 2 only
+*/
+
+td.treeLevel1 {
+	background-image: url(/images/com/treeStraight.gif);
+	background-repeat: repeat-y;
+}
+
+td.treeLevel2 {
+	background-image: url(/images/com/treeStraight2.gif);
+	background-repeat: repeat-y;
+}
+
+td.treeLevel3 {
+	background-image: url(/images/com/treeStraight3.gif);
+	background-repeat: repeat-y;
+}
+
+td.treeLevel2Only {
+	background-image: url(/images/com/treeStraightLevel2Only.gif);
+	background-repeat: repeat-y;
+}
+
+/* Blocks that contain the images in each level of the tree */
+
+.level1, .level2, .level3, .level4 {
+	display: block;
+	width: 22px;
+	height: 22px;
+	float: left;
+}
+
+/* ROW STYLING - NEEDS REVISION */
+
+/* redefining the result rows padding */
+
+.resultrow1 td {padding:0px;}
+.resultrow2 td {padding:0px;}
+.resultrow1 td.cellnopadding {padding:0px;}
+.resultrow2 td.cellnopadding {padding:0px;}
+
+/* Defining Subrows for each level */
+
+.subrow1Level2 {
+}
+
+.subrow2Level3 {
+}
+
+.subrowLevel2 td {
+	padding: 0px;
+}
+
+.subrowLevel3 td {
+	padding: 0px;
+}
+
+/* Adding indent according to which level of the tree the text exists on */
+
+.subrowLevel2 .text {
+	padding-left: 20px;
+}
+
+.subrowLevel3 .text {
+	padding-left: 40px;
+}
+
+.subrowLevel2 td.cellnopadding {
+	padding: 0px;
+}
+
+.subrowLevel3 td.cellnopadding {
+	padding: 0px;
+}
+

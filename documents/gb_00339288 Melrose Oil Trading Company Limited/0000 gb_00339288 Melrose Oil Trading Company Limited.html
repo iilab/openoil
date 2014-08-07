@@ -1,0 +1,2244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0051)http://wck2.companieshouse.gov.uk//wcprodorder?ft=1 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>WebCHeck - Select and Access Company Information</title>
+
+<meta name="CH-Creator" content=" Marketing">
+<meta name="CH-Date" content="October 2003">
+<meta name="CH-Subject" content="Guidance, Tools, Webcheck">
+<meta name="CH-Title" content="Webcheck Introduction Page">
+<meta name="CH-Description" content="Links to Companies House Webcheck service ">
+<meta name="CH-Publisher" content="Companies House, Crown Way, Cardiff. CF14 3UZ ">
+<meta name="CH-Contributor" content="">
+<meta name="CH-Type" content="HTML,TEXT,">
+<meta name="CH-Format" content="HTML,TEXT,">
+<meta name="CH-Identifier" content="">
+<meta name="CH-Source" content="">
+<meta name="CH-Language" content="English">
+<meta name="CH-Relation" content="">
+<meta name="CH-Coverage" content="">
+<meta name="CH-Rights" content="Crown Copyright ">
+<meta name="CH-Audience" content="">
+<meta name="CH-Mandate" content="">
+<meta name="CH-Accessibility" content="">
+<meta name="CH-Disposal" content="October 2004 ">
+<meta name="CH-Last-Updated" content="April 2004">
+<link href="./gb00339288 Melrose Oil Trading Company Limited_files/stdwc.css" rel="stylesheet" type="text/css">
+<link href="./gb00339288 Melrose Oil Trading Company Limited_files/common.css" rel="stylesheet" type="text/css">
+
+<link href="./gb00339288 Melrose Oil Trading Company Limited_files/tree.css" rel="stylesheet" type="text/css">
+<!-- $Id: javascript.tmpl,v 1.6 2007-05-02 10:43:58 csmith Exp $ -->
+<script language="Javascript1.1" type="text/javascript">
+<!--
+  var hwin;
+  function popup( url, width, height ) {
+     hwin = window.open(url,'popup', 'toolbar=0,scrollbars=1,location=0,status=1,menubar=0,resizable=yes,width=' + width + ',height=' + height + '');
+     if ( window.focus ) {
+         hwin.focus();
+     }
+  }
+
+  function clearSearch(cname,cnumb,cotype) 
+  {
+     document.getElementById('cname').value = '';
+     document.getElementById('cnumb').value = '';
+     document.getElementById('cotype0').checked = 1;
+     document.getElementById('cotype1').checked = 0;
+     document.getElementById('cotype2').checked = 0;
+     document.getElementById('cotype3').checked = 0;
+  }
+
+function openurl(opt) {
+   if (opt == "info") {
+      txt = document.dropdown.information.value;
+   }
+   if (opt == "tools") {
+   txt = document.dropdown.tools.value;
+   }
+   if(txt != "") {
+   window.location = txt;
+   }
+}
+
+function disableNonSAOptions() {
+    /* Disable all the search options and ensure that
+       "Current" is selected */
+    x=document.getElementsByName("live");
+    for (i=0;i<x.length;i++) {
+        x[i].checked=1;
+        x[i].disabled=true;
+    }
+
+    a=["proposed","former","dissolved"];
+    for (j=0;j<a.length;j++) {
+        x=document.getElementsByName(a[j]);
+        for (i=0;i<x.length;i++) {
+            x[i].disabled=true;
+            x[i].checked=0;
+        }
+    }
+}
+
+function enableNonSAOptions() {
+    /* Re-enable all search options 
+    */
+    a=["live","proposed","former","dissolved"];
+    for (j=0;j<a.length;j++) {
+        x=document.getElementsByName(a[j]);
+        for (i=0;i<x.length;i++) {
+            x[i].disabled=false;
+        }
+    }
+}
+
+// --> 
+</script>
+
+
+<script language="JavaScript" type="text/javascript">
+function popup( url, width, height ) {
+     window.open(url,'popup', 'toolbar=0,scrollbars=1,location=0,status=1,menubar=1,resizable=yes,width=' + width + ',height=' + height + '');
+  }
+function openTableA(){
+	  window.open('http://www.companieshouse.gov.uk/about/tableA/index.shtml','Help_Window','toolbar=0,scrollbars=1,location=0,status=1,menubar=0');
+  }
+</script>
+</head>
+
+<body>
+
+<noscript class="noscript">
+Your browser does not support javascript. The page you are viewing uses javascript for the following functionality:&lt;BR&gt;
+To use the quicklinks navigation, and to use the back page function.&lt;br&gt;
+Please refer to the text only version of our website for alternative use.&lt;br&gt;
+&lt;br&gt;
+</noscript>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="CompaniesHouse" summary="Structural table containing Companies House website layout.">
+  <!-- $Id: tableBanner2Cols.tmpl 32750 2009-06-23 12:53:49Z dmiles $ -->
+  <tbody><tr>
+    <td colspan="2" class="blueGradientBg">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="This table contains the Companies House Logo and secondary navigation.">
+      <tbody><tr>
+        <td align="left" valign="top"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/ch_gds_logo.gif" alt="Companies House Logo" width="159" height="86" border="0"></td>
+        <td width="100%" align="left" valign="bottom"><script language="JavaScript" type="text/javascript">
+<!--  Hide script from older browsers
+ var urlAddress = "http://www.companieshouse.gov.uk";
+ var pageName = "Companies House";
+
+ function addToFavorites()
+ {
+  if (window.external)
+  {
+   window.external.AddFavorite(urlAddress, pageName);
+  }
+  else
+  { 
+   alert("Sorry! Your browser doesn't support this function.");
+  }
+ }
+// -->
+</script>
+
+
+
+<form action="http://wck2.companieshouse.gov.uk/htsearch.cgi" method="post">
+
+<input type="hidden" name="config" value="htdig">
+<input type="hidden" name="restrict" value="">
+<input type="hidden" name="exclude" value="">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="Table contains secondary navigation links and search this site facility." class="paddingBottom7">
+  
+<tbody><tr align="left" valign="middle">     
+<td width="41%" valign="bottom"><a href="http://wck2.companieshouse.gov.uk//marshal?link=static&uri=/index.shtml" class="topNav2">Home</a> | <a href="javascript:addToFavorites();" class="topNav2">Bookmark site</a> | <a href="http://wck2.companieshouse.gov.uk//marshal?link=static&uri=/links/introduction.shtml" class="topNav2">Links</a></td>
+<td width="59%" align="left" valign="bottom">
+<!--
+<font color="yellow" size="3">
+During the Easter period this service will be available as normal but please note that our Contact Centre will not be open on Friday 18th April and Monday 21st April. Normal service will resume on Tuesday 22nd April.
+</font>
+-->
+</td>
+</tr>
+  
+<tr align="left" valign="top"> 
+<td colspan="2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer.gif" alt="" border="0" width="100%" height="1"></td>
+</tr>
+</tbody></table>
+</form>
+</td>
+      </tr>
+      </tbody></table>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2" align="left" valign="top"><!-- $Id: mainNav.tmpl,v 1.34 2007-07-13 13:31:48 csmith Exp $ -->
+<form name="dropdown" method="post" action="">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="Table contains main navigation. Table also contains quicklinks navigation table and Login navigation.">
+<tbody><tr>
+<td class="mediumBlueBg"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/arrow_main_nav.gif" alt="" width="7" height="20" border="0" align="top" class="whiteNavArrows"><a href="http://wck2.companieshouse.gov.uk//marshal?link=static&uri=/about/functionsHistory.shtml" class="whitenav">About us</a> 
+      <img src="./gb00339288 Melrose Oil Trading Company Limited_files/arrow_main_nav.gif" alt="" width="7" height="20" border="0" align="top" class="whiteNavArrows"><a href="http://wck2.companieshouse.gov.uk//marshal?link=static&uri=/forms/introduction.shtml" class="whitenav">Forms</a> 
+      <img src="./gb00339288 Melrose Oil Trading Company Limited_files/arrow_main_nav.gif" alt="" width="7" height="20" border="0" align="top" class="whiteNavArrows"><a href="http://wck2.companieshouse.gov.uk//marshal?link=static&uri=/pressDesk/introduction.shtml" class="whitenav">Press Desk</a>
+      <img src="./gb00339288 Melrose Oil Trading Company Limited_files/arrow_main_nav.gif" alt="" width="7" height="20" border="0" align="top" class="whiteNavArrows"><a href="http://wck2.companieshouse.gov.uk//marshal?link=static&uri=/careers/careers.shtml" class="whitenav">Careers</a>
+      <img src="./gb00339288 Melrose Oil Trading Company Limited_files/arrow_main_nav.gif" alt="" width="7" height="20" border="0" align="top" class="whiteNavArrows"><a href="http://wck2.companieshouse.gov.uk//marshal?link=static&uri=/contact/contactUs.shtml" class="whitenav">Contact us</a></td>
+<td rowspan="3" align="right" valign="top" class="mainNavBg">
+<table border="0" cellpadding="0" cellspacing="0" class="padding8" summary="Drop down menus for Information and Guidance, and  Tools to help you.">
+<tbody><tr class="mediumBlueBg">
+</tr>
+<tr>
+<td colspan="2" align="left" valign="top"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer(1).gif" width="100%" height="6" border="0" alt="" class="padding7"></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class="secondNavBg">
+<td align="left" valign="middle" class="padding17"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer(1).gif" alt="" width="1" height="20" border="0" align="top"><a href="http://wck2.companieshouse.gov.uk//marshal?link=xsell" class="loginText">Log out</a> <span class="loginPipe">|</span> <a href="http://wck2.companieshouse.gov.uk//marshal?link=accountoptions" class="loginText">My Account</a> <span class="loginPipe">|</span> <a href="http://wck2.companieshouse.gov.uk//marshal?link=download" class="loginText">My Download</a> <span class="loginPipe">|</span> <a href="http://wck2.companieshouse.gov.uk//marshal?link=monitor" class="loginText">My Monitor</a> <span class="loginPipe">|</span> <img src="./gb00339288 Melrose Oil Trading Company Limited_files/orderBasketNav.gif" alt="" border="0"> <a href="http://wck2.companieshouse.gov.uk//basket" class="loginText">My Order</a></td>
+</tr>
+<tr>
+<td align="right" valign="top"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/curveCorner.gif" width="43" height="21" alt=""></td> 
+</tr>
+<tr>
+<td align="left" valign="top"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer(1).gif" width="420" height="1" border="0" alt="Information &amp; Guidance on" class="padding7"></td>
+<td width="100%" align="right" valign="top"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer(1).gif" width="100%" height="1" border="0" alt="Information &amp; Guidance on" class="padding7"></td>
+</tr>
+</tbody></table>
+</form>
+</td>
+</tr>
+  
+
+<tr>
+<td colspan="2" align="left" valign="top" class="padding36"><h1>Order Information on 'MELROSE OIL TRADING COMPANY LIMITED'</h1></td>
+</tr>
+<tr>
+<!-- <td align="left" valign="top" class="dotDevider"><img src="http://www.companieshouse.gov.uk/wckimg/en/stdwc/spacer.gif" width="100%" height="2" border="0" alt=""></td> -->
+<td colspan="2" align="left" valign="top" class="dotDevider"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer.gif" width="100%" height="2" border="0" alt=""></td>
+</tr>
+<tr class="bluemidtext">
+    <td colspan="2" align="left" valign="top" class="padding36"><br>
+      
+
+      <a href="javascript:popup('/goWCK/help/en/stdwc/compfhist_ch.html',500,500);"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/help_button.gif" alt="Open help text in a new window." width="55" height="21" border="0" class="alignHelpImage"></a>
+      Use the tick boxes to select documents or reports from the lists below. 
+      Select the 'Add to Order' button to add to your shopping basket 
+      (up to £50 maximum order limit).
+      <br><br>
+      <strong>Prices of documents: £1.00 each.</strong>
+
+      <!--The WebCHeck service is available from Monday to Sunday 7.00am to 12 Midnight UK Time-->
+      <br><br>
+      <strong><a href="javascript:popup('/goWCK/help/en/stdwc/ordering_ch.html',500,500);" class="text">Click here for information on minimum software requirements</a></strong>
+      <br><br>      Documents selected will be delivered  to your
+      personal download area. Please read the ORDERING GUIDE for detailed
+      instructions.&nbsp;<br>
+
+      <br>      For company filing history please scroll down the page.&nbsp;<br>
+
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top">&nbsp;</td>
+  </tr>
+
+    <tr>
+      <td colspan="2" valign="top" align="center" class="leftAlign">
+
+        <form action="http://wck2.companieshouse.gov.uk//wcprodorder" method="POST">
+
+          <table width="90%" border="4" cellspacing="0" cellpadding="0" summary="Table order button">
+            
+          </table>
+       
+          
+          <table width="90%" border="0" cellspacing="1" cellpadding="0" class="normalBorderTable" summary="Table containing a list of most popular documents and reports that can be purchased for your selected company">
+ 
+          <tbody><tr class="padding5tb">
+            <th align="left" valign="top" class="rowPadding"><strong>Company Reports</strong></th>
+            <th width="45%" align="left" valign="top" class="rowPadding">&nbsp;</th>
+            <th width="25%" align="left" valign="top" class="rowPadding">&nbsp;</th>
+            <th align="center" valign="top" class="rowPadding"><strong>Order</strong></th>
+            <th align="center" valign="top" class="rowPadding">&nbsp;</th>
+          </tr>
+          <!-- <tr>
+            <td colspan="5" align="left" valign="top" class="dotDevider"><img src="http://www.companieshouse.gov.uk/wckimg/en/stdwc/spacer.gif" width="100%" height="2" border="0" alt=""></td>
+          </tr>
+
+           -->
+
+          
+             
+
+          
+            <tr class="text">
+              <td "padding5tb"="">Current Appointments Report</td>
+              <td "padding5tb"="">FREE</td>
+              <td align="left" valign="top" class="padding5tb"><a href="javascript:popup('/goWCK/help/en/stdwc/prodinfo_ch.html', 500, 500)"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/info.gif" alt="Click here to open a new window containing help on Product Information." width="35" height="15" border="0"></a></td>
+              <td align="center" valign="top">
+              <input type="radio" name="report" value="repa"></td>
+              <td>&nbsp;</td>
+            </tr>
+           
+
+           
+          
+            <tr class="text">
+              <td class="padding5tb">No report required</td>
+              <td class="padding5tb">&nbsp;</td>
+              <td align="left" valign="top" class="padding5tb">&nbsp;</td>
+              <td align="center" valign="top">
+                <input type="radio" name="report" value="none" checked=""></td>
+              <td class="padding5tb">&nbsp;</td>
+            </tr>
+            <tr class="text">
+              <td colspan="5" align="left" valign="top" class="dotDevider"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer(1).gif" width="100%" height="2" border="0" alt=""></td>
+            </tr>
+            <tr class="text">
+              <td width="100%" align="right" colspan="5" class="padding5tb">
+                <input name="order" type="image" id="order" src="./gb00339288 Melrose Oil Trading Company Limited_files/whiteAddToOrder.gif" alt="Add to order" align="right">
+              </td>
+            </tr>
+          
+          </tbody></table>
+          
+
+
+<br><span class="text"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeStatementSC.gif" alt="Document"><strong> indicates that this document contains the latest Statement of Capital</strong></span><br>
+          
+            <br>
+            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="normalBorderTable" summary="Table containing a list of documents and reports that can be purchased for your selected company">
+            <tbody><tr class="padding5tb">
+              <td colspan="3" align="left" class="rowPadding"><strong>Company Filing History</strong>
+              </td>
+			  <td colspan="3" align="center"><a href="http://wck2.companieshouse.gov.uk//wcprodorder?incexc=1" class="allotmentShares">Include Allotment of Shares</a></td>
+            </tr>
+            <tr>
+              <td colspan="6" align="left" valign="top" class="dotDevider"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer(1).gif" width="100%" height="2" border="0" alt=""></td>
+            </tr>
+  
+              <tr class="padding5tb">
+                
+<!-- FILE_START::treeParent.tmpl -->
+<!-- $Id: treeParent.tmpl,v 1.2 2008-07-24 06:49:00 csmith Exp $ -->
+<!-- Tree Parent -->
+<th class="treeHeader">
+	<div class="treeBlock"> <!-- Sets the width of the column,  --> 
+	<img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeBookOpen.gif" alt="Book">
+	</div>
+</th>
+
+<!-- FILE_END::treeParent.tmpl -->
+
+                <th width="10%" align="left" class="rowPadding"><strong>Type</strong></th>
+                <th width="20%" align="left" class="rowPadding"><strong>Date</strong></th>
+                <th width="50%" align="left" class="rowPadding"><strong>Description</strong></th>
+                <th width="10%" align="center" class="rowPadding"><strong>Order</strong></th>
+                <th width="10%" align="left" valign="top">&nbsp;</th>
+              </tr>
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">GAZ2</td>
+                  <td align="left"><span class="text">08/04/2013</span></td>
+                  <td class="text"> FINAL GAZETTE: DISSOLVED EX-LIQUIDATED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="1"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">4.71</td>
+                  <td align="left"><span class="text">08/01/2013</span></td>
+                  <td class="text"> RETURN OF FINAL MEETING IN A MEMBERS' VOLUNTARY WINDING UP <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="2"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">4.68</td>
+                  <td align="left"><span class="text">08/01/2013</span></td>
+                  <td class="text"> LIQUIDATOR'S STATEMENT OF RECEIPTS AND PAYMENTS:BROUGHT DOWN DATE 21/12/2012 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="3"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">600</td>
+                  <td align="left"><span class="text">05/01/2012</span></td>
+                  <td class="text"> NOTICE OF APPOINTMENT OF LIQUIDATOR (VOLUNTARY) <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="4"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">4.70</td>
+                  <td align="left"><span class="text">05/01/2012</span></td>
+                  <td class="text"> DECLARATION OF SOLVENCY <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="5"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">LRESSP</td>
+                  <td align="left"><span class="text">05/01/2012</span></td>
+                  <td class="text"> SPECIAL RESOLUTION TO WIND UP <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="6"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">TM01</td>
+                  <td align="left"><span class="text">27/10/2011</span></td>
+                  <td class="text"> APPOINTMENT TERMINATED, DIRECTOR ROBERT FEARNLEY <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="7"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AP01</td>
+                  <td align="left"><span class="text">27/10/2011</span></td>
+                  <td class="text"> DIRECTOR APPOINTED JENS BERTELSEN <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="8"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">SH20</td>
+                  <td align="left"><span class="text">21/09/2011</span></td>
+                  <td class="text"> STATEMENT BY DIRECTORS <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="9"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">CAP-SS</td>
+                  <td align="left"><span class="text">21/09/2011</span></td>
+                  <td class="text"> SOLVENCY STATEMENT DATED 19/09/11 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="10"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                  		<!-- HTML for Folder document |-v  -->
+                        
+<!-- FILE_START::treeFold1.tmpl -->
+<!-- $Id: treeFold1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Folder -->
+<td class="treeLevel2">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeFolder.gif" alt="Folder" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeFold1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">SH19</td>
+                  <td align="left"><span class="text">21/09/2011</span></td>
+                  <td class="text"> 21/09/11 STATEMENT OF CAPITAL GBP 9999 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="11"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+                   <tr valign="top" class="resultrow2">
+                      
+                        <!-- HTML For very last child document '-O -->
+                        
+                          
+<!-- FILE_START::tree1StateLast2.tmpl -->
+<!-- $Id: tree1StateLast2.tmpl,v 1.2 2008-12-05 09:23:03 mwilliam Exp $ -->
+<!-- Level 2 Last Document with Level 1 Tree-->
+<td class="treeLevel1">
+	<div class="level1"></div>
+	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeEndConnector.gif"></div>
+	<div class="level3"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeStatementSC.gif" alt="Capital Statement Icon" title="document contains latest Statement of Capital"></div>               
+</td>
+
+<!-- FILE_END::tree1StateLast2.tmpl -->
+
+                        
+                      
+                     <td align="left" class="text">&nbsp;&nbsp;&nbsp;<i>LATEST SOC</i></td>
+                     <td align="left"><span class="text"><i>&nbsp;&nbsp;&nbsp;21/09/2011</i></span></td>
+                     <td class="text">&nbsp;&nbsp;&nbsp;<i>21/09/11 STATEMENT OF CAPITAL;GBP 9999<br>&nbsp;&nbsp;&nbsp;</i></td>
+                     <td colspan="2">&nbsp;</td>
+                   </tr>
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">RES06</td>
+                  <td align="left"><span class="text">21/09/2011</span></td>
+                  <td class="text"> REDUCE ISSUED CAPITAL 19/09/2011 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="12"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">TM01</td>
+                  <td align="left"><span class="text">06/09/2011</span></td>
+                  <td class="text"> APPOINTMENT TERMINATED, DIRECTOR TIMOTHY READING <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="13"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">CH04</td>
+                  <td align="left"><span class="text">02/08/2011</span></td>
+                  <td class="text"> CORPORATE SECRETARY'S CHANGE OF PARTICULARS / SUNBURY SECRETARIES LIMITED / 07/07/2011 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="14"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AR01</td>
+                  <td align="left"><span class="text">05/04/2011</span></td>
+                  <td class="text"> 01/04/11 FULL LIST <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="15"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">03/03/2011</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/10 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="16"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">RES01</td>
+                  <td align="left"><span class="text">18/11/2010</span></td>
+                  <td class="text"> ADOPT ARTICLES 15/11/2010 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="17"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">CH01</td>
+                  <td align="left"><span class="text">21/10/2010</span></td>
+                  <td class="text"> DIRECTOR'S CHANGE OF PARTICULARS / ROBERT CARL FEARNLEY / 01/10/2009 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="18"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">CH01</td>
+                  <td align="left"><span class="text">21/10/2010</span></td>
+                  <td class="text"> DIRECTOR'S CHANGE OF PARTICULARS / ROBERT CARL FEARNLEY / 01/10/2009 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="19"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">TM02</td>
+                  <td align="left"><span class="text">05/10/2010</span></td>
+                  <td class="text"> TERMINATE SEC APPOINTMENT <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="20"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AP04</td>
+                  <td align="left"><span class="text">01/07/2010</span></td>
+                  <td class="text"> CORPORATE SECRETARY APPOINTED SUNBURY SECRETARIES LIMITED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="21"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">TM02</td>
+                  <td align="left"><span class="text">30/06/2010</span></td>
+                  <td class="text"> TERMINATE SEC APPOINTMENT <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="22"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">TM02</td>
+                  <td align="left"><span class="text">30/06/2010</span></td>
+                  <td class="text"> APPOINTMENT TERMINATED, SECRETARY ADEREMI LADEGA <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="23"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AR01</td>
+                  <td align="left"><span class="text">07/04/2010</span></td>
+                  <td class="text"> 01/04/10 FULL LIST <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="24"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">01/02/2010</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/09 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="25"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">CH03</td>
+                  <td align="left"><span class="text">28/10/2009</span></td>
+                  <td class="text"> SECRETARY'S CHANGE OF PARTICULARS / ADEREMI LADEGA / 01/10/2009 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="26"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">CH01</td>
+                  <td align="left"><span class="text">21/10/2009</span></td>
+                  <td class="text"> DIRECTOR'S CHANGE OF PARTICULARS / TIMOTHY MARK LUCAS READING / 01/10/2009 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="27"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">363a</td>
+                  <td align="left"><span class="text">13/04/2009</span></td>
+                  <td class="text"> RETURN MADE UP TO 01/04/09; FULL LIST OF MEMBERS <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="28"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288a</td>
+                  <td align="left"><span class="text">05/02/2009</span></td>
+                  <td class="text"> DIRECTOR APPOINTED TIMOTHY MARK LUCAS READING <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="29"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">03/02/2009</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/08 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="30"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">RES13</td>
+                  <td align="left"><span class="text">16/10/2008</span></td>
+                  <td class="text"> SECTION 175 30/09/2008 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="31"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">363a</td>
+                  <td align="left"><span class="text">04/04/2008</span></td>
+                  <td class="text"> RETURN MADE UP TO 01/04/08; FULL LIST OF MEMBERS <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="32"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">24/01/2008</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/07 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="33"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288b</td>
+                  <td align="left"><span class="text">26/06/2007</span></td>
+                  <td class="text"> DIRECTOR RESIGNED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="34"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288a</td>
+                  <td align="left"><span class="text">26/06/2007</span></td>
+                  <td class="text"> NEW DIRECTOR APPOINTED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="35"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">363a</td>
+                  <td align="left"><span class="text">03/04/2007</span></td>
+                  <td class="text"> RETURN MADE UP TO 01/04/07; FULL LIST OF MEMBERS <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="36"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">19/03/2007</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/06 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="37"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">363a</td>
+                  <td align="left"><span class="text">13/04/2006</span></td>
+                  <td class="text"> RETURN MADE UP TO 01/04/06; FULL LIST OF MEMBERS <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="38"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">23/03/2006</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/05 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="39"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288b</td>
+                  <td align="left"><span class="text">12/08/2005</span></td>
+                  <td class="text"> DIRECTOR RESIGNED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="40"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">10/06/2005</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/04 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="41"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">363a</td>
+                  <td align="left"><span class="text">11/05/2005</span></td>
+                  <td class="text"> RETURN MADE UP TO 01/04/05; FULL LIST OF MEMBERS <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="42"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288b</td>
+                  <td align="left"><span class="text">19/04/2005</span></td>
+                  <td class="text"> SECRETARY RESIGNED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="43"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288a</td>
+                  <td align="left"><span class="text">19/04/2005</span></td>
+                  <td class="text"> NEW SECRETARY APPOINTED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="44"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288c</td>
+                  <td align="left"><span class="text">11/04/2005</span></td>
+                  <td class="text"> DIRECTOR'S PARTICULARS CHANGED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="45"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288a</td>
+                  <td align="left"><span class="text">13/12/2004</span></td>
+                  <td class="text"> NEW DIRECTOR APPOINTED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="46"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">05/10/2004</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/03 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="47"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288b</td>
+                  <td align="left"><span class="text">25/08/2004</span></td>
+                  <td class="text"> DIRECTOR RESIGNED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="48"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">363a</td>
+                  <td align="left"><span class="text">28/04/2004</span></td>
+                  <td class="text"> RETURN MADE UP TO 01/04/04; FULL LIST OF MEMBERS <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="49"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288c</td>
+                  <td align="left"><span class="text">26/03/2004</span></td>
+                  <td class="text"> DIRECTOR'S PARTICULARS CHANGED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="50"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">287</td>
+                  <td align="left"><span class="text">16/02/2004</span></td>
+                  <td class="text"> REGISTERED OFFICE CHANGED ON 16/02/04 FROM: <br> BREAKSPEAR PARK <br> BREAKSPEAR WAY <br> HEMEL HEMPSTEAD <br> HERTFORDSHIRE HP2 4UL <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="51"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">02/05/2003</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/02 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="52"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">363a</td>
+                  <td align="left"><span class="text">28/04/2003</span></td>
+                  <td class="text"> RETURN MADE UP TO 01/04/03; FULL LIST OF MEMBERS <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="53"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288c</td>
+                  <td align="left"><span class="text">24/04/2003</span></td>
+                  <td class="text"> DIRECTOR'S PARTICULARS CHANGED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="54"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288b</td>
+                  <td align="left"><span class="text">25/02/2003</span></td>
+                  <td class="text"> DIRECTOR RESIGNED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="55"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">288a</td>
+                  <td align="left"><span class="text">25/02/2003</span></td>
+                  <td class="text"> NEW DIRECTOR APPOINTED <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="56"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">15/05/2002</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/01 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="57"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">363a</td>
+                  <td align="left"><span class="text">02/05/2002</span></td>
+                  <td class="text"> RETURN MADE UP TO 01/04/02; FULL LIST OF MEMBERS <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="58"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow2">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">AA</td>
+                  <td align="left"><span class="text">13/07/2001</span></td>
+                  <td class="text"> ACCOUNTS OF DORMANT COMPANY MADE UP TO 31/12/00 <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="59"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+                <tr valign="top" class="resultrow1">
+                  
+                    <!-- HTML For any but last document -->
+                  	
+                    	<!-- HTML for Document image  |-O  -->
+                        
+<!-- FILE_START::treeDoc1.tmpl -->
+<!-- $Id: treeDoc1.tmpl,v 1.3 2009-02-02 13:28:20 ecrockford Exp $ -->
+<!-- Level 1 Document -->
+<td class="treeLevel1">
+	<div class="level1"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeMiddleConnector.gif"></div>
+  	<div class="level2"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/treeDocument.gif" alt="Document" title="Document Image Available"></div>
+</td>
+
+<!-- FILE_END::treeDoc1.tmpl -->
+
+                  	
+                  
+                  <td align="left" class="text">363a</td>
+                  <td align="left"><span class="text">03/05/2001</span></td>
+                  <td class="text"> RETURN MADE UP TO 16/04/01; FULL LIST OF MEMBERS <br></td>
+                  
+                  <td align="center" valign="top"><input type="checkbox" name="box" value="60"></td>
+
+                  <td>&nbsp;</td>
+                </tr>
+
+                
+              
+
+              <tr valign="bottom">
+                <td colspan="5" align="right" valign="bottom">
+                    <br>
+                </td>
+              </tr>
+            </tbody></table>
+          
+
+          <br>
+
+          <table width="90%" border="0" cellspacing="0" cellpadding="0" summary="Table order button">
+            
+		      <tbody><tr>
+		        <td>
+                  
+		        </td>
+		        <td>
+                    <input type="image" id="" src="./gb00339288 Melrose Oil Trading Company Limited_files/more.gif" name="morebut" value="1" alt="Next Filing History Page" align="right">
+		        </td>	
+		      </tr>
+            
+            <tr>
+              <td width="100%" align="right" colspan="2" class="padding5tb">
+                <input name="order" type="image" id="order" src="./gb00339288 Melrose Oil Trading Company Limited_files/whiteAddToOrder.gif" alt="Add to order" align="right">
+              </td>
+            </tr>
+          </tbody></table>
+        </form>
+      </td>
+    </tr>
+
+
+  
+    <tr>
+      <td colspan="2" align="center" valign="top">
+        <a href="http://wck2.companieshouse.gov.uk//wcframe?name=accessCompanyInfo"><br>
+        <img src="./gb00339288 Melrose Oil Trading Company Limited_files/whiteSearchForMore.gif" alt="Search for another Company" border="0"></a><br>
+        <br>
+      </td>
+    </tr>
+  
+
+  <tr>
+    <td colspan="2" align="left" valign="top" class="dotDevider"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer.gif" width="100%" height="2" border="0" alt=""></td>
+  </tr>
+  <tr class="bluemidtext">
+    <td width="70%" align="left" valign="top" class="padding36"><br>
+      <br>
+  
+      <strong><a name="important"></a>IMPORTANT INFORMATION</strong><br>
+      Before ordering please ensure you have suitable software: 
+      <ul>              
+        <li>Documents are provided as both multi page 'TIFF' images (<a href="ftp://wck2.companieshouse.gov.uk/pub/chd_ais/DemoCoImage.tif" class="text">to view a test image <br>click HERE</a>), and as PDF's (a viewer can be downloaded from the Forms <br>Online screen).
+        </li>
+        <li>Reports are provided in 'RTF' format. <a href="ftp://wck2.companieshouse.gov.uk/pub/chd_ais/DemoCoReport.rtf" class="text">To view a test report click HERE</a> and ensure <br>that you can both view and download the sample before ordering.
+        </li>
+      </ul>
+      If you are having problems with either of the test documents please contact your Internet<br>Service Provider.<br><br>
+      For more instructions read our... <a href="javascript:popup('/goWCK/help/en/stdwc/ordering_ch.html',500,500);"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/whiteOrderingGuide.gif" alt="Ordering Guide" width="111" height="21" border="0" align="top"></a>
+    </td>
+    <td width="30%" align="right" valign="top" class="bluemidtext"><br>
+      <br><!-- $Id: tellUs.tmpl,v 1.8 2007-05-02 10:43:58 csmith Exp $ -->
+<table border="0" align="right" cellpadding="0" cellspacing="0" class="tellUsTables" id="TellUs" summary="Tell us what you think about our website.">
+<tbody><tr>
+<th align="left" valign="top" class="tellUsHeading">Tell Us</th>
+</tr>
+<tr>
+<td align="left" valign="top" class="tellUsTables"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/quicklinks_yellow_dots.gif" width="185" height="13" border="0" alt=""></td>
+</tr>
+<tr>
+<td align="left" valign="top" class="tellUsTables"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/bullet_type3.gif" width="8" height="5" border="0" alt=""><a href="https://response.questback.com/isa/qbv.dll/ShowQuest?QuestID=4584116&sid=jgYVJjQfeC&param=WebCHeck" target="_blank" class="tellUsText">Are you satisfied with our service?</a></td>
+</tr>
+
+
+<tr>
+<td align="left" valign="top" class="tellUsTables"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/quicklinks_yellow_dots.gif" width="185" height="13" border="0" alt=""></td>
+</tr>
+<tr>
+<td align="left" valign="top" class="tellUsTables"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/bullet_type3.gif" width="8" height="5" border="0" alt=""><a href="mailto:enquiries@companies-house.gov.uk" class="tellUsText">Have you got a question?</a></td>
+</tr>
+<tr>
+<td align="left" valign="bottom" class="tellUsTables"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/quicklinks_yellow_dots.gif" width="185" height="13" border="0" alt=""></td>
+</tr>
+</tbody></table>
+<!-- end of $Id: tellUs.tmpl,v 1.8 2007-05-02 10:43:58 csmith Exp $ -->
+
+    </td>
+  </tr>
+</tbody></table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="mediumBlueBg" summary="Bottom navigation table containing contact centre telephone number and email address.">
+<tbody><tr> <td class="whiteBg"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer.gif" alt="" border="0" width="1" height="20"></td> </tr>
+<tr> <td class="dotDevider"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer.gif" alt="" border="0" width="1" height="2"></td> </tr>
+<tr> <td class="whiteBg"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer.gif" alt="" border="0" width="1" height="5"></td> </tr>
+<tr> <td class="mediumBlueBg"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer.gif" alt="" border="0" width="1" height="1"></td> </tr>
+<tr> <td class="mediumLightBlueBg"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer.gif" alt="" border="0" width="1" height="3"></td> </tr>
+
+<tr>
+<td align="left" valign="middle" class="whiteBg">
+<img src="./gb00339288 Melrose Oil Trading Company Limited_files/bullet_type4.gif" alt="" width="10" height="4" border="0" class="padding53BottomNav"><a href="http://wck2.companieshouse.gov.uk//wcprodorder?ft=1#top" class="bottomNavigation">Top</a></td>
+</tr>
+<tr>
+<td align="left" valign="middle" class="padding53BottomNav2"><span class="smallwhitelink"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/telephoneIcon.gif" alt="Telephone icon" width="11" height="7" border="0"> &nbsp;&nbsp; Contact Centre : +44 (0)303 1234 500 (national call rate) &nbsp; Minicom - 02920381245 08:30 to 18:00 (UK time) Mon-Fri &nbsp;&nbsp;&nbsp;<img src="./gb00339288 Melrose Oil Trading Company Limited_files/emailIcon.gif" alt="Email icon" width="9" height="7" border="0">&nbsp;&nbsp;Email:  <a href="mailto:enquiries@companies-house.gov.uk" class="helpdeskPurple"> 
+enquiries@companies-house.gov.uk</a></span></td>
+</tr>
+<tr>
+<td align="left" valign="middle" class="mediumLightBlueBg"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/spacer.gif" alt="" border="0" width="1" height="3"></td>
+</tr>
+</tbody></table>
+
+<!-- Disclaimer and DTI table -->
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="disclaimer" summary="Links to tertiary navigation including disclaimer and privacy statement.">
+
+<tbody><tr> 
+<td align="left" class="smallblack">
+<a href="http://www.companieshouse.gov.uk/legal/privacy.shtml" class="smallblack">Privacy Statement</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.companieshouse.gov.uk/legal/acceptableUse.shtml" class="smallblack">Acceptable use statement</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.companieshouse.gov.uk/legal/accessibility.shtml" class="smallblack">Accessibility</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.companieshouse.gov.uk/legal/cookies.shtml" class="smallblack">Use of cookies</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.companieshouse.gov.uk/freedomInformation/freedomInfo.shtml" class="smallblack">Information Rights</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.companieshouse.gov.uk/about/pdf/codeCompliance.pdf" class="smallblack">Code of Compliance</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.companieshouse.gov.uk/legal/crown.shtml" class="smallblack">© Crown Copyright 2003</a>
+&nbsp;&nbsp;</td>
+</tr><tr>
+<td align="right" class="smallblack">
+<a href="http://www.companieshouse.gov.uk/about/ifts.shtml" target="_blank"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/ifts_logo.gif" alt="IFTS ACCREDITED" width="60" height="31" border="0"></a>
+<a href="http://www.ebr.org/" target="_blank"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/ebr_logo.gif" alt="www.ebr.org" width="70" height="31" border="0"></a>
+<a href="http://www.bis.gov.uk/" target="_blank"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/berr_logo.gif" alt="http://www.bis.gov.uk" width="83" height="31" border="0"></a>
+<a href="http://www.bis.gov.uk/cicregulator/" target="_blank"><img src="./gb00339288 Melrose Oil Trading Company Limited_files/cicsLogo.gif" alt="www.cicregulator.gov.uk" width="86" height="29" border="0"></a>
+</td>
+</tr>
+</tbody></table>
+<!-- End Disclaimer and DTI table -->
+
+
+<!-- wck2web11.orctel.internal
+ -  -->
+
+
+
+</body></html>
