@@ -1,6 +1,6 @@
-dev:
+default:
   files: ['**/*.js','**/*.html']
-  tasks: ['vulcanize','replace:build', 'what@']
+  tasks: ['dev']
 
 configFiles:
   files: [ 'Gruntfile.js', 'grunt/*.yml' ]

@@ -8,4 +8,7 @@ build:
   - replace:build
 #  - htmlmin:dist
 
-default: watch
+default:
+  - vulcanize
+  - replace:build
+  - watch
