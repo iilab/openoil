@@ -77,8 +77,10 @@
         var searchfield = document.querySelector('openoil-app').shadowRoot.querySelector('iilab-search').shadowRoot.querySelector('paper-input').shadowRoot.olderShadowRoot.querySelector('#input');
         if (newValue) {
           $(searchfield).autocomplete( "option", "disabled", false );
+          this.$.searchfield.inputValue = ""
         } else {
           $(searchfield).autocomplete( "option", "disabled", true );
+          this.$.searchfield.inputValue = ""
         }
       },
       installAutocomplete: function (e) {
