@@ -2743,9 +2743,24 @@ content.
 			<paper-button affirmative="" default="" icon="done" label="Apply" on-click="{{buttonClick}}"></paper-button>
 		</div>
       </core-submenu> 
+    <core-submenu id="download" icon="download" label="Download">
+        <div vertical="" layout="">
+		    <div>Please register to download the Open Oil data set.</div>
+	        <paper-input label="Email*" icon="email" id="email"></paper-input>
+	        <paper-input label="First Name*" icon="account" id="first_name"></paper-input>
+	        <paper-input label="Last Name*" icon="account" id="last_name"></paper-input>
+	        <paper-input label="Company*" icon="flag" id="company"></paper-input>
+            <paper-input multiline="" label="Reasons for downloading the data set*" icon="query" id="details"></paper-input>
+	        <div center="">
+	          <paper-button negative="" label="Cancel" icon="cancel"></paper-button>
+	          <paper-button affirmative="" default="" label="Submit" icon="check" on-click="{{submitDownloadForm}}"></paper-button>
+	        </div>
+	        <paper-toast id="download_invalid" text="Please complete the form."></paper-toast>
+		</div>
+      </core-submenu>
     </core-menu>
   </template>
-  <script>Polymer("iilab-controls",{ready:function(){document.addEventListener("load-graph-query",this.loadGraphQuery)},buttonClick:function(e,detail,sender){this.depth;this.cypher=this.$.cypher.value},selectAction:function(e,detail){console.log("selectAction");if(detail.isSelected){var selectedItem=detail.item;this.menuSelect(selectedItem.id)}},loadGraphQuery:function(e){console.log("loadGraphQuery");console.log(e.detail.id);document.querySelector("openoil-app").shadowRoot.querySelector("iilab-controls").menuSelect(e.detail.id)},menuSelect:function(id){console.log("menuSelect");this.fire("stats",{i:id,t:"q"});switch(id){case"bp_plc_1":this.depth="2";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0..1]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"bp_plc_2":this.depth="2";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.."+this.depth+"]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"bp_plc_3":this.depth="3";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.."+this.depth+"]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_production":this.cypher="MATCH p=(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b {name: 'Nigerian National Petroleum Corporation (NNPC)'}) WITH p, a,c, hc,b,i MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Production Contract'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_service":this.cypher="MATCH p=(k)-[:HAS_JURISDICTION]-(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b)-[:HAS_JURISDICTION]-(j) WITH p, a,c, hc,b,i, k MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Service Contracts'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_snepco":this.cypher="MATCH p=(company:Company)-[:IS_OWNER*..3]-(a {name: 'Shell Nigeria Exploration and Production Company (SNEPCO)'})-[:AWARDS|HAS_OPERATOR]-(c)-[:HAS_CONTRACTOR|HAS_OPERATOR]-(d) OPTIONAL MATCH q=(company)-[:HAS_DOCUMENT]->() OPTIONAL MATCH r=(a)-[:HAS_DOCUMENT]->() OPTIONAL MATCH s=(c)-[:HAS_DOCUMENT]->() OPTIONAL MATCH t=(d)-[:HAS_DOCUMENT]->() UNWIND nodes(p) + coalesce(nodes(p),[]) + coalesce(nodes(q),[]) + coalesce(nodes(r),[]) + coalesce(nodes(s),[]) + coalesce(nodes(t),[]) as nodes UNWIND relationships(p) + coalesce(relationships(p),[]) + coalesce(relationships(q),[]) + coalesce(relationships(r),[]) + coalesce(relationships(s),[]) + coalesce(relationships(t),[]) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;default:break}}});</script>
+  <script>Polymer("iilab-controls",{ready:function(){document.addEventListener("load-graph-query",this.loadGraphQuery)},buttonClick:function(e,detail,sender){this.depth;this.cypher=this.$.cypher.value},selectAction:function(e,detail){console.log("selectAction");if(detail.isSelected){var selectedItem=detail.item;this.menuSelect(selectedItem.id)}},loadGraphQuery:function(e){console.log("loadGraphQuery");console.log(e.detail.id);document.querySelector("openoil-app").shadowRoot.querySelector("iilab-controls").menuSelect(e.detail.id)},submitDownloadForm:function(e){param={email:this.$.email.value,first_name:this.$.first_name.value,last_name:this.$.last_name.value,company:this.$.company.value,details:this.$.details.value};cypher="CREATE (n:DownloadRequest {email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, details:{details}})";if(param.email&&param.first_name&&param.last_name&&param.company&&param.details){neo4j.connect(document.querySelector("openoil-app").url,function(err,graph){if(err)throw err;graph.query(cypher,param,function(err,results){if(err){console.log(err);console.log(err.stack)}else{console.log("download request submitted!");document.querySelector("openoil-app").shadowRoot.querySelector("iilab-controls").shadowRoot.querySelector("#confirmation").show()}})})}else{document.querySelector("openoil-app").shadowRoot.querySelector("iilab-controls").shadowRoot.querySelector("#download_invalid").show()}},menuSelect:function(id){console.log("menuSelect");this.fire("stats",{i:id,t:"q"});switch(id){case"bp_plc_1":this.depth="2";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0..1]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"bp_plc_2":this.depth="2";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.."+this.depth+"]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"bp_plc_3":this.depth="3";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.."+this.depth+"]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_production":this.cypher="MATCH p=(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b {name: 'Nigerian National Petroleum Corporation (NNPC)'}) WITH p, a,c, hc,b,i MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Production Contract'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_service":this.cypher="MATCH p=(k)-[:HAS_JURISDICTION]-(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b)-[:HAS_JURISDICTION]-(j) WITH p, a,c, hc,b,i, k MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Service Contracts'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_snepco":this.cypher="MATCH p=(company:Company)-[r:IS_OWNER*..3]-(a {name: 'Shell Nigeria Exploration and Production Company (SNEPCO)'})-[:AWARDS|HAS_OPERATOR]-(c)-[:HAS_CONTRACTOR|HAS_OPERATOR]-(d) WHERE id(d)<>635603 UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;default:break}}});</script>
 </polymer-element> 
 
 
@@ -2982,6 +2997,33 @@ To change the radio unchecked color:
       </div>
       <div id="footer" horizontal="" flex="">
       This is a large data set requiring a good internet connection, which works best with an updated version of the Google Chrome browser. For any questions please contact&nbsp;<a href="mailto:anton.ruehling@openoil.net">anton.ruehling@openoil.net</a>.
+      </div>
+      <core-overlay layered="" id="confirmation" class="dialog" backdrop="" transition="core-transition-top">
+        <!-- place all overlay styles inside the overlay target -->
+        <style no-shim="">.dialog{box-sizing:border-box;-moz-box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;font-size:13px;-webkit-user-select:none;-moz-user-select:none;overflow:hidden;background:#fff;padding:30px 42px;outline:1px solid rgba(0,0,0,.2);box-shadow:0 4px 16px rgba(0,0,0,.2)}#confirmation{box-sizing:border-box;text-align:center;width:150px}</style>
+      </core-overlay>
+      <br><br>
+    </x-dialog>
+
+  <x-dialog id="download_dialog" class="dialog" style="overflow-y: scroll; display:none;">
+      <!-- place all overlay styles inside the overlay target -->
+      <style no-shim="">.dialog{box-sizing:border-box;-moz-box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;font-size:13px;-webkit-user-select:none;-moz-user-select:none;overflow:hidden;background:#fff;padding:30px 42px;outline:1px solid rgba(0,0,0,.2);box-shadow:0 4px 16px rgba(0,0,0,.2)}#dialog{top:10%;width:80%;height:80%}#dialog div#bp,#dialog div#nigeria{margin:15px}#dialog img{width:100%}#dialog p{font-size:1em}#dialog paper-icon-button{width:200px}img[core-overlay-toggle]{cursor:pointer}</style>
+      <div layout="" horizontal="" center="">
+        <core-icon icon="home" size="45px" style="margin-right:15px;"></core-icon>
+        <h2>OpenOil: Corporate Network Navigator</h2>
+      </div>
+      <div layout="" horizontal="">
+        <div id="tabular" layout="" vertical="" center="" flex="" one="">
+          <h4>Tabular Data</h4>
+          <paper-icon-button raisedbutton="" core-overlay-toggle="" label="BP" id="bp_map" on-click="{{clickQuery}}"></paper-icon-button>
+        </div>
+        <div id="graph" layout="" vertical="" center="" flex="" one="">
+          <h4>Graph Data</h4>
+          <paper-icon-button raisedbutton="" core-overlay-toggle="" label="Nigeria" id="nigeria_production" on-click="{{clickQuery}}"></paper-icon-button>
+        </div>
+      </div>
+      <div id="footer" horizontal="" flex="">
+      Open Oil and iilab are working towards publishing the Open Oil Data set as Linked Data. For any questions please contact&nbsp;<a href="mailto:anton.ruehling@openoil.net">anton.ruehling@openoil.net</a>.
       </div>
       <core-overlay layered="" id="confirmation" class="dialog" backdrop="" transition="core-transition-top">
         <!-- place all overlay styles inside the overlay target -->

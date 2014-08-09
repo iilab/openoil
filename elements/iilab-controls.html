@@ -54,6 +54,21 @@
 			<paper-button affirmative default icon="done" label="Apply" on-click="{{buttonClick}}"></paper-button>
 		</div>
       </core-submenu> 
+    <core-submenu id="download" icon="cloud-download" label="Download">
+        <div vertical layout>
+		    <div>Please submit your details to download the Open Oil data set in CSV and JSON formats.</div>
+	        <paper-input label="Email*" icon="email" id="email"></paper-input>
+	        <paper-input label="First Name*" icon="account" id="first_name"></paper-input>
+	        <paper-input label="Last Name*" icon="account" id="last_name"></paper-input>
+	        <paper-input label="Company*" icon="flag" id="company"></paper-input>
+            <paper-input multiline label="Reasons for downloading*" icon="query" id="details"></paper-input>
+	        <div center>
+	          <paper-button negative label="Cancel" icon="cancel"></paper-button>
+	          <paper-button affirmative default label="Submit" icon="check" on-click="{{submitDownloadForm}}"></paper-button>
+	        </div>
+	        <paper-toast id="download_invalid" text="Please complete the form."></paper-toast>
+		</div>
+      </core-submenu>
     </core-menu>
   </template>
   <script> 
@@ -79,6 +94,36 @@
 			console.log(e.detail.id)
 			document.querySelector('openoil-app').shadowRoot.querySelector('iilab-controls').menuSelect(e.detail.id)
 		},
+    	submitDownloadForm: function(e) {
+	        param = {
+	           email: this.$.email.value,
+	           first_name: this.$.first_name.value,
+	           last_name: this.$.last_name.value,
+	           company: this.$.company.value,
+	           details: this.$.details.value
+	        }
+	        cypher = "CREATE (n:DownloadRequest {email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, details:{details}})";
+
+	        if (param.email && param.first_name && param.last_name && param.company && param.details) {
+	          neo4j.connect(document.querySelector('openoil-app').url, function (err, graph) {
+	              if (err)
+	                  throw err;
+
+	              graph.query(cypher, param, function (err, results) {
+	                  if (err) {
+	                      console.log(err);
+	                      console.log(err.stack);
+	                  }
+	                  else {
+	                      console.log('download request submitted!')
+							document.querySelector('openoil-app').shadowRoot.querySelector('#download-dialog').toggle();        
+	                  }
+	              })
+	          })
+	        } else {
+	        	document.querySelector('openoil-app').shadowRoot.querySelector('iilab-controls').shadowRoot.querySelector('#download_invalid').show();    
+	        }
+	      },
 		menuSelect: function(id) {
 			console.log("menuSelect")
 			this.fire('stats', {i: id, t:"q"});
@@ -114,7 +159,7 @@
 					this.cypher = "MATCH p=(k)-[:HAS_JURISDICTION]-(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b)-[:HAS_JURISDICTION]-(j) WITH p, a,c, hc,b,i, k MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Service Contracts'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result"
 				    break;
 				case "nigeria_snepco":
-				 	this.cypher = "MATCH p=(company:Company)-[:IS_OWNER*..3]-(a {name: 'Shell Nigeria Exploration and Production Company (SNEPCO)'})-[:AWARDS|HAS_OPERATOR]-(c)-[:HAS_CONTRACTOR|HAS_OPERATOR]-(d) OPTIONAL MATCH q=(company)-[:HAS_DOCUMENT]->() OPTIONAL MATCH r=(a)-[:HAS_DOCUMENT]->() OPTIONAL MATCH s=(c)-[:HAS_DOCUMENT]->() OPTIONAL MATCH t=(d)-[:HAS_DOCUMENT]->() UNWIND nodes(p) + coalesce(nodes(p),[]) + coalesce(nodes(q),[]) + coalesce(nodes(r),[]) + coalesce(nodes(s),[]) + coalesce(nodes(t),[]) as nodes UNWIND relationships(p) + coalesce(relationships(p),[]) + coalesce(relationships(q),[]) + coalesce(relationships(r),[]) + coalesce(relationships(s),[]) + coalesce(relationships(t),[]) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result"
+				 	this.cypher = "MATCH p=(company:Company)-[r:IS_OWNER*..3]-(a {name: 'Shell Nigeria Exploration and Production Company (SNEPCO)'})-[:AWARDS|HAS_OPERATOR]-(c)-[:HAS_CONTRACTOR|HAS_OPERATOR]-(d) WHERE id(d)<>635603 UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result"
 				    break;
 				default:
 				    break;

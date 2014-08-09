@@ -278,6 +278,99 @@ Polymer('x-dialog', {
       <br><br>
     </x-dialog>
 
+    <x-dialog id="download-dialog" class="dialog" style="overflow-y: scroll; display:none;">
+      <!-- place all overlay styles inside the overlay target -->
+      <style no-shim>
+        .dialog {
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 13px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          overflow: hidden;
+          background: white;
+          padding:30px 42px;
+          outline: 1px solid rgba(0,0,0,0.2);
+          box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        #dialog {
+          top:10%;
+          width: 80%;
+          height: 80%;
+        }
+
+        #dialog div#bp, #dialog div#nigeria {
+          margin:15px;
+        }
+
+        #dialog img{
+          width:100%;
+        }
+
+        #dialog p {
+          font-size:1em;
+        }
+
+        #dialog paper-icon-button {
+          width: 200px;
+        }
+
+        img[core-overlay-toggle] {
+          cursor: pointer;
+        }
+
+      </style>
+      <div layout horizontal center>
+        <core-icon icon="home" size="45px" style="margin-right:15px;"></core-icon>
+        <h2>OpenOil: Corporate Network Navigator</h2>
+      </div>
+      <div layout horizontal>
+        <div id="tabular" layout vertical center flex one>
+          <h4>Tabular Data</h4>
+          <core-item icon="cloud-download" raisedButton label="Nigeria Companies 20140807"><a href="/data/Nigeria_companies_20140807.csv" download="Nigeria_companies_20140807.csv"></a></core-item>
+          <core-item icon="cloud-download" raisedButton label="Nigeria Contracts 20140711"><a href="/data/Nigeria_contracts_20140711.csv" download="Nigeria_contracts_20140711.csv"></a></core-item>
+          <core-item icon="cloud-download" raisedButton label="Nigeria Ownership 20140711"><a href="/data/Nigeria_ownership_20140711.csv" download="Nigeria_ownership_20140711.csv"></a></core-item>
+          <core-item icon="cloud-download" raisedButton label="BP Ownership 20140713"><a href="/data/BP_ownership_20140713.csv" download="BP_ownership_20140713.csv"></a></core-item>
+        </div>
+        <div id="graph" layout vertical center flex one>
+          <h4>Graph Data</h4>
+          <core-item icon="cloud-download" raisedButton label="Neo4j JSON export"><a href="/data/neo4j_20140809.json" download="neo4j_20140809.json"></a></core-item>
+          <core-item icon="cloud-download" disabled raisedButton label="JSON-LD (soon)"></a></core-item>
+        </div>
+      </div>
+      <div id="footer" horizontal flex>
+      <br/>
+      Open Oil and iilab are working towards publishing the Open Oil Data set as Linked Data. For any questions please contact&nbsp;<a href="mailto:anton.ruehling@openoil.net">anton.ruehling@openoil.net</a>.
+      </div>
+      <core-overlay layered id="download-confirmation" class="dialog" backdrop transition="core-transition-top">
+        <!-- place all overlay styles inside the overlay target -->
+        <style no-shim>
+          .dialog {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            overflow: hidden;
+            background: white;
+            padding:30px 42px;
+            outline: 1px solid rgba(0,0,0,0.2);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+          }
+
+          #confirmation {
+            box-sizing: border-box;
+            text-align: center;
+            width: 150px;
+          }
+        </style>
+      </core-overlay>
+      <br><br>
+    </x-dialog>
+
     <core-scaffold id="core_scaffold">
       <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
         <core-toolbar id="core_toolbar">
