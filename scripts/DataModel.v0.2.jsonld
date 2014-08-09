@@ -1,0 +1,24 @@
+{
+  "@context": {
+    "organization": "http://schema.org/organization", 
+    "oc_id": {
+      "@id": "http://opencorporates.com",  ← This means that 'image' is shorthand for 'http://schema.org/image' 
+      "@type": "@id"  ← This means that a string value associated with 'image' should be interpreted as an identifier that is an IRI 
+    },
+    "website": {
+      "@id": "http://schema.org/url",  ← This means that 'homepage' is shorthand for 'http://schema.org/url' 
+      "@type": "@id"  ← This means that a string value associated with 'homepage' should be interpreted as an identifier that is an IRI 
+    },
+  },
+  "@graph": [
+    {
+      "@id": "http://data.openoil.net/company/Company",
+      "@type": "organization",
+      "website": "https://example.com",
+      "foundingDate": "1999",
+      "alternateName": "Company other name",
+      // "previousName" needs to look into perdurantist/endurandist debate.
+      "oc_id": "https://opencorporates.com/companies/gb/012345678"
+    }
+  ]
+}
