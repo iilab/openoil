@@ -153,12 +153,13 @@
                       <template if="{{ source_url }}"><core-item label="Source URL: {{ source_url }}" id="source_url"><a href="{{ source_url }}" target="_blank"></a></core-item></template>
                       <template if="{{ source_date }}"><paper-item label="Source Publication Date: {{ source_date }}" id="source_date"></paper-item></template>
                       <template if="{{ source_type }}"><paper-item label="Source Type: {{ source_type }}" id="source_type"></paper-item></template>
-                      <template if="{{ log_message }}"><paper-item icon="info-outline" label="Notes: {{ log_message }}%" id="log_message"></paper-item></template>
+                      <template if="{{ log_message }}"><paper-item icon="info-outline" label="Notes: {{ log_message }}" id="log_message"></paper-item></template>
                   </core-submenu> 
                 </template>
-                <template if="{{ document }}">
+                <template if="{{ document_filename }}">
                   <core-submenu icon="attachment" label="Documents">
-
+                      <template if="{{ document_summary }}"><paper-item label="Summary: {{ document_summary }}" id="document_summary"></paper-item></template>
+                      <template if="{{ document_filename }}"><core-item label="Download: {{ document_filename }}" id="document_filename"><a href="/documents/{{ document_filename }}" target="_blank"></a></core-item></template>
                   </core-submenu> 
                 </template>
                 <core-submenu icon="bookmark-outline" label="Request Data" vertical layout>
@@ -217,7 +218,9 @@
           source_url: "",
           source_type: "",
           source_date: "",
-          log_message: ""
+          log_message: "",
+          document_filename: "",
+          document_summary: ""
       },
       param: "",
       autozoom: true,

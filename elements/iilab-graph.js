@@ -26,13 +26,13 @@ function startGraph(viz, that) {
           else {
               myjson = {nodes:[], links:[]};
               
-//              console.log(results)
+              // console.log(results)
 
               that.countnodes = results[0].result.nodes.length
               that.countlinks = results[0].result.links.length
 
-//              console.log(that.countnodes)
-//              console.log(that.countlinks)
+              // console.log(that.countnodes)
+              // console.log(that.countlinks)
 
               myjson.nodes = results[0].result.nodes
                                .map(function(row) {
@@ -362,6 +362,8 @@ function startGraph(viz, that) {
 
             // Display sidebar.
 
+            console.log(d)
+
             that.fire('stats', {i: d.propertyMap.name , t:"n"});
 
             that.element.id = d.id
@@ -381,6 +383,8 @@ function startGraph(viz, that) {
             that.element.source_url = d.propertyMap.source_url
             that.element.source_date = d.propertyMap.source_date
             that.element.confidence = d.propertyMap.confidence
+            that.element.document_filename = d.propertyMap.document_filename
+            that.element.document_summary = d.propertyMap.document_summary
 
             that.$.iilab_drawer.openDrawer();
             tip.hide(d, that.parentNode)
@@ -745,6 +749,8 @@ function startGraph(viz, that) {
       that.element.source_url = d.propertyMap.source_url
       that.element.source_date = d.propertyMap.source_date
       that.element.confidence = d.propertyMap.confidence
+      that.element.document_filename = d.propertyMap.document_filename
+      that.element.document_summary = d.propertyMap.document_summary
 
       that.$.iilab_drawer.openDrawer();
       tip.hide(d, that.parentNode)
