@@ -57,7 +57,13 @@
 	<script src="/components/datamaps/dist/datamaps.world.min.js"></script>
   <script>
     var isMapLoaded = false;
-
+    var hideHoverOver = function() {
+    	console.log('hi!')
+    	HoverOver = document.getElementsByClassName('datamaps-hoverover')
+      while(HoverOver[0]) {
+          HoverOver[0].parentNode.removeChild(tips[0]);
+        }
+    }
 	  Polymer('iilab-map', {
 	  	bubbleClick: function(e) {
 	  		console.log(e)
@@ -87,8 +93,8 @@
 				geographyConfig: {
 				    popupOnHover: false,
 				    highlightOnHover: false,
-					borderWidth: 1,
-	          		borderColor: '#2a3e92'
+						borderWidth: 1,
+        		borderColor: '#2a3e92'
 	 			},
 				fills: {
 				    defaultFill: '#FFFFFF',

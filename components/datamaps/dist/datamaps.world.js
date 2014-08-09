@@ -419,8 +419,7 @@
               $this.style(attr, previousAttributes[attr]);
             }
           }
-
-          d3.selectAll('.datamaps-hoverover').style('display', 'none');
+          d3.select(this.parentNode.parentNode.parentNode.querySelector('.datamaps-hoverover')).style('display', 'none');
         })
         .transition().duration(400)
           .attr('r', function ( datum ) {
