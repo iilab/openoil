@@ -75,6 +75,11 @@
           width:250px;
         }
 
+        core-submenu::shadow paper-item {
+          height:auto;
+          padding: 6px 12px;
+        }
+
         core-item {
           margin-left: -25px;
         }
@@ -87,7 +92,7 @@
                 <core-menu valueattr="label" id="core_menu" theme="core-light-theme" vertical layout selected=0>
                 <template if="{{ _type == 'node' }}">
                   <core-submenu id="node_details" icon="list" label="{{ type }} Details" multi>
-                    <core-item id="name" icon="flag" label="{{ name }}"></core-item>
+                    <paper-item id="name" icon="flag" label="{{ name }}" style="height:auto; padding: 6px 12px;"></paper-item>
                     <template if="{{ oc_id }}">
                       <paper-item id="oc_id" icon="info-outline" label="Open Corporates Id: {{ oc_id }}"></paper-item>
                     </template>
