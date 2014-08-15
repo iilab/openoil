@@ -7,6 +7,7 @@
 <link rel="import" href="../components/core-menu/core-menu.html">
 <link rel="import" href="../components/core-menu/core-submenu.html">
 <link rel="import" href="iilab-description.html">
+<link rel="import" href="iilab-icons.html">
 
 <polymer-element name="iilab-graph" noscript attributes="search url description param depth strings zoom autozoom chart cypher countnodes countlinks">
   <style>
@@ -86,9 +87,21 @@
                 <core-menu valueattr="label" id="core_menu" theme="core-light-theme" vertical layout selected=0>
                 <template if="{{ _type == 'node' }}">
                   <core-submenu id="node_details" icon="list" label="{{ type }} Details" multi>
-                    <paper-item id="name" icon="flag" label="{{ name }}"></paper-item>
+                    <core-item id="name" icon="flag" label="{{ name }}"></core-item>
                     <template if="{{ oc_id }}">
                       <paper-item id="oc_id" icon="info-outline" label="Open Corporates Id: {{ oc_id }}"></paper-item>
+                    </template>
+                    <template if="{{ turnover }}">
+                      <paper-item id="turnover" icon="iilab:pound" label="Turnover: {{ turnover }}"></paper-item>
+                    </template>
+                    <template if="{{ profit }}">
+                      <paper-item id="profit" icon="iilab:pound" label="Profit after tax: {{ profit }}"></paper-item>
+                    </template>
+                    <template if="{{ assets }}">
+                      <paper-item id="assets" icon="iilab:pound" label="Total Assets: {{ assets }}"></paper-item>
+                    </template>
+                    <template if="{{ liabilities }}">
+                      <paper-item id="liabilities" icon="iilab:pound" label="Total Liabilities: {{ liabilities }}"></paper-item>
                     </template>
                     <template if="{{ directors }}">
                       <core-submenu id="directors" icon="account-circle" label="Directors ({{ directors.length }})">
@@ -209,6 +222,10 @@
           directors: "",
           immediate: "",
           ultimate: "",
+          turnover: "",
+          profit: "",
+          assets: "",
+          liabilities: "",
           contract_share: "",
           shareholders: "",
           license_area: "",

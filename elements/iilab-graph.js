@@ -378,6 +378,10 @@ function startGraph(viz, that) {
             that.element.ownership_type = ""
             that.element.immediate = ""
             that.element.ultimate = ""
+            that.element.turnover = d.propertyMap.turnover
+            that.element.profit = d.propertyMap.profit
+            that.element.assets = d.propertyMap.assets
+            that.element.liabilities = d.propertyMap.liabilities
             that.element.contract_share = ""
             that.element.ownership_status = ""
             that.element.source_url = d.propertyMap.source_url
