@@ -64,7 +64,7 @@
         if(!this.within) {
           if (v != "") {
             console.log('hello!')
-            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').param = {search: 'name:' + v + ' OR source_url:' + v + ' OR oc_id:' + v };
+            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').param = {search: "name:\"" + v + "\" OR source_url:\"" + v + "\" OR oc_id:\"" + v + "\"" };
             document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').cypher = "START n=node:node_auto_index({search}) MATCH p=(n)-[r]->(m) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
             this.fire('graph', {});
             this.fire('stats', {i: v, t:"s"});
