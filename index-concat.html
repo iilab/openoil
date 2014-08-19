@@ -2760,7 +2760,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </core-submenu> 
       <core-submenu id="advanced_settings" icon="settings" label="Advanced Settings">
         <div vertical="" layout="">
-		    <div>These settings control more advanced aspects of the visualisation.</div>
+		    <div>These settings control more advanced aspects of the vizualisation.</div>
 		    <div>
 				<core-tooltip>
 				  <h5>Depth</h5>
@@ -2789,6 +2789,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	          <paper-button affirmative="" default="" label="Submit" icon="check" on-click="{{submitDownloadForm}}"></paper-button>
 	        </div>
 	        <paper-toast id="download_invalid" text="Please complete the form."></paper-toast>
+		</div>
+      </core-submenu>
+      <core-submenu id="help" icon="help" label="Help">
+        <div vertical="" layout="">
+	      <core-submenu id="help_graph" icon="" label="Graph">
+		    <div></div>
+	      </core-submenu>
 		</div>
       </core-submenu>
     </core-menu>
@@ -3084,7 +3091,7 @@ To change the radio unchecked color:
         <paper-shadow z="1"></paper-shadow>
       </core-header-panel>
       <div id="div" tool="" horizontal="" layout="" center="" wrap="" flex="">
-        <div id="title">Open&nbsp;Oil Data</div>
+        <div id="title">Open&nbsp;Oil Data - Beta</div>
         <div id="count" flex=""><template if="{{countNodesValue}}">&nbsp;- {{countNodesValue.node}} nodes &amp; {{countLinksValue.links}} links</template></div>
         <div>&nbsp;</div>
         <core-tooltip>

@@ -38,7 +38,7 @@
       </core-submenu> 
       <core-submenu id="advanced_settings" icon="settings" label="Advanced Settings">
         <div vertical layout>
-		    <div>These settings control more advanced aspects of the visualisation.</div>
+		    <div>These settings control more advanced aspects of the vizualisation.</div>
 		    <div>
 				<core-tooltip>
 				  <h5>Depth</h5>
@@ -67,6 +67,13 @@
 	          <paper-button affirmative default label="Submit" icon="check" on-click="{{submitDownloadForm}}"></paper-button>
 	        </div>
 	        <paper-toast id="download_invalid" text="Please complete the form."></paper-toast>
+		</div>
+      </core-submenu>
+      <core-submenu id="help" icon="help" label="Help">
+        <div vertical layout>
+	      <core-submenu id="help_graph" icon="" label="Graph">
+		    <div></div>
+	      </core-submenu>
 		</div>
       </core-submenu>
     </core-menu>
