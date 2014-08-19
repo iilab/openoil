@@ -7,6 +7,13 @@ function startGraph(viz, that) {
   var param = that.param
   var myjson = {nodes:[], links:[]};
 
+  // Initialise existing d3 elements and events in the DOM
+  while (viz.lastChild) {
+  viz.removeChild(viz.lastChild);
+  }
+
+  console.log(viz)
+
   if (!cypher) { 
     document.body.classList.remove('loading');
     return 
@@ -425,25 +432,28 @@ function startGraph(viz, that) {
             layers.transition()
                 .duration(1000)
                 .call(zoom.event, layers)
-  //              .call(endall, function() { 
-  //                that.parentNode.fire('set-slider', {zoom: zs})
-  //              });
+                //  .call(endall, function() { 
+                //    that.parentNode.fire('set-slider', {zoom: zs})
+                //  });
           } else {
             // Select proper parent <g>
             if (d.constructor.name == "Object" && d.node) {
               d = d.node
             }
             tip.hide(d, that.parentNode)
-            console.log(that.depth)
+            // console.log(that.depth)
             that.fire('stats', {i: d.propertyMap.name, t:"dc"});
             if (d.labels[0] == "Company") {
               that.cypher = "MATCH p=(a:Company {name: '" + d.propertyMap.name + "'})-[r:IS_OWNER|AWARDS|HAS_CONTRACTOR|HAS_OPERATOR*0.." + that.depth + "]-(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
+              return
             }
             else if (d.labels[0] == "Country") {
-              that.cypher = "MATCH p=(j:Country {name: '" + d.propertyMap.name + "'})<-[:HAS_JURISDICTION]-(c:Company)<-[r:IS_OWNER*..2]-(d:Company)<-[s:IS_OWNER]-(e:Company)-[:HAS_JURISDICTION]-(f:Country) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"   
+              that.cypher = "MATCH p=(j:Country {name: '" + d.propertyMap.name + "'})<-[:HAS_JURISDICTION]-(c:Company)<-[r:IS_OWNER*..2]-(d:Company)<-[s:IS_OWNER]-(e:Company)-[:HAS_JURISDICTION]-(f:Country) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"  
+              return 
             }
              else if (d.labels[0] == "Contract") {
               that.cypher = "MATCH p=(a:Contract {name: '" + d.propertyMap.name + "'})-[hc:AWARDS|HAS_OPERATOR|HAS_CONTRACTOR]-(c: Company)-[r:IS_OWNER*0.." + that.depth + "]-(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"            
+              return
             }
           }
         })
