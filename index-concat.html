@@ -2587,7 +2587,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 <polymer-element name="iilab-graph" noscript="" attributes="search url description param depth strings zoom autozoom chart cypher countnodes countlinks" assetpath="elements/">
-  <style>.d3-tip{background-color:#fff;border-color:#E2E2E2;color:#454545;border-radius:2px;width:400px;border-width:1px;border-style:solid;font-size:18.5px;line-height:12px;direction:ltr;box-shadow:none;padding:0}.d3-tip ul li{list-style:none;margin:14px 0 0;font-size:.8em;padding-right:10px}.d3-tip:after{box-sizing:border-box;display:inline;font-size:10px;width:100%;line-height:1;color:#fff;content:"\25BC";position:absolute;text-align:center}.d3-tip.n:after{margin:-1px 0 0 0;top:100%;left:0}</style>
+  <style>.d3-tip{background-color:#fff;border-color:#E2E2E2;color:#454545;border-radius:2px;width:400px;border-width:1px;border-style:solid;font-size:18.5px;line-height:12px;direction:ltr;box-shadow:none;padding:0;z-index:1;pointer-events:none!important}.d3-tip ul li{list-style:none;margin:14px 0 0;font-size:.8em;padding-right:10px}.d3-tip:after{box-sizing:border-box;display:inline;font-size:10px;width:100%;line-height:1;color:#fff;content:"\25BC";position:absolute;text-align:center}.d3-tip.n:after{margin:-1px 0 0 0;top:100%;left:0}</style>
   <template>
       <style>core-submenu::shadow #submenu{margin-left:10px}g.node{cursor:pointer}g.relationship{cursor:pointer}paper-toast{bottom:40px;left:initial;right:10px;width:250px}core-submenu::shadow paper-item{height:auto;padding:6px 12px}core-item{margin-left:-25px}</style>
       <iilab-drawer-panel id="iilab_drawer" class="right-drawer" selected="main">
