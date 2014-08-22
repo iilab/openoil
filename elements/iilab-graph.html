@@ -96,7 +96,7 @@
                   <core-submenu id="node_details" icon="list" label="{{ type }} Details" multi>
                     <paper-item id="name" icon="flag" label="{{ name }}" style="height:auto; padding: 6px 12px;"></paper-item>
                     <template if="{{ oc_id }}">
-                      <paper-item id="oc_id" icon="info-outline" label="Open Corporates Id: {{ oc_id }}"></paper-item>
+                      <core-item id="oc_id" icon="info-outline" label="Open Corporates Id: {{ oc_id }}"><a href="https://opencorporates.com/companies/{{ oc_id }}" target="_blank"></a></core-item>
                     </template>
                     <template if="{{ turnover }}">
                       <core-item id="turnover" icon="iilab:pound" label="Turnover (2012): {{ turnover }}"><template if="{{ documents.financials }}"><a href="/documents/{{ documents.financials }}" target="_blank"></a></template></core-item>
