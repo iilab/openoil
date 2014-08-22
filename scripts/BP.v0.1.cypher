@@ -1,5 +1,5 @@
 // Load BP - with Sources
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/iilab/openoil/master/data/BP_ownership_20140821.csv' AS line
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/iilab/openoil/master/data/BP_ownership_20140822.csv' AS line
 WITH line
 MERGE (parent:Company { name: line.parent })
 MERGE (company:Company { name: line.company }) 
