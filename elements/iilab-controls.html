@@ -133,6 +133,8 @@
 	      },
 		menuSelect: function(id) {
 			console.log("menuSelect")
+			window.location.hash = "#" + id;
+
 			this.fire('stats', {i: id, t:"q"});
 	        switch(id) {
 /*				case "bp_plc_countries_2":
