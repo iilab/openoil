@@ -15,7 +15,7 @@ function startGraph(viz, that) {
   }
 
   console.log(viz)
-  
+
   if (!cypher) { 
     document.body.classList.remove('loading');
     return 
@@ -401,14 +401,16 @@ function startGraph(viz, that) {
             that.element.documents = {financials: "", other: ""}
 
             var i=0, doc = "";
-            while (doc = d.propertyMap.documents_filenames[i++]) {
-              if (doc.indexOf('financials') > -1 ) {
-                that.element.documents.financials = d.propertyMap.documents_filenames[i-1]
-              } else if (d.propertyMap.documents_filenames[i] != "") {
-                that.element.documents.other = d.propertyMap.documents_filenames[i-1]  
+            if (d.propertyMap.documents_filenames) {
+              while (doc = d.propertyMap.documents_filenames[i++]) {
+                if (doc.indexOf('financials') > -1 ) {
+                  that.element.documents.financials = d.propertyMap.documents_filenames[i-1]
+                } else if (d.propertyMap.documents_filenames[i] != "") {
+                  that.element.documents.other = d.propertyMap.documents_filenames[i-1]  
+                }
               }
-            }
-
+            } 
+            
             that.$.iilab_drawer.openDrawer();
             tip.hide(d, that.parentNode)
   /*          
@@ -777,16 +779,20 @@ function startGraph(viz, that) {
       that.element.confidence = d.propertyMap.confidence
       that.element.document_filename = d.propertyMap.document_filename
       that.element.document_summary = d.propertyMap.document_summary
-            that.element.documents = {financials: "", other: ""}
+      that.element.documents = {financials: "", other: ""}
 
-            var i=0, doc = "";
-            while (doc = d.propertyMap.documents_filenames[i++]) {
-              if (doc.indexOf('financials') > -1 ) {
-                that.element.documents.financials = d.propertyMap.documents_filenames[i-1]
-              } else if (d.propertyMap.documents_filenames[i] != "") {
-                that.element.documents.other = d.propertyMap.documents_filenames[i-1]  
-              }
-            }
+      var i=0, doc = "";
+      if (d.propertyMap.documents_filenames) {
+        while (doc = d.propertyMap.documents_filenames[i++]) {
+          if (doc.indexOf('financials') > -1 ) {
+            that.element.documents.financials = d.propertyMap.documents_filenames[i-1]
+          } else if (d.propertyMap.documents_filenames[i] != "") {
+            that.element.documents.other = d.propertyMap.documents_filenames[i-1]  
+          }
+        }
+      } 
+      
+
 
       that.$.iilab_drawer.openDrawer();
       tip.hide(d, that.parentNode)
