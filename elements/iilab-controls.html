@@ -151,6 +151,8 @@
 		menuSelect: function(id) {
 			console.log("menuSelect")
 			window.location.hash = "#" + id;
+			$(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-map')).hide();
+			$(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph')).show();
 
 			this.fire('stats', {i: id, t:"q"});
 	        switch(id) {
