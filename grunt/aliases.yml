@@ -11,4 +11,3 @@ build:
 default:
   - vulcanize
   - replace:build
-  - watch

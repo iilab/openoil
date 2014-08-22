@@ -2739,130 +2739,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 
-
-<polymer-element name="iilab-controls" noscript="" attributes="strings cypher depth" assetpath="elements/">
-  <template>
-	<style>core-submenu::shadow #submenu{margin-left:10px}core-submenu::shadow core-item::shadow core-icon{fill:#2a3e92}paper-input{max-width:222px}</style>
-    <core-menu valueattr="label" id="core_menu" theme="core-light-theme" on-core-select="{{selectAction}}" vertical="" layout="">
-      <core-submenu id="saved_queries" icon="bookmark" label="Saved Queries">
-        <core-submenu id="saved_queries_bp" icon="bookmark" label="BP">
-          <paper-item label="BP PLC Subsidiaries (Depth 1)" id="bp_plc_1"></paper-item>
-          <paper-item label="BP PLC Subsidiaries (Depth 2)" id="bp_plc_2"></paper-item>
-          <paper-item label="BP PLC Subsidiaries (Depth 3 - Slow!)" id="bp_plc_3"></paper-item>
-<!--          <paper-item label="BP PLC Subsidiaries and Countries (Depth 2)" id="bp_plc_countries_2"></paper-item>
-          <paper-item label="BP PLC Subsidiaries and Countries (Depth 3)" id="bp_plc_countries_3"></paper-item>
-          <paper-item label="BP PLC Subsidiaries and Countries (Depth 4)" id="bp_plc_countries_4"></paper-item>-->
-        </core-submenu> 
-        <core-submenu id="saved_queries_nigeria" icon="bookmark" label="Nigeria">
-            <paper-item label="Production contracts" id="nigeria_production"></paper-item>
-            <paper-item label="Service contracts" id="nigeria_service"></paper-item>
-            <paper-item label="SNEPCO all connections" id="nigeria_snepco"></paper-item>
-        </core-submenu> 
-      </core-submenu> 
-      <core-submenu id="advanced_settings" icon="settings" label="Advanced Settings">
-        <div vertical="" layout="">
-		    <div>These settings control more advanced aspects of the vizualisation.</div>
-		    <div>
-				<core-tooltip>
-				  <h5>Depth</h5>
-				  <div>Depth controls how many relationships are followed when displaying nodes of interest. This will be applied when you double click on a node.</div>
-				</core-tooltip>
-			    <paper-slider id="depth" pin="" snaps="" min="1" max="4" step="1" value="{{depth}}" editable=""></paper-slider>
-		    </div>
-				<core-tooltip>
-				  <h5>Raw Query</h5>
-				  <div>The OpenOil database uses Neo4j and its query language <a href="http://docs.neo4j.org/chunked/stable/cypher-query-lang.html">Cypher</a>. You can directly enter Cypher queries in this box.</div>
-				</core-tooltip>
-			<paper-input id="cypher" flex="" multiline="" rows="5" label="Cypher Query"></paper-input>
-			<paper-button affirmative="" default="" icon="done" label="Apply" on-click="{{buttonClick}}"></paper-button>
-		</div>
-      </core-submenu> 
-    <core-submenu id="download" icon="cloud-download" label="Download">
-        <div vertical="" layout="">
-		    <div>Please submit your details to download the Open Oil data set in CSV and JSON formats.</div>
-	        <paper-input label="Email*" icon="email" id="email"></paper-input>
-	        <paper-input label="First Name*" icon="account" id="first_name"></paper-input>
-	        <paper-input label="Last Name*" icon="account" id="last_name"></paper-input>
-	        <paper-input label="Company*" icon="flag" id="company"></paper-input>
-            <paper-input multiline="" label="Reasons for downloading*" icon="query" id="details"></paper-input>
-	        <div center="">
-	          <paper-button negative="" label="Cancel" icon="cancel"></paper-button>
-	          <paper-button affirmative="" default="" label="Submit" icon="check" on-click="{{submitDownloadForm}}"></paper-button>
-	        </div>
-	        <paper-toast id="download_invalid" text="Please complete the form."></paper-toast>
-		</div>
-      </core-submenu>
-      <core-submenu id="help" icon="help" label="Help">
-        <div vertical="" layout="">
-		    <div>More soon about how to use the Open Oil Corporate Navigator...</div>
-		</div>
-      </core-submenu>
-    </core-menu>
-  </template>
-  <script>Polymer("iilab-controls",{ready:function(){document.addEventListener("load-graph-query",this.loadGraphQuery)},buttonClick:function(e,detail,sender){this.depth;this.cypher=this.$.cypher.value},selectAction:function(e,detail){console.log("selectAction");if(detail.isSelected){var selectedItem=detail.item;this.menuSelect(selectedItem.id)}},loadGraphQuery:function(e){console.log("loadGraphQuery");console.log(e.detail.id);document.querySelector("openoil-app").shadowRoot.querySelector("iilab-controls").menuSelect(e.detail.id)},submitDownloadForm:function(e){param={email:this.$.email.value,first_name:this.$.first_name.value,last_name:this.$.last_name.value,company:this.$.company.value,details:this.$.details.value};cypher="CREATE (n:DownloadRequest {email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, details:{details}})";if(param.email&&param.first_name&&param.last_name&&param.company&&param.details){neo4j.connect(document.querySelector("openoil-app").url,function(err,graph){if(err)throw err;graph.query(cypher,param,function(err,results){if(err){console.log(err);console.log(err.stack)}else{console.log("download request submitted!");document.querySelector("openoil-app").shadowRoot.querySelector("#download-dialog").toggle()}})})}else{document.querySelector("openoil-app").shadowRoot.querySelector("iilab-controls").shadowRoot.querySelector("#download_invalid").show()}},menuSelect:function(id){console.log("menuSelect");window.location.hash="#"+id;this.fire("stats",{i:id,t:"q"});switch(id){case"bp_plc_1":this.depth="2";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0..1]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"bp_plc_2":this.depth="2";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.."+this.depth+"]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"bp_plc_3":this.depth="3";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.."+this.depth+"]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_production":this.cypher="MATCH p=(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b {name: 'Nigerian National Petroleum Corporation (NNPC)'}) WITH p, a,c, hc,b,i MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Production Contract'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_service":this.cypher="MATCH p=(k)-[:HAS_JURISDICTION]-(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b)-[:HAS_JURISDICTION]-(j) WITH p, a,c, hc,b,i, k MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Service Contracts'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_snepco":this.cypher="MATCH p=(company:Company)-[r:IS_OWNER*..3]-(a {name: 'Shell Nigeria Exploration and Production Company (SNEPCO)'})-[:AWARDS|HAS_OPERATOR]-(c)-[:HAS_CONTRACTOR|HAS_OPERATOR]-(d) WHERE id(d)<>635603 UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;default:break}}});</script>
-</polymer-element> 
-
-
-<!--
-Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<!--
-`paper-toggle-button` provides a ON/OFF switch that user can toggle the state
-by tapping or by dragging the swtich.
-
-Example:
-
-    <paper-toggle-button></paper-toggle-button>
-
-Styling toggle button:
-
-To change the ink color for checked state:
-
-    paper-toggle-button::shadow paper-radio-button::shadow #ink[checked] {
-      color: #4285f4;
-    }
-    
-To change the radio checked color:
-    
-    paper-toggle-button::shadow paper-radio-button::shadow #onRadio {
-      background-color: #4285f4;
-    }
-    
-To change the bar color for checked state:
-
-    paper-toggle-button::shadow #toggleBar[checked] {
-      background-color: #4285f4;
-    }
-    
-To change the ink color for unchecked state:
-
-    paper-toggle-button::shadow paper-radio-button::shadow #ink {
-      color: #b5b5b5;
-    }
-    
-To change the radio unchecked color:
-    
-    paper-toggle-button::shadow paper-radio-button::shadow #offRadio {
-      border-color: #b5b5b5;
-    }
-
-To change the bar color for unchecked state:
-
-    paper-toggle-button::shadow #toggleBar {
-      background-color: red;
-    }
-
-@group Paper Elements
-@element paper-toggle-button
-@homepage github.io
--->
-
 <!--
 Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -2936,6 +2812,192 @@ To change the radio unchecked color:
 </template>
 <script>Polymer("paper-radio-button",{publish:{checked:{value:false,reflect:true},label:"",toggles:false},eventDelegates:{tap:"tap"},tap:function(){this.toggle();this.fire("paper-radio-button-activate")},toggle:function(){this.checked=!this.toggles||!this.checked},checkedChanged:function(){this.$.onRadio.classList.toggle("fill",this.checked);this.setAttribute("aria-checked",this.checked?"true":"false");this.fire("change")},labelChanged:function(){this.setAttribute("aria-label",this.label)}});</script>
 </polymer-element>
+
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+`paper-radio-group` allows user to select only one radio button from a set.
+Checking one radio button that belongs to a radio group unchecks any 
+previously checked radio button within the same group. Use
+`selected` to get or set the selected radio button.
+
+Example:
+
+    <paper-radio-group selected="small">
+      <paper-radio-button name="small" label="Small"></paper-radio-button>
+      <paper-radio-button name="medium" label="Medium"></paper-radio-button>
+      <paper-radio-button name="large" label="Large"></paper-radio-button>
+    </paper-radio-group>
+
+See <a href="../paper-radio-button/">paper-radio-button</a> for more
+information about `paper-radio-button`.
+
+@group Paper Elements
+@element paper-radio-group
+@extends core-selector
+@homepage github.io
+-->
+
+
+
+
+<polymer-element name="paper-radio-group" extends="core-selector" role="radiogroup" assetpath="components/paper-radio-group/">
+
+  <template>
+  
+    <style>:host{display:inline-block}polyfill-next-selector{content:':host > *'}::content>*{padding:12px}</style>
+  
+    <shadow></shadow>
+    
+  </template>
+  
+  <script>Polymer("paper-radio-group",{selectedAttribute:"checked",activateEvent:"paper-radio-button-activate"});</script>
+  
+</polymer-element>
+
+
+<polymer-element name="iilab-controls" noscript="" attributes="strings cypher depth" assetpath="elements/">
+  <template>
+	<style>core-submenu::shadow #submenu{margin-left:10px}core-submenu::shadow core-item::shadow core-icon{fill:#2a3e92}paper-input{max-width:222px}</style>
+    <core-menu valueattr="label" id="core_menu" theme="core-light-theme" on-core-select="{{selectAction}}" vertical="" layout="">
+      <core-submenu id="saved_queries" icon="bookmark" label="Saved Queries">
+        <core-submenu id="saved_queries_bp" icon="bookmark" label="BP">
+          <paper-item label="BP PLC Subsidiaries (Depth 1)" id="bp_plc_1"></paper-item>
+          <paper-item label="BP PLC Subsidiaries (Depth 2)" id="bp_plc_2"></paper-item>
+          <paper-item label="BP PLC Subsidiaries (Depth 3 - Slow!)" id="bp_plc_3"></paper-item>
+<!--          <paper-item label="BP PLC Subsidiaries and Countries (Depth 2)" id="bp_plc_countries_2"></paper-item>
+          <paper-item label="BP PLC Subsidiaries and Countries (Depth 3)" id="bp_plc_countries_3"></paper-item>
+          <paper-item label="BP PLC Subsidiaries and Countries (Depth 4)" id="bp_plc_countries_4"></paper-item>-->
+        </core-submenu> 
+        <core-submenu id="saved_queries_nigeria" icon="bookmark" label="Nigeria">
+            <paper-item label="Production contracts" id="nigeria_production"></paper-item>
+            <paper-item label="Service contracts" id="nigeria_service"></paper-item>
+            <paper-item label="SNEPCO all connections" id="nigeria_snepco"></paper-item>
+        </core-submenu> 
+      </core-submenu> 
+      <core-submenu id="advanced_settings" icon="settings" label="Advanced Settings">
+        <div vertical="" layout="">
+		    <div>These settings control more advanced aspects of the vizualisation.</div>
+		    <div>
+				<core-tooltip>
+				  <h5>Depth</h5>
+				  <div>Depth controls how many relationships are followed when displaying nodes of interest. This will be applied when you double click on a node.</div>
+				</core-tooltip>
+			    <paper-slider id="depth" pin="" snaps="" min="1" max="4" step="1" value="{{depth}}" editable=""></paper-slider>
+		    </div>
+				<core-tooltip>
+				  <h5>Raw Query</h5>
+				  <div>The OpenOil database uses Neo4j and its query language <a href="http://docs.neo4j.org/chunked/stable/cypher-query-lang.html">Cypher</a>. You can directly enter Cypher queries in this box.</div>
+				</core-tooltip>
+			<paper-input id="cypher" flex="" multiline="" rows="5" label="Cypher Query"></paper-input>
+			<paper-button affirmative="" default="" icon="done" label="Apply" on-click="{{buttonClick}}"></paper-button>
+		</div>
+      </core-submenu> 
+    <core-submenu id="download" icon="cloud-download" label="Download">
+        <div vertical="" layout="">
+        	Do you aim to use the Open Oil Data set for Commercial purposes?
+		    <paper-radio-group selected="2">
+		      <paper-radio-button label="No" checked="{{opendata_checked}}"></paper-radio-button><br>
+		      <paper-radio-button label="Yes (please register)" checked="{{notopendata_checked}}"></paper-radio-button><br>
+		    </paper-radio-group>
+		    <div hidden?="{{ opendata_checked }}">
+			    <div>Please submit your details to download the Open Oil data set in CSV and JSON formats.</div>
+		        <paper-input label="Email*" icon="email" id="email"></paper-input>
+		        <paper-input label="First Name*" icon="account" id="first_name"></paper-input>
+		        <paper-input label="Last Name*" icon="account" id="last_name"></paper-input>
+		        <paper-input label="Company*" icon="flag" id="company"></paper-input>
+	            <paper-input multiline="" label="Reasons for downloading*" icon="query" id="details"></paper-input>
+		        <div center="">
+		          <paper-button negative="" label="Cancel" icon="cancel"></paper-button>
+		          <paper-button affirmative="" default="" label="Submit" icon="check" on-click="{{submitDownloadForm}}"></paper-button>
+		        </div>
+		        <paper-toast id="download_invalid" text="Please complete the form."></paper-toast>
+		    </div>
+		    <div hidden?="{{ notopendata_checked }}">
+		        <div center="">
+		          <paper-button affirmative="" default="" label="Download" icon="check" on-click="{{submitOpenDataDownload}}"></paper-button>
+		        </div>
+		    </div>
+		</div>
+      </core-submenu>
+      <core-submenu id="help" icon="help" label="Help">
+        <div vertical="" layout="">
+		    <div>More soon about how to use the Open Oil Corporate Navigator...</div>
+		</div>
+      </core-submenu>
+    </core-menu>
+  </template>
+  <script>Polymer("iilab-controls",{ready:function(){document.addEventListener("load-graph-query",this.loadGraphQuery)},buttonClick:function(e,detail,sender){this.depth;this.cypher=this.$.cypher.value},selectAction:function(e,detail){console.log("selectAction");if(detail.isSelected){var selectedItem=detail.item;this.menuSelect(selectedItem.id)}},loadGraphQuery:function(e){console.log("loadGraphQuery");console.log(e.detail.id);document.querySelector("openoil-app").shadowRoot.querySelector("iilab-controls").menuSelect(e.detail.id)},submitOpenDataDownload:function(e){this.fire("stats",{t:"od"});document.querySelector("openoil-app").shadowRoot.querySelector("#download-dialog").toggle()},submitDownloadForm:function(e){param={email:this.$.email.value,first_name:this.$.first_name.value,last_name:this.$.last_name.value,company:this.$.company.value,details:this.$.details.value};cypher="CREATE (n:DownloadRequest {email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, details:{details}})";if(param.email&&param.first_name&&param.last_name&&param.company&&param.details){neo4j.connect(document.querySelector("openoil-app").url,function(err,graph){if(err)throw err;graph.query(cypher,param,function(err,results){if(err){console.log(err);console.log(err.stack)}else{console.log("download request submitted!");this.fire("stats",{t:"d"});document.querySelector("openoil-app").shadowRoot.querySelector("#download-dialog").toggle()}})})}else{document.querySelector("openoil-app").shadowRoot.querySelector("iilab-controls").shadowRoot.querySelector("#download_invalid").show()}},menuSelect:function(id){console.log("menuSelect");window.location.hash="#"+id;this.fire("stats",{i:id,t:"q"});switch(id){case"bp_plc_1":this.depth="2";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0..1]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"bp_plc_2":this.depth="2";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.."+this.depth+"]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"bp_plc_3":this.depth="3";this.cypher="MATCH p=(a:Company {name: 'BP P L C'})-[r:IS_OWNER*0.."+this.depth+"]->(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_production":this.cypher="MATCH p=(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b {name: 'Nigerian National Petroleum Corporation (NNPC)'}) WITH p, a,c, hc,b,i MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Production Contract'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_service":this.cypher="MATCH p=(k)-[:HAS_JURISDICTION]-(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b)-[:HAS_JURISDICTION]-(j) WITH p, a,c, hc,b,i, k MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Service Contracts'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;case"nigeria_snepco":this.cypher="MATCH p=(company:Company)-[r:IS_OWNER*..3]-(a {name: 'Shell Nigeria Exploration and Production Company (SNEPCO)'})-[:AWARDS|HAS_OPERATOR]-(c)-[:HAS_CONTRACTOR|HAS_OPERATOR]-(d) WHERE id(d)<>635603 UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result";break;default:break}}});</script>
+</polymer-element> 
+
+
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+`paper-toggle-button` provides a ON/OFF switch that user can toggle the state
+by tapping or by dragging the swtich.
+
+Example:
+
+    <paper-toggle-button></paper-toggle-button>
+
+Styling toggle button:
+
+To change the ink color for checked state:
+
+    paper-toggle-button::shadow paper-radio-button::shadow #ink[checked] {
+      color: #4285f4;
+    }
+    
+To change the radio checked color:
+    
+    paper-toggle-button::shadow paper-radio-button::shadow #onRadio {
+      background-color: #4285f4;
+    }
+    
+To change the bar color for checked state:
+
+    paper-toggle-button::shadow #toggleBar[checked] {
+      background-color: #4285f4;
+    }
+    
+To change the ink color for unchecked state:
+
+    paper-toggle-button::shadow paper-radio-button::shadow #ink {
+      color: #b5b5b5;
+    }
+    
+To change the radio unchecked color:
+    
+    paper-toggle-button::shadow paper-radio-button::shadow #offRadio {
+      border-color: #b5b5b5;
+    }
+
+To change the bar color for unchecked state:
+
+    paper-toggle-button::shadow #toggleBar {
+      background-color: red;
+    }
+
+@group Paper Elements
+@element paper-toggle-button
+@homepage github.io
+-->
+
 
 
 <polymer-element name="paper-toggle-button" attributes="checked" touch-action="pan-y" role="button" aria-pressed="false" tabindex="0" assetpath="components/paper-toggle-button/">

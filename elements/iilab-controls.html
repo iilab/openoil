@@ -3,6 +3,8 @@
 <link rel="import" href="../components/paper-input/paper-input.html">
 <link rel="import" href="../components/paper-slider/paper-slider.html">
 <link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="../components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../components/paper-radio-group/paper-radio-group.html">
 
 <polymer-element name="iilab-controls" noscript attributes="strings cypher depth">
   <template>
@@ -56,17 +58,29 @@
       </core-submenu> 
     <core-submenu id="download" icon="cloud-download" label="Download">
         <div vertical layout>
-		    <div>Please submit your details to download the Open Oil data set in CSV and JSON formats.</div>
-	        <paper-input label="Email*" icon="email" id="email"></paper-input>
-	        <paper-input label="First Name*" icon="account" id="first_name"></paper-input>
-	        <paper-input label="Last Name*" icon="account" id="last_name"></paper-input>
-	        <paper-input label="Company*" icon="flag" id="company"></paper-input>
-            <paper-input multiline label="Reasons for downloading*" icon="query" id="details"></paper-input>
-	        <div center>
-	          <paper-button negative label="Cancel" icon="cancel"></paper-button>
-	          <paper-button affirmative default label="Submit" icon="check" on-click="{{submitDownloadForm}}"></paper-button>
-	        </div>
-	        <paper-toast id="download_invalid" text="Please complete the form."></paper-toast>
+        	Do you aim to use the Open Oil Data set for Commercial purposes?
+		    <paper-radio-group selected="2">
+		      <paper-radio-button label="No" checked="{{opendata_checked}}"></paper-radio-button><br>
+		      <paper-radio-button label="Yes (please register)" checked="{{notopendata_checked}}"></paper-radio-button><br>
+		    </paper-radio-group>
+		    <div hidden?="{{ opendata_checked }}">
+			    <div>Please submit your details to download the Open Oil data set in CSV and JSON formats.</div>
+		        <paper-input label="Email*" icon="email" id="email"></paper-input>
+		        <paper-input label="First Name*" icon="account" id="first_name"></paper-input>
+		        <paper-input label="Last Name*" icon="account" id="last_name"></paper-input>
+		        <paper-input label="Company*" icon="flag" id="company"></paper-input>
+	            <paper-input multiline label="Reasons for downloading*" icon="query" id="details"></paper-input>
+		        <div center>
+		          <paper-button negative label="Cancel" icon="cancel"></paper-button>
+		          <paper-button affirmative default label="Submit" icon="check" on-click="{{submitDownloadForm}}"></paper-button>
+		        </div>
+		        <paper-toast id="download_invalid" text="Please complete the form."></paper-toast>
+		    </div>
+		    <div hidden?="{{ notopendata_checked }}">
+		        <div center>
+		          <paper-button affirmative default label="Download" icon="check" on-click="{{submitOpenDataDownload}}"></paper-button>
+		        </div>
+		    </div>
 		</div>
       </core-submenu>
       <core-submenu id="help" icon="help" label="Help">
@@ -99,6 +113,10 @@
 			console.log(e.detail.id)
 			document.querySelector('openoil-app').shadowRoot.querySelector('iilab-controls').menuSelect(e.detail.id)
 		},
+    	submitOpenDataDownload: function(e) {
+ 			this.fire('stats', {t:"od"});
+    		document.querySelector('openoil-app').shadowRoot.querySelector('#download-dialog').toggle();   
+    	},
     	submitDownloadForm: function(e) {
 	        param = {
 	           email: this.$.email.value,
@@ -121,6 +139,7 @@
 	                  }
 	                  else {
 	                      console.log('download request submitted!')
+				 			this.fire('stats', {t:"d"});
 							document.querySelector('openoil-app').shadowRoot.querySelector('#download-dialog').toggle();        
 	                  }
 	              })
