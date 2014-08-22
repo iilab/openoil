@@ -396,7 +396,23 @@ function startGraph(viz, that) {
             that.element.confidence = d.propertyMap.confidence
             that.element.document_filename = d.propertyMap.document_filename
             that.element.document_summary = d.propertyMap.document_summary
+            that.element.documents = {financials: "", other: ""}
+//            that.element.documents.financials = ""
+//            that.element.documents.other = ""
 
+            var i=0, doc = "";
+            while (doc = d.propertyMap.documents_filenames[i++]) {
+              if (doc.indexOf('financials') > -1 ) {
+                console.log('found!' + i + ' ' + that.element.documents.financials)
+                that.element.documents.financials = d.propertyMap.documents_filenames[i-1]
+                console.log('found!' + i + ' ' + that.element.documents.financials)
+              } else if (d.propertyMap.documents_filenames[i] != "") {
+                console.log('not found...' + i + ' ' + that.element.documents.other)
+                that.element.documents.other = d.propertyMap.documents_filenames[i-1]  
+                console.log('not found...' + i + ' ' + that.element.documents.other)
+              }
+            }
+            console.log(that.element.documents)
             that.$.iilab_drawer.openDrawer();
             tip.hide(d, that.parentNode)
   /*          

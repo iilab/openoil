@@ -99,16 +99,16 @@
                       <paper-item id="oc_id" icon="info-outline" label="Open Corporates Id: {{ oc_id }}"></paper-item>
                     </template>
                     <template if="{{ turnover }}">
-                      <paper-item id="turnover" icon="iilab:pound" label="Turnover (2012): {{ turnover }}"></paper-item>
+                      <core-item id="turnover" icon="iilab:pound" label="Turnover (2012): {{ turnover }}"><template if="{{ documents.financials }}"><a href="/documents/{{ documents.financials }}" target="_blank"></a></template></core-item>
                     </template>
                     <template if="{{ profit }}">
-                      <paper-item id="profit" icon="iilab:pound" label="Profit after tax (2012): {{ profit }}"></paper-item>
+                      <core-item id="profit" icon="iilab:pound" label="Profit after tax (2012): {{ profit }}"><template if="{{ documents.financials }}"><a href="/documents/{{ documents.financials }}" target="_blank"></a></template></core-item>
                     </template>
                     <template if="{{ assets }}">
-                      <paper-item id="assets" icon="iilab:pound" label="Total Assets (2012): {{ assets }}"></paper-item>
+                      <core-item id="assets" icon="iilab:pound" label="Total Assets (2012): {{ assets }}"><template if="{{ documents.financials }}"><a href="/documents/{{ documents.financials }}" target="_blank"></a></template></core-item>
                     </template>
                     <template if="{{ liabilities }}">
-                      <paper-item id="liabilities" icon="iilab:pound" label="Total Liabilities (2012): {{ liabilities }}"></paper-item>
+                      <core-item id="liabilities" icon="iilab:pound" label="Total Liabilities (2012): {{ liabilities }}"><template if="{{ documents.financials }}"><a href="/documents/{{ documents.financials }}" target="_blank"></a></template></core-item>
                     </template>
                     <template if="{{ directors }}">
                       <core-submenu id="directors" icon="account-circle" label="Directors ({{ directors.length }})">
@@ -176,11 +176,12 @@
                       <template if="{{ log_message }}"><paper-item icon="info-outline" label="Notes: {{ log_message }}" id="log_message"></paper-item></template>
                   </core-submenu> 
                 </template>
-                <template if="{{ document_filename }}">
+                <template if="{{ document_filename || documents.other }}">
                   <core-submenu icon="attachment" label="Documents">
                       <template if="{{ document_summary }}"><paper-item label="Summary: {{ document_summary }}" id="document_summary"></paper-item></template>
                       <template if="{{ document_filename }}"><core-item label="Download: {{ document_filename }}" id="document_filename"><a href="/documents/{{ document_filename }}" target="_blank"></a></core-item></template>
-                  </core-submenu> 
+                      <template if="{{ documents.other }}"><core-item label="Download: {{ documents.other }}" id="documents_other"><a href="/documents/{{ documents.other }}" target="_blank"></a></core-item></template>
+                  </core-submenu>
                 </template>
                 <core-submenu icon="bookmark-outline" label="Request Data" vertical layout>
                     <paper-input hidden id="context" value="{{id}}"></paper-input>
@@ -244,7 +245,8 @@
           source_date: "",
           log_message: "",
           document_filename: "",
-          document_summary: ""
+          document_summary: "",
+          documents: {financials:"", source:""}
       },
       param: "",
       autozoom: true,

@@ -2603,16 +2603,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                       <paper-item id="oc_id" icon="info-outline" label="Open Corporates Id: {{ oc_id }}"></paper-item>
                     </template>
                     <template if="{{ turnover }}">
-                      <paper-item id="turnover" icon="iilab:pound" label="Turnover (2012): {{ turnover }}"></paper-item>
+                      <core-item id="turnover" icon="iilab:pound" label="Turnover (2012): {{ turnover }}"><template if="{{ documents.financials }}"><a href="/documents/{{ documents.financials }}" target="_blank"></a></template></core-item>
                     </template>
                     <template if="{{ profit }}">
-                      <paper-item id="profit" icon="iilab:pound" label="Profit after tax (2012): {{ profit }}"></paper-item>
+                      <core-item id="profit" icon="iilab:pound" label="Profit after tax (2012): {{ profit }}"><template if="{{ documents.financials }}"><a href="/documents/{{ documents.financials }}" target="_blank"></a></template></core-item>
                     </template>
                     <template if="{{ assets }}">
-                      <paper-item id="assets" icon="iilab:pound" label="Total Assets (2012): {{ assets }}"></paper-item>
+                      <core-item id="assets" icon="iilab:pound" label="Total Assets (2012): {{ assets }}"><template if="{{ documents.financials }}"><a href="/documents/{{ documents.financials }}" target="_blank"></a></template></core-item>
                     </template>
                     <template if="{{ liabilities }}">
-                      <paper-item id="liabilities" icon="iilab:pound" label="Total Liabilities (2012): {{ liabilities }}"></paper-item>
+                      <core-item id="liabilities" icon="iilab:pound" label="Total Liabilities (2012): {{ liabilities }}"><template if="{{ documents.financials }}"><a href="/documents/{{ documents.financials }}" target="_blank"></a></template></core-item>
                     </template>
                     <template if="{{ directors }}">
                       <core-submenu id="directors" icon="account-circle" label="Directors ({{ directors.length }})">
@@ -2680,11 +2680,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                       <template if="{{ log_message }}"><paper-item icon="info-outline" label="Notes: {{ log_message }}" id="log_message"></paper-item></template>
                   </core-submenu> 
                 </template>
-                <template if="{{ document_filename }}">
+                <template if="{{ document_filename || documents.other }}">
                   <core-submenu icon="attachment" label="Documents">
                       <template if="{{ document_summary }}"><paper-item label="Summary: {{ document_summary }}" id="document_summary"></paper-item></template>
                       <template if="{{ document_filename }}"><core-item label="Download: {{ document_filename }}" id="document_filename"><a href="/documents/{{ document_filename }}" target="_blank"></a></core-item></template>
-                  </core-submenu> 
+                      <template if="{{ documents.other }}"><core-item label="Download: {{ documents.other }}" id="documents_other"><a href="/documents/{{ documents.other }}" target="_blank"></a></core-item></template>
+                  </core-submenu>
                 </template>
                 <core-submenu icon="bookmark-outline" label="Request Data" vertical="" layout="">
                     <paper-input hidden id="context" value="{{id}}"></paper-input>
@@ -2716,7 +2717,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="components/jquery-ui/jquery-ui.js"></script>
   <script src="components/neo4j-js.js"></script>
   <script src="elements/iilab-graph.js"></script>
-  <script>Polymer("iilab-graph",{published:{depth:2},countnodes:0,countlinks:0,element:{id:"",_type:"",type:"",name:"",oc_id:"",directors:"",immediate:"",ultimate:"",turnover:"",profit:"",assets:"",liabilities:"",contract_share:"",shareholders:"",license_area:"",field:"",confidence:"",ownership_status:"",source_url:"",source_type:"",source_date:"",log_message:"",document_filename:"",document_summary:""},param:"",autozoom:true,domReady:function(){this.depth=2;document.addEventListener("graph",this.graph)},buttonClick:function(e){document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#iilab_drawer").togglePanel()},cypherChanged:function(oldValue,newValue){this.cypher=newValue;setTimeout(this.graph(),500)},graph:function(){var timer=null;var interval=300;function retryIfRunning(){if(document.body.classList.contains("loading")){console.log("waiting");timer=setTimeout(retryIfRunning,interval)}else{timer=null;document.body.classList.add("loading");startGraph(document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#viz"),document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph"))}}retryIfRunning()},submitForm:function(e){param={context:this.$.context.value,type:this.$.context_type.value,email:this.$.email.value,first_name:this.$.first_name.value,last_name:this.$.last_name.value,company:this.$.company.value,request:this.$.query.value};cypher="MATCH c WHERE id(c)="+param.context+" CREATE (n:Request {context: {context}, type: {type}, email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, request:{request}}) CREATE (n)<-[:HAS_REQUEST]-(c)";if(param.email&&param.first_name&&param.last_name&&param.company&&param.request){neo4j.connect(document.querySelector("openoil-app").url,function(err,graph){if(err)throw err;graph.query(cypher,param,function(err,results){if(err){console.log(err);console.log(err.stack)}else{console.log("form submitted!");document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#confirmation").show()}})})}else{document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#invalid").show()}}});</script>
+  <script>Polymer("iilab-graph",{published:{depth:2},countnodes:0,countlinks:0,element:{id:"",_type:"",type:"",name:"",oc_id:"",directors:"",immediate:"",ultimate:"",turnover:"",profit:"",assets:"",liabilities:"",contract_share:"",shareholders:"",license_area:"",field:"",confidence:"",ownership_status:"",source_url:"",source_type:"",source_date:"",log_message:"",document_filename:"",document_summary:"",documents:{financials:"",source:""}},param:"",autozoom:true,domReady:function(){this.depth=2;document.addEventListener("graph",this.graph)},buttonClick:function(e){document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#iilab_drawer").togglePanel()},cypherChanged:function(oldValue,newValue){this.cypher=newValue;setTimeout(this.graph(),500)},graph:function(){var timer=null;var interval=300;function retryIfRunning(){if(document.body.classList.contains("loading")){console.log("waiting");timer=setTimeout(retryIfRunning,interval)}else{timer=null;document.body.classList.add("loading");startGraph(document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#viz"),document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph"))}}retryIfRunning()},submitForm:function(e){param={context:this.$.context.value,type:this.$.context_type.value,email:this.$.email.value,first_name:this.$.first_name.value,last_name:this.$.last_name.value,company:this.$.company.value,request:this.$.query.value};cypher="MATCH c WHERE id(c)="+param.context+" CREATE (n:Request {context: {context}, type: {type}, email: {email}, first_name: {first_name}, last_name:{last_name},company:{company}, request:{request}}) CREATE (n)<-[:HAS_REQUEST]-(c)";if(param.email&&param.first_name&&param.last_name&&param.company&&param.request){neo4j.connect(document.querySelector("openoil-app").url,function(err,graph){if(err)throw err;graph.query(cypher,param,function(err,results){if(err){console.log(err);console.log(err.stack)}else{console.log("form submitted!");document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#confirmation").show()}})})}else{document.querySelector("openoil-app").shadowRoot.querySelector("iilab-graph").shadowRoot.querySelector("#invalid").show()}}});</script>
 </polymer-element> 
 
 
@@ -3058,11 +3059,11 @@ To change the radio unchecked color:
           <core-item icon="cloud-download" raisedbutton="" label="Nigeria Companies 20140807"><a href="/data/Nigeria_companies_20140807.csv" download="Nigeria_companies_20140807.csv"></a></core-item>
           <core-item icon="cloud-download" raisedbutton="" label="Nigeria Contracts 20140711"><a href="/data/Nigeria_contracts_20140711.csv" download="Nigeria_contracts_20140711.csv"></a></core-item>
           <core-item icon="cloud-download" raisedbutton="" label="Nigeria Ownership 20140711"><a href="/data/Nigeria_ownership_20140711.csv" download="Nigeria_ownership_20140711.csv"></a></core-item>
-          <core-item icon="cloud-download" raisedbutton="" label="BP Ownership 20140713"><a href="/data/BP_ownership_20140713.csv" download="BP_ownership_20140713.csv"></a></core-item>
+          <core-item icon="cloud-download" raisedbutton="" label="BP Ownership 20140822"><a href="/data/BP_ownership_20140822.csv" download="BP_ownership_20140822.csv"></a></core-item>
         </div>
         <div id="graph" layout="" vertical="" center="" flex="" one="">
           <h4>Graph Data</h4>
-          <core-item icon="cloud-download" raisedbutton="" label="Neo4j JSON export"><a href="/data/neo4j_20140809.json" download="neo4j_20140809.json"></a></core-item>
+          <core-item icon="cloud-download" raisedbutton="" label="Neo4j JSON export"><a href="/data/neo4j_20140822.json" download="neo4j_20140822.json"></a></core-item>
           <core-item icon="cloud-download" disabled raisedbutton="" label="JSON-LD (soon)"></core-item>
         </div>
       </div>
