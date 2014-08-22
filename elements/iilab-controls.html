@@ -58,10 +58,10 @@
       </core-submenu> 
     <core-submenu id="download" icon="cloud-download" label="Download">
         <div vertical layout>
-        	Do you aim to use the Open Oil Data set for Commercial purposes?
+        	This data is published by OpenOil UG under the <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open Database License (ODbL) v1.0.</a><br> You are free to share, adapt and modify the data, as long as you attribute, share-alike and keep open.<br><br>If you don't want to accept the terms, please register and state your intended usage of the data.<br><br>Do you accept the terms and conditions?
 		    <paper-radio-group selected="2">
-		      <paper-radio-button label="No" checked="{{opendata_checked}}"></paper-radio-button><br>
-		      <paper-radio-button label="Yes (please register)" checked="{{notopendata_checked}}"></paper-radio-button><br>
+		      <paper-radio-button label="Yes" checked="{{opendata_checked}}"></paper-radio-button><br>
+		      <paper-radio-button label="No (please register)" checked="{{notopendata_checked}}"></paper-radio-button><br>
 		    </paper-radio-group>
 		    <div hidden?="{{ opendata_checked }}">
 			    <div>Please submit your details to download the Open Oil data set in CSV and JSON formats.</div>
