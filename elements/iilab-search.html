@@ -63,12 +63,19 @@
       searchcommitChanged: function(o, v) { 
         if(!this.within) {
           if (v != "") {
-            console.log('hello!')
-            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').param = {search: "name:\"" + v + "\" OR source_url:\"" + v + "\" OR oc_id:\"" + v + "\"" };
+            console.log(v)
+            if (v.indexOf(' ') > -1) {
+              //v = v.replace(' ', '\\ ')
+              v = '"' + v + '"'
+            } else {
+              v = v + '*'
+            }
+            console.log(v)
+            document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').param = {search: "name:" + v + " OR source_url:" + v + " OR oc_id:" + v };
             document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').cypher = "START n=node:node_auto_index({search}) OPTIONAL MATCH p=(n)-[r*0..1]-() UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
-            this.fire('graph', {});
-            this.fire('stats', {i: v, t:"s"});
           }
+          this.fire('graph', {});
+          this.fire('stats', {i: v, t:"s"});
 
          // startGraph(d3.select(document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph').shadowRoot.querySelector('#viz')), document.querySelector('openoil-app').shadowRoot.querySelector('iilab-graph')); 
         }
