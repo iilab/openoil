@@ -65,8 +65,8 @@
           if (v != "") {
             console.log(v)
             if (v.indexOf(' ') > -1) {
-              //v = v.replace(' ', '\\ ')
-              v = '"' + v + '"'
+              v = v.replace(' ', '\\ ')
+              v = "'" + v + '*' + "'"
             } else {
               v = v + '*'
             }

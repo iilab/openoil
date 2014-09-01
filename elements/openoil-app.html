@@ -176,7 +176,7 @@ Polymer('x-dialog', {
   <core-xhr id="xhr"></core-xhr>
   <x-dialog id="dialog" class="dialog" style="overflow-y: scroll">
       <!-- place all overlay styles inside the overlay target -->
-      <style no-shim>
+      <style>
         .dialog {
           box-sizing: border-box;
           -moz-box-sizing: border-box;
@@ -255,7 +255,7 @@ Polymer('x-dialog', {
       </div>
       <core-overlay layered id="confirmation" class="dialog" backdrop transition="core-transition-top">
         <!-- place all overlay styles inside the overlay target -->
-        <style no-shim>
+        <style>
           .dialog {
             box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -282,7 +282,7 @@ Polymer('x-dialog', {
 
     <x-dialog id="download-dialog" class="dialog" style="overflow-y: scroll; display:none;">
       <!-- place all overlay styles inside the overlay target -->
-      <style no-shim>
+      <style>
         .dialog {
           box-sizing: border-box;
           -moz-box-sizing: border-box;
@@ -407,8 +407,8 @@ Polymer('x-dialog', {
         </paper-menu-button>      
       </div>
       <div id="selection"></div>
-      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" url="{{url}}" zoom="{{zoom}}" autozoom="{{autozoom}}" depth="{{depthValue}}" count="{{countValue}}"></iilab-graph>
-      <iilab-map id="iilab_map" style="display:none;" countnodes="{{countNodesValue}}" countlinks="{{countLinksValue}}"></iilab-map>
+      <iilab-graph id="iilab_graph" cypher="{{cypherText}}" search="{{searchText}}" url="{{url}}" zoom="{{zoom}}" autozoom="{{autozoom}}" depth="{{depthValue}}" count="{{countValue}}" style="display:none;"></iilab-graph>
+      <iilab-map id="iilab_map" countnodes="{{countNodesValue}}" countlinks="{{countLinksValue}}"></iilab-map>
       <!--<core-card id="core_card" layout vertical></core-card>-->
     </core-scaffold>
   </template>
