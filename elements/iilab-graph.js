@@ -458,7 +458,7 @@ function startGraph(viz, that) {
             // console.log(that.depth)
             that.fire('stats', {i: d.propertyMap.name, t:"dc"});
             if (d.labels[0] == "Company") {
-              that.cypher = "MATCH p=(a:Company {name: '" + d.propertyMap.name + "'})-[r:IS_OWNER|AWARDS|HAS_CONTRACTOR|HAS_OPERATOR*0.." + that.depth + "]-(n) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
+              that.cypher = "MATCH p=(a:Company {name: '" + d.propertyMap.name + "'})-[r:IS_OWNER|AWARDS|HAS_CONTRACTOR|HAS_OPERATOR*0.." + that.depth + "]-(n) WITH p, a OPTIONAL MATCH q=(a)-[:HAS_JURISDICTION]-(c:Country) UNWIND coalesce(nodes(p),[]) + coalesce(nodes(q),[]) as nodes UNWIND coalesce(relationships(p),[]) + coalesce(relationships(q),[]) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, label: labels(x), id: id(x)}], links: collect(DISTINCT links)} as result"
               return
             }
             else if (d.labels[0] == "Country") {
