@@ -3162,16 +3162,17 @@ To change the bar color for unchecked state:
       </div>
       <div layout="" horizontal="">
         <div id="tabular" layout="" vertical="" center="" flex="" one="">
-          <h4>Tabular Data</h4>
-          <core-item icon="cloud-download" raisedbutton="" label="Nigeria Companies 20140807"><a href="/data/Nigeria_companies_20140807.csv" download="Nigeria_companies_20140807.csv"></a></core-item>
-          <core-item icon="cloud-download" raisedbutton="" label="Nigeria Contracts 20140711"><a href="/data/Nigeria_contracts_20140711.csv" download="Nigeria_contracts_20140711.csv"></a></core-item>
-          <core-item icon="cloud-download" raisedbutton="" label="Nigeria Ownership 20140711"><a href="/data/Nigeria_ownership_20140711.csv" download="Nigeria_ownership_20140711.csv"></a></core-item>
-          <core-item icon="cloud-download" raisedbutton="" label="BP Ownership 20140822"><a href="/data/BP_ownership_20140822.csv" download="BP_ownership_20140822.csv"></a></core-item>
+          <h3>Tabular Data</h3>
+          <h4>Nigeria ( Companies / Contracts / Ownership ) - 20140822</h4>
+          <div layout="" horizontal=""><core-item icon="cloud-download" label="Nigeria_20140822.tgz"><a href="/data/Nigeria_20140822.tgz" download="Nigeria_20140822.tgz"></a></core-item>&nbsp;&nbsp;&nbsp;<core-item icon="cloud-download" label="Nigeria_20140822.zip"><a href="/data/Nigeria_20140822.zip" download="Nigeria_20140822.zip"></a></core-item></div><br><br>
+          <h4>BP ( Ownership ) - 20140822</h4>
+          <div layout="" horizontal=""><core-item icon="cloud-download" label="BP_20140822.tgz"><a href="/data/BP_20140822.tgz" download="BP_2014022.tgz"></a></core-item>&nbsp;&nbsp;&nbsp;<core-item icon="cloud-download" label="BP_20140822.zip"><a href="/data/BP_20140822.zip" download="BP_20140822.zip"></a></core-item></div>
         </div>
         <div id="graph" layout="" vertical="" center="" flex="" one="">
-          <h4>Graph Data</h4>
-          <core-item icon="cloud-download" raisedbutton="" label="Neo4j JSON export"><a href="/data/neo4j_20140822.json" download="neo4j_20140822.json"></a></core-item>
-          <core-item icon="cloud-download" disabled raisedbutton="" label="JSON-LD (soon)"></core-item>
+          <h3>Graph Data</h3>
+          <h4>Neo4j JSON export</h4>
+          <div layout="" horizontal=""><core-item icon="cloud-download" label="neo4j_20140822.tgz"><a href="/data/neo4j_20140822.tgz" download="neo4j_20140822.tgz"></a></core-item>&nbsp;&nbsp;&nbsp;<core-item icon="cloud-download" label="neo4j_20140822.zip"><a href="/data/neo4j_20140822.zip" download="neo4j_20140822.zip"></a></core-item></div><br><br>
+          <h4>JSON-LD (soon)</h4>
         </div>
       </div>
       <div id="footer" horizontal="" flex="">
@@ -3200,6 +3201,7 @@ To change the bar color for unchecked state:
       </core-header-panel>
       <div id="div" tool="" horizontal="" layout="" center="" wrap="" flex="">
         <div id="title">Open&nbsp;Oil Data - Beta</div>
+        <div id="oc" style="font-size:0.6em;">&nbsp;&nbsp;&nbsp;In partnership with <img src="/img/logo_oc.png" style="vertical-align:middle;"></div>
         <div id="count" flex=""><template if="{{countNodesValue}}">&nbsp;- {{countNodesValue.node}} nodes &amp; {{countLinksValue.links}} links</template></div>
         <div>&nbsp;</div>
         <core-tooltip>
