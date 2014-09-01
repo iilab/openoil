@@ -395,9 +395,10 @@ Polymer('x-dialog', {
         <paper-slider id="zoom_slider" pin="" snaps="" min="-3.5" max="1" step="0.05" value="{{zoomSlider}}"></paper-slider>
 <!--        <paper-icon-button id="zoom_out" icon="image:crop-free" role="button" tabindex="0" class="" on-click="{{zoomOut}}"></paper-icon-button>-->
         <paper-menu-button icon="more-vert" valign="bottom" halign="right">
-          <paper-item icon="visibility" label="About OpenOil"></paper-item>
-          <paper-item icon="extension" label="Contribute"></paper-item>
-          <paper-item icon="info" label="Sources"></paper-item>
+          <core-item icon="visibility" label="OpenOil.net"><a href="http://openoil.net"></a></core-item>
+          <core-item icon="extension" label="License"><a href="http://openoil.net/corporate-network-data-license/"></a></core-item>
+          <core-item icon="info" label="Methodology"><a href="http://openoil.net/corporate-network-methodology/"></a></core-item>
+          <core-item icon="info" label="Mapping BP - Essay"><a href="http://openoil.net/mapping-bp-using-open-data-to-track-big-oil/"></a></core-item>
         </paper-menu-button>      
       </div>
       <div id="selection"></div>
