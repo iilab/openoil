@@ -1,0 +1,8 @@
+{
+  "name" : "node_auto_index",
+  "config" : {
+    "type" : "fulltext",
+    "to_lower_case" : "true",
+    "provider" : "lucene"
+  }
+}
