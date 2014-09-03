@@ -201,7 +201,7 @@ function startGraph(viz, that) {
                 // Autozoom
 
                 // If the layout is cooled down to a certain threshold
-                if (d3force.alpha() < 0.01) { 
+                if (d3force.alpha() < 0.05) { 
                   // layout is done
 
                   // Zoom after cool down
