@@ -3108,9 +3108,9 @@ To change the bar color for unchecked state:
   <style shim-shadowdom="">core-scaffold core-toolbar{background:#EEE;color:#2a3e92}core-drawer-panel #main>[main]{background:#FFF}</style>
   <style>core-header-panel{height:100%;overflow:auto;-webkit-overflow-scrolling:touch}core-scaffold::shadow core-toolbar{background:#EEE;color:#2a3e92}core-scaffold::shadow core-header-panel{background:#FFF;color:#2a3e92}.container{width:80%;margin:50px auto}:host{position:absolute;width:100%;height:100%;box-sizing:border-box;color:#2a3e92}#core_toolbar{right:0;color:#2a3e92;fill:#fff;background-color:#ebebeb}#core_drawer_panel{position:absolute;top:0;right:0;bottom:0;left:0}#core_icon{height:24px;width:24px}core-icon-button::shadow core-icon{fill:#2a3e92}#core_card{width:300px;height:300px;border-top-left-radius:2px;border-top-right-radius:2px;border-bottom-right-radius:2px;border-bottom-left-radius:2px;box-shadow:rgba(0,0,0,.0980392)0 2px 4px,rgba(0,0,0,.0980392)0 0 3px;left:20px;top:80px;position:absolute;background-color:#fff}.ui-widget{font-family:RobotoDraft,sans-serif}.ui-widget-content .ui-state-focus{color:#2a3e92;background:0 0;border:none}#iilab_map{width:100%;height:100%}</style>
   <core-xhr id="xhr"></core-xhr>
-  <x-dialog id="dialog" class="dialog" style="overflow-y: scroll">
+  <x-dialog id="home_dialog" class="dialog" style="overflow-y: scroll">
       <!-- place all overlay styles inside the overlay target -->
-      <style no-shim="">.dialog{box-sizing:border-box;-moz-box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;font-size:13px;-webkit-user-select:none;-moz-user-select:none;overflow:hidden;background:#fff;padding:30px 42px;outline:1px solid rgba(0,0,0,.2);box-shadow:0 4px 16px rgba(0,0,0,.2)}#dialog{top:10%;width:80%;height:80%}#dialog div#bp,#dialog div#nigeria{margin:15px}#dialog img{width:100%}#dialog p{font-size:1em}#dialog paper-icon-button{width:200px}img[core-overlay-toggle]{cursor:pointer}</style>
+      <style>#home_dialog{top:10%;width:80%;height:80%}#home_dialog div#bp,#home_dialog div#nigeria{margin:15px}#home_dialog img{width:100%}#home_dialog p{font-size:1em}#home_dialog paper-icon-button{width:200px}#home_dialog img[core-overlay-toggle]{cursor:pointer}</style>
       <div layout="" horizontal="" center="">
         <core-icon icon="home" size="45px" style="margin-right:15px;"></core-icon>
         <h2>OpenOil: Corporate Network Navigator</h2>
@@ -3148,14 +3148,14 @@ To change the bar color for unchecked state:
       </div>
       <core-overlay layered="" id="confirmation" class="dialog" backdrop="" transition="core-transition-top">
         <!-- place all overlay styles inside the overlay target -->
-        <style no-shim="">.dialog{box-sizing:border-box;-moz-box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;font-size:13px;-webkit-user-select:none;-moz-user-select:none;overflow:hidden;background:#fff;padding:30px 42px;outline:1px solid rgba(0,0,0,.2);box-shadow:0 4px 16px rgba(0,0,0,.2)}#confirmation{box-sizing:border-box;text-align:center;width:150px}</style>
+        <style>#confirmation{box-sizing:border-box;text-align:center;width:150px}</style>
       </core-overlay>
       <br><br>
     </x-dialog>
 
-    <x-dialog id="download-dialog" class="dialog" style="overflow-y: scroll; display:none;">
+    <x-dialog id="download_dialog" class="dialog" style="overflow-y: scroll; display:none;">
       <!-- place all overlay styles inside the overlay target -->
-      <style no-shim="">.dialog{box-sizing:border-box;-moz-box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;font-size:13px;-webkit-user-select:none;-moz-user-select:none;overflow:hidden;background:#fff;padding:30px 42px;outline:1px solid rgba(0,0,0,.2);box-shadow:0 4px 16px rgba(0,0,0,.2)}#dialog{top:10%;width:80%;height:80%}#dialog div#bp,#dialog div#nigeria{margin:15px}#dialog img{width:100%}#dialog p{font-size:1em}#dialog paper-icon-button{width:200px}img[core-overlay-toggle]{cursor:pointer}</style>
+      <style>#download_dialog{top:10%;width:80%;height:80%}#download_dialog div#bp,#dialog div#nigeria{margin:15px}#download_dialog img{width:100%}#download_dialog p{font-size:1em}#download_dialog paper-icon-button{width:200px}#download_dialog img[core-overlay-toggle]{cursor:pointer}</style>
       <div layout="" horizontal="" center="">
         <core-icon icon="home" size="45px" style="margin-right:15px;"></core-icon>
         <h2>OpenOil: Corporate Network Navigator</h2>
@@ -3179,9 +3179,9 @@ To change the bar color for unchecked state:
       <br>
       This data is published by OpenOil UG under the <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open Database License (ODbL) v1.0.</a> Open Oil and iilab are working towards publishing the Open Oil Data set as Linked Data. For any questions please contact&nbsp;<a href="elements/mailto:anton.ruehling@openoil.net">anton.ruehling@openoil.net</a>.
       </div>
-      <core-overlay layered="" id="download-confirmation" class="dialog" backdrop="" transition="core-transition-top">
+      <core-overlay layered="" id="download_confirmation" class="dialog" backdrop="" transition="core-transition-top">
         <!-- place all overlay styles inside the overlay target -->
-        <style no-shim="">.dialog{box-sizing:border-box;-moz-box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;font-size:13px;-webkit-user-select:none;-moz-user-select:none;overflow:hidden;background:#fff;padding:30px 42px;outline:1px solid rgba(0,0,0,.2);box-shadow:0 4px 16px rgba(0,0,0,.2)}#confirmation{box-sizing:border-box;text-align:center;width:150px}</style>
+        <style no-shim="">#download_confirmation{box-sizing:border-box;text-align:center;width:150px}</style>
       </core-overlay>
       <br><br>
     </x-dialog>
@@ -3201,7 +3201,7 @@ To change the bar color for unchecked state:
       </core-header-panel>
       <div id="div" tool="" horizontal="" layout="" center="" wrap="" flex="">
         <div id="title">Open&nbsp;Oil Data - Beta</div>
-        <div id="oc" style="font-size:0.6em;">&nbsp;&nbsp;&nbsp;In partnership with <img src="/img/logo_oc.png" style="vertical-align:middle;"></div>
+        <div id="oc" style="font-size:0.6em;">&nbsp;&nbsp;&nbsp;<a href="https://opencorporates.com">In partnership with <img src="/img/logo_oc.png" style="vertical-align:middle;"></a></div>
         <div id="count" flex=""><template if="{{countNodesValue}}">&nbsp;- {{countNodesValue.node}} nodes &amp; {{countLinksValue.links}} links</template></div>
         <div>&nbsp;</div>
         <core-tooltip>
@@ -3224,7 +3224,7 @@ To change the bar color for unchecked state:
       <!--<core-card id="core_card" layout vertical></core-card>-->
     </core-scaffold>
   </template>
-  <script>Polymer("openoil-app",{url:window.location.href=="http://localhost/"?"http://db.localhost:7474/db/data/":"https://neo4j.openoil.net/db/data/",zoom:0,zoomSlider:0,published:{title:""},ready:function(){this.addEventListener("set-slider",this.sliderSet);document.addEventListener("stats",this.statsReq)},domReady:function(){console.log(window.location.hash.replace(/^#/,""));this.url=window.location.href.split("/")[2]=="localhost"?"http://db.localhost:7474/db/data/":"https://neo4j.openoil.net/db/data/";this.loadURL(window.location.hash.replace(/^#/,""))},clickQuery:function(e){window.location.hash="#"+e.target.id;this.loadURL(e.target.id);this.fire("stats",{i:e.target.id,t:"c"})},loadURL:function(id){switch(id){case"bp_plc_1":case"bp_plc_2":case"bp_plc_3":case"nigeria_production":case"nigeria_service":case"nigeria_snepco":this.$.iilab_graph.style.display="block";this.$.iilab_map.style.display="none";this.fire("stats",{i:window.location.href,t:"l"});this.fire("load-graph-query",{id:id});break;case"bp_map":this.$.iilab_graph.style.display="none";this.$.iilab_map.style.display="block";this.$.iilab_map.loadMap();this.fire("stats",{i:window.location.href,t:"l"});break;default:this.fire("stats",{i:window.location.href,t:"h"});this.$.dialog.toggle();break}},statsReq:function(e){document.querySelector("openoil-app").shadowRoot.querySelector("#xhr").request({url:"/",params:{i:e.detail.i,t:e.detail.t,_:(new Date).getTime()}})},homeClick:function(){window.location.hash="#";this.fire("stats",{i:window.location.href,t:"h"});this.$.dialog.toggle()},buttonClick:function(e,detail,sender){},searchTextChanged:function(o,n){},stringsTextChanged:function(o,n){},zoomOut:function(){this.$.iilab_graph.zoom=0},sliderSet:function(e){console.log("openoil-app zoomChanged");console.log(e.detail.zoom);this.zoomSlider=Math.round(Math.log(e.detail.zoom)*20)/20},zoomSliderChanged:function(o,n){console.log("openoil-app zoomSliderChanged");console.log(n);console.log(Math.exp(Math.round(n*20)/20));this.fire("zoom-slider",{zoom:Math.exp(Math.round(n*20)/20)})}});</script>
+  <script>Polymer("openoil-app",{url:window.location.href=="http://localhost/"?"http://db.localhost:7474/db/data/":"https://neo4j.openoil.net/db/data/",zoom:0,zoomSlider:0,published:{title:""},ready:function(){this.addEventListener("set-slider",this.sliderSet);document.addEventListener("stats",this.statsReq)},domReady:function(){console.log(window.location.hash.replace(/^#/,""));this.url=window.location.href.split("/")[2]=="localhost"?"http://db.localhost:7474/db/data/":"https://neo4j.openoil.net/db/data/";this.loadURL(window.location.hash.replace(/^#/,""))},clickQuery:function(e){window.location.hash="#"+e.target.id;this.loadURL(e.target.id);this.fire("stats",{i:e.target.id,t:"c"})},loadURL:function(id){switch(id){case"bp_plc_1":case"bp_plc_2":case"bp_plc_3":case"nigeria_production":case"nigeria_service":case"nigeria_snepco":this.$.iilab_graph.style.display="block";this.$.iilab_map.style.display="none";this.fire("stats",{i:window.location.href,t:"l"});this.fire("load-graph-query",{id:id});break;case"bp_map":this.$.iilab_graph.style.display="none";this.$.iilab_map.style.display="block";this.$.iilab_map.loadMap();this.fire("stats",{i:window.location.href,t:"l"});break;default:this.fire("stats",{i:window.location.href,t:"h"});this.$.home_dialog.toggle();break}},statsReq:function(e){document.querySelector("openoil-app").shadowRoot.querySelector("#xhr").request({url:"/",params:{i:e.detail.i,t:e.detail.t,_:(new Date).getTime()}})},homeClick:function(){window.location.hash="#";this.fire("stats",{i:window.location.href,t:"h"});this.$.home_dialog.toggle()},buttonClick:function(e,detail,sender){},searchTextChanged:function(o,n){},stringsTextChanged:function(o,n){},zoomOut:function(){this.$.iilab_graph.zoom=0},sliderSet:function(e){console.log("openoil-app zoomChanged");console.log(e.detail.zoom);this.zoomSlider=Math.round(Math.log(e.detail.zoom)*20)/20},zoomSliderChanged:function(o,n){console.log("openoil-app zoomSliderChanged");console.log(n);console.log(Math.exp(Math.round(n*20)/20));this.fire("zoom-slider",{zoom:Math.exp(Math.round(n*20)/20)})}});</script>
 </polymer-element></div><style>html,body{height:100%;margin:0;font-family:RobotoDraft,sans-serif}body.loading #loading{display:block;position:fixed;top:calc(50% - 18px);left:calc(50% - 200px);font-size:36px;color:#2a3e92;-webkit-animation:pulsate 2s ease-in-out;-webkit-animation-iteration-count:infinite;width:400px;text-align:center;z-index:10}@keyframes pulsate{0%{transform:scale(1,1);opacity:.1}50%{transform:scale(1.1,1.1);opacity:1}100%{transform:scale(1,1);opacity:0}}@-webkit-keyframes pulsate{0%{-webkit-transform:scale(1,1);opacity:.1}50%{-webkit-transform:scale(1.1,1.1);opacity:1}100%{-webkit-transform:scale(1,1);opacity:0}}</style></head>
 
 <body unresolved="" touch-action="auto"><openoil-app></openoil-app><div id="loading">Please wait...</div></body>

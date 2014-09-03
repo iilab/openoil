@@ -88,18 +88,6 @@ Polymer('x-dialog', {
       -webkit-overflow-scrolling: touch; 
     }
 
-  /*  polyfill-unscoped-rule {
-      content: 'core-scaffold core-toolbar';
-      background: #EEE;
-      color: black;
-    }
-
-    polyfill-unscoped-rule {
-      content: 'core-scaffold core-header-panel';
-      background: #FFF;
-      color: black;
-    } */
-
     core-scaffold::shadow core-toolbar {
       background: #EEE;
       color: #2a3e92;
@@ -174,10 +162,10 @@ Polymer('x-dialog', {
 
   </style>
   <core-xhr id="xhr"></core-xhr>
-  <x-dialog id="dialog" class="dialog" style="overflow-y: scroll">
+  <x-dialog id="home_dialog" class="dialog" style="overflow-y: scroll">
       <!-- place all overlay styles inside the overlay target -->
-      <style>
-        .dialog {
+      <style>      
+/*        :host .dialog {
           box-sizing: border-box;
           -moz-box-sizing: border-box;
           font-family: Arial, Helvetica, sans-serif;
@@ -189,31 +177,31 @@ Polymer('x-dialog', {
           padding:30px 42px;
           outline: 1px solid rgba(0,0,0,0.2);
           box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-        }
+        } */
 
-        #dialog {
+        #home_dialog {
           top:10%;
           width: 80%;
           height: 80%;
         }
 
-        #dialog div#bp, #dialog div#nigeria {
+        #home_dialog div#bp, #home_dialog div#nigeria {
           margin:15px;
         }
 
-        #dialog img{
+        #home_dialog img{
           width:100%;
         }
 
-        #dialog p {
+        #home_dialog p {
           font-size:1em;
         }
 
-        #dialog paper-icon-button {
+        #home_dialog paper-icon-button {
           width: 200px;
         }
 
-        img[core-overlay-toggle] {
+        #home_dialog img[core-overlay-toggle] {
           cursor: pointer;
         }
 
@@ -256,7 +244,7 @@ Polymer('x-dialog', {
       <core-overlay layered id="confirmation" class="dialog" backdrop transition="core-transition-top">
         <!-- place all overlay styles inside the overlay target -->
         <style>
-          .dialog {
+          /*:host .dialog {
             box-sizing: border-box;
             -moz-box-sizing: border-box;
             font-family: Arial, Helvetica, sans-serif;
@@ -268,7 +256,7 @@ Polymer('x-dialog', {
             padding:30px 42px;
             outline: 1px solid rgba(0,0,0,0.2);
             box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-          }
+          }*/
 
           #confirmation {
             box-sizing: border-box;
@@ -280,10 +268,10 @@ Polymer('x-dialog', {
       <br><br>
     </x-dialog>
 
-    <x-dialog id="download-dialog" class="dialog" style="overflow-y: scroll; display:none;">
+    <x-dialog id="download_dialog" class="dialog" style="overflow-y: scroll; display:none;">
       <!-- place all overlay styles inside the overlay target -->
       <style>
-        .dialog {
+/*        :host .dialog {
           box-sizing: border-box;
           -moz-box-sizing: border-box;
           font-family: Arial, Helvetica, sans-serif;
@@ -295,31 +283,31 @@ Polymer('x-dialog', {
           padding:30px 42px;
           outline: 1px solid rgba(0,0,0,0.2);
           box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-        }
+        }*/
 
-        #dialog {
+        #download_dialog {
           top:10%;
           width: 80%;
           height: 80%;
         }
 
-        #dialog div#bp, #dialog div#nigeria {
+        #download_dialog div#bp, #dialog div#nigeria {
           margin:15px;
         }
 
-        #dialog img{
+        #download_dialog img{
           width:100%;
         }
 
-        #dialog p {
+        #download_dialog p {
           font-size:1em;
         }
 
-        #dialog paper-icon-button {
+        #download_dialog paper-icon-button {
           width: 200px;
         }
 
-        img[core-overlay-toggle] {
+        #download_dialog img[core-overlay-toggle] {
           cursor: pointer;
         }
 
@@ -347,10 +335,10 @@ Polymer('x-dialog', {
       <br/>
       This data is published by OpenOil UG under the <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open Database License (ODbL) v1.0.</a> Open Oil and iilab are working towards publishing the Open Oil Data set as Linked Data. For any questions please contact&nbsp;<a href="mailto:anton.ruehling@openoil.net">anton.ruehling@openoil.net</a>.
       </div>
-      <core-overlay layered id="download-confirmation" class="dialog" backdrop transition="core-transition-top">
+      <core-overlay layered id="download_confirmation" class="dialog" backdrop transition="core-transition-top">
         <!-- place all overlay styles inside the overlay target -->
         <style no-shim>
-          .dialog {
+/*          :host .dialog {
             box-sizing: border-box;
             -moz-box-sizing: border-box;
             font-family: Arial, Helvetica, sans-serif;
@@ -362,9 +350,9 @@ Polymer('x-dialog', {
             padding:30px 42px;
             outline: 1px solid rgba(0,0,0,0.2);
             box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-          }
+          }*/
 
-          #confirmation {
+          #download_confirmation {
             box-sizing: border-box;
             text-align: center;
             width: 150px;
@@ -389,7 +377,7 @@ Polymer('x-dialog', {
       </core-header-panel>
       <div id="div" tool horizontal layout center wrap flex>
         <div id="title" >Open&nbsp;Oil Data - Beta</div>
-        <div id="oc" style="font-size:0.6em;">&nbsp;&nbsp;&nbsp;In partnership with <img src="/img/logo_oc.png" style="vertical-align:middle;"></div>
+        <div id="oc" style="font-size:0.6em;">&nbsp;&nbsp;&nbsp;<a href="https://opencorporates.com" style="text-decoration: none; color:#2a3e92;" target="_blank">In partnership with <img src="/img/logo_oc.png" style="vertical-align:middle;"></a></div>
         <div id="count" flex><template if="{{countNodesValue}}">&nbsp;- {{countNodesValue.node}} nodes &amp; {{countLinksValue.links}} links</template></div>
         <div>&nbsp;</div>
         <core-tooltip>
@@ -455,7 +443,7 @@ Polymer('x-dialog', {
             break;
           default:
             this.fire('stats', {i: window.location.href, t:"h"});
-            this.$.dialog.toggle();
+            this.$.home_dialog.toggle();
             break;
         }
       },
@@ -475,7 +463,7 @@ Polymer('x-dialog', {
       homeClick: function() {
         window.location.hash = "#";
         this.fire('stats', {i: window.location.href, t:"h"});
-        this.$.dialog.toggle();
+        this.$.home_dialog.toggle();
       },
   		buttonClick: function(e, detail, sender) {
   			//document.querySelector('iilab-graph').shadowRoot.querySelector('#drawer').togglePanel();
