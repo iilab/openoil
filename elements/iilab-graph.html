@@ -83,12 +83,15 @@
         }
 
         core-submenu::shadow core-item {
-          height:auto;
-          padding: 0px 0px 0px 6px;
         }
 
         core-item:not([icon]) {
           margin-left: -20px;
+        }
+
+        core-item[icon] {
+          padding: 0px 0px 0px 6px;
+          white-space: normal;
         }
       </style>
       <iilab-drawer-panel id="iilab_drawer" class="right-drawer" selected="main">
