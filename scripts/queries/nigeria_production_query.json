@@ -1,0 +1,4 @@
+{
+  "param" : "",
+  "query" : "MATCH p=(a:Company)<-[hc:HAS_CONTRACTOR]-(c:Contract)<-[i:AWARDS]-(b {name: 'Nigerian National Petroleum Corporation (NNPC)'}) WITH p, a,c, hc,b,i MATCH (c)-[:HAS_CONTRACT_TYPE]->(ct:ContractType {name: 'Production Contract'}) UNWIND nodes(p) as nodes UNWIND relationships(p) as links RETURN {nodes: [ x in collect(DISTINCT nodes) | {node: x, id: id(x), label: labels(x)}], links: collect(DISTINCT links)} as result"
+}
