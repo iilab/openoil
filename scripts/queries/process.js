@@ -69,7 +69,7 @@ fs.readFile(file, 'utf8', function (err, data) {
                       };
                   });
    
-   console.log(myjson);
+   console.log(JSON.stringify(myjson));
 
 });
 
