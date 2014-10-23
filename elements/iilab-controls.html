@@ -144,11 +144,11 @@
 	                  }
 	                  else {
 	                      console.log('download request submitted!')
-				 			this.fire('stats', {t:"d"});
-							document.querySelector('openoil-app').shadowRoot.querySelector('#download_dialog').toggle();        
+				 			document.querySelector('openoil-app').shadowRoot.querySelector('#download_dialog').toggle();        
 	                  }
 	              })
 	          })
+	          this.fire('stats', {t:"d"});							
 	        } else {
 	        	document.querySelector('openoil-app').shadowRoot.querySelector('iilab-controls').shadowRoot.querySelector('#download_invalid').show();    
 	        }
